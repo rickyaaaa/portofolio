@@ -1,6 +1,11 @@
 ---
-/** Agenko agk-services section with agenko-card-item style-one cards. */
-import { services } from '../../data/content';
+/**
+ * Agenko agk-services section with agenko-card-item style-one cards.
+ *
+ * Card markup is unchanged from the template: a three-part row of
+ * [number + title] [description] [button]. Only the content is driven by data.
+ */
+import { services, servicePath, SERVICE_PAGES_LIVE } from '../../data/services';
 ---
 
 <!--======  Start Services Section  ======-->
@@ -10,14 +15,14 @@ import { services } from '../../data/content';
             <div class="col-lg-7">
                 <!--=== Section Title ===-->
                 <div class="section-title mb-65 pf_fadeup">
-                    <span class="sub-title">Layanan Kami</span>
-                    <h2>Solusi Digital yang Dibangun
-                        Sesuai Bisnismu</h2>
+                    <span class="sub-title">What We Do</span>
+                    <h2>Solusi Digital untuk Membantu
+                        Bisnis Anda Tumbuh.</h2>
                 </div>
             </div>
             <div class="col-lg-5">
                 <div class="text-box mb-60 pf_fadeup">
-                    <p>Tiga layanan yang saling melengkapi. Mulai dari bikin website, sampai mendatangkan orang yang tepat ke sana</p>
+                    <p>Mulai dari membangun website dan sistem berbasis web hingga meningkatkan visibilitas dan mendapatkan calon pelanggan melalui digital marketing.</p>
                 </div>
             </div>
         </div>
@@ -32,14 +37,19 @@ import { services } from '../../data/content';
                             <h3 class="title">{service.title}</h3>
                         </div>
                         <div class="content">
-                            <p set:html={service.descriptionHtml} />
+                            <p>{service.shortDescription}</p>
                         </div>
                         <div class="card-button">
-                            <a href="#" data-rs-todo="service-details.html" class="theme-btn style-one">
+                            <a
+                                href={SERVICE_PAGES_LIVE ? servicePath(service) : '#'}
+                                data-rs-todo={SERVICE_PAGES_LIVE ? undefined : servicePath(service)}
+                                class="theme-btn style-one"
+                            >
                                 <span class="text-flip">
-                                    <span class="text">LIHAT LAYANAN</span>
-                                    <span class="text">LIHAT LAYANAN</span>
+                                    <span class="text">PELAJARI SELENGKAPNYA</span>
+                                    <span class="text">PELAJARI SELENGKAPNYA</span>
                                 </span>
+                                <span class="icon"><i class="far fa-arrow-right"></i></span>
                             </a>
                         </div>
                     </div>

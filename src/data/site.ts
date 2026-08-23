@@ -44,9 +44,3 @@ export const SOCIAL_LINKS = [
   { label: 'TikTok', icon: 'fab fa-tiktok' },
   { label: 'LinkedIn', icon: 'fab fa-linkedin-in' },
 ];
-
-export const FOOTER_SERVICES = [
-  { label: 'Pembuatan Website', href: '#services' },
-  { label: 'Pengembangan Web Custom', href: '#services' },
-  { label: 'Iklan Digital', href: '#services' },
-];

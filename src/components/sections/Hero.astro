@@ -4,7 +4,7 @@
  * GSAP SplitText, so they must stay as two sibling spans inside the h1.
  */
 import { whatsapp } from '../../data/site';
-import { heroServices } from '../../data/content';
+import { services } from '../../data/services';
 
 const startLink = whatsapp('Halo Ricksite Studio, mau mulai project baru nih.');
 ---
@@ -22,13 +22,13 @@ const startLink = whatsapp('Halo Ricksite Studio, mau mulai project baru nih.');
                 <div class="col-lg-12">
                     <!--=== Hero Content ===-->
                     <div class="hero-content">
-                        <span class="sub-title">Website &bull; Iklan Digital &bull; Pertumbuhan Bisnis</span>
+                        <span class="sub-title">Website &bull; Web App &bull; Digital Marketing</span>
                         <h1>
-                            <span class="text-anm">Website &amp; Iklan Digital</span>
+                            <span class="text-anm">Website &amp; Digital Marketing</span>
                             <span class="text-anm">yang Bikin Bisnismu Tumbuh.</span>
                         </h1>
                         <div class="text-box pf_fadeup">
-                            <p>Ricksite Studio bantu bisnis kamu punya <span>website profesional</span>, sistem custom, dan iklan digital yang benar-benar mendatangkan calon customer. Bukan sekadar tampil bagus.</p>
+                            <p>Ricksite Studio bantu bisnis kamu punya <span>website profesional</span>, sistem custom, dan digital marketing yang benar-benar mendatangkan calon customer. Bukan sekadar tampil bagus.</p>
                             <div class="hero-button">
                                 <a href={startLink} target="_blank" rel="noopener" class="theme-btn style-one">
                                     <span class="text-flip">
@@ -45,7 +45,7 @@ const startLink = whatsapp('Halo Ricksite Studio, mau mulai project baru nih.');
             <div class="row">
                 <div class="col-lg-4">
                     <ul class="service-list pf_fadeup">
-                        {heroServices.map((service) => (
+                        {services.map((service) => (
                             <Fragment>
                             <li>
                                 <!--=== Iconic Box ===-->

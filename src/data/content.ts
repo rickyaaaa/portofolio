@@ -53,45 +53,10 @@ export const projects: Project[] = [
   },
 ];
 
-export interface Service {
-  number: string;
-  title: string;
-  /** Copy with a <span> wrapping the highlighted phrase. */
-  descriptionHtml: string;
-}
-
-export const services: Service[] = [
-  {
-    number: '01',
-    title: 'Pembuatan Website',
-    descriptionHtml:
-      'Website <span>company profile</span>, landing page, travel, property, sampai hospitality. Tampil profesional, cepat dibuka, dan bikin pengunjung gampang jadi customer.',
-  },
-  {
-    number: '02',
-    title: 'Pengembangan Web Custom',
-    descriptionHtml:
-      'Butuh yang nggak bisa dijawab template? Dashboard, <span>booking system</span>, ERP, sampai fitur khusus. Kami bangun sesuai cara kerja bisnismu.',
-  },
-  {
-    number: '03',
-    title: 'Iklan Digital',
-    descriptionHtml:
-      '<span>Meta Ads</span> yang tepat sasaran, biar website kamu dikunjungi orang yang memang lagi cari produk atau jasa seperti punyamu.',
-  },
-];
-
-/** Hero service pills (agenko-iconic-box style-one). */
-export const heroServices = [
-  { icon: 'flaticon-web-development', title: 'Pembuatan Website' },
-  { icon: 'flaticon-cloud-computing', title: 'Web App Custom' },
-  { icon: 'flaticon-announcement', title: 'Iklan Digital' },
-];
-
 /** "Website Bagus Itu Baru Langkah Awal" check-list. */
 export const ecosystemPoints = [
   'Website - Bikin Bisnismu Terlihat Kredibel',
-  'Iklan - Mendatangkan Orang Yang Tepat',
+  'Digital Marketing - Mendatangkan Orang Yang Tepat',
   'Traffic - Pengunjung Yang Relevan, Bukan Asal Ramai',
   'Leads - Chat Masuk Dari Calon Customer Serius',
   'Growth - Pertumbuhan Yang Kelihatan Angkanya',
@@ -116,8 +81,8 @@ export const values: ValueProp[] = [
   },
   {
     icon: 'flaticon-social-media-marketing',
-    title: 'Website + Iklan',
-    description: 'Website dan iklan digital digarap bareng, jadi hasilnya saling menguatkan.',
+    title: 'Website + Marketing',
+    description: 'Website dan digital marketing digarap bareng, jadi hasilnya saling menguatkan.',
   },
   {
     icon: 'flaticon-group',

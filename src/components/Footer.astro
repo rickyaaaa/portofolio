@@ -1,6 +1,7 @@
 ---
 /** Agenko footer. Markup unchanged from index.html. */
-import { NAV_LINKS, SOCIAL_LINKS, FOOTER_SERVICES, whatsapp, WHATSAPP_DISPLAY } from '../data/site';
+import { NAV_LINKS, SOCIAL_LINKS, whatsapp, WHATSAPP_DISPLAY } from '../data/site';
+import { services } from '../data/services';
 
 /** Plain wa.me link, no pre-filled message — matches the original markup. */
 const talkLink = whatsapp();
@@ -23,7 +24,7 @@ const talkLink = whatsapp();
                             <div class="footer-logo">
                                 <a href="index.html"><img src="/assets/images/ricksite/logo/logo-main.svg" alt="Ricksite Studio"></a>
                             </div>
-                            <p>Ricksite Studio bantu bisnis bertumbuh lewat website dan iklan digital.</p>
+                            <p>Ricksite Studio bantu bisnis bertumbuh lewat website dan digital marketing.</p>
                             <form>
                                 <div class="form-group">
                                     <input type="email" class="form_control" placeholder="Alamat Email" name="email" required>
@@ -40,10 +41,10 @@ const talkLink = whatsapp();
                         <div class="footer-content mb-35">
                             <h4 class="widget-title">Layanan</h4>
                             <ul class="footer-nav">
-                                {FOOTER_SERVICES.map((item) => (
+                                {services.map((service) => (
                                     <Fragment>
                                     <li>
-                                        <a href={item.href}>{item.label}</a>
+                                        <a href="#services">{service.title}</a>
                                     </li>
                                     {" "}</Fragment>
                                 ))}

@@ -94,3 +94,19 @@
     margin-top: 25px;
   }
 }
+
+/*-------------------------------------
+    ## Services CTA on small screens
+
+    "PELAJARI SELENGKAPNYA" plus the arrow needs 281px, but the service card
+    only offers 269px of content width below 768px, so the label wrapped to two
+    lines inside the pill. Agenko's buttons are single-line everywhere else, so
+    the horizontal padding is trimmed just for this button at that width rather
+    than shortening the label.
+--------------------------------------*/
+@media (max-width: 767px) {
+  .agk-services .card-button .theme-btn.style-one {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
