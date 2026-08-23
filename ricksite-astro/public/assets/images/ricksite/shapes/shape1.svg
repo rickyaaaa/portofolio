@@ -1,9 +1,0 @@
-<!-- Same geometry and 50x50 size as the original Agenko hero shape, recoloured to the Ricksite accent. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50" height="50" aria-hidden="true">
-  <g fill="#B7F34A">
-    <path d="M24 24H1A23 23 0 0 1 24 1v23Z"/>
-    <path d="M26 24V1a23 23 0 0 1 23 23H26Z"/>
-    <path d="M26 26h23a23 23 0 0 1-23 23V26Z"/>
-    <path d="M24 26v23A23 23 0 0 1 1 26h23Z"/>
-  </g>
-</svg>

@@ -3,15 +3,9 @@
   "configurations": [
     {
       "name": "ricksite",
-      "runtimeExecutable": "node",
-      "runtimeArgs": ["serve.js"],
-      "port": 5173
-    },
-    {
-      "name": "ricksite-astro",
-      "runtimeExecutable": "node",
-      "runtimeArgs": ["serve-astro.js"],
-      "port": 5174
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["astro", "dev", "--port", "4321"],
+      "port": 4321
     }
   ]
 }

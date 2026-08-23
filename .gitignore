@@ -1,3 +1,8 @@
+# Astro
+node_modules/
+dist/
+.astro/
+
 # Original template source (kept locally for reference, not needed in the repo)
 agenko-creative-digital-agency-html-template-2025-07-17-08-47-52-utc/
 agenko-creative-digital-agency-html-template-2025-07-17-08-47-52-utc.zip
@@ -5,8 +10,3 @@ agenko-creative-digital-agency-html-template-2025-07-17-08-47-52-utc.zip
 # OS / editor cruft
 .DS_Store
 Thumbs.db
-
-# Astro
-ricksite-astro/node_modules/
-ricksite-astro/dist/
-ricksite-astro/.astro/
