@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 460" width="880" height="460" role="img" aria-label="Image placeholder">
+  <rect width="880" height="460" fill="#17181B"/>
+  <rect x="1" y="1" width="878" height="458" fill="none" stroke="#26282C" stroke-width="2"/>
+  <circle cx="440" cy="204" r="34" fill="none" stroke="#B7F34A" stroke-opacity=".5" stroke-width="2"/>
+  <path d="M426 214 h28 v22 h-28 z M426 228 l9-9 7 7 5-5 7 7" fill="none" stroke="#B7F34A" stroke-opacity=".7" stroke-width="2" stroke-linejoin="round"/>
+  <text x="440" y="270" text-anchor="middle" font-family="'Source Sans 3','Segoe UI',sans-serif" font-size="15" font-weight="700" letter-spacing="2.4" fill="#6B6F76">IMAGE PLACEHOLDER</text>
+  <text x="440" y="294" text-anchor="middle" font-family="'Source Sans 3','Segoe UI',sans-serif" font-size="13" fill="#3A3D42">880 &#215; 460</text>
+</svg>
