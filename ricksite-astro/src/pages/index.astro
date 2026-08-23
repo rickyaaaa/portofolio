@@ -1,0 +1,35 @@
+---
+/**
+ * Ricksite Studio homepage.
+ *
+ * Section order matches the original index.html:
+ * Hero -> Projects -> Services -> Ecosystem -> Why -> Process -> Testimonials
+ * -> About -> Final CTA.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import FeaturedProjects from '../components/sections/FeaturedProjects.astro';
+import Services from '../components/sections/Services.astro';
+import Ecosystem from '../components/sections/Ecosystem.astro';
+import WhyRicksite from '../components/sections/WhyRicksite.astro';
+import WorkProcess from '../components/sections/WorkProcess.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import About from '../components/sections/About.astro';
+import FinalCta from '../components/sections/FinalCta.astro';
+
+const title = 'Ricksite Studio - Jasa Pembuatan Website, Web App Custom & Iklan Digital';
+const description =
+  'Ricksite Studio - jasa pembuatan website, pengembangan web custom, dan iklan digital untuk bantu bisnismu bertumbuh.';
+---
+
+<BaseLayout title={title} description={description}>
+    <Hero />
+    <FeaturedProjects />
+    <Services />
+    <Ecosystem />
+    <WhyRicksite />
+    <WorkProcess />
+    <Testimonials />
+    <About />
+    <FinalCta />
+</BaseLayout>

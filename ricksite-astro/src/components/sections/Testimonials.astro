@@ -1,0 +1,59 @@
+---
+/**
+ * Agenko agk-testimonial section. The `.testimonial-slider` div is initialised
+ * by Slick in theme.js, so its children must remain direct element siblings.
+ */
+import { testimonials } from '../../data/content';
+---
+
+<!--======  Start Testimonial Section  ======-->
+<section class="agk-testimonial gray-dark pt-130 pb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!--=== Section Title ===-->
+                <div class="section-title text-center mb-50 pf_fadeup">
+                    <span class="sub-title">Testimoni</span>
+                    <h2>Apa Kata Client Kami</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-5">
+                <!--=== Agk Image Box ===-->
+                <div class="agk-image-box mb-50 pf_fadeup">
+                    <div class="agk-image">
+                        <img src="/assets/images/ricksite/pages/testimonial1.svg" class="animated-image" alt="testimonial image">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="testimonial-wrapper mb-50 pf_fadeup">
+                    <!--=== Testimonial Slider ===-->
+                    <div class="testimonial-slider">
+                        {testimonials.map((item) => (
+                            <Fragment>
+                            <div class="agenko-testimonial-item style-one">
+                                <div class="testimonial-content">
+                                    <p>{item.quote}</p>
+                                    <div class="author-item-quote d-flex justify-content-between align-items-center">
+                                        <div class="author-item">
+                                            <div class="author-info">
+                                                <h4>{item.name}</h4>
+                                                <h5>{item.company}</h5>
+                                            </div>
+                                        </div>
+                                        <div class="quote">
+                                            <i class="flaticon-inverted-commas"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {" "}</Fragment>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--======  End Testimonial Section  ======-->

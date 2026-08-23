@@ -1,0 +1,43 @@
+---
+/** Agenko agenko-iconic-box style-four cards (lifted from index.html). */
+import { values } from '../../data/content';
+---
+
+<!--======  Start Why Section  ======-->
+<section class="agk-why gray-dark pt-130 pb-100">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <!--=== Section Title ===-->
+                <div class="section-title mb-50 pf_fadeup">
+                    <span class="sub-title">Kenapa Ricksite Studio</span>
+                    <h2>Bukan Sekadar
+                        Bikin Website</h2>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <!--=== Text Box ===-->
+                <div class="text-box mb-50 pf_fadeup">
+                    <p>Prinsip kami simpel: website harus benar-benar bekerja untuk bisnismu, bukan cuma jadi pajangan</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {values.map((value) => (
+                <Fragment>
+                <div class="col-xl-3 col-md-6 col-sm-12">
+                    <div class="agenko-iconic-box style-four mb-30 pf_fadeup">
+                        <div class="icon">
+                            <i class={value.icon}></i>
+                        </div>
+                        <div class="content">
+                            <h4 class="title">{value.title}</h4>
+                            <p>{value.description}</p>
+                        </div>
+                    </div>
+                </div>
+                {" "}</Fragment>
+            ))}
+        </div>
+    </div>
+</section><!--======  End Why Section  ======-->

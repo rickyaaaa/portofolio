@@ -6,6 +6,12 @@
       "runtimeExecutable": "node",
       "runtimeArgs": ["serve.js"],
       "port": 5173
+    },
+    {
+      "name": "ricksite-astro",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["serve-astro.js"],
+      "port": 5174
     }
   ]
 }

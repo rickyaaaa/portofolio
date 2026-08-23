@@ -1,0 +1,43 @@
+---
+/** Agenko agk-work-process section with agenko-iconic-box style-two cards. */
+import { processSteps } from '../../data/content';
+---
+
+<!--======  Start Work Process Section  ======-->
+<section class="agk-work-process pt-130 pb-100">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <!--=== Section Title ===-->
+                <div class="section-title mb-50 pf_fadeup">
+                    <span class="sub-title">Cara Kami Bekerja</span>
+                    <h2>Dari Ide Sampai Launching</h2>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <!--=== Text Box ===-->
+                <div class="text-box mb-55 pf_fadeup">
+                    <p>Prosesnya jelas dan nggak ribet. Kamu selalu tahu progress-nya di setiap tahap</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {processSteps.map((step) => (
+                <Fragment>
+                <div class="col-xl col-md-6 col-sm-12">
+                    <div class="agenko-iconic-box style-two mb-40 pf_fadeup">
+                        <div class="icon">
+                            <i class={step.icon}></i>
+                        </div>
+                        <div class="content">
+                            <h4 class="title">{step.title}</h4>
+                            <p>{step.description}</p>
+                            <div class="step">{step.step}</div>
+                        </div>
+                    </div>
+                </div>
+                {" "}</Fragment>
+            ))}
+        </div>
+    </div>
+</section><!--======  End Work Process Section  ======-->

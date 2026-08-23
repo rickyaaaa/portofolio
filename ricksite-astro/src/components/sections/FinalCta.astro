@@ -1,0 +1,39 @@
+---
+/** Agenko agenko-cta-wrappper (component originally from index-3.html). */
+import { whatsapp } from '../../data/site';
+
+const discussLink = whatsapp('Halo Ricksite Studio, mau diskusi soal project.');
+const plainLink = whatsapp();
+---
+
+<!--=== Start CTA Section ===-->
+<section class="agk-cta pb-130" id="contact">
+    <div class="agenko-cta-wrappper gray-dark pt-40 pb-20">
+        <div class="shape shape_one"><span></span></div>
+        <div class="shape shape_two"><span></span></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <!--=== Section Title ===-->
+                    <div class="section-title mb-30 pf_fadeup">
+                        <h2>Punya Project
+                            di Pikiran?</h2>
+                        <p class="mt-20">Ceritakan aja dulu kebutuhanmu: website, sistem custom, atau iklan digital. Kami bantu carikan solusi yang paling pas untuk bisnismu.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!--=== Agk Button ===-->
+                    <div class="agenko-button float-lg-end mb-40 pf_fadeup">
+                        <a href={discussLink} target="_blank" rel="noopener" class="theme-btn style-one">
+                            <span class="text-flip">
+                                <span class="text">KONSULTASI SEKARANG</span>
+                                <span class="text">KONSULTASI SEKARANG</span>
+                            </span>
+                        </a>
+                        <a href={plainLink} target="_blank" rel="noopener" class="read-more style-one">Chat via WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--=== End CTA Section ===-->

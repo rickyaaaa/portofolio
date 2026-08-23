@@ -1,0 +1,51 @@
+---
+/** Agenko agk-services section with agenko-card-item style-one cards. */
+import { services } from '../../data/content';
+---
+
+<!--======  Start Services Section  ======-->
+<section class="agk-services gray-dark pt-130 pb-100" id="services">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <!--=== Section Title ===-->
+                <div class="section-title mb-65 pf_fadeup">
+                    <span class="sub-title">Layanan Kami</span>
+                    <h2>Solusi Digital yang Dibangun
+                        Sesuai Bisnismu</h2>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="text-box mb-60 pf_fadeup">
+                    <p>Tiga layanan yang saling melengkapi. Mulai dari bikin website, sampai mendatangkan orang yang tepat ke sana</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {services.map((service) => (
+                <Fragment>
+                <div class="col-lg-12">
+                    <!--=== Card Item ===-->
+                    <div class="agenko-card-item style-one mb-30 pf_fadeup">
+                        <div class="card-title">
+                            <div class="sn-number">{service.number}</div>
+                            <h3 class="title">{service.title}</h3>
+                        </div>
+                        <div class="content">
+                            <p set:html={service.descriptionHtml} />
+                        </div>
+                        <div class="card-button">
+                            <a href="#" data-rs-todo="service-details.html" class="theme-btn style-one">
+                                <span class="text-flip">
+                                    <span class="text">LIHAT LAYANAN</span>
+                                    <span class="text">LIHAT LAYANAN</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {" "}</Fragment>
+            ))}
+        </div>
+    </div>
+</section><!--======  End Services Section  ======-->

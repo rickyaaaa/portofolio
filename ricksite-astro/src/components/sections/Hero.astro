@@ -1,0 +1,74 @@
+---
+/**
+ * Agenko hero-wrapper-two. The `.text-anm` spans are what theme.js feeds to
+ * GSAP SplitText, so they must stay as two sibling spans inside the h1.
+ */
+import { whatsapp } from '../../data/site';
+import { heroServices } from '../../data/content';
+
+const startLink = whatsapp('Halo Ricksite Studio, mau mulai project baru nih.');
+---
+
+<!--======  Start Hero Section  ======-->
+<section class="agk-hero">
+    <!--=== Hero Wrapper One ===-->
+    <div class="hero-wrapper-two">
+        <div class="shape shape-one"><span><img class="rotate360" src="/assets/images/ricksite/shapes/shape1.svg" alt="Shape"></span></div>
+        <div class="shape shape-two"><span><img class="animate-float-bob-y" src="/assets/images/ricksite/shapes/shape2.svg" alt="Shape"></span></div>
+        <div class="shape circle-one"><span></span></div>
+        <div class="shape circle-two"><span></span></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--=== Hero Content ===-->
+                    <div class="hero-content">
+                        <span class="sub-title">Website &bull; Iklan Digital &bull; Pertumbuhan Bisnis</span>
+                        <h1>
+                            <span class="text-anm">Website &amp; Iklan Digital</span>
+                            <span class="text-anm">yang Bikin Bisnismu Tumbuh.</span>
+                        </h1>
+                        <div class="text-box pf_fadeup">
+                            <p>Ricksite Studio bantu bisnis kamu punya <span>website profesional</span>, sistem custom, dan iklan digital yang benar-benar mendatangkan calon customer. Bukan sekadar tampil bagus.</p>
+                            <div class="hero-button">
+                                <a href={startLink} target="_blank" rel="noopener" class="theme-btn style-one">
+                                    <span class="text-flip">
+                                        <span class="text">MULAI PROJECT KAMU</span>
+                                        <span class="text">MULAI PROJECT KAMU</span>
+                                    </span>
+                                </a>
+                                <a href="#projects" class="read-more style-one">Lihat Hasil Kerja Kami</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <ul class="service-list pf_fadeup">
+                        {heroServices.map((service) => (
+                            <Fragment>
+                            <li>
+                                <!--=== Iconic Box ===-->
+                                <a href="#services" class="agenko-iconic-box style-one">
+                                    <div class="icon">
+                                        <i class={service.icon}></i>
+                                    </div>
+                                    <div class="content">
+                                        <h4 class="title">{service.title}</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            {" "}</Fragment>
+                        ))}
+                    </ul>
+                </div>
+                <div class="col-lg-8">
+                    <!--=== Hero Image Box ===-->
+                    <div class="hero-image style-one pf_fadeup">
+                        <img src="/assets/images/ricksite/pages/hero-img1.svg" alt="Hero Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--======  End Hero Section  ======-->
