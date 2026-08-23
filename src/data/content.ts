@@ -5,54 +5,6 @@
  * the markup block.
  */
 
-export interface Project {
-  /** File in public/assets/images/ricksite/projects/ */
-  image: string;
-  alt: string;
-  title: string;
-  /** The two chips rendered above the title. */
-  categories: [string, string];
-}
-
-export const projects: Project[] = [
-  {
-    image: 'project-01.svg',
-    alt: 'Project Image',
-    title: 'Website Booking Villa',
-    categories: ['Perhotelan', 'Sistem Booking'],
-  },
-  {
-    image: 'project-02.svg',
-    alt: 'Project Image',
-    title: 'Boutique Nayla',
-    categories: ['E-Commerce', 'Pembuatan Website'],
-  },
-  {
-    image: 'project-03.svg',
-    alt: 'Project Image',
-    title: 'Vintera Property Management',
-    categories: ['Manajemen Properti', 'Aplikasi Web Custom'],
-  },
-  {
-    image: 'project-04.svg',
-    alt: 'Project Image',
-    title: 'YokPrinting ERP',
-    categories: ['Percetakan & Manufaktur', 'Sistem ERP Custom'],
-  },
-  {
-    image: 'project-05.svg',
-    alt: 'Project Image',
-    title: 'Website Travel',
-    categories: ['Pariwisata', 'Website & Booking'],
-  },
-  {
-    image: 'project-06.svg',
-    alt: 'Project Image',
-    title: 'Plugin WordPress Custom',
-    categories: ['Travel', 'Pembuatan Plugin'],
-  },
-];
-
 /** "Website Bagus Itu Baru Langkah Awal" check-list. */
 export const ecosystemPoints = [
   'Website - Bikin Bisnismu Terlihat Kredibel',
