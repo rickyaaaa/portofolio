@@ -3,8 +3,8 @@
  * Ricksite Studio homepage.
  *
  * Section order matches the original index.html:
- * Hero -> Projects -> Services -> Ecosystem -> Why -> Process -> Testimonials
- * -> About -> Final CTA.
+ * Hero -> Projects -> Services -> Ecosystem -> Why -> Process -> Pricing
+ * -> Inquiry form -> About -> Final CTA.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
@@ -13,7 +13,8 @@ import Services from '../components/sections/Services.astro';
 import Ecosystem from '../components/sections/Ecosystem.astro';
 import WhyRicksite from '../components/sections/WhyRicksite.astro';
 import WorkProcess from '../components/sections/WorkProcess.astro';
-import Testimonials from '../components/sections/Testimonials.astro';
+import Pricing from '../components/sections/Pricing.astro';
+import InquiryForm from '../components/sections/InquiryForm.astro';
 import About from '../components/sections/About.astro';
 import FinalCta from '../components/sections/FinalCta.astro';
 
@@ -29,7 +30,8 @@ const description =
     <Ecosystem />
     <WhyRicksite />
     <WorkProcess />
-    <Testimonials />
+    <Pricing />
+    <InquiryForm />
     <About />
     <FinalCta />
 </BaseLayout>

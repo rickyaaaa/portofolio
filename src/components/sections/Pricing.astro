@@ -1,0 +1,100 @@
+---
+/**
+ * Price list, built from stock Agenko parts:
+ * `agk-accordion` / `agenko-accordion-item` for the category toggles (Bootstrap
+ * collapse, already loaded in BaseLayout) and `agenko-pricing-item style-three`
+ * for the cards inside each panel.
+ *
+ * Accordion rather than a wall of cards: there are seven categories, and a
+ * visitor only ever cares about one of them.
+ */
+import { pricing } from '../../data/pricing';
+import { whatsapp } from '../../data/site';
+---
+
+<!--======  Start Pricing Section  ======-->
+<section class="agk-pricing gray-dark pt-130 pb-100" id="harga">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <!--=== Section Title ===-->
+                <div class="section-title mb-50 pf_fadeup">
+                    <span class="sub-title">Harga</span>
+                    <h2>Harga Jelas di Depan,
+                        Tanpa Biaya Kaget.</h2>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="text-box mb-50 pf_fadeup">
+                    <p>Pilih kategori yang paling cocok sama kebutuhanmu. Kalau masih bingung, isi form di bawah — kami bantu carikan yang paling masuk akal.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <!--====== Accordion ======-->
+                <div class="agk-accordion" id="pricingAccordion">
+                    {pricing.map((category, index) => (
+                        <Fragment>
+                        <!--====== Accordion Item ======-->
+                        <div class="agenko-accordion-item mb-20 pf_fadeup">
+                            <div class="accordion-header">
+                                <h6
+                                    class="accordion-title"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target={`#price-${category.id}`}
+                                    aria-expanded={index === 0 ? 'true' : 'false'}
+                                >
+                                    {category.title}
+                                </h6>
+                            </div>
+                            <div
+                                id={`price-${category.id}`}
+                                class={`accordion-collapse collapse${index === 0 ? ' show' : ''}`}
+                                data-bs-parent="#pricingAccordion"
+                            >
+                                <div class="accordion-content">
+                                    {category.note && <p class="rs-price-note">{category.note}</p>}
+                                    <div class="row">
+                                        {category.packages.map((pkg) => (
+                                            <Fragment>
+                                            <div class={category.packages.length === 1 ? 'col-lg-6' : 'col-lg-4 col-md-6 col-sm-12'}>
+                                                <div class={`agenko-pricing-item style-three mb-30${pkg.featured ? ' rs-featured' : ''}`}>
+                                                    <div class="shape"><span></span></div>
+                                                    <div class="pricing-head">
+                                                        <span class="plan">{pkg.plan}</span>
+                                                        <h2 class="price">{pkg.price}{pkg.period && <span class="rs-period">{pkg.period}</span>}</h2>
+                                                        <p>{pkg.summary}</p>
+                                                    </div>
+                                                    <div class="pricing-body">
+                                                        <ul class="check-list style-one">
+                                                            {pkg.features.map((feature) => (
+                                                                <Fragment>
+                                                                <li><i class="flaticon-check"></i>{feature}</li>
+                                                                {" "}</Fragment>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                    <div class="pricing-footer">
+                                                        <a
+                                                            href={whatsapp(`Halo Ricksite Studio, saya tertarik paket ${category.title} - ${pkg.plan} (${pkg.price}${pkg.period || ''}).`)}
+                                                            target="_blank"
+                                                            rel="noopener"
+                                                            class="theme-btn style-two"
+                                                        >Tanya Paket Ini</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {" "}</Fragment>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {" "}</Fragment>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--======  End Pricing Section  ======-->

@@ -35,6 +35,7 @@ export const NAV_LINKS = [
   { label: 'Beranda', href: 'index.html' },
   { label: 'Layanan', href: '#services' },
   { label: 'Project', href: '#projects' },
+  { label: 'Harga', href: '#harga' },
   { label: 'Tentang', href: '#about' },
   { label: 'Kontak', href: '#contact' },
 ];

@@ -110,3 +110,93 @@
     padding-right: 20px;
   }
 }
+
+/*-------------------------------------
+    ## Pricing + inquiry form
+
+    Both sections are built from stock Agenko parts (agk-accordion,
+    agenko-pricing-item style-three, agenko-contact-form, form_control,
+    check-list). These rules only cover the few things the template has no
+    equivalent for: the per-month suffix, the category note, the featured
+    tier outline, select/label styling and the form panel.
+--------------------------------------*/
+.agk-pricing .accordion-content .row {
+  margin-top: 10px;
+}
+.rs-price-note {
+  margin-bottom: 25px;
+  padding: 14px 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background-color: var(--primary-black-color);
+  font-size: 15px;
+  line-height: 26px;
+}
+.agk-pricing .agenko-pricing-item .price .rs-period {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-color);
+  margin-left: 4px;
+}
+.agk-pricing .agenko-pricing-item.rs-featured {
+  border-color: var(--primary-color);
+}
+.agk-pricing .agenko-pricing-item .pricing-footer .theme-btn {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+/* Inquiry form */
+.rs-inquiry-box {
+  padding: 40px;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  background-color: var(--gray-dark);
+}
+@media (max-width: 767px) {
+  .rs-inquiry-box {
+    padding: 25px 20px;
+  }
+}
+.rs-label {
+  display: block;
+  margin-bottom: 10px;
+  font: 600 14px/24px var(--heading-font);
+  letter-spacing: 0.4px;
+  color: var(--white-color);
+}
+.rs-inquiry-box .form-group {
+  margin-bottom: 25px;
+}
+.rs-inquiry-box .form_control {
+  padding: 12px 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background-color: var(--primary-black-color);
+  color: var(--white-color);
+  line-height: 28px;
+}
+.rs-inquiry-box .form_control:focus {
+  border-color: var(--primary-color);
+}
+.rs-inquiry-box select.form_control {
+  /* Native arrow is invisible on the dark panel, so draw our own. */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding-right: 44px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23B7F34A' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 12px 8px;
+}
+.rs-inquiry-box select.form_control option {
+  background-color: var(--primary-black-color);
+  color: var(--white-color);
+}
+.rs-form-hint {
+  margin-top: 18px;
+  font-size: 14px;
+  line-height: 24px;
+}

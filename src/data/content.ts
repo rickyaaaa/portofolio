@@ -82,34 +82,3 @@ export const processSteps: ProcessStep[] = [
     step: 'Tahap-05',
   },
 ];
-
-export interface Testimonial {
-  quote: string;
-  name: string;
-  company: string;
-}
-
-/**
- * Placeholder copy only — deliberately not written as if it were a real client
- * quote. Replace once actual testimonials are collected and cleared for use.
- */
-export const testimonials: Testimonial[] = [
-  {
-    quote:
-      '[ Placeholder 01 - testimoni asli dari client akan tampil di sini setelah dapat izin publikasi. ]',
-    name: 'Nama Client',
-    company: 'Perusahaan / Project',
-  },
-  {
-    quote:
-      '[ Placeholder 02 - testimoni asli dari client akan tampil di sini setelah dapat izin publikasi. ]',
-    name: 'Nama Client',
-    company: 'Perusahaan / Project',
-  },
-  {
-    quote:
-      '[ Placeholder 03 - testimoni asli dari client akan tampil di sini setelah dapat izin publikasi. ]',
-    name: 'Nama Client',
-    company: 'Perusahaan / Project',
-  },
-];
