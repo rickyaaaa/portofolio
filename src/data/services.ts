@@ -34,7 +34,7 @@ export const services: Service[] = [
     title: 'Website Development',
     slug: 'website-development',
     shortDescription:
-      'Website profesional yang dirancang sesuai kebutuhan bisnis, responsif di berbagai perangkat, dan siap membantu meningkatkan kredibilitas serta konversi.',
+      'Website yang cepat, rapi, dan enak dibuka dari HP. Dibangun biar pengunjung percaya sama bisnismu, terus lanjut chat atau order.',
     category: 'development',
     solutions: [
       'Company Profile',
@@ -51,7 +51,7 @@ export const services: Service[] = [
     title: 'Web App Development',
     slug: 'web-app-development',
     shortDescription:
-      'Sistem berbasis web yang dikembangkan secara custom untuk membantu digitalisasi dan menyederhanakan proses operasional bisnis.',
+      'Kerjaan manual yang bikin repot kami pindahkan ke sistem. Dashboard, ERP, booking, sampai alur kerja khusus bisnismu.',
     category: 'development',
     solutions: [
       'Custom Dashboard',
@@ -69,7 +69,7 @@ export const services: Service[] = [
     title: 'SEO & Google Ads',
     slug: 'seo-google-ads',
     shortDescription:
-      'Tingkatkan visibilitas bisnis di Google melalui strategi SEO dan Google Ads untuk menjangkau calon pelanggan yang sedang aktif mencari produk atau layanan Anda.',
+      'Muncul di Google pas calon customer lagi nyari. Lewat SEO dan Google Ads yang diarahkan ke kata kunci yang beneran dicari.',
     category: 'marketing',
     solutions: [
       'SEO Optimization',
@@ -86,7 +86,7 @@ export const services: Service[] = [
     title: 'Meta Ads',
     slug: 'meta-ads',
     shortDescription:
-      'Jangkau lebih banyak calon pelanggan melalui Facebook dan Instagram Ads dengan strategi campaign yang berfokus pada leads dan conversion.',
+      'Facebook dan Instagram Ads yang diarahkan ke orang paling mungkin beli, bukan sekadar nambah view dan like.',
     category: 'marketing',
     solutions: [
       'Facebook Ads',

@@ -7,9 +7,9 @@
 
 /** "Website Bagus Itu Baru Langkah Awal" check-list. */
 export const ecosystemPoints = [
-  'Website - Bikin Bisnismu Terlihat Kredibel',
-  'Digital Marketing - Mendatangkan Orang Yang Tepat',
-  'Traffic - Pengunjung Yang Relevan, Bukan Asal Ramai',
+  'Website - Bikin Bisnismu Kelihatan Meyakinkan',
+  'Iklan - Bawa Orang Yang Emang Lagi Nyari',
+  'Traffic - Pengunjung Relevan, Bukan Asal Ramai',
   'Leads - Chat Masuk Dari Calon Customer Serius',
   'Growth - Pertumbuhan Yang Kelihatan Angkanya',
 ];
@@ -24,22 +24,22 @@ export const values: ValueProp[] = [
   {
     icon: 'flaticon-idea',
     title: 'Fokus ke Bisnismu',
-    description: 'Kami mulai dari tujuan bisnismu dulu, baru desain menyesuaikan. Bukan sebaliknya.',
+    description: 'Kami tanya dulu target bisnismu apa, baru desain dan fiturnya menyesuaikan.',
   },
   {
     icon: 'flaticon-implementation',
     title: 'Solusi Custom',
-    description: 'Kalau template nggak cukup, kami bangun fiturnya dari nol sesuai kebutuhanmu.',
+    description: 'Kalau template nggak cukup, fiturnya kami bangun dari nol sesuai kebutuhanmu.',
   },
   {
     icon: 'flaticon-social-media-marketing',
     title: 'Website + Marketing',
-    description: 'Website dan digital marketing digarap bareng, jadi hasilnya saling menguatkan.',
+    description: 'Website dan iklan digarap bareng, jadi hasilnya saling menguatkan.',
   },
   {
     icon: 'flaticon-group',
     title: 'Support Andal',
-    description: 'Website launch bukan akhir cerita. Kami tetap standby buat update dan perbaikan.',
+    description: 'Habis launch kami nggak hilang. Update dan perbaikan tetap kami bantu.',
   },
 ];
 
@@ -54,31 +54,31 @@ export const processSteps: ProcessStep[] = [
   {
     icon: 'flaticon-search',
     title: 'Diskusi Awal',
-    description: 'Ngobrol dulu soal bisnismu: tujuan, target market, dan kebutuhannya',
+    description: 'Ngobrol dulu: bisnismu jualan apa, targetnya siapa, maunya gimana',
     step: 'Tahap-01',
   },
   {
     icon: 'flaticon-analytics',
     title: 'Strategi & Rencana',
-    description: 'Menyusun rencana: fiturnya apa saja, teknologinya apa, alurnya gimana',
+    description: 'Kami susun rencananya: fitur, teknologi, dan alur halamannya',
     step: 'Tahap-02',
   },
   {
     icon: 'flaticon-web-development',
     title: 'Desain & Pengerjaan',
-    description: 'Desain dan pengerjaan website sesuai yang sudah disepakati',
+    description: 'Desain dan pengerjaan jalan sesuai yang sudah disepakati',
     step: 'Tahap-03',
   },
   {
     icon: 'flaticon-quality-test',
     title: 'Testing & Launching',
-    description: 'Dicek menyeluruh di HP dan laptop, baru website di-launch',
+    description: 'Dicek dulu di HP dan laptop, kalau sudah beres baru launching',
     step: 'Tahap-04',
   },
   {
     icon: 'flaticon-network',
     title: 'Support & Pengembangan',
-    description: 'Setelah launch tetap didampingi: maintenance, update, sampai iklan',
+    description: 'Setelah launching tetap didampingi: maintenance, update, sampai iklan',
     step: 'Tahap-05',
   },
 ];
