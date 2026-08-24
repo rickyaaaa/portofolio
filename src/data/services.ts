@@ -148,7 +148,7 @@ export function startingPrice(service: Service): { price: string; period: string
 }
 
 /**
- * The service landing pages do not exist yet, so links render as href="#" with
- * the intended destination on data-rs-todo. Flip to true once they ship.
+ * Service landing pages are live at /<slug>. Kept as a flag so the links can be
+ * switched off in one place if a page ever needs to be pulled.
  */
-export const SERVICE_PAGES_LIVE = false;
+export const SERVICE_PAGES_LIVE = true;

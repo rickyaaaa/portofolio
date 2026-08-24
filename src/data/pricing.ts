@@ -273,18 +273,6 @@ export const pricing: PricingCategory[] = [
   },
 ];
 
-/** Options for the inquiry form's service dropdown. */
-export const SERVICE_OPTIONS = [
-  'Website Company Profile / Landing Page',
-  'Website Tour & Travel',
-  'Website Toko Online',
-  'Custom Web App / Sistem Internal',
-  'Optimasi SEO',
-  'Meta Ads',
-  'Google Ads',
-  'Belum yakin, mau konsultasi dulu',
-];
-
 /** Options for the inquiry form's budget dropdown. */
 export const BUDGET_OPTIONS = [
   'Di bawah Rp2 juta',

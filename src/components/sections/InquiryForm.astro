@@ -12,7 +12,26 @@
  * stays a single source of truth.
  */
 import { WHATSAPP_NUMBER } from '../../data/site';
-import { SERVICE_OPTIONS, BUDGET_OPTIONS } from '../../data/pricing';
+import { BUDGET_OPTIONS } from '../../data/pricing';
+import { services } from '../../data/services';
+
+interface Props {
+  /** Service title to pre-select, e.g. when the form sits on a service page. */
+  preselect?: string;
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+}
+
+const {
+  preselect,
+  eyebrow = 'Mulai Project',
+  heading = 'Punya Budget dan Kebutuhan? Cerita Aja.',
+  intro = 'Isi tiga kolom di bawah, nanti kami balas dengan rekomendasi paket dan estimasi yang paling pas. Nggak ada biaya buat konsultasi awal.',
+} = Astro.props;
+
+// Dropdown mirrors the service catalogue, so it can never drift out of sync.
+const serviceOptions = [...services.map((service) => service.title), 'Belum yakin, mau konsultasi dulu'];
 ---
 
 <!--======  Start Inquiry Section  ======-->
@@ -22,9 +41,9 @@ import { SERVICE_OPTIONS, BUDGET_OPTIONS } from '../../data/pricing';
             <div class="col-lg-5">
                 <!--=== Section Title ===-->
                 <div class="section-title mb-50 pf_fadeup">
-                    <span class="sub-title">Mulai Project</span>
-                    <h2>Punya Budget dan Kebutuhan? Cerita Aja.</h2>
-                    <p class="mt-25">Isi tiga kolom di bawah, nanti kami balas dengan rekomendasi paket dan estimasi yang paling pas. Nggak ada biaya buat konsultasi awal.</p>
+                    <span class="sub-title">{eyebrow}</span>
+                    <h2>{heading}</h2>
+                    <p class="mt-25">{intro}</p>
                 </div>
             </div>
             <div class="col-lg-7">
@@ -54,10 +73,10 @@ import { SERVICE_OPTIONS, BUDGET_OPTIONS } from '../../data/pricing';
                                 <div class="form-group">
                                     <label class="rs-label" for="rs-service">Website / Layanan yang Diinginkan</label>
                                     <select class="form_control" id="rs-service" name="layanan" required>
-                                        <option value="" disabled selected>Pilih layanan</option>
-                                        {SERVICE_OPTIONS.map((option) => (
+                                        <option value="" disabled selected={!preselect}>Pilih layanan</option>
+                                        {serviceOptions.map((option) => (
                                             <Fragment>
-                                            <option value={option}>{option}</option>
+                                            <option value={option} selected={option === preselect}>{option}</option>
                                             {" "}</Fragment>
                                         ))}
                                     </select>

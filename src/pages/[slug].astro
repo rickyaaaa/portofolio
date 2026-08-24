@@ -1,0 +1,266 @@
+---
+/**
+ * Service landing pages — one template, five pages, generated from the service
+ * catalogue at build time.
+ *
+ * Each page targets one keyword cluster ("jasa pembuatan website", "jasa seo",
+ * ...) instead of the homepage trying to rank for all of them. Structure:
+ * banner -> problems -> deliverables -> pricing for this service only ->
+ * related work (when there is any) -> FAQ -> pre-filled inquiry form.
+ *
+ * Built from stock Agenko parts: agenko-page-banner, agenko-iconic-box
+ * style-four, check-list style-one, agk-accordion, agenko-project-item.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Pricing from '../components/sections/Pricing.astro';
+import InquiryForm from '../components/sections/InquiryForm.astro';
+import { services } from '../data/services';
+import { servicePages } from '../data/service-pages';
+import { projects, projectPath, PROJECT_PAGES_LIVE } from '../data/projects';
+import { whatsapp } from '../data/site';
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const page = servicePages[service.slug];
+
+const related = projects.filter((project) => page.relatedProjects.includes(project.slug));
+
+const title = `${service.title} - Ricksite Studio`;
+const description = page.tagline;
+
+const consultLink = whatsapp(
+  `Halo Ricksite Studio, saya mau tanya soal ${service.title}.`
+);
+---
+
+<BaseLayout title={title} description={description}>
+    <!--====== Start Page Banner ======-->
+    <section class="agenko-page-banner">
+        <div class="shape shape-circle1"><span></span></div>
+        <div class="shape shape-circle2"><span></span></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <!--=== Page Content ===-->
+                    <div class="page-content">
+                        <h1 class="page-title">{service.title}</h1>
+                        <div class="row">
+                            <div class="col-xl-9">
+                                <div class="text-box">
+                                    <p>{page.tagline}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="breadcrumb-link mt-30">
+                            <li><a href="/">Beranda</a></li>
+                            <li class="active">{service.title}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Page Banner ======-->
+
+    <!--====== Start Problems Section ======-->
+    <section class="agk-service-problem pt-130 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5">
+                    <!--=== Section Title ===-->
+                    <div class="section-title mb-40 pf_fadeup">
+                        <span class="sub-title">Kenapa Perlu</span>
+                        <h2>Kalau Salah Satunya Kamu Banget, Kita Perlu Ngobrol.</h2>
+                    </div>
+                    <div class="agk-button pf_fadeup">
+                        <a href={consultLink} target="_blank" rel="noopener" class="theme-btn style-one">
+                            <span class="text-flip">
+                                <span class="text">KONSULTASI GRATIS</span>
+                                <span class="text">KONSULTASI GRATIS</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xl-7">
+                    <div class="rs-problem-list pf_fadeup">
+                        {page.problems.map((problem, index) => (
+                            <Fragment>
+                            <div class="rs-problem-item">
+                                <span class="rs-problem-no">{String(index + 1).padStart(2, '0')}</span>
+                                <p>{problem}</p>
+                            </div>
+                            {" "}</Fragment>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Problems Section ======-->
+
+    <!--====== Start Deliverables Section ======-->
+    <section class="agk-service-deliverables gray-dark pt-130 pb-100">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <!--=== Section Title ===-->
+                    <div class="section-title mb-50 pf_fadeup">
+                        <span class="sub-title">Yang Kami Kerjakan</span>
+                        <h2>Cakupan {service.title}.</h2>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="text-box mb-50 pf_fadeup">
+                        <p>{service.shortDescription}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {service.solutions.map((solution) => (
+                    <Fragment>
+                    <div class="col-xl-4 col-md-6 col-sm-12">
+                        <div class="agenko-iconic-box style-four rs-deliverable mb-30 pf_fadeup">
+                            <div class="icon">
+                                <i class={service.icon}></i>
+                            </div>
+                            <div class="content">
+                                <h4 class="title">{solution}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    {" "}</Fragment>
+                ))}
+            </div>
+        </div>
+    </section><!--====== End Deliverables Section ======-->
+
+    <Pricing
+        categoryIds={service.pricingCategories}
+        eyebrow="Harga"
+        heading={`Harga ${service.title}.`}
+        intro="Harga di depan, tanpa biaya kaget. Kalau kebutuhanmu di luar paket, tinggal cerita — nanti kami buatkan penawaran khusus."
+    />
+
+    {/* Related work is skipped for SEO and ads: no case studies for those yet. */}
+    {related.length > 0 && (
+        <section class="agk-project pt-130 pb-80">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <!--=== Section Title ===-->
+                        <div class="section-title mb-60 pf_fadeup">
+                            <span class="sub-title">Portofolio</span>
+                            <h2>Yang Sudah Kami Kerjakan.</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="agk-button mb-60 float-lg-end pf_fadeup">
+                            <a href="/#projects" class="theme-btn style-one">
+                                <span class="text-flip">
+                                    <span class="text">Lihat Semua Project</span>
+                                    <span class="text">Lihat Semua Project</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {related.map((project) => (
+                        <Fragment>
+                        <div class="col-lg-4 col-md-6">
+                            <!--=== Project Item ===-->
+                            <div class="agenko-project-item style-one mb-45 pf_fadeup">
+                                <div class="thumbnail">
+                                    <img src={`/assets/images/ricksite/projects/${project.image}`} alt={project.title}>
+                                    <div class="project-button">
+                                        <a
+                                            href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
+                                            data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
+                                            aria-label={`Lihat detail project ${project.title}`}
+                                        ><i class="far fa-plus"></i></a>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="project-categories">
+                                        {project.tags.map((tag) => (
+                                            <Fragment>
+                                            <a
+                                                href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
+                                                data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
+                                            >{tag}</a>
+                                            {" "}</Fragment>
+                                        ))}
+                                    </div>
+                                    <h4 class="title"><a
+                                        href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
+                                        data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
+                                    >{project.title}</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                        {" "}</Fragment>
+                    ))}
+                </div>
+            </div>
+        </section>
+    )}
+
+    <!--====== Start FAQ Section ======-->
+    <section class="agk-faq gray-dark pt-130 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <!--=== Section Title ===-->
+                    <div class="section-title mb-50 pf_fadeup">
+                        <span class="sub-title">FAQ</span>
+                        <h2>Yang Sering Ditanyain.</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--====== Accordion ======-->
+                    <div class="agk-accordion" id="faqAccordion">
+                        {page.faqs.map((faq, index) => (
+                            <Fragment>
+                            <!--====== Accordion Item ======-->
+                            <div class="agenko-accordion-item mb-20 pf_fadeup">
+                                <div class="accordion-header">
+                                    <h6
+                                        class="accordion-title"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target={`#faq-${index}`}
+                                        aria-expanded={index === 0 ? 'true' : 'false'}
+                                    >
+                                        {faq.q}
+                                    </h6>
+                                </div>
+                                <div
+                                    id={`faq-${index}`}
+                                    class={`accordion-collapse collapse${index === 0 ? ' show' : ''}`}
+                                    data-bs-parent="#faqAccordion"
+                                >
+                                    <div class="accordion-content">
+                                        <p>{faq.a}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {" "}</Fragment>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End FAQ Section ======-->
+
+    <InquiryForm
+        preselect={service.title}
+        eyebrow="Mulai Project"
+        heading={`Tertarik ${service.title}?`}
+        intro="Isi kolom di bawah, nanti kami balas dengan rekomendasi dan estimasi yang paling pas buat bisnismu."
+    />
+</BaseLayout>

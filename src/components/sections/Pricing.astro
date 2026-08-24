@@ -10,6 +10,25 @@
  */
 import { pricing } from '../../data/pricing';
 import { whatsapp } from '../../data/site';
+
+interface Props {
+  /** Show only these pricing categories. Omit to show all of them. */
+  categoryIds?: string[];
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+}
+
+const {
+  categoryIds,
+  eyebrow = 'Harga',
+  heading = 'Harga Jelas di Depan,<br>Tanpa Biaya Kaget.',
+  intro = 'Pilih kategori yang paling cocok sama kebutuhanmu. Kalau masih bingung, isi form di bawah — kami bantu carikan yang paling masuk akal.',
+} = Astro.props;
+
+const shown = categoryIds
+  ? pricing.filter((category) => categoryIds.includes(category.id))
+  : pricing;
 ---
 
 <!--======  Start Pricing Section  ======-->
@@ -19,14 +38,13 @@ import { whatsapp } from '../../data/site';
             <div class="col-lg-7">
                 <!--=== Section Title ===-->
                 <div class="section-title mb-50 pf_fadeup">
-                    <span class="sub-title">Harga</span>
-                    <h2>Harga Jelas di Depan,
-                        Tanpa Biaya Kaget.</h2>
+                    <span class="sub-title">{eyebrow}</span>
+                    <h2 set:html={heading} />
                 </div>
             </div>
             <div class="col-lg-5">
                 <div class="text-box mb-50 pf_fadeup">
-                    <p>Pilih kategori yang paling cocok sama kebutuhanmu. Kalau masih bingung, isi form di bawah — kami bantu carikan yang paling masuk akal.</p>
+                    <p>{intro}</p>
                 </div>
             </div>
         </div>
@@ -34,7 +52,7 @@ import { whatsapp } from '../../data/site';
             <div class="col-lg-12">
                 <!--====== Accordion ======-->
                 <div class="agk-accordion" id="pricingAccordion">
-                    {pricing.map((category, index) => (
+                    {shown.map((category, index) => (
                         <Fragment>
                         <!--====== Accordion Item ======-->
                         <div class="agenko-accordion-item mb-20 pf_fadeup">

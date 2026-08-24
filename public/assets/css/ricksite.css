@@ -225,3 +225,55 @@
     padding: 0;
   }
 }
+
+/*-------------------------------------
+    ## Service landing pages
+
+    Banner, deliverable cards and accordions are stock Agenko. These rules only
+    cover the numbered problem list, which the template has no equivalent for,
+    and trim the deliverable card down to icon + title.
+--------------------------------------*/
+.rs-problem-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+.rs-problem-item:first-child {
+  border-top: 1px solid var(--border-color);
+}
+.rs-problem-no {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  font: 700 20px/30px var(--heading-font);
+  color: var(--primary-color);
+}
+.rs-problem-item p {
+  color: var(--white-color);
+  margin: 0;
+}
+
+/* Deliverable card: icon + title only, no body copy. */
+.agenko-iconic-box.style-four.rs-deliverable {
+  height: 100%;
+  padding: 30px;
+}
+.agenko-iconic-box.style-four.rs-deliverable .icon {
+  font-size: 40px;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+.agenko-iconic-box.style-four.rs-deliverable .content h4.title {
+  margin-bottom: 0;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+/* Page banner copy */
+.agenko-page-banner .page-content .text-box p {
+  font-size: 18px;
+  line-height: 32px;
+}
