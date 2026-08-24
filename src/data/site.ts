@@ -31,9 +31,21 @@ export const TODO = {
 
 export type TodoKey = keyof typeof TODO;
 
-export const NAV_LINKS = [
+export interface NavLink {
+  label: string;
+  href: string;
+  /** Renders as an Agenko has-children dropdown when present. */
+  children?: { label: string; href: string }[];
+}
+
+/**
+ * "Layanan" is a dropdown straight to each service page - that is where the
+ * buying decision happens, so it should be one hover away from anywhere.
+ * Children are filled from the service catalogue in Header.astro.
+ */
+export const NAV_LINKS: NavLink[] = [
   { label: 'Beranda', href: '/' },
-  { label: 'Layanan', href: '/#services' },
+  { label: 'Layanan', href: '/#services', children: [] },
   { label: 'Project', href: '/#projects' },
   { label: 'Harga', href: '/harga' },
   { label: 'Tentang', href: '/#about' },
