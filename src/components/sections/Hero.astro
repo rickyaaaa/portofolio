@@ -45,7 +45,9 @@ const startLink = whatsapp('Halo Ricksite Studio, mau mulai project baru nih.');
             <div class="row">
                 <div class="col-lg-4">
                     <ul class="service-list pf_fadeup">
-                        {services.map((service) => (
+                        {/* Teaser only - Agenko sizes this column against the hero image, and all
+                            five pills leave a ~190px gap beside it. Full list is in the services section. */}
+                        {services.slice(0, 4).map((service) => (
                             <Fragment>
                             <li>
                                 <!--=== Iconic Box ===-->

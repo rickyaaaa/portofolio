@@ -15,6 +15,8 @@ export interface Package {
   plan: string;
   /** Formatted price, or a word like "Custom". */
   price: string;
+  /** Numeric value in rupiah. Omitted for quote-only packages. */
+  amount?: number;
   /** e.g. "/bulan" — omitted for one-off project fees. */
   period?: string;
   /** One line on who the package suits. */
@@ -41,6 +43,7 @@ export const pricing: PricingCategory[] = [
       {
         plan: 'Starter',
         price: 'Rp2.500.000',
+        amount: 2500000,
         summary: 'Buat bisnis yang baru mau punya website resmi.',
         features: [
           'Domain .com gratis 1 tahun',
@@ -55,6 +58,7 @@ export const pricing: PricingCategory[] = [
       {
         plan: 'Growth',
         price: 'Rp5.000.000',
+        amount: 5000000,
         summary: 'Buat bisnis yang butuh profil lebih lengkap.',
         featured: true,
         features: [
@@ -70,6 +74,7 @@ export const pricing: PricingCategory[] = [
       {
         plan: 'Ultimate',
         price: 'Rp8.500.000',
+        amount: 8500000,
         summary: 'Buat bisnis yang butuh fitur khusus dan tampilan maksimal.',
         features: [
           'Semua fitur Growth',
@@ -91,6 +96,7 @@ export const pricing: PricingCategory[] = [
       {
         plan: 'Starter',
         price: 'Rp1.500.000',
+        amount: 1500000,
         summary: 'Satu halaman yang langsung arahkan calon customer ke WhatsApp.',
         features: [
           'Domain .com gratis 1 tahun',
@@ -104,6 +110,7 @@ export const pricing: PricingCategory[] = [
       {
         plan: 'Growth',
         price: 'Rp3.000.000',
+        amount: 3000000,
         summary: 'Buat travel yang punya banyak paket tour.',
         featured: true,
         features: [
@@ -119,6 +126,7 @@ export const pricing: PricingCategory[] = [
       {
         plan: 'Ultimate',
         price: 'Rp6.000.000',
+        amount: 6000000,
         summary: 'Buat travel yang mau terima booking dan pembayaran online.',
         features: [
           'Semua fitur Growth',
@@ -138,6 +146,7 @@ export const pricing: PricingCategory[] = [
       {
         plan: 'Starter',
         price: 'Rp3.000.000',
+        amount: 3000000,
         summary: 'Katalog rapi dengan checkout lewat WhatsApp.',
         features: [
           'Katalog produk lengkap dengan harga',
@@ -150,6 +159,7 @@ export const pricing: PricingCategory[] = [
       {
         plan: 'Growth',
         price: 'Rp6.000.000',
+        amount: 6000000,
         summary: 'Buat toko dengan produk yang sudah lumayan banyak.',
         featured: true,
         features: [
@@ -165,6 +175,7 @@ export const pricing: PricingCategory[] = [
       {
         plan: 'Enterprise',
         price: 'Rp12.000.000',
+        amount: 12000000,
         summary: 'Toko online penuh dengan pembayaran dan dashboard admin.',
         features: [
           'Semua fitur Growth',
@@ -187,6 +198,7 @@ export const pricing: PricingCategory[] = [
       {
         plan: 'SEO Bulanan',
         price: 'Rp1.500.000',
+        amount: 1500000,
         period: '/bulan',
         summary: 'Biar website kamu ketemu pas calon customer nyari di Google.',
         features: [
@@ -208,6 +220,7 @@ export const pricing: PricingCategory[] = [
       {
         plan: 'Meta Ads Bulanan',
         price: 'Rp1.500.000',
+        amount: 1500000,
         period: '/bulan',
         summary: 'Iklan yang diarahkan ke orang yang paling mungkin beli.',
         features: [
@@ -228,6 +241,7 @@ export const pricing: PricingCategory[] = [
       {
         plan: 'Google Ads Full Handle',
         price: 'Rp2.000.000',
+        amount: 2000000,
         period: '/bulan',
         summary: 'Muncul paling atas pas orang nyari produk atau jasa kamu.',
         features: [

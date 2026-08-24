@@ -1,0 +1,22 @@
+---
+/**
+ * /harga — the full price list.
+ *
+ * Pricing moved off the homepage: seven categories is a lot of scroll for
+ * someone who only cares about one. The homepage service cards now show a
+ * "mulai dari" figure and link here (and later to each service page, which
+ * will carry just its own packages).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Pricing from '../components/sections/Pricing.astro';
+import InquiryForm from '../components/sections/InquiryForm.astro';
+
+const title = 'Harga Jasa Website, Aplikasi & Digital Marketing - Ricksite Studio';
+const description =
+  'Daftar harga jasa pembuatan website, aplikasi, SEO, Google Ads, dan Meta Ads dari Ricksite Studio. Transparan, tanpa biaya tersembunyi.';
+---
+
+<BaseLayout title={title} description={description}>
+    <Pricing />
+    <InquiryForm />
+</BaseLayout>

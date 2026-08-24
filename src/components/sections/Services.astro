@@ -5,7 +5,7 @@
  * Card markup is unchanged from the template: a three-part row of
  * [number + title] [description] [button]. Only the content is driven by data.
  */
-import { services, servicePath, SERVICE_PAGES_LIVE } from '../../data/services';
+import { services, servicePath, startingPrice, SERVICE_PAGES_LIVE } from '../../data/services';
 ---
 
 <!--======  Start Services Section  ======-->
@@ -37,6 +37,11 @@ import { services, servicePath, SERVICE_PAGES_LIVE } from '../../data/services';
                             <h3 class="title">{service.title}</h3>
                         </div>
                         <div class="content">
+                            <span class="rs-price-from">
+                                {startingPrice(service)
+                                    ? <Fragment>Mulai dari <strong>{startingPrice(service)!.price}{startingPrice(service)!.period}</strong></Fragment>
+                                    : <Fragment>Harga menyesuaikan kebutuhan</Fragment>}
+                            </span>
                             <p>{service.shortDescription}</p>
                         </div>
                         <div class="card-button">

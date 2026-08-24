@@ -200,3 +200,28 @@
   font-size: 14px;
   line-height: 24px;
 }
+
+/*-------------------------------------
+    ## "Mulai dari" on the service card
+
+    Price sits above the description inside the card's existing content column,
+    so the template's three-part row (number + title, content, button) is
+    unchanged. Matches the content padding so it lines up with the paragraph.
+--------------------------------------*/
+.agenko-card-item.style-one .content .rs-price-from {
+  display: block;
+  padding: 0 30px;
+  margin-bottom: 10px;
+  font: 600 15px/26px var(--heading-font);
+  letter-spacing: 0.3px;
+  color: var(--text-color);
+}
+.agenko-card-item.style-one .content .rs-price-from strong {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+@media screen and (max-width: 1200px) {
+  .agenko-card-item.style-one .content .rs-price-from {
+    padding: 0;
+  }
+}

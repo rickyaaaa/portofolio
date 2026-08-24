@@ -32,12 +32,12 @@ export const TODO = {
 export type TodoKey = keyof typeof TODO;
 
 export const NAV_LINKS = [
-  { label: 'Beranda', href: 'index.html' },
-  { label: 'Layanan', href: '#services' },
-  { label: 'Project', href: '#projects' },
-  { label: 'Harga', href: '#harga' },
-  { label: 'Tentang', href: '#about' },
-  { label: 'Kontak', href: '#contact' },
+  { label: 'Beranda', href: '/' },
+  { label: 'Layanan', href: '/#services' },
+  { label: 'Project', href: '/#projects' },
+  { label: 'Harga', href: '/harga' },
+  { label: 'Tentang', href: '/#about' },
+  { label: 'Kontak', href: '/#contact' },
 ];
 
 export const SOCIAL_LINKS = [
