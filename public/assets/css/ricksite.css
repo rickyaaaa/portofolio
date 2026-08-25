@@ -24,12 +24,12 @@
     re-colours every button, hover, badge and active state in the template.
 --------------------------------------*/
 :root {
-  --primary-color: #B7F34A;
+  --primary-color: #B6F24B;
 }
 
 /* The only place style.css hard-codes the old lime instead of using the token. */
 .agenko-footer .shape.shape-blur_one span {
-  background-color: rgba(183, 243, 74, 0.5);
+  background-color: rgba(182, 242, 75, 0.5);
 }
 
 /*-------------------------------------
@@ -313,4 +313,29 @@
     padding: 10px 18px;
     font-size: 14px;
   }
+}
+
+/*-------------------------------------
+    ## Brand lockup
+
+    The logo is an inline <svg> (so the page's Poppins reaches the wordmark),
+    which means the template's `.brand-logo img` sizing no longer applies.
+    The branding pill is widened a little because the lockup is wider than the
+    placeholder wordmark it replaces, and the type would otherwise render too
+    small to read.
+--------------------------------------*/
+.rs-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.header-navigation .site-branding {
+  max-width: 150px;
+  padding: 6px 14px;
+}
+.header-navigation .site-branding .brand-logo .rs-logo {
+  max-width: 112px;
+}
+.agenko-footer .footer-logo .rs-logo {
+  max-width: 170px;
 }
