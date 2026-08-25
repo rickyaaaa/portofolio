@@ -6,8 +6,11 @@
  * elements in the original hand-written HTML. That whitespace is significant:
  * `.project-categories a` is inline-block, so without it the chips lose the
  * inter-word space and sit tighter than in the original.
+ *
+ * Cards link to the internal /projects/<slug> detail page — never straight to a
+ * client's live site, and never to an internal system at all.
  */
-import { projects } from '../../data/content';
+import { projects, projectPath, PROJECT_PAGES_LIVE } from '../../data/projects';
 ---
 
 <!--======  Start Project Section  ======-->
@@ -17,14 +20,14 @@ import { projects } from '../../data/content';
             <div class="col-lg-7">
                 <!--=== Section Title ===-->
                 <div class="section-title mb-60 pf_fadeup">
-                    <span class="sub-title">Karya Pilihan</span>
-                    <h2>Project yang Kami Bangun
-                        untuk Bisnis Nyata</h2>
+                    <span class="sub-title">Portofolio</span>
+                    <h2>Bukan Demo Template.
+                        Ini Project Client Kami.</h2>
                 </div>
             </div>
             <div class="col-lg-5">
                 <div class="agk-button mb-60 float-lg-end pf_fadeup">
-                    <a href="#" data-rs-todo="projects.html" class="theme-btn style-one">
+                    <a href="#" data-rs-todo="/projects" class="theme-btn style-one">
                         <span class="text-flip">
                             <span class="text">Lihat Semua Project</span>
                             <span class="text">Lihat Semua Project</span>
@@ -40,20 +43,30 @@ import { projects } from '../../data/content';
                     <!--=== Project Item ===-->
                     <div class="agenko-project-item style-one mb-45 pf_fadeup">
                         <div class="thumbnail">
-                            <img src={`/assets/images/ricksite/projects/${project.image}`} alt={project.alt}>
+                            <img src={`/assets/images/ricksite/projects/${project.image}`} alt={project.title}>
                             <div class="project-button">
-                                <a href="#" data-rs-todo="project-details.html"><i class="far fa-plus"></i></a>
+                                <a
+                                    href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
+                                    data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
+                                    aria-label={`Lihat detail project ${project.title}`}
+                                ><i class="far fa-plus"></i></a>
                             </div>
                         </div>
                         <div class="content">
                             <div class="project-categories">
-                                {project.categories.map((category) => (
+                                {project.tags.map((tag) => (
                                     <Fragment>
-                                    <a href="#" data-rs-todo="projects.html">{category}</a>
+                                    <a
+                                        href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
+                                        data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
+                                    >{tag}</a>
                                     {" "}</Fragment>
                                 ))}
                             </div>
-                            <h4 class="title"><a href="#" data-rs-todo="project-details.html">{project.title}</a></h4>
+                            <h4 class="title"><a
+                                href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
+                                data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
+                            >{project.title}</a></h4>
                         </div>
                     </div>
                 </div>

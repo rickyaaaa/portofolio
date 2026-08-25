@@ -94,3 +94,223 @@
     margin-top: 25px;
   }
 }
+
+/*-------------------------------------
+    ## Services CTA on small screens
+
+    "PELAJARI SELENGKAPNYA" plus the arrow needs 281px, but the service card
+    only offers 269px of content width below 768px, so the label wrapped to two
+    lines inside the pill. Agenko's buttons are single-line everywhere else, so
+    the horizontal padding is trimmed just for this button at that width rather
+    than shortening the label.
+--------------------------------------*/
+@media (max-width: 767px) {
+  .agk-services .card-button .theme-btn.style-one {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/*-------------------------------------
+    ## Pricing + inquiry form
+
+    Both sections are built from stock Agenko parts (agk-accordion,
+    agenko-pricing-item style-three, agenko-contact-form, form_control,
+    check-list). These rules only cover the few things the template has no
+    equivalent for: the per-month suffix, the category note, the featured
+    tier outline, select/label styling and the form panel.
+--------------------------------------*/
+.agk-pricing .accordion-content .row {
+  margin-top: 10px;
+}
+.rs-price-note {
+  margin-bottom: 25px;
+  padding: 14px 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background-color: var(--primary-black-color);
+  font-size: 15px;
+  line-height: 26px;
+}
+.agk-pricing .agenko-pricing-item .price .rs-period {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-color);
+  margin-left: 4px;
+}
+.agk-pricing .agenko-pricing-item.rs-featured {
+  border-color: var(--primary-color);
+}
+.agk-pricing .agenko-pricing-item .pricing-footer .theme-btn {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+/* Inquiry form */
+.rs-inquiry-box {
+  padding: 40px;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  background-color: var(--gray-dark);
+}
+@media (max-width: 767px) {
+  .rs-inquiry-box {
+    padding: 25px 20px;
+  }
+}
+.rs-label {
+  display: block;
+  margin-bottom: 10px;
+  font: 600 14px/24px var(--heading-font);
+  letter-spacing: 0.4px;
+  color: var(--white-color);
+}
+.rs-inquiry-box .form-group {
+  margin-bottom: 25px;
+}
+.rs-inquiry-box .form_control {
+  padding: 12px 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background-color: var(--primary-black-color);
+  color: var(--white-color);
+  line-height: 28px;
+}
+.rs-inquiry-box .form_control:focus {
+  border-color: var(--primary-color);
+}
+.rs-inquiry-box select.form_control {
+  /* Native arrow is invisible on the dark panel, so draw our own. */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding-right: 44px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23B7F34A' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 12px 8px;
+}
+.rs-inquiry-box select.form_control option {
+  background-color: var(--primary-black-color);
+  color: var(--white-color);
+}
+.rs-form-hint {
+  margin-top: 18px;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+/*-------------------------------------
+    ## "Mulai dari" on the service card
+
+    Price sits above the description inside the card's existing content column,
+    so the template's three-part row (number + title, content, button) is
+    unchanged. Matches the content padding so it lines up with the paragraph.
+--------------------------------------*/
+.agenko-card-item.style-one .content .rs-price-from {
+  display: block;
+  padding: 0 30px;
+  margin-bottom: 10px;
+  font: 600 15px/26px var(--heading-font);
+  letter-spacing: 0.3px;
+  color: var(--text-color);
+}
+.agenko-card-item.style-one .content .rs-price-from strong {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+@media screen and (max-width: 1200px) {
+  .agenko-card-item.style-one .content .rs-price-from {
+    padding: 0;
+  }
+}
+
+/*-------------------------------------
+    ## Service landing pages
+
+    Banner, deliverable cards and accordions are stock Agenko. These rules only
+    cover the numbered problem list, which the template has no equivalent for,
+    and trim the deliverable card down to icon + title.
+--------------------------------------*/
+.rs-problem-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+.rs-problem-item:first-child {
+  border-top: 1px solid var(--border-color);
+}
+.rs-problem-no {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  font: 700 20px/30px var(--heading-font);
+  color: var(--primary-color);
+}
+.rs-problem-item p {
+  color: var(--white-color);
+  margin: 0;
+}
+
+/* Deliverable card: icon + title only, no body copy. */
+.agenko-iconic-box.style-four.rs-deliverable {
+  height: 100%;
+  padding: 30px;
+}
+.agenko-iconic-box.style-four.rs-deliverable .icon {
+  font-size: 40px;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+.agenko-iconic-box.style-four.rs-deliverable .content h4.title {
+  margin-bottom: 0;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+/* Page banner copy */
+.agenko-page-banner .page-content .text-box p {
+  font-size: 18px;
+  line-height: 32px;
+}
+
+/*-------------------------------------
+    ## Pricing tabs (service pages)
+
+    Bootstrap nav-tabs ships unstyled for a dark theme, so this dresses the
+    strip to match the Agenko pill language: same radius, border and accent as
+    the buttons elsewhere.
+--------------------------------------*/
+.rs-price-tabs {
+  border: none;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.rs-price-tabs .nav-link {
+  padding: 12px 26px;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  background-color: var(--primary-black-color);
+  color: var(--white-color);
+  font: 600 15px/24px var(--heading-font);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.rs-price-tabs .nav-link:hover {
+  border-color: var(--primary-line);
+}
+.rs-price-tabs .nav-link.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--heading-color);
+}
+@media (max-width: 767px) {
+  .rs-price-tabs .nav-link {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+}

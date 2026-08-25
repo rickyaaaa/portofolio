@@ -1,6 +1,11 @@
 ---
-/** Agenko agk-services section with agenko-card-item style-one cards. */
-import { services } from '../../data/content';
+/**
+ * Agenko agk-services section with agenko-card-item style-one cards.
+ *
+ * Card markup is unchanged from the template: a three-part row of
+ * [number + title] [description] [button]. Only the content is driven by data.
+ */
+import { services, servicePath, startingPrice, SERVICE_PAGES_LIVE } from '../../data/services';
 ---
 
 <!--======  Start Services Section  ======-->
@@ -10,14 +15,14 @@ import { services } from '../../data/content';
             <div class="col-lg-7">
                 <!--=== Section Title ===-->
                 <div class="section-title mb-65 pf_fadeup">
-                    <span class="sub-title">Layanan Kami</span>
-                    <h2>Solusi Digital yang Dibangun
-                        Sesuai Bisnismu</h2>
+                    <span class="sub-title">What We Do</span>
+                    <h2>Layanan yang Bantu
+                        Bisnismu Tumbuh.</h2>
                 </div>
             </div>
             <div class="col-lg-5">
                 <div class="text-box mb-60 pf_fadeup">
-                    <p>Tiga layanan yang saling melengkapi. Mulai dari bikin website, sampai mendatangkan orang yang tepat ke sana</p>
+                    <p>Dari bangun website dan sistem internal, sampai bawa calon customer yang tepat lewat SEO, Google Ads, dan Meta Ads.</p>
                 </div>
             </div>
         </div>
@@ -32,14 +37,24 @@ import { services } from '../../data/content';
                             <h3 class="title">{service.title}</h3>
                         </div>
                         <div class="content">
-                            <p set:html={service.descriptionHtml} />
+                            <span class="rs-price-from">
+                                {startingPrice(service)
+                                    ? <Fragment>Mulai dari <strong>{startingPrice(service)!.price}{startingPrice(service)!.period}</strong></Fragment>
+                                    : <Fragment>Harga menyesuaikan kebutuhan</Fragment>}
+                            </span>
+                            <p>{service.shortDescription}</p>
                         </div>
                         <div class="card-button">
-                            <a href="#" data-rs-todo="service-details.html" class="theme-btn style-one">
+                            <a
+                                href={SERVICE_PAGES_LIVE ? servicePath(service) : '#'}
+                                data-rs-todo={SERVICE_PAGES_LIVE ? undefined : servicePath(service)}
+                                class="theme-btn style-one"
+                            >
                                 <span class="text-flip">
-                                    <span class="text">LIHAT LAYANAN</span>
-                                    <span class="text">LIHAT LAYANAN</span>
+                                    <span class="text">PELAJARI SELENGKAPNYA</span>
+                                    <span class="text">PELAJARI SELENGKAPNYA</span>
                                 </span>
+                                <span class="icon"><i class="far fa-arrow-right"></i></span>
                             </a>
                         </div>
                     </div>

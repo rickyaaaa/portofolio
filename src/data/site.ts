@@ -31,22 +31,29 @@ export const TODO = {
 
 export type TodoKey = keyof typeof TODO;
 
-export const NAV_LINKS = [
-  { label: 'Beranda', href: 'index.html' },
-  { label: 'Layanan', href: '#services' },
-  { label: 'Project', href: '#projects' },
-  { label: 'Tentang', href: '#about' },
-  { label: 'Kontak', href: '#contact' },
+export interface NavLink {
+  label: string;
+  href: string;
+  /** Renders as an Agenko has-children dropdown when present. */
+  children?: { label: string; href: string }[];
+}
+
+/**
+ * "Layanan" is a dropdown straight to each service page - that is where the
+ * buying decision happens, so it should be one hover away from anywhere.
+ * Children are filled from the service catalogue in Header.astro.
+ */
+export const NAV_LINKS: NavLink[] = [
+  { label: 'Beranda', href: '/' },
+  { label: 'Layanan', href: '/#services', children: [] },
+  { label: 'Project', href: '/#projects' },
+  { label: 'Harga', href: '/harga' },
+  { label: 'Tentang', href: '/#about' },
+  { label: 'Kontak', href: '/#contact' },
 ];
 
 export const SOCIAL_LINKS = [
   { label: 'Instagram', icon: 'fab fa-instagram' },
   { label: 'TikTok', icon: 'fab fa-tiktok' },
   { label: 'LinkedIn', icon: 'fab fa-linkedin-in' },
-];
-
-export const FOOTER_SERVICES = [
-  { label: 'Pembuatan Website', href: '#services' },
-  { label: 'Pengembangan Web Custom', href: '#services' },
-  { label: 'Iklan Digital', href: '#services' },
 ];

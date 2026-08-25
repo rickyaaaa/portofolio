@@ -4,10 +4,14 @@
     File    : ricksite.js
     Note    : Loaded AFTER assets/js/theme.js.
 
-              The homepage navigation uses in-page anchors (#projects, #services,
-              #about, #contact). Agenko runs GSAP ScrollSmoother, which takes over
-              scrolling, so a plain anchor jump does not work. This reuses the
-              ScrollSmoother instance theme.js already created - no new library.
+              Navigation uses root-absolute anchors (/#projects, /#services, ...)
+              so the links also work from pages other than the homepage. This
+              smooth-scrolls the ones that point at the current page and lets the
+              browser handle the rest as normal navigation.
+
+              Agenko runs GSAP ScrollSmoother, which takes over scrolling, so a
+              plain anchor jump does nothing. This reuses the ScrollSmoother
+              instance theme.js already created - no new library.
 
 -----------------------------------------------------------------------------------*/
 
@@ -16,8 +20,16 @@
 
     var HEADER_OFFSET = 110;
 
-    $(document).on('click', 'a[href^="#"]:not([href="#"])', function (e) {
-        var target = document.querySelector($(this).attr('href'));
+    /** True when the link points at a section on the page we are already on. */
+    function isSamePageAnchor(link) {
+        if (!link.hash) return false;
+        return link.pathname === window.location.pathname && link.host === window.location.host;
+    }
+
+    $(document).on('click', 'a[href*="#"]', function (e) {
+        if (!isSamePageAnchor(this)) return;
+
+        var target = document.querySelector(this.hash);
         if (!target) return;
 
         e.preventDefault();

@@ -10,3 +10,6 @@ agenko-creative-digital-agency-html-template-2025-07-17-08-47-52-utc.zip
 # OS / editor cruft
 .DS_Store
 Thumbs.db
+
+# Original full-size screenshots (optimised copies live in public/assets)
+screenshots-source/

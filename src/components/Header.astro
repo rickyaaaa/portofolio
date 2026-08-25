@@ -1,6 +1,21 @@
 ---
 /** Agenko header-two, transparent variant. Markup unchanged from index.html. */
 import { NAV_LINKS, SOCIAL_LINKS, whatsapp } from '../data/site';
+import { services, servicePath, SERVICE_PAGES_LIVE } from '../data/services';
+
+// Fill the Layanan dropdown from the service catalogue so the menu and the
+// services section can never list different things.
+const navLinks = NAV_LINKS.map((link) =>
+  link.children
+    ? {
+        ...link,
+        children: services.map((service) => ({
+          label: service.title,
+          href: SERVICE_PAGES_LIVE ? servicePath(service) : '#',
+        })),
+      }
+    : link
+);
 
 const talkLink = whatsapp('Halo Ricksite Studio, mau tanya-tanya soal project nih.');
 ---
@@ -15,20 +30,31 @@ const talkLink = whatsapp('Halo Ricksite Studio, mau tanya-tanya soal project ni
             <div class="primary-menu">
                 <!--====  Site Branding  ===-->
                 <div class="site-branding">
-                    <a href="index.html" class="brand-logo"><img src="/assets/images/ricksite/logo/logo-main.svg" alt="Ricksite Studio"></a>
+                    <a href="/" class="brand-logo"><img src="/assets/images/ricksite/logo/logo-main.svg" alt="Ricksite Studio"></a>
                 </div>
                 <!--=== Sasly Main Menu===-->
                 <div class="pf-nav-menu">
                     <!--====  Site Branding  ===-->
                     <div class="site-branding d-block d-lg-none text-center">
-                        <a href="index.html" class="brand-logo"><img src="/assets/images/ricksite/logo/logo-main.svg" alt="Ricksite Studio"></a>
+                        <a href="/" class="brand-logo"><img src="/assets/images/ricksite/logo/logo-main.svg" alt="Ricksite Studio"></a>
                     </div>
                     <!--=== Main Menu ===-->
                     <nav class="main-menu">
                         <ul>
-                            {NAV_LINKS.map((link) => (
+                            {navLinks.map((link) => (
                                 <Fragment>
-                                <li class="menu-item"><a href={link.href}>{link.label}</a></li>
+                                {link.children
+                                    ? <li class="menu-item has-children">
+                                          <a href={link.href}>{link.label}</a>
+                                          <ul class="sub-menu">
+                                              {link.children.map((child) => (
+                                                  <Fragment>
+                                                  <li><a href={child.href}>{child.label}</a></li>
+                                                  {" "}</Fragment>
+                                              ))}
+                                          </ul>
+                                      </li>
+                                    : <li class="menu-item"><a href={link.href}>{link.label}</a></li>}
                                 {" "}</Fragment>
                             ))}
                         </ul>

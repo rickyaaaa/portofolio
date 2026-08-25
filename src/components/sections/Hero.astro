@@ -4,7 +4,7 @@
  * GSAP SplitText, so they must stay as two sibling spans inside the h1.
  */
 import { whatsapp } from '../../data/site';
-import { heroServices } from '../../data/content';
+import { services } from '../../data/services';
 
 const startLink = whatsapp('Halo Ricksite Studio, mau mulai project baru nih.');
 ---
@@ -22,21 +22,21 @@ const startLink = whatsapp('Halo Ricksite Studio, mau mulai project baru nih.');
                 <div class="col-lg-12">
                     <!--=== Hero Content ===-->
                     <div class="hero-content">
-                        <span class="sub-title">Website &bull; Iklan Digital &bull; Pertumbuhan Bisnis</span>
+                        <span class="sub-title">Website &bull; Web App &bull; Digital Marketing</span>
                         <h1>
-                            <span class="text-anm">Website &amp; Iklan Digital</span>
-                            <span class="text-anm">yang Bikin Bisnismu Tumbuh.</span>
+                            <span class="text-anm">Website yang Bikin</span>
+                            <span class="text-anm">Bisnismu Dapat Orderan.</span>
                         </h1>
                         <div class="text-box pf_fadeup">
-                            <p>Ricksite Studio bantu bisnis kamu punya <span>website profesional</span>, sistem custom, dan iklan digital yang benar-benar mendatangkan calon customer. Bukan sekadar tampil bagus.</p>
+                            <p>Kami bangun <span>website</span>, sistem custom, dan campaign iklan yang fokus ke satu hal: bikin calon customer nemu bisnismu, percaya, terus chat.</p>
                             <div class="hero-button">
                                 <a href={startLink} target="_blank" rel="noopener" class="theme-btn style-one">
                                     <span class="text-flip">
-                                        <span class="text">MULAI PROJECT KAMU</span>
-                                        <span class="text">MULAI PROJECT KAMU</span>
+                                        <span class="text">MULAI PROJECT SEKARANG</span>
+                                        <span class="text">MULAI PROJECT SEKARANG</span>
                                     </span>
                                 </a>
-                                <a href="#projects" class="read-more style-one">Lihat Hasil Kerja Kami</a>
+                                <a href="#projects" class="read-more style-one">Lihat Portofolio</a>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,9 @@ const startLink = whatsapp('Halo Ricksite Studio, mau mulai project baru nih.');
             <div class="row">
                 <div class="col-lg-4">
                     <ul class="service-list pf_fadeup">
-                        {heroServices.map((service) => (
+                        {/* Teaser only - Agenko sizes this column against the hero image, and all
+                            five pills leave a ~190px gap beside it. Full list is in the services section. */}
+                        {services.slice(0, 4).map((service) => (
                             <Fragment>
                             <li>
                                 <!--=== Iconic Box ===-->

@@ -1,0 +1,142 @@
+---
+/**
+ * Project inquiry form, sitting directly under the price list.
+ *
+ * The site is statically hosted and every other CTA already funnels to
+ * WhatsApp, so this composes the answers into a pre-filled WhatsApp message
+ * rather than posting to a backend. Nothing to host, nothing to maintain, and
+ * the lead lands in the same inbox as the rest.
+ *
+ * Markup reuses the template's `agenko-contact-form style-one` and
+ * `form_control`; the number comes from data/site.ts via a data attribute so it
+ * stays a single source of truth.
+ */
+import { WHATSAPP_NUMBER } from '../../data/site';
+import { BUDGET_OPTIONS } from '../../data/pricing';
+import { services } from '../../data/services';
+
+interface Props {
+  /** Service title to pre-select, e.g. when the form sits on a service page. */
+  preselect?: string;
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+}
+
+const {
+  preselect,
+  eyebrow = 'Mulai Project',
+  heading = 'Punya Budget dan Kebutuhan? Cerita Aja.',
+  intro = 'Isi tiga kolom di bawah, nanti kami balas dengan rekomendasi paket dan estimasi yang paling pas. Nggak ada biaya buat konsultasi awal.',
+} = Astro.props;
+
+// Dropdown mirrors the service catalogue, so it can never drift out of sync.
+const serviceOptions = [...services.map((service) => service.title), 'Belum yakin, mau konsultasi dulu'];
+---
+
+<!--======  Start Inquiry Section  ======-->
+<section class="agk-inquiry pt-130 pb-100" id="inquiry">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <!--=== Section Title ===-->
+                <div class="section-title mb-50 pf_fadeup">
+                    <span class="sub-title">{eyebrow}</span>
+                    <h2>{heading}</h2>
+                    <p class="mt-25">{intro}</p>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="rs-inquiry-box pf_fadeup">
+                    <form class="agenko-contact-form style-one" id="rs-inquiry-form" data-wa={WHATSAPP_NUMBER}>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="rs-label" for="rs-name">Nama</label>
+                                    <input type="text" class="form_control" id="rs-name" name="nama" placeholder="Nama kamu" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="rs-label" for="rs-budget">Estimasi Budget</label>
+                                    <select class="form_control" id="rs-budget" name="budget" required>
+                                        <option value="" disabled selected>Pilih estimasi budget</option>
+                                        {BUDGET_OPTIONS.map((option) => (
+                                            <Fragment>
+                                            <option value={option}>{option}</option>
+                                            {" "}</Fragment>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="rs-label" for="rs-service">Website / Layanan yang Diinginkan</label>
+                                    <select class="form_control" id="rs-service" name="layanan" required>
+                                        <option value="" disabled selected={!preselect}>Pilih layanan</option>
+                                        {serviceOptions.map((option) => (
+                                            <Fragment>
+                                            <option value={option} selected={option === preselect}>{option}</option>
+                                            {" "}</Fragment>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="rs-label" for="rs-detail">Ceritakan Sedikit (opsional)</label>
+                                    <textarea class="form_control" id="rs-detail" name="detail" rows="4" placeholder="Bisnis kamu jualan apa, dan kendalanya di mana?"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group mb-0">
+                                    <button type="submit" class="theme-btn style-one">
+                                        <span class="text-flip">
+                                            <span class="text">KIRIM VIA WHATSAPP</span>
+                                            <span class="text">KIRIM VIA WHATSAPP</span>
+                                        </span>
+                                        <span class="icon"><i class="fab fa-whatsapp"></i></span>
+                                    </button>
+                                    <p class="rs-form-hint">Formnya akan membuka WhatsApp dengan pesan yang sudah terisi otomatis.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--======  End Inquiry Section  ======-->
+
+<script is:inline>
+    (function () {
+        var form = document.getElementById('rs-inquiry-form');
+        if (!form) return;
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var get = function (id) {
+                var el = document.getElementById(id);
+                return el && el.value ? el.value.trim() : '';
+            };
+
+            var lines = [
+                'Halo Ricksite Studio, saya mau tanya soal project.',
+                '',
+                'Nama: ' + get('rs-name'),
+                'Layanan: ' + get('rs-service'),
+                'Estimasi budget: ' + get('rs-budget'),
+            ];
+
+            var detail = get('rs-detail');
+            if (detail) lines.push('', 'Detail: ' + detail);
+
+            window.open(
+                'https://wa.me/' + form.dataset.wa + '?text=' + encodeURIComponent(lines.join('\n')),
+                '_blank',
+                'noopener'
+            );
+        });
+    })();
+</script>

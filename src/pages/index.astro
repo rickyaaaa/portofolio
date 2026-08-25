@@ -3,8 +3,8 @@
  * Ricksite Studio homepage.
  *
  * Section order matches the original index.html:
- * Hero -> Projects -> Services -> Ecosystem -> Why -> Process -> Testimonials
- * -> About -> Final CTA.
+ * Hero -> Projects -> Services -> Ecosystem -> Why -> Process
+ * -> Inquiry form -> About -> Final CTA. Pricing lives on /harga.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
@@ -13,13 +13,13 @@ import Services from '../components/sections/Services.astro';
 import Ecosystem from '../components/sections/Ecosystem.astro';
 import WhyRicksite from '../components/sections/WhyRicksite.astro';
 import WorkProcess from '../components/sections/WorkProcess.astro';
-import Testimonials from '../components/sections/Testimonials.astro';
+import InquiryForm from '../components/sections/InquiryForm.astro';
 import About from '../components/sections/About.astro';
 import FinalCta from '../components/sections/FinalCta.astro';
 
-const title = 'Ricksite Studio - Jasa Pembuatan Website, Web App Custom & Iklan Digital';
+const title = 'Ricksite Studio - Jasa Pembuatan Website, Web App & Digital Marketing';
 const description =
-  'Ricksite Studio - jasa pembuatan website, pengembangan web custom, dan iklan digital untuk bantu bisnismu bertumbuh.';
+  'Jasa pembuatan website, web app, dan digital marketing yang fokus bikin bisnismu dapat lebih banyak customer.';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -29,7 +29,7 @@ const description =
     <Ecosystem />
     <WhyRicksite />
     <WorkProcess />
-    <Testimonials />
+    <InquiryForm />
     <About />
     <FinalCta />
 </BaseLayout>
