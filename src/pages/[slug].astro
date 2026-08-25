@@ -14,6 +14,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Pricing from '../components/sections/Pricing.astro';
 import InquiryForm from '../components/sections/InquiryForm.astro';
+import FinalCta from '../components/sections/FinalCta.astro';
 import { services } from '../data/services';
 import { servicePages } from '../data/service-pages';
 import { projects, projectPath, PROJECT_PAGES_LIVE } from '../data/projects';
@@ -257,10 +258,18 @@ const consultLink = whatsapp(
         </div>
     </section><!--====== End FAQ Section ======-->
 
-    <InquiryForm
-        preselect={service.title}
-        eyebrow="Mulai Project"
-        heading={`Tertarik ${service.title}?`}
-        intro="Isi kolom di bawah, nanti kami balas dengan rekomendasi dan estimasi yang paling pas buat bisnismu."
-    />
+    {/* Form only on the build services. Marketing pages close on the CTA banner. */}
+    {service.category === 'development' && (
+        <InquiryForm
+            preselect={service.slug === 'jasa-pembuatan-aplikasi' ? service.title : undefined}
+            serviceField={service.slug === 'jasa-pembuatan-website' ? 'text' : 'select'}
+            serviceLabel={service.slug === 'jasa-pembuatan-website' ? 'Jenis Website' : 'Layanan yang Diinginkan'}
+            servicePlaceholder="Contoh: toko online sepatu, company profile klinik, website travel"
+            eyebrow="Mulai Project"
+            heading={`Tertarik ${service.title}?`}
+            intro="Isi kolom di bawah, nanti kami balas dengan rekomendasi dan estimasi yang paling pas buat bisnismu."
+        />
+    )}
+
+    <FinalCta />
 </BaseLayout>
