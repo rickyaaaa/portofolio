@@ -339,3 +339,135 @@
 .agenko-footer .footer-logo .rs-logo {
   max-width: 170px;
 }
+
+/*-------------------------------------
+    ## Intro loader
+
+    The brand loading sequence: the mark draws itself, the accent dot travels
+    along the same arc, then the wordmark fades in. Uses its own class rather
+    than Agenko's `.preloader` so theme.js's fixed 500ms fade-out does not cut
+    the animation short mid-draw — theme.js is left untouched.
+
+    Plays once per session (see the head script in BaseLayout); on repeat views
+    and for prefers-reduced-motion it is removed before first paint.
+--------------------------------------*/
+.rs-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: var(--primary-black-color);
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+.rs-preloader.is-done {
+  opacity: 0;
+  pointer-events: none;
+}
+/* Decided before first paint, so the loader never flashes on repeat views. */
+.rs-intro-skip .rs-preloader {
+  display: none;
+}
+
+.rs-intro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 26px;
+}
+.rs-intro-mark {
+  position: relative;
+  width: 132px;
+  height: 132px;
+}
+.rs-intro-mark svg {
+  display: block;
+  width: 132px;
+  height: 132px;
+  overflow: visible;
+}
+.rs-intro-mark path {
+  -webkit-animation: rs-draw 1.5s cubic-bezier(0.34, 0.05, 0.2, 1) 0.15s both;
+          animation: rs-draw 1.5s cubic-bezier(0.34, 0.05, 0.2, 1) 0.15s both;
+}
+.rs-intro-dot {
+  position: absolute;
+  width: 23.76px;
+  height: 23.76px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  /* Fallback for browsers without offset-path: rest at the arc's end point. */
+  left: 108.24px;
+  top: 21.12px;
+  margin: -11.88px 0 0 -11.88px;
+}
+@supports (offset-path: path("M0 0")) {
+  .rs-intro-dot {
+    left: 0;
+    top: 0;
+    margin: 0;
+    offset-path: path("M23.76 105.6 A 42.24 42.24 0 0 1 66 63.36 A 42.24 42.24 0 0 0 108.24 21.12");
+    offset-rotate: 0deg;
+    -webkit-animation: rs-travel 1.5s cubic-bezier(0.34, 0.05, 0.2, 1) 0.15s both, rs-pop 0.3s ease-out 0.15s both;
+            animation: rs-travel 1.5s cubic-bezier(0.34, 0.05, 0.2, 1) 0.15s both, rs-pop 0.3s ease-out 0.15s both;
+  }
+}
+.rs-intro-word {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3px;
+  -webkit-animation: rs-intro-fade 0.6s ease-out 1.72s both;
+          animation: rs-intro-fade 0.6s ease-out 1.72s both;
+}
+.rs-intro-word span {
+  color: #f4f4f1;
+  font-size: 20px;
+  line-height: 1;
+  font-family: "Poppins", sans-serif;
+}
+.rs-intro-word-thin {
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-indent: 0.22em;
+}
+.rs-intro-word-bold {
+  font-weight: 700;
+  letter-spacing: 0.21em;
+  text-indent: 0.21em;
+}
+
+@-webkit-keyframes rs-draw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+@keyframes rs-draw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+@-webkit-keyframes rs-travel { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+@keyframes rs-travel { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+@-webkit-keyframes rs-pop { from { -webkit-transform: scale(0); transform: scale(0); } to { -webkit-transform: scale(1); transform: scale(1); } }
+@keyframes rs-pop { from { -webkit-transform: scale(0); transform: scale(0); } to { -webkit-transform: scale(1); transform: scale(1); } }
+@-webkit-keyframes rs-intro-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes rs-intro-fade { from { opacity: 0; } to { opacity: 1; } }

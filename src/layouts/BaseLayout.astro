@@ -48,13 +48,45 @@ const { title, description } = Astro.props;
         <link rel="stylesheet" href="/assets/css/style.css">
         <!--====== Ricksite css (brand accent only) ======-->
         <link rel="stylesheet" href="/assets/css/ricksite.css">
+        <script is:inline>
+            /*
+             * Decide before first paint whether the intro plays, so there is no
+             * flash of a loader that is about to be skipped.
+             *
+             * It runs once per browsing session. This is a multi-page static
+             * site, so without the gate a 2.3s animation would replay on every
+             * internal navigation. Users who ask for reduced motion never see it.
+             */
+            (function () {
+                var skip = false;
+                try { skip = sessionStorage.getItem('rs-intro-played') === '1'; } catch (e) {}
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) skip = true;
+                if (skip) document.documentElement.classList.add('rs-intro-skip');
+            })();
+        </script>
     </head>
     <body>
         <!--====== Preloader ======-->
-        <div class="preloader">
-            <div class="loading-container">
-                <div class="loading"></div>
-                <div id="loading-icon"><img src="/assets/images/ricksite/logo/ricksite-mark-light.svg" alt=""></div>
+        <div class="rs-preloader" id="rs-preloader">
+            <div class="rs-intro">
+                <div class="rs-intro-mark">
+                    <svg viewBox="0 0 100 100" aria-hidden="true">
+                        <path
+                            d="M18 80 A 32 32 0 0 1 50 48 A 32 32 0 0 0 82 16"
+                            pathLength="100"
+                            stroke-dasharray="100"
+                            fill="none"
+                            stroke="#f4f4f1"
+                            stroke-width="17"
+                            stroke-linecap="round"
+                        ></path>
+                    </svg>
+                    <span class="rs-intro-dot"></span>
+                </div>
+                <div class="rs-intro-word">
+                    <span class="rs-intro-word-thin">RICKSITE</span>
+                    <span class="rs-intro-word-bold">STUDIO</span>
+                </div>
             </div>
         </div>
         <!--====== Start Overlay ======-->
