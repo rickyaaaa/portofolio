@@ -90,14 +90,14 @@ export const projects: Project[] = [
   {
     title: 'The Beauty Pawgeant',
     slug: 'the-beauty-pawgeant',
-    tags: ['Landing Page Event', 'Form Registrasi'],
+    tags: ['Company Profile', 'WordPress'],
     liveUrl: 'https://thebeautypawgeant.id/',
     image: 'the-beauty-pawgeant.webp',
   },
   {
     title: 'Jastipku Tual',
     slug: 'jastipku-tual',
-    tags: ['Website Ekspedisi', 'Cek Resi & Ongkir'],
+    tags: ['Company Profile', 'WordPress'],
     liveUrl: 'https://jastipkutual.com/',
     image: 'jastipku-tual.webp',
   },
