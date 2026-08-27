@@ -1,0 +1,110 @@
+---
+/**
+ * /projects — the full portfolio.
+ *
+ * The homepage carries a curated six; this shows everything, in a three-column
+ * grid rather than the homepage's two, because nine near-square screenshots at
+ * half width would make the page very tall.
+ *
+ * Cards route to /projects/<slug> like everywhere else. Those detail pages do
+ * not exist yet, so they render as data-rs-todo — internal systems must never
+ * link to a live system, and public sites get their "visit site" button inside
+ * their own detail page rather than jumping the visitor off this one.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FinalCta from '../components/sections/FinalCta.astro';
+import { projects, projectPath, PROJECT_PAGES_LIVE } from '../data/projects';
+
+const title = 'Portofolio Project - Ricksite Studio';
+const description =
+  'Website, toko online, dan sistem internal yang sudah kami bangun untuk bisnis nyata di berbagai industri.';
+---
+
+<BaseLayout title={title} description={description}>
+    <!--====== Start Page Banner ======-->
+    <section class="agenko-page-banner">
+        <div class="shape shape-circle1"><span></span></div>
+        <div class="shape shape-circle2"><span></span></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <!--=== Page Content ===-->
+                    <div class="page-content">
+                        <h1 class="page-title">Portofolio</h1>
+                        <div class="row">
+                            <div class="col-xl-9">
+                                <div class="text-box">
+                                    <p>Website, toko online, dan sistem internal yang sudah jalan di bisnis nyata — dari travel dan tailor sampai ERP dan sistem tagihan.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="breadcrumb-link mt-30">
+                            <li><a href="/">Beranda</a></li>
+                            <li class="active">Portofolio</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Page Banner ======-->
+
+    <!--======  Start Project Section  ======-->
+    <section class="agk-project pt-130 pb-80">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <!--=== Section Title ===-->
+                    <div class="section-title mb-60 pf_fadeup">
+                        <span class="sub-title">Semua Project</span>
+                        <h2>Bukan Demo Template.
+                            Ini Project Client Kami.</h2>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="text-box mb-60 pf_fadeup">
+                        <p>Sebagian sistem internal tidak bisa kami tampilkan lebih jauh dari ini, karena datanya milik client.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {projects.map((project) => (
+                    <Fragment>
+                    <div class="col-lg-4 col-md-6">
+                        <!--=== Project Item ===-->
+                        <div class="agenko-project-item style-one mb-45 pf_fadeup">
+                            <div class="thumbnail">
+                                <img src={`/assets/images/ricksite/projects/${project.image}`} alt={project.title}>
+                                <div class="project-button">
+                                    <a
+                                        href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
+                                        data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
+                                        aria-label={`Lihat detail project ${project.title}`}
+                                    ><i class="far fa-plus"></i></a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div class="project-categories">
+                                    {project.tags.map((tag) => (
+                                        <Fragment>
+                                        <a
+                                            href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
+                                            data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
+                                        >{tag}</a>
+                                        {" "}</Fragment>
+                                    ))}
+                                </div>
+                                <h4 class="title"><a
+                                    href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
+                                    data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
+                                >{project.title}</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                    {" "}</Fragment>
+                ))}
+            </div>
+        </div>
+    </section><!--======  End Project Section  ======-->
+
+    <FinalCta />
+</BaseLayout>

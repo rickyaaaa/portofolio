@@ -25,6 +25,8 @@ export interface Project {
   classification?: string;
   /** Screenshot in public/assets/images/ricksite/projects/, 620x560. */
   image: string;
+  /** Shown in the homepage teaser. All projects appear on /projects. */
+  featured?: boolean;
 }
 
 export const projects: Project[] = [
@@ -34,6 +36,7 @@ export const projects: Project[] = [
     tags: ['Website Travel', 'Booking System'],
     liveUrl: 'https://abunawastravel.id/',
     image: 'abunawas-travel.webp',
+    featured: true,
   },
   {
     title: 'YokPrinting ERP',
@@ -41,6 +44,7 @@ export const projects: Project[] = [
     tags: ['ERP System', 'Laravel'],
     // Internal business system — no public link to the live system.
     image: 'yokprinting-erp.webp',
+    featured: true,
   },
   {
     title: 'Bernard Bali Tours',
@@ -48,6 +52,7 @@ export const projects: Project[] = [
     tags: ['Website Travel', 'WordPress'],
     liveUrl: 'https://bernardbalitours.com/',
     image: 'bernard-bali-tours.webp',
+    featured: true,
   },
   {
     title: 'SIPNONA',
@@ -56,6 +61,7 @@ export const projects: Project[] = [
     classification: 'Manajemen Pegawai',
     // Internal information system — no public link, no admin URL, no records.
     image: 'sipnona.webp',
+    featured: true,
   },
   {
     title: 'Bali Rejeng Jeep Tour',
@@ -63,6 +69,7 @@ export const projects: Project[] = [
     tags: ['Website Travel', 'WordPress'],
     liveUrl: 'https://balirejengjeeptour.com/',
     image: 'bali-rejeng-jeep-tour.webp',
+    featured: true,
   },
   {
     title: 'SAB Swadaya',
@@ -71,8 +78,33 @@ export const projects: Project[] = [
     classification: 'Billing System',
     // Internal application — no public link to the login page or dashboard.
     image: 'sab-swadaya.webp',
+    featured: true,
+  },
+  {
+    title: 'Larisse Tailor',
+    slug: 'larisse-tailor',
+    tags: ['Company Profile', 'WordPress'],
+    liveUrl: 'https://larissetailor.com/',
+    image: 'larisse-tailor.webp',
+  },
+  {
+    title: 'The Beauty Pawgeant',
+    slug: 'the-beauty-pawgeant',
+    tags: ['Landing Page Event', 'Form Registrasi'],
+    liveUrl: 'https://thebeautypawgeant.id/',
+    image: 'the-beauty-pawgeant.webp',
+  },
+  {
+    title: 'Jastipku Tual',
+    slug: 'jastipku-tual',
+    tags: ['Website Ekspedisi', 'Cek Resi & Ongkir'],
+    liveUrl: 'https://jastipkutual.com/',
+    image: 'jastipku-tual.webp',
   },
 ];
+
+/** The curated six for the homepage teaser. */
+export const featuredProjects = projects.filter((project) => project.featured);
 
 /** Path to a project's detail page. */
 export const projectPath = (project: Project): string => `/projects/${project.slug}`;
