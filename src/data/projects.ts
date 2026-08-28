@@ -9,10 +9,21 @@
  * the circular "+" link. Anything longer belongs on the detail page.
  */
 
+/**
+ * What kind of work a project is, used to group /projects into tabs.
+ *
+ * A separate field rather than something derived from `tags`: the tags are
+ * display copy and change freely ("Website Travel", "Sistem Keuangan &
+ * Tagihan"), so grouping on them would break the page the next time one is
+ * reworded.
+ */
+export type ProjectCategory = 'company-profile' | 'travel' | 'web-app';
+
 export interface Project {
   title: string;
   /** URL segment: /projects/<slug> — also the screenshot filename. */
   slug: string;
+  category: ProjectCategory;
   /** At most two, rendered as the pill tags on the card. */
   tags: [string, string];
   /**
@@ -33,6 +44,7 @@ export const projects: Project[] = [
   {
     title: 'Abunawas Travel',
     slug: 'abunawas-travel',
+    category: 'travel',
     tags: ['Website Travel', 'Booking System'],
     liveUrl: 'https://abunawastravel.id/',
     image: 'abunawas-travel.webp',
@@ -41,6 +53,7 @@ export const projects: Project[] = [
   {
     title: 'YokPrinting ERP',
     slug: 'yokprinting-erp',
+    category: 'web-app',
     tags: ['ERP System', 'Laravel'],
     // Internal business system — no public link to the live system.
     image: 'yokprinting-erp.webp',
@@ -49,6 +62,7 @@ export const projects: Project[] = [
   {
     title: 'Bernard Bali Tours',
     slug: 'bernard-bali-tours',
+    category: 'travel',
     tags: ['Website Travel', 'WordPress'],
     liveUrl: 'https://bernardbalitours.com/',
     image: 'bernard-bali-tours.webp',
@@ -57,6 +71,7 @@ export const projects: Project[] = [
   {
     title: 'SIPNONA',
     slug: 'sipnona',
+    category: 'web-app',
     tags: ['Sistem Informasi', 'Laravel'],
     classification: 'Manajemen Pegawai',
     // Internal information system — no public link, no admin URL, no records.
@@ -66,6 +81,7 @@ export const projects: Project[] = [
   {
     title: 'Bali Rejeng Jeep Tour',
     slug: 'bali-rejeng-jeep-tour',
+    category: 'travel',
     tags: ['Website Travel', 'WordPress'],
     liveUrl: 'https://balirejengjeeptour.com/',
     image: 'bali-rejeng-jeep-tour.webp',
@@ -74,6 +90,7 @@ export const projects: Project[] = [
   {
     title: 'SAB Swadaya',
     slug: 'sab-swadaya',
+    category: 'web-app',
     tags: ['Sistem Keuangan & Tagihan', 'Laravel'],
     classification: 'Billing System',
     // Internal application — no public link to the login page or dashboard.
@@ -83,6 +100,7 @@ export const projects: Project[] = [
   {
     title: 'Larisse Tailor',
     slug: 'larisse-tailor',
+    category: 'company-profile',
     tags: ['Company Profile', 'WordPress'],
     liveUrl: 'https://larissetailor.com/',
     image: 'larisse-tailor.webp',
@@ -90,6 +108,7 @@ export const projects: Project[] = [
   {
     title: 'The Beauty Pawgeant',
     slug: 'the-beauty-pawgeant',
+    category: 'company-profile',
     tags: ['Company Profile', 'WordPress'],
     liveUrl: 'https://thebeautypawgeant.id/',
     image: 'the-beauty-pawgeant.webp',
@@ -97,11 +116,31 @@ export const projects: Project[] = [
   {
     title: 'Jastipku Tual',
     slug: 'jastipku-tual',
+    category: 'company-profile',
     tags: ['Company Profile', 'WordPress'],
     liveUrl: 'https://jastipkutual.com/',
     image: 'jastipku-tual.webp',
   },
 ];
+
+/**
+ * Tabs on /projects, in display order. "Semua" is first so the page still
+ * opens on the full set — a portfolio that starts by showing three of nine
+ * undersells the work.
+ */
+export const projectCategories: { id: ProjectCategory | 'all'; title: string }[] = [
+  { id: 'all', title: 'Semua' },
+  { id: 'company-profile', title: 'Company Profile' },
+  { id: 'travel', title: 'Travel' },
+  { id: 'web-app', title: 'Web App' },
+];
+
+/** Projects in one tab. "all" keeps the authored order. */
+export function projectsIn(category: ProjectCategory | 'all'): Project[] {
+  return category === 'all'
+    ? projects
+    : projects.filter((project) => project.category === category);
+}
 
 /** The curated six for the homepage teaser. */
 export const featuredProjects = projects.filter((project) => project.featured);
