@@ -19,7 +19,7 @@
 
 /*-------------------------------------
     ## Accent colour
-    Agenko lime #9CFE4F -> Ricksite green #B7F34A.
+    Agenko lime #9CFE4F -> Ricksite green #B6F24B.
     style.css declares the accent once, as a token, so this single line
     re-colours every button, hover, badge and active state in the template.
 --------------------------------------*/
@@ -186,7 +186,7 @@
      -moz-appearance: none;
           appearance: none;
   padding-right: 44px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23B7F34A' stroke-width='2'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23B6F24B' stroke-width='2'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 18px center;
   background-size: 12px 8px;
