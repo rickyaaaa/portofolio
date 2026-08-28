@@ -52,10 +52,13 @@ ErrorDocument 404 /404.html
 <IfModule mod_expires.c>
     ExpiresActive On
 
-    # Agenko's asset filenames carry no content hash, so a stale cache can only
-    # be cleared by waiting it out. Fonts and images are effectively immutable
-    # and get a long life; CSS and JS are the files we actually edit, so they
-    # stay short enough that a fix reaches returning visitors the next day.
+    # CSS and JS are requested with a ?v=<content hash> that src/lib/asset.ts
+    # puts on every link, so an edited file is a new URL and a year of caching
+    # cannot serve a stale one. Without that the CDN in front of this host kept
+    # answering with an old stylesheet for hours after a deploy.
+    #
+    # Images and fonts are not versioned, so replacing one means giving it a new
+    # filename rather than overwriting it.
     ExpiresByType image/webp                "access plus 1 year"
     ExpiresByType image/png                 "access plus 1 year"
     ExpiresByType image/jpeg                "access plus 1 year"
@@ -63,8 +66,8 @@ ErrorDocument 404 /404.html
     ExpiresByType font/woff2                "access plus 1 year"
     ExpiresByType font/woff                 "access plus 1 year"
     ExpiresByType application/font-woff     "access plus 1 year"
-    ExpiresByType text/css                  "access plus 1 day"
-    ExpiresByType application/javascript    "access plus 1 day"
+    ExpiresByType text/css                  "access plus 1 year"
+    ExpiresByType application/javascript    "access plus 1 year"
     ExpiresByType text/html                 "access plus 0 seconds"
 </IfModule>
 

@@ -281,37 +281,83 @@
 /*-------------------------------------
     ## Tab strip (pricing on the service pages, categories on /projects)
 
-    Bootstrap nav-tabs ships unstyled for a dark theme, so this dresses the
-    strip to match the Agenko pill language: same radius, border and accent as
-    the buttons elsewhere.
+    A segmented control rather than loose pills: the tabs are joined into one
+    bordered strip sharing dividers, and only the outer corners are rounded.
+
+    Both segment colours are set on the strip itself rather than left to show
+    the section through, because the strip appears on two different
+    backgrounds - the pricing section is gray-dark, /projects is
+    primary-black - and the contrast between an active and an inactive
+    segment has to read the same on both.
+
+    Several rules restate border-color. Bootstrap's own .nav-tabs .nav-link
+    hover/active rules carry three classes of specificity, so a border set on
+    .rs-tabs .nav-link alone loses to them and the strip would pick up
+    Bootstrap's light default in those states.
 --------------------------------------*/
 .rs-tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 0;
   border: none;
-  gap: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+  /* Shrink to fit the tabs but never exceed the container: past that the
+     strip scrolls sideways rather than wrapping into a ragged second row,
+     which would leave stray rounded corners mid-strip. */
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.rs-tabs::-webkit-scrollbar {
+  display: none;
+}
+.rs-tabs .nav-item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
 }
 .rs-tabs .nav-link {
-  padding: 12px 26px;
+  margin-bottom: 0;
+  padding: 16px 30px;
   border: 1px solid var(--border-color);
-  border-radius: 30px;
-  background-color: var(--primary-black-color);
-  color: var(--white-color);
-  font: 600 15px/24px var(--heading-font);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  border-right-width: 0;
+  border-radius: 0;
+  background-color: var(--gray-dark);
+  color: var(--primary-color);
+  font: 600 16px/24px var(--heading-font);
+  white-space: nowrap;
+  -webkit-transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
-.rs-tabs .nav-link:hover {
-  border-color: var(--primary-line);
+.rs-tabs .nav-item:first-child .nav-link {
+  border-radius: 12px 0 0 12px;
+}
+.rs-tabs .nav-item:last-child .nav-link {
+  border-right-width: 1px;
+  border-radius: 0 12px 12px 0;
+}
+.rs-tabs .nav-link:hover,
+.rs-tabs .nav-link:focus {
+  border-color: var(--border-color);
+  background-color: #1f2124;
+  color: var(--primary-color);
 }
 .rs-tabs .nav-link.active {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: var(--heading-color);
+  border-color: var(--border-color);
+  background-color: var(--primary-black-color);
+  color: var(--white-color);
 }
 @media (max-width: 767px) {
   .rs-tabs .nav-link {
-    padding: 10px 18px;
-    font-size: 14px;
+    padding: 13px 20px;
+    font-size: 15px;
   }
 }
 
