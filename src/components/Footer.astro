@@ -92,7 +92,12 @@ const talkLink = whatsapp();
                                             <div class="social-link">
                                                 {SOCIAL_LINKS.map((social) => (
                                                     <Fragment>
-                                                    <a href="#" data-rs-todo="social"><i class={social.icon}></i></a>
+                                                    <a
+                                                        href={social.href}
+                                                        target="_blank"
+                                                        rel="noopener"
+                                                        aria-label={`Ricksite Studio di ${social.label}`}
+                                                    ><i class={social.icon}></i></a>
                                                     {" "}</Fragment>
                                                 ))}
                                             </div>

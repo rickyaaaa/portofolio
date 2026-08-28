@@ -26,7 +26,6 @@ export const TODO = {
   projectDetails: 'project-details.html',
   services: 'service-details.html',
   about: 'about.html',
-  social: 'social',
 } as const;
 
 export type TodoKey = keyof typeof TODO;
@@ -51,8 +50,29 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Kontak', href: '/#contact' },
 ];
 
-export const SOCIAL_LINKS = [
-  { label: 'Instagram', icon: 'fab fa-instagram' },
-  { label: 'TikTok', icon: 'fab fa-tiktok' },
-  { label: 'LinkedIn', icon: 'fab fa-linkedin-in' },
+export interface SocialLink {
+  label: string;
+  /** Font Awesome brand class, matching the template's own convention. */
+  icon: string;
+  href: string;
+}
+
+/**
+ * Only accounts that actually exist. An empty social row beats a row of links
+ * that go nowhere, so add an entry here the moment a new account goes live and
+ * both the footer and the offcanvas menu pick it up.
+ */
+export const SOCIAL_LINKS: SocialLink[] = [
+  {
+    label: 'Instagram',
+    icon: 'fab fa-instagram',
+    href: 'https://www.instagram.com/ricksitestudio_/',
+  },
+  {
+    // Facebook Pages have no username until they qualify for one, so this is
+    // the numeric profile URL. Swap it for the vanity URL once it is claimed.
+    label: 'Facebook',
+    icon: 'fab fa-facebook-f',
+    href: 'https://www.facebook.com/profile.php?id=61590894984696',
+  },
 ];

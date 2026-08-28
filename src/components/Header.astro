@@ -75,7 +75,12 @@ const talkLink = whatsapp('Halo Ricksite Studio, mau tanya-tanya soal project ni
                         <ul class="social-link">
                             {SOCIAL_LINKS.map((social) => (
                                 <Fragment>
-                                <li><a href="#" data-rs-todo="social"><i class={social.icon}></i></a></li>
+                                <li><a
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener"
+                                    aria-label={`Ricksite Studio di ${social.label}`}
+                                ><i class={social.icon}></i></a></li>
                                 {" "}</Fragment>
                             ))}
                         </ul>
