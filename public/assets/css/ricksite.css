@@ -471,3 +471,175 @@
 @keyframes rs-pop { from { -webkit-transform: scale(0); transform: scale(0); } to { -webkit-transform: scale(1); transform: scale(1); } }
 @-webkit-keyframes rs-intro-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes rs-intro-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/*-------------------------------------
+    ## Floating WhatsApp button
+
+    Sits outside #smooth-wrapper in the layout, because ScrollSmoother
+    transforms that element and a transformed ancestor would make
+    position:fixed resolve against it rather than the viewport.
+
+    z-index sits above the page (max 1111 in style.css) but below the
+    offcanvas menu (9999) and the intro loader (99999), so it never
+    covers either.
+--------------------------------------*/
+.rs-wa-bubble {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  z-index: 9000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  height: 58px;
+  padding: 0 18px;
+  border-radius: 29px;
+  background-color: var(--primary-color);
+  color: #0d0d0d;
+  font-family: var(--heading-font, inherit);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  -webkit-transition: -webkit-transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.rs-wa-bubble:hover,
+.rs-wa-bubble:focus-visible {
+  color: #0d0d0d;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+}
+.rs-wa-bubble i {
+  font-size: 26px;
+}
+
+/* Below the lg breakpoint the label is dropped and the button collapses to a
+   circle, so it does not sit across the width of a phone screen. */
+@media screen and (max-width: 991px) {
+  .rs-wa-bubble {
+    right: 18px;
+    bottom: 18px;
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    border-radius: 50%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .rs-wa-bubble-text {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rs-wa-bubble {
+    -webkit-transition: none;
+    transition: none;
+  }
+  .rs-wa-bubble:hover,
+  .rs-wa-bubble:focus-visible {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+/*-------------------------------------
+    ## Brand card (about section image)
+
+    Replaces the placeholder artwork in the about section. Reproduces the
+    brand banner - grid field, logo lockup, discipline pills - in markup so
+    the Poppins wordmark renders from the page's own webfont.
+
+    Sits in Agenko's .agk-image slot, so it takes the 20px radius the
+    template already gives images there.
+--------------------------------------*/
+.rs-brand-card {
+  position: relative;
+  overflow: hidden;
+  padding: 54px 34px;
+  border-radius: 20px;
+  border: 1px solid rgba(244, 244, 241, 0.08);
+  background-color: #0b0c0a;
+  /* Grid field, then a soft accent glow behind the lockup. Both are painted
+     as backgrounds so there is no extra markup to position. */
+  background-image:
+    -webkit-radial-gradient(50% 42%, ellipse closest-side, rgba(182, 242, 75, 0.16), rgba(182, 242, 75, 0) 70%),
+    -webkit-repeating-linear-gradient(rgba(244, 244, 241, 0.045) 0 1px, transparent 1px 64px),
+    -webkit-repeating-linear-gradient(left, rgba(244, 244, 241, 0.045) 0 1px, transparent 1px 64px);
+  background-image:
+    radial-gradient(ellipse closest-side at 50% 42%, rgba(182, 242, 75, 0.16), rgba(182, 242, 75, 0) 70%),
+    repeating-linear-gradient(rgba(244, 244, 241, 0.045) 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(to right, rgba(244, 244, 241, 0.045) 0 1px, transparent 1px 64px);
+  text-align: center;
+}
+.rs-brand-card .rs-brand-card-logo {
+  max-width: 240px;
+  margin: 0 auto;
+}
+.rs-brand-card-tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.rs-brand-card-tags li {
+  padding: 9px 20px;
+  border: 1px solid rgba(244, 244, 241, 0.22);
+  border-radius: 22px;
+  color: #f4f4f1;
+  font-family: var(--heading-font, inherit);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.rs-brand-card-tags li.is-active {
+  border-color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: #0d0d0d;
+}
+
+/* Agenko right-aligns .agk-image and lets the image size itself; the card is a
+   block, so it needs the box width back to fill the column. */
+.agk-image-box.style-one .agk-image {
+  text-align: center;
+}
+
+/*-------------------------------------
+    ## Contact channels (/kontak)
+
+    Agenko's iconic-box style-three is a compact footer block: icon, label,
+    value. The contact page adds one line of guidance under each so a visitor
+    can tell which channel suits them, and gives the boxes equal height so the
+    three cards line up whatever the length of that line.
+--------------------------------------*/
+.rs-contact-channel {
+  height: calc(100% - 30px);
+  padding: 34px 30px;
+  border: 1px solid rgba(244, 244, 241, 0.1);
+  border-radius: 20px;
+}
+.rs-contact-channel .content p {
+  margin-bottom: 8px;
+}
+.rs-contact-note {
+  display: block;
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.7;
+}

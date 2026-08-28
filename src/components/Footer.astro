@@ -1,6 +1,6 @@
 ---
 /** Agenko footer. Markup unchanged from index.html. */
-import { NAV_LINKS, SOCIAL_LINKS, whatsapp, WHATSAPP_DISPLAY } from '../data/site';
+import { NAV_LINKS, SOCIAL_LINKS, whatsapp, WHATSAPP_DISPLAY, EMAIL, EMAIL_HREF } from '../data/site';
 import { services } from '../data/services';
 import Logo from './Logo.astro';
 
@@ -84,6 +84,15 @@ const talkLink = whatsapp();
                                         <div class="content">
                                             <h6>WhatsApp</h6>
                                             <p><a href={talkLink} target="_blank" rel="noopener">{WHATSAPP_DISPLAY}</a></p>
+                                        </div>
+                                    </div>
+                                    <div class="agenko-iconic-box style-three mb-30">
+                                        <div class="icon">
+                                            <i class="far fa-envelope"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h6>Email</h6>
+                                            <p><a href={EMAIL_HREF}>{EMAIL}</a></p>
                                         </div>
                                     </div>
                                     <div class="agenko-info-box">

@@ -5,8 +5,8 @@
  * 36 places; both are now single sources of truth.
  */
 
-/** Replace with the real number. Digits only, international format, no "+". */
-export const WHATSAPP_NUMBER = '6281234567890';
+/** Digits only, international format, no "+". This is what wa.me expects. */
+export const WHATSAPP_NUMBER = '6285121395643';
 
 /** Builds a wa.me link with an optional pre-filled message. */
 export function whatsapp(message?: string): string {
@@ -14,8 +14,18 @@ export function whatsapp(message?: string): string {
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }
 
-/** Human-readable form of the number, shown in the footer. */
-export const WHATSAPP_DISPLAY = '+62 812-3456-7890';
+/** Human-readable form of the number, shown in the footer and on /kontak. */
+export const WHATSAPP_DISPLAY = '+62 851-2139-5643';
+
+/**
+ * The phone line is the same handset as WhatsApp, so it is derived rather than
+ * repeated - one number to change if it ever moves.
+ */
+export const PHONE_DISPLAY = WHATSAPP_DISPLAY;
+export const PHONE_HREF = `tel:+${WHATSAPP_NUMBER}`;
+
+export const EMAIL = 'business@ricksitestudio.com';
+export const EMAIL_HREF = `mailto:${EMAIL}`;
 
 /**
  * Pages that do not exist yet. Every link pointing at one of these renders as
@@ -47,7 +57,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Layanan', href: '/#services', children: [] },
   { label: 'Project', href: '/projects' },
   { label: 'Tentang', href: '/#about' },
-  { label: 'Kontak', href: '/#contact' },
+  { label: 'Kontak', href: '/kontak' },
 ];
 
 export interface SocialLink {

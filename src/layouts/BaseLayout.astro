@@ -9,6 +9,7 @@
  */
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { whatsapp } from '../data/site';
 
 interface Props {
   title: string;
@@ -92,6 +93,21 @@ const { title, description } = Astro.props;
         <!--====== Start Overlay ======-->
         <div class="offcanvas__overlay"></div>
         <Header />
+        <!--====== WhatsApp Bubble ======-->
+        <!-- Deliberately outside #smooth-wrapper: ScrollSmoother animates that
+             element with a transform, and a transformed ancestor makes
+             position:fixed resolve against it instead of the viewport, so a
+             bubble placed inside would scroll away with the page. -->
+        <a
+            href={whatsapp('Halo Ricksite Studio, saya mau tanya-tanya dulu.')}
+            class="rs-wa-bubble"
+            target="_blank"
+            rel="noopener"
+            aria-label="Chat WhatsApp Ricksite Studio"
+        >
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            <span class="rs-wa-bubble-text">Chat WhatsApp</span>
+        </a>
         <!--======  Smooth Wrapper  ======-->
         <div id="smooth-wrapper">
             <div id="smooth-content">
