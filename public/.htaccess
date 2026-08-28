@@ -1,0 +1,75 @@
+# Ricksite Studio - server rules for the static Astro build.
+#
+# The build uses Astro's `format: 'file'`, so every page is a flat .html file
+# (jasa-seo.html) while every link in the markup is extensionless (/jasa-seo).
+# Without the rewrite below, LiteSpeed answers those links with a 404. This
+# file is the piece that makes the two halves agree.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # One canonical origin: https, no www. Anything else redirects once.
+    RewriteCond %{HTTPS} !=on [OR]
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^ https://ricksitestudio.com%{REQUEST_URI} [R=301,L,NE]
+
+    # /index.html is the homepage; send it to / before the generic rule below
+    # can turn it into /index.
+    RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+    RewriteRule ^ / [R=301,L]
+
+    # A visitor should never see the .html extension, so requests that spell it
+    # out are redirected to the extensionless form the site actually links to.
+    RewriteCond %{THE_REQUEST} \s/+([^\s?]*?)\.html[\s?] [NC]
+    RewriteRule ^ /%1 [R=301,L,NE]
+
+    # Drop a trailing slash on anything that is not a real directory, so
+    # /jasa-seo/ and /jasa-seo do not become two URLs for one page.
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)/$ /$1 [R=301,L,NE]
+
+    # The rewrite itself: /jasa-seo is served from jasa-seo.html, internally and
+    # with a 200. No redirect, so there is no extra round trip on every click.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.html -f
+    RewriteRule ^(.*)$ /$1.html [L]
+</IfModule>
+
+ErrorDocument 404 /404.html
+
+# Dotfiles are never part of the site.
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # Agenko's asset filenames carry no content hash, so a stale cache can only
+    # be cleared by waiting it out. Fonts and images are effectively immutable
+    # and get a long life; CSS and JS are the files we actually edit, so they
+    # stay short enough that a fix reaches returning visitors the next day.
+    ExpiresByType image/webp                "access plus 1 year"
+    ExpiresByType image/png                 "access plus 1 year"
+    ExpiresByType image/jpeg                "access plus 1 year"
+    ExpiresByType image/svg+xml             "access plus 1 year"
+    ExpiresByType font/woff2                "access plus 1 year"
+    ExpiresByType font/woff                 "access plus 1 year"
+    ExpiresByType application/font-woff     "access plus 1 year"
+    ExpiresByType text/css                  "access plus 1 day"
+    ExpiresByType application/javascript    "access plus 1 day"
+    ExpiresByType text/html                 "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+    AddOutputFilterByType DEFLATE application/javascript application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>

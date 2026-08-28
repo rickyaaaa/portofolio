@@ -1,0 +1,82 @@
+---
+/**
+ * Served by ErrorDocument in public/.htaccess, so it has to work from any URL.
+ * Every path in it is root-absolute for that reason.
+ *
+ * Built from the same agenko-page-banner the service pages use, so a wrong URL
+ * still lands somewhere that looks like the site rather than a server default.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FinalCta from '../components/sections/FinalCta.astro';
+import { services } from '../data/services';
+---
+
+<BaseLayout
+    title="Halaman Tidak Ditemukan - Ricksite Studio"
+    description="Halaman yang kamu cari tidak ada. Kembali ke beranda atau lihat layanan Ricksite Studio."
+>
+    <!--====== Start Page Banner ======-->
+    <section class="agenko-page-banner">
+        <div class="shape shape-circle1"><span></span></div>
+        <div class="shape shape-circle2"><span></span></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <!--=== Page Content ===-->
+                    <div class="page-content">
+                        <h1 class="page-title">404</h1>
+                        <div class="row">
+                            <div class="col-xl-9">
+                                <div class="text-box">
+                                    <p>Halaman yang kamu cari nggak ada atau sudah dipindah. Mungkin salah ketik alamatnya?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="breadcrumb-link mt-30">
+                            <li><a href="/">Beranda</a></li>
+                            <li class="active">Halaman Tidak Ditemukan</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Page Banner ======-->
+
+    <!--====== Start Suggestions Section ======-->
+    <section class="agk-service-deliverables pt-130 pb-100">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <!--=== Section Title ===-->
+                    <div class="section-title mb-50 pf_fadeup">
+                        <span class="sub-title">Coba Ke Sini</span>
+                        <h2>Mungkin Ini yang Kamu Cari.</h2>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="text-box mb-50 pf_fadeup">
+                        <p>Semua layanan Ricksite Studio ada di bawah. Atau langsung lihat <a href="/projects">portofolio</a> kami.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {services.map((service) => (
+                    <Fragment>
+                    <div class="col-xl-4 col-md-6 col-sm-12">
+                        <a href={`/${service.slug}`} class="agenko-iconic-box style-four rs-deliverable mb-30 pf_fadeup">
+                            <div class="icon">
+                                <i class={service.icon}></i>
+                            </div>
+                            <div class="content">
+                                <h4 class="title">{service.title}</h4>
+                            </div>
+                        </a>
+                    </div>
+                    {" "}</Fragment>
+                ))}
+            </div>
+        </div>
+    </section><!--====== End Suggestions Section ======-->
+
+    <FinalCta />
+</BaseLayout>
