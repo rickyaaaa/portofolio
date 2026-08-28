@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    // Vendored browser libraries (jQuery, GSAP, Slick, Waypoints) plus our own
+    // plain-script bundle. These run in the browser against globals, are not
+    // part of the TypeScript program, and only produce noise when checked.
+    "public/assets/js",
+    // Local-only reference copies, already gitignored.
+    "agenko-creative-digital-agency-html-template-*",
+    "screenshots-source"
+  ]
+}
