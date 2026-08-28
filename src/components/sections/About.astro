@@ -1,12 +1,11 @@
 ---
-/** Agenko agk-about section, short variant (counters/experience box removed). */
-import Logo from '../Logo.astro';
-
 /**
- * The pills name what Ricksite sells, so they are read out as a list rather
- * than baked into the artwork. Order matches the brand banner they come from.
+ * Agenko agk-about section, short variant (counters/experience box removed).
+ *
+ * The image is the supplied brand banner. It is landscape (1760x920) while the
+ * slot is portrait, so `img { max-width: 100% }` scales it to the column width
+ * and it sits shorter than the text beside it - intended, not a crop.
  */
-const disciplines = ['Google Ads', 'Meta Ads', 'SEO', 'Website'];
 ---
 
 <!--======  Start About Section  ======-->
@@ -36,23 +35,8 @@ const disciplines = ['Google Ads', 'Meta Ads', 'SEO', 'Website'];
             <div class="col-xl-5">
                 <!--=== Agk Image Box ===-->
                 <div class="agk-image-box style-one mb-50 pf_fadeup">
-                    <!-- Built in markup rather than shipped as an image file:
-                         the wordmark is set in Poppins, and an SVG loaded
-                         through <img> is an isolated document that cannot reach
-                         the page's webfonts - the same reason Logo.astro is
-                         inlined. This way the card stays sharp at any size and
-                         the type is the real brand face. -->
                     <div class="agk-image">
-                        <div class="rs-brand-card">
-                            <Logo class="rs-brand-card-logo" />
-                            <ul class="rs-brand-card-tags">
-                                {disciplines.map((discipline, index) => (
-                                    <Fragment>
-                                    <li class={index === 0 ? 'is-active' : undefined}>{discipline}</li>
-                                    {" "}</Fragment>
-                                ))}
-                            </ul>
-                        </div>
+                        <img src="/assets/images/ricksite/pages/ricksite-brand.webp" alt="Ricksite Studio - Google Ads, Meta Ads, SEO, Website">
                     </div>
                 </div>
             </div>
