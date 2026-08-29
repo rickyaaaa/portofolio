@@ -20,6 +20,20 @@
     # new token rather than just today's file.
     RewriteRule ^google[0-9a-f]{16}\.html$ - [L]
 
+    # /sitemap.xml is what people and tools reach for by habit; the generated
+    # index is sitemap-index.xml. Pointing one at the other means submitting
+    # the wrong one in Search Console still finds it.
+    RewriteRule ^sitemap\.xml$ /sitemap-index.xml [R=301,L]
+
+    # /404 is the error document's own path, not a page of this site. The
+    # extensionless rule at the bottom would happily serve it at 200, and a
+    # page that says "not found" while returning 200 is the soft 404 Search
+    # Console reports. Answer with a real 404 instead - Apache then renders
+    # the same page through ErrorDocument, with the status it should have had.
+    # The ErrorDocument path is /404.html, which this pattern does not match,
+    # so there is no loop.
+    RewriteRule ^404$ - [R=404,L]
+
     # /index.html is the homepage; send it to / before the generic rule below
     # can turn it into /index.
     RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]

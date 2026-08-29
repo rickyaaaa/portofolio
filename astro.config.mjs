@@ -27,6 +27,18 @@ export default defineConfig({
   integrations: [
     // robots.txt points crawlers here. Generated from the routes, so pages
     // added later show up without anyone remembering to edit a list.
+    //
+    // No lastmod: every page would carry the build timestamp, including the
+    // ones that did not change, and Google states it ignores a lastmod it
+    // cannot trust. An absent date is better than a misleading one.
+    // The homepage is written as the bare origin, with no trailing slash,
+    // while the canonical tag on that page says "/". That was checked rather
+    // than assumed: serialize() is handed the URL with the slash and the
+    // sitemap package strips it afterwards, so a serialize hook to put it back
+    // is a no-op. It also does not matter - an empty path and "/" are the same
+    // URL under RFC 3986, and Google normalises them together. Forcing the
+    // issue would mean Astro's trailingSlash: 'always', which would change
+    // every route on the site to fix nothing.
     sitemap({
       // The 404 is a server response, not a page worth crawling.
       filter: (page) => !page.endsWith('/404'),
