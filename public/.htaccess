@@ -13,6 +13,13 @@
     RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
     RewriteRule ^ https://ricksitestudio.com%{REQUEST_URI} [R=301,L,NE]
 
+    # Google's site-verification file has to answer at its exact URL with a
+    # 200: the check treats a redirect as a failure. The .html rule below would
+    # strip its extension like any other page, so it is served untouched here,
+    # before anything can rewrite it. The pattern covers re-verification with a
+    # new token rather than just today's file.
+    RewriteRule ^google[0-9a-f]{16}\.html$ - [L]
+
     # /index.html is the homepage; send it to / before the generic rule below
     # can turn it into /index.
     RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
