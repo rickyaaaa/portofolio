@@ -17,9 +17,9 @@ import InquiryForm from '../components/sections/InquiryForm.astro';
 import FinalCta from '../components/sections/FinalCta.astro';
 import { services } from '../data/services';
 import { servicePages } from '../data/service-pages';
-import { projects, projectPath, PROJECT_PAGES_LIVE } from '../data/projects';
+import { projects } from '../data/projects';
+import ProjectCard from '../components/ProjectCard.astro';
 import { whatsapp } from '../data/site';
-import { asset } from '../lib/asset';
 
 export function getStaticPaths() {
   return services.map((service) => ({
@@ -173,37 +173,7 @@ const consultLink = whatsapp(
                 <div class="row">
                     {related.map((project) => (
                         <Fragment>
-                        <div class="col-lg-4 col-md-6">
-                            <!--=== Project Item ===-->
-                            <div class="agenko-project-item style-one mb-45 pf_fadeup">
-                                <div class="thumbnail">
-                                    <img src={asset(`/assets/images/ricksite/projects/${project.image}`)} alt={project.title}>
-                                    <div class="project-button">
-                                        <a
-                                            href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
-                                            data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
-                                            aria-label={`Lihat detail project ${project.title}`}
-                                        ><i class="far fa-plus"></i></a>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <div class="project-categories">
-                                        {project.tags.map((tag) => (
-                                            <Fragment>
-                                            <a
-                                                href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
-                                                data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
-                                            >{tag}</a>
-                                            {" "}</Fragment>
-                                        ))}
-                                    </div>
-                                    <h4 class="title"><a
-                                        href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
-                                        data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
-                                    >{project.title}</a></h4>
-                                </div>
-                            </div>
-                        </div>
+                        <ProjectCard project={project} columns="col-lg-4 col-md-6" />
                         {" "}</Fragment>
                     ))}
                 </div>

@@ -4,14 +4,13 @@
  *
  * The `<Fragment>…{' '}` wrappers reproduce the newline that separated sibling
  * elements in the original hand-written HTML. That whitespace is significant:
- * `.project-categories a` is inline-block, so without it the chips lose the
- * inter-word space and sit tighter than in the original.
+ * the cards are inline-block siblings, so without it they sit tighter than in
+ * the original.
  *
- * Cards link to the internal /projects/<slug> detail page — never straight to a
- * client's live site, and never to an internal system at all.
+ * Where a card points is ProjectCard's decision, not this section's.
  */
-import { featuredProjects, projectPath, PROJECT_PAGES_LIVE } from '../../data/projects';
-import { asset } from '../../lib/asset';
+import { featuredProjects } from '../../data/projects';
+import ProjectCard from '../ProjectCard.astro';
 ---
 
 <!--======  Start Project Section  ======-->
@@ -40,37 +39,7 @@ import { asset } from '../../lib/asset';
         <div class="row">
             {featuredProjects.map((project) => (
                 <Fragment>
-                <div class="col-lg-6">
-                    <!--=== Project Item ===-->
-                    <div class="agenko-project-item style-one mb-45 pf_fadeup">
-                        <div class="thumbnail">
-                            <img src={asset(`/assets/images/ricksite/projects/${project.image}`)} alt={project.title}>
-                            <div class="project-button">
-                                <a
-                                    href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
-                                    data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
-                                    aria-label={`Lihat detail project ${project.title}`}
-                                ><i class="far fa-plus"></i></a>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="project-categories">
-                                {project.tags.map((tag) => (
-                                    <Fragment>
-                                    <a
-                                        href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
-                                        data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
-                                    >{tag}</a>
-                                    {" "}</Fragment>
-                                ))}
-                            </div>
-                            <h4 class="title"><a
-                                href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
-                                data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
-                            >{project.title}</a></h4>
-                        </div>
-                    </div>
-                </div>
+                <ProjectCard project={project} columns="col-lg-6" />
                 {" "}</Fragment>
             ))}
         </div>

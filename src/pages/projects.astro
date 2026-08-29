@@ -14,15 +14,12 @@
  * fires, which cannot happen inside a hidden pane, so an animated card would
  * still be invisible after its tab was opened. The section title keeps it.
  *
- * Cards route to /projects/<slug> like everywhere else. Those detail pages do
- * not exist yet, so they render as data-rs-todo — internal systems must never
- * link to a live system, and public sites get their "visit site" button inside
- * their own detail page rather than jumping the visitor off this one.
+ * Where a card points is ProjectCard's decision, not this page's.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FinalCta from '../components/sections/FinalCta.astro';
-import { projectCategories, projectsIn, projectPath, PROJECT_PAGES_LIVE } from '../data/projects';
-import { asset } from '../lib/asset';
+import { projectCategories, projectsIn } from '../data/projects';
+import ProjectCard from '../components/ProjectCard.astro';
 
 const title = 'Portofolio Project - Ricksite Studio';
 const description =
@@ -100,37 +97,7 @@ const description =
                                 <div class="row">
                                     {projectsIn(category.id).map((project) => (
                                         <Fragment>
-                                        <div class="col-lg-4 col-md-6">
-                                            <!--=== Project Item ===-->
-                                            <div class="agenko-project-item style-one mb-45">
-                                                <div class="thumbnail">
-                                                    <img src={asset(`/assets/images/ricksite/projects/${project.image}`)} alt={project.title}>
-                                                    <div class="project-button">
-                                                        <a
-                                                            href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
-                                                            data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
-                                                            aria-label={`Lihat detail project ${project.title}`}
-                                                        ><i class="far fa-plus"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="project-categories">
-                                                        {project.tags.map((tag) => (
-                                                            <Fragment>
-                                                            <a
-                                                                href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
-                                                                data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
-                                                            >{tag}</a>
-                                                            {" "}</Fragment>
-                                                        ))}
-                                                    </div>
-                                                    <h4 class="title"><a
-                                                        href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}
-                                                        data-rs-todo={PROJECT_PAGES_LIVE ? undefined : projectPath(project)}
-                                                    >{project.title}</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <ProjectCard project={project} columns="col-lg-4 col-md-6" animate={false} />
                                         {" "}</Fragment>
                                     ))}
                                 </div>

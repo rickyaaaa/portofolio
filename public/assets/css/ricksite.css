@@ -619,3 +619,24 @@
   line-height: 1.6;
   opacity: 0.7;
 }
+
+/*-------------------------------------
+    ## Portfolio tag chips
+
+    The chips were anchors in the template, but they never pointed anywhere -
+    they name what a project is, they are not navigation. As <span> they lose
+    the styling Agenko hangs off `.project-categories a`, so it is restated
+    here for both, unchanged apart from the explicit display an anchor was
+    getting from the template's own reset.
+--------------------------------------*/
+.agenko-project-item.style-one .content .project-categories span {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  line-height: 18px;
+  margin-bottom: 10px;
+}
+.agenko-project-item.style-one .content .project-categories span:not(:last-child) {
+  margin-right: 5px;
+}
