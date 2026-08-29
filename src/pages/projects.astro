@@ -22,6 +22,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FinalCta from '../components/sections/FinalCta.astro';
 import { projectCategories, projectsIn, projectPath, PROJECT_PAGES_LIVE } from '../data/projects';
+import { asset } from '../lib/asset';
 
 const title = 'Portofolio Project - Ricksite Studio';
 const description =
@@ -103,7 +104,7 @@ const description =
                                             <!--=== Project Item ===-->
                                             <div class="agenko-project-item style-one mb-45">
                                                 <div class="thumbnail">
-                                                    <img src={`/assets/images/ricksite/projects/${project.image}`} alt={project.title}>
+                                                    <img src={asset(`/assets/images/ricksite/projects/${project.image}`)} alt={project.title}>
                                                     <div class="project-button">
                                                         <a
                                                             href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}

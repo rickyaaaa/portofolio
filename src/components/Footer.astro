@@ -3,6 +3,7 @@
 import { NAV_LINKS, SOCIAL_LINKS, whatsapp, WHATSAPP_DISPLAY, EMAIL, EMAIL_HREF } from '../data/site';
 import { services } from '../data/services';
 import Logo from './Logo.astro';
+import { asset } from '../lib/asset';
 
 /** Plain wa.me link, no pre-filled message — matches the original markup. */
 const talkLink = whatsapp();
@@ -10,8 +11,8 @@ const talkLink = whatsapp();
 
 <!--====== Start Footer Area ======-->
 <footer class="agenko-footer gray-dark pt-130 primary-black-bg">
-    <div class="shape shape-one"><span><img class="rotate360" src="/assets/images/digital-agency/footer/element1.png" alt="Shape"></span></div>
-    <div class="shape shape-two"><span><img class="rotate360" src="/assets/images/digital-agency/footer/element2.png" alt="Shape"></span></div>
+    <div class="shape shape-one"><span><img class="rotate360" src={asset("/assets/images/digital-agency/footer/element1.png")} alt="Shape"></span></div>
+    <div class="shape shape-two"><span><img class="rotate360" src={asset("/assets/images/digital-agency/footer/element2.png")} alt="Shape"></span></div>
     <div class="shape shape-blur_one"><span></span></div>
     <div class="shape shape-blur_two"><span></span></div>
     <!--=== Footer Widget Area ===-->

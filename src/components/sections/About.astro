@@ -6,6 +6,7 @@
  * slot is portrait, so `img { max-width: 100% }` scales it to the column width
  * and it sits shorter than the text beside it - intended, not a crop.
  */
+import { asset } from '../../lib/asset';
 ---
 
 <!--======  Start About Section  ======-->
@@ -36,7 +37,7 @@
                 <!--=== Agk Image Box ===-->
                 <div class="agk-image-box style-one mb-50 pf_fadeup">
                     <div class="agk-image">
-                        <img src="/assets/images/ricksite/pages/ricksite-brand.webp" alt="Ricksite Studio - Google Ads, Meta Ads, SEO, Website">
+                        <img src={asset("/assets/images/ricksite/pages/ricksite-brand.webp")} alt="Ricksite Studio - Google Ads, Meta Ads, SEO, Website">
                     </div>
                 </div>
             </div>

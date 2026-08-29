@@ -11,6 +11,7 @@
  * client's live site, and never to an internal system at all.
  */
 import { featuredProjects, projectPath, PROJECT_PAGES_LIVE } from '../../data/projects';
+import { asset } from '../../lib/asset';
 ---
 
 <!--======  Start Project Section  ======-->
@@ -43,7 +44,7 @@ import { featuredProjects, projectPath, PROJECT_PAGES_LIVE } from '../../data/pr
                     <!--=== Project Item ===-->
                     <div class="agenko-project-item style-one mb-45 pf_fadeup">
                         <div class="thumbnail">
-                            <img src={`/assets/images/ricksite/projects/${project.image}`} alt={project.title}>
+                            <img src={asset(`/assets/images/ricksite/projects/${project.image}`)} alt={project.title}>
                             <div class="project-button">
                                 <a
                                     href={PROJECT_PAGES_LIVE ? projectPath(project) : '#'}

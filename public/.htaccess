@@ -52,13 +52,14 @@ ErrorDocument 404 /404.html
 <IfModule mod_expires.c>
     ExpiresActive On
 
-    # CSS and JS are requested with a ?v=<content hash> that src/lib/asset.ts
-    # puts on every link, so an edited file is a new URL and a year of caching
-    # cannot serve a stale one. Without that the CDN in front of this host kept
-    # answering with an old stylesheet for hours after a deploy.
+    # Every stylesheet, script and image is requested with a ?v=<content hash>
+    # that src/lib/asset.ts puts on the URL, so an edited file is a new URL and
+    # a year of caching cannot serve a stale one. Without that the CDN in front
+    # of this host kept answering with an old stylesheet for hours after a
+    # deploy, and an overwritten image would have been worse - a year.
     #
-    # Images and fonts are not versioned, so replacing one means giving it a new
-    # filename rather than overwriting it.
+    # Fonts are the exception: they are referenced from inside the CSS, which
+    # this cannot rewrite. They are also the files nobody edits.
     ExpiresByType image/webp                "access plus 1 year"
     ExpiresByType image/png                 "access plus 1 year"
     ExpiresByType image/jpeg                "access plus 1 year"
