@@ -9,15 +9,59 @@
  */
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { whatsapp } from '../data/site';
+import { whatsapp, WHATSAPP_NUMBER, EMAIL, SOCIAL_LINKS } from '../data/site';
 import { asset } from '../lib/asset';
 
 interface Props {
   title: string;
   description: string;
+  /** Keep this page out of the index. Only the 404 sets it. */
+  noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
+
+/**
+ * The canonical URL for this page.
+ *
+ * public/.htaccess already 301s www, http and the .html and trailing-slash
+ * spellings onto one form, but a redirect only helps a crawler that follows the
+ * wrong URL. This states the right one outright, which is what Search Console
+ * reports against.
+ *
+ * The .html has to come off first. Under `format: 'file'` Astro.url.pathname is
+ * the output filename, not the route, so it reads /jasa-seo.html - and naming
+ * that as canonical would point Google at a URL the server immediately
+ * redirects away from, which is the contradiction Search Console flags rather
+ * than resolves.
+ */
+const canonical = new URL(
+  Astro.url.pathname.replace(/index\.html$/, '').replace(/\.html$/, ''),
+  Astro.site
+).href;
+
+// Absolute, because link previews are fetched by other servers.
+const ogImage = new URL('/assets/images/ricksite/pages/ricksite-og.jpg', Astro.site).href;
+
+/**
+ * Organization rather than LocalBusiness: LocalBusiness expects a street
+ * address, and inventing one to satisfy a schema is exactly the kind of thing
+ * that earns a manual action. This states only what is true.
+ */
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Ricksite Studio',
+  url: 'https://ricksitestudio.com',
+  logo: new URL('/assets/images/ricksite/logo/ricksite-appicon.svg', Astro.site).href,
+  image: ogImage,
+  description:
+    'Jasa pembuatan website, web app, dan digital marketing untuk bisnis di Indonesia.',
+  email: EMAIL,
+  telephone: `+${WHATSAPP_NUMBER}`,
+  areaServed: { '@type': 'Country', name: 'Indonesia' },
+  sameAs: SOCIAL_LINKS.map((social) => social.href),
+};
 ---
 
 <!DOCTYPE html>
@@ -30,6 +74,23 @@ const { title, description } = Astro.props;
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--====== Title ======-->
         <title>{title}</title>
+        <link rel="canonical" href={canonical}>
+        {noindex && <meta name="robots" content="noindex, follow">}
+        <!--====== Link previews (WhatsApp, Facebook, Instagram, X) ======-->
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Ricksite Studio">
+        <meta property="og:locale" content="id_ID">
+        <meta property="og:url" content={canonical}>
+        <meta property="og:title" content={title}>
+        <meta property="og:description" content={description}>
+        <meta property="og:image" content={ogImage}>
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content={title}>
+        <meta name="twitter:description" content={description}>
+        <meta name="twitter:image" content={ogImage}>
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(organization)} />
         <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href={asset("/assets/images/ricksite/logo/ricksite-appicon.svg")} type="image/svg+xml">
         <!--====== Google Fonts ======-->
