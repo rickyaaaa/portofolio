@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "astro/tsconfigs/strict",
+  // "**/*" deliberately does not match dot-directories, so Astro's generated
+  // types under .astro/ are listed explicitly. Without this they are pulled in
+  // only indirectly, via the reference inside .astro/types.d.ts, which leaves
+  // the editor free to bind them to an inferred project with default options -
+  // where skipLibCheck is off and Astro's astro:content template reports errors
+  // it never reports during a build. Naming them here makes them root files of
+  // this project, so the settings below always apply to them.
+  "include": [".astro/**/*.d.ts", "**/*"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    // Vendored browser libraries (jQuery, GSAP, Slick, Waypoints) plus our own
+    // plain-script bundle. These run in the browser against globals, are not
+    // part of the TypeScript program, and only produce noise when checked.
+    "public/assets/js",
+    // Local-only reference copies, already gitignored.
+    "agenko-creative-digital-agency-html-template-*",
+    "screenshots-source"
+  ]
+}

@@ -2,6 +2,7 @@
 /** Agenko header-two, transparent variant. Markup unchanged from index.html. */
 import { NAV_LINKS, SOCIAL_LINKS, whatsapp } from '../data/site';
 import { services, servicePath, SERVICE_PAGES_LIVE } from '../data/services';
+import Logo from './Logo.astro';
 
 // Fill the Layanan dropdown from the service catalogue so the menu and the
 // services section can never list different things.
@@ -30,13 +31,13 @@ const talkLink = whatsapp('Halo Ricksite Studio, mau tanya-tanya soal project ni
             <div class="primary-menu">
                 <!--====  Site Branding  ===-->
                 <div class="site-branding">
-                    <a href="/" class="brand-logo"><img src="/assets/images/ricksite/logo/logo-main.svg" alt="Ricksite Studio"></a>
+                    <a href="/" class="brand-logo"><Logo /></a>
                 </div>
                 <!--=== Sasly Main Menu===-->
                 <div class="pf-nav-menu">
                     <!--====  Site Branding  ===-->
                     <div class="site-branding d-block d-lg-none text-center">
-                        <a href="/" class="brand-logo"><img src="/assets/images/ricksite/logo/logo-main.svg" alt="Ricksite Studio"></a>
+                        <a href="/" class="brand-logo"><Logo /></a>
                     </div>
                     <!--=== Main Menu ===-->
                     <nav class="main-menu">
@@ -63,8 +64,8 @@ const talkLink = whatsapp('Halo Ricksite Studio, mau tanya-tanya soal project ni
                     <div class="pf-nav-button mt-20 d-block d-md-none">
                         <a href={talkLink} target="_blank" rel="noopener" class="theme-btn style-one">
                             <span class="text-flip">
-                                <span class="text">NGOBROL YUK</span>
-                                <span class="text">NGOBROL YUK</span>
+                                <span class="text">KONSULTASI</span>
+                                <span class="text">KONSULTASI</span>
                             </span>
                         </a>
                     </div>
@@ -74,7 +75,12 @@ const talkLink = whatsapp('Halo Ricksite Studio, mau tanya-tanya soal project ni
                         <ul class="social-link">
                             {SOCIAL_LINKS.map((social) => (
                                 <Fragment>
-                                <li><a href="#" data-rs-todo="social"><i class={social.icon}></i></a></li>
+                                <li><a
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener"
+                                    aria-label={`Ricksite Studio di ${social.label}`}
+                                ><i class={social.icon}></i></a></li>
                                 {" "}</Fragment>
                             ))}
                         </ul>
@@ -85,8 +91,8 @@ const talkLink = whatsapp('Halo Ricksite Studio, mau tanya-tanya soal project ni
                     <div class="nav-button d-none d-md-block">
                         <a href={talkLink} target="_blank" rel="noopener" class="theme-btn style-one">
                             <span class="text-flip">
-                                <span class="text">NGOBROL YUK</span>
-                                <span class="text">NGOBROL YUK</span>
+                                <span class="text">KONSULTASI</span>
+                                <span class="text">KONSULTASI</span>
                             </span>
                         </a>
                     </div>

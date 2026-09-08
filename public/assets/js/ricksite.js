@@ -52,3 +52,43 @@
     });
 
 })(window.jQuery);
+
+/*-----------------------------------------------------------------------------------
+
+    Intro loader
+
+    The brand sequence runs ~2.32s (mark draws, dot travels, wordmark reveals).
+    Agenko's own preloader fades on window.load after a fixed 500ms, which on a
+    warm cache would cut the animation off mid-draw — so this waits for whichever
+    finishes last, the page or the animation, then fades out.
+
+    The head script in BaseLayout has already removed the loader entirely on
+    repeat views and for prefers-reduced-motion, so this only runs on a first
+    visit.
+
+-----------------------------------------------------------------------------------*/
+(function () {
+    'use strict';
+
+    var loader = document.getElementById('rs-preloader');
+    if (!loader || document.documentElement.classList.contains('rs-intro-skip')) return;
+
+    var SEQUENCE_MS = 2320;
+    var startedAt = Date.now();
+
+    function dismiss() {
+        var remaining = Math.max(0, SEQUENCE_MS - (Date.now() - startedAt));
+        setTimeout(function () {
+            loader.classList.add('is-done');
+            try { sessionStorage.setItem('rs-intro-played', '1'); } catch (e) {}
+            setTimeout(function () {
+                if (loader.parentNode) loader.parentNode.removeChild(loader);
+                // Page height changed; let ScrollTrigger re-measure.
+                if (window.ScrollTrigger) ScrollTrigger.refresh();
+            }, 500);
+        }, remaining);
+    }
+
+    if (document.readyState === 'complete') dismiss();
+    else window.addEventListener('load', dismiss);
+})();
