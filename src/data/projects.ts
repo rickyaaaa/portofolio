@@ -17,7 +17,11 @@
  * Tagihan"), so grouping on them would break the page the next time one is
  * reworded.
  */
-export type ProjectCategory = 'company-profile' | 'travel' | 'web-app';
+export type ProjectCategory =
+  | 'company-profile'
+  | 'travel'
+  | 'website-villa'
+  | 'web-app';
 
 export interface Project {
   title: string;
@@ -98,6 +102,16 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    title: 'Villa Desa Krui',
+    slug: 'villa-desa-krui',
+    category: 'website-villa',
+    // WordPress underneath, but the booking engine is the part a prospect is
+    // actually shopping for, and the card only has room for two labels.
+    tags: ['Website Villa', 'Booking System'],
+    liveUrl: 'https://villadesakrui.com/',
+    image: 'villa-desa-krui.webp',
+  },
+  {
     title: 'Larisse Tailor',
     slug: 'larisse-tailor',
     category: 'company-profile',
@@ -132,6 +146,7 @@ export const projectCategories: { id: ProjectCategory | 'all'; title: string }[]
   { id: 'all', title: 'Semua' },
   { id: 'company-profile', title: 'Company Profile' },
   { id: 'travel', title: 'Travel' },
+  { id: 'website-villa', title: 'Website Villa' },
   { id: 'web-app', title: 'Web App' },
 ];
 
