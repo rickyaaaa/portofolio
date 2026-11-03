@@ -88,21 +88,10 @@ export const PROBLEM_OPTIONS: Choice[] = [
 
 export const BUDGET_OPTIONS: Choice[] = [
   { value: '< Rp 1,5 jt' },
-  { value: 'Rp 1,5 – 3 jt', hint: 'Setara paket Starter' },
-  { value: 'Rp 3 – 6 jt', hint: 'Setara paket Growth' },
-  { value: 'Rp 6 jt ke atas', hint: 'Setara paket Ultimate' },
+  { value: 'Rp 1,5 – 3 jt' },
+  { value: 'Rp 3 – 6 jt' },
+  { value: 'Rp 6 jt ke atas' },
 ];
-
-/**
- * Which budget a pricing card pre-selects when its button is tapped. Keyed by
- * the plan name in pricing.ts, so a renamed plan shows up as a type error
- * rather than a button that quietly selects nothing.
- */
-export const PLAN_TO_BUDGET: Record<string, string> = {
-  Starter: 'Rp 1,5 – 3 jt',
-  Growth: 'Rp 3 – 6 jt',
-  Ultimate: 'Rp 6 jt ke atas',
-};
 
 /* -------------------------------------------------------------------------
  * FAQ.
@@ -121,7 +110,7 @@ export interface Faq {
 export const LANDING_FAQS: Faq[] = [
   {
     q: 'Berapa lama pengerjaannya?',
-    a: 'Starter (1 halaman) biasanya 3–7 hari kerja. Growth (5–7 halaman) sekitar 2–3 minggu. Ultimate dengan sistem booking dan pembayaran online sekitar 3–5 minggu, karena ada proses verifikasi payment gateway. Timeline pastinya kami kasih setelah materi (foto, paket, harga) lengkap.',
+    a: 'Landing page 1 halaman biasanya 3–7 hari kerja. Website 5–7 halaman dengan katalog paket sekitar 2–3 minggu. Kalau pakai sistem booking dan pembayaran online, sekitar 3–5 minggu karena ada proses verifikasi payment gateway. Timeline pastinya kami kasih setelah materi (foto, paket, harga) lengkap.',
   },
   {
     q: 'Nanti saya bisa edit paket & harga sendiri?',
@@ -137,6 +126,6 @@ export const LANDING_FAQS: Faq[] = [
   },
   {
     q: 'Ada garansi atau maintenance setelah jadi?',
-    a: 'Ada. Setiap paket sudah termasuk maintenance gratis: Starter 15 hari, Growth 1 bulan, Ultimate 1,5 bulan. Kalau ada error dari sisi pengerjaan kami, kami perbaiki tanpa biaya tambahan. Setelah itu tersedia maintenance bulanan kalau kamu butuh.',
+    a: 'Ada. Setiap paket sudah termasuk maintenance gratis 15 hari sampai 1,5 bulan, tergantung paketnya. Kalau ada error dari sisi pengerjaan kami, kami perbaiki tanpa biaya tambahan. Setelah itu tersedia maintenance bulanan kalau kamu butuh.',
   },
 ];

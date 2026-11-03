@@ -7,6 +7,10 @@
  * The page exists to filter: every route to WhatsApp goes through the form,
  * so the chats that arrive already state budget, problem and city.
  *
+ * One call to action only. There is deliberately no price list: a pricing
+ * table with its own buttons competes with the form, and the budget question
+ * already does the qualifying. Prices are discussed in the chat.
+ *
  * Kept out of search: noindex in LandingLayout, and filtered out of the
  * sitemap in astro.config.mjs.
  *
@@ -18,7 +22,6 @@ import Hero from '../components/landing/Hero.astro';
 import Problems from '../components/landing/Problems.astro';
 import Solution from '../components/landing/Solution.astro';
 import CaseStudies from '../components/landing/CaseStudies.astro';
-import Pricing from '../components/landing/Pricing.astro';
 import LeadForm from '../components/landing/LeadForm.astro';
 import FAQ from '../components/landing/FAQ.astro';
 import LandingFooter from '../components/landing/LandingFooter.astro';
@@ -35,7 +38,6 @@ const description =
     <Problems />
     <Solution />
     <CaseStudies />
-    <Pricing />
     <LeadForm />
     <FAQ />
   </main>
