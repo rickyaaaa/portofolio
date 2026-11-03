@@ -1,0 +1,261 @@
+---
+/**
+ * Hero: promise, one CTA into the form, and the qualifier line that tells
+ * people who are just browsing that this is not for them.
+ *
+ * No image here on purpose. The largest element above the fold is the
+ * headline text, so LCP happens on first paint instead of waiting on a
+ * download. The booking card on the right is plain HTML/CSS.
+ */
+import Logo from '../Logo.astro';
+---
+
+<header class="hero">
+  <div class="lp-wrap hero-top">
+    <Logo variant="light" class="hero-logo" />
+  </div>
+
+  <div class="lp-wrap hero-grid">
+    <div class="hero-copy">
+      <p class="hero-kicker">Jasa website untuk travel & tour operator</p>
+      <h1 class="hero-title">
+        Website Travel yang Bikin Tamu <mark>Booking &amp; Bayar DP</mark>, Bukan Cuma Nanya-nanya
+      </h1>
+      <p class="hero-sub">
+        Sistem katalog paket, itinerary, dan booking online untuk travel &amp; tour operator.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#form" class="lp-btn lp-btn--lime hero-btn" data-cta="hero">
+          Cek Kebutuhan Website Saya
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 5v14m0 0-6-6m6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <p class="hero-note">Khusus owner travel yang sudah berjalan. Paket mulai Rp 1,5 juta.</p>
+      </div>
+
+      <p class="hero-trust">
+        Sudah dipakai: <strong>Abunawas Travel</strong> · <strong>Bernard Bali Tours</strong> ·
+        <strong>Bali Rejeng Jeep Tour</strong>
+      </p>
+    </div>
+
+    <figure class="hero-demo" aria-label="Contoh notifikasi booking dari website travel">
+      <div class="demo-card">
+        <div class="demo-row">
+          <span class="demo-icon demo-icon--lime" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M8 2v3m8-3v3M3.5 9h17M5 4.5h14A1.5 1.5 0 0 1 20.5 6v13a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 19V6A1.5 1.5 0 0 1 5 4.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </span>
+          <div>
+            <p class="demo-label">Booking baru masuk</p>
+            <p class="demo-title">Open Trip Labuan Bajo 3H2M</p>
+            <p class="demo-meta">4 orang · Berangkat 14 Juli</p>
+          </div>
+        </div>
+        <div class="demo-divider"></div>
+        <div class="demo-row">
+          <span class="demo-icon demo-icon--green" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <div>
+            <p class="demo-label">DP diterima otomatis</p>
+            <p class="demo-title">Rp 2.400.000</p>
+            <p class="demo-meta">via QRIS · notifikasi terkirim ke kamu &amp; tamu</p>
+          </div>
+        </div>
+      </div>
+      <figcaption class="demo-caption">Ilustrasi alur booking di paket Ultimate</figcaption>
+    </figure>
+  </div>
+</header>
+
+<style>
+  .hero {
+    background: var(--ink);
+    color: var(--on-dark);
+    padding-bottom: 64px;
+    overflow: hidden;
+  }
+
+  .hero-top {
+    padding-top: 20px;
+    padding-bottom: 8px;
+  }
+
+  /* Fixed box so the inline SVG never resizes the header while fonts load. */
+  .hero :global(.hero-logo) {
+    width: 148px;
+    height: 50px;
+  }
+
+  .hero-grid {
+    display: grid;
+    gap: 48px;
+    padding-top: 28px;
+  }
+
+  .hero-kicker {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--lime);
+    margin-bottom: 14px;
+  }
+
+  .hero-title {
+    font-size: clamp(30px, 8.4vw, 54px);
+    line-height: 1.16;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #fff;
+    text-wrap: balance;
+  }
+
+  .hero-title mark {
+    background: none;
+    color: var(--lime);
+  }
+
+  .hero-sub {
+    margin-top: 18px;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--on-dark-muted);
+    max-width: 46ch;
+  }
+
+  .hero-cta {
+    margin-top: 32px;
+  }
+
+  .hero-btn {
+    width: 100%;
+    font-size: 17px;
+  }
+
+  .hero-note {
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--on-dark-muted);
+  }
+
+  .hero-trust {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 14px;
+    color: var(--on-dark-muted);
+  }
+
+  .hero-trust strong {
+    color: var(--on-dark);
+    font-weight: 600;
+  }
+
+  /* Illustrative booking card. */
+  .hero-demo {
+    position: relative;
+  }
+
+  .demo-card {
+    background: var(--paper);
+    color: var(--text);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    max-width: 420px;
+  }
+
+  .demo-row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .demo-icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  .demo-icon--lime {
+    background: var(--lime);
+    color: var(--ink);
+  }
+
+  .demo-icon--green {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  .demo-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .demo-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.35;
+    margin-top: 2px;
+  }
+
+  .demo-meta {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.45;
+    margin-top: 2px;
+  }
+
+  .demo-divider {
+    height: 1px;
+    background: var(--line);
+    margin: 16px 0 16px 54px;
+  }
+
+  .demo-caption {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--on-dark-muted);
+  }
+
+  @media (min-width: 600px) {
+    .hero-btn {
+      width: auto;
+    }
+  }
+
+  @media (min-width: 960px) {
+    .hero {
+      padding-bottom: 96px;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1.25fr 1fr;
+      align-items: center;
+      gap: 64px;
+      padding-top: 56px;
+    }
+
+    .hero-demo {
+      justify-self: end;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .demo-card {
+      transform: rotate(-1.5deg);
+    }
+  }
+</style>

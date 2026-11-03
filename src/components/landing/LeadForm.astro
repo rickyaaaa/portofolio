@@ -1,0 +1,737 @@
+---
+/**
+ * Qualification form: the only way from this page to WhatsApp.
+ *
+ * Flow on a valid submit:
+ *   1. build the WhatsApp message from the answers (+ UTM "Ref:" line)
+ *   2. fbq('track', 'Lead', { budget_range, masalah_utama, kota })
+ *   3. wait 500 ms for the pixel, and in parallel POST to the Sheets webhook
+ *      (no-cors, aborted after 1.5 s, failure ignored)
+ *   4. location.href = https://wa.me/<number>?text=<message>
+ *
+ * Settings (WA number, webhook URL, option lists) come from
+ * src/data/landing.ts and reach the script through data attributes, so the
+ * bundled script holds no configuration of its own.
+ */
+import {
+  BUDGET_OPTIONS,
+  LANDING_WHATSAPP_NUMBER,
+  LEAD_WEBHOOK_URL,
+  PROBLEM_OPTIONS,
+  PROBLEM_OTHER,
+  WEBSITE_STATUS_OPTIONS,
+  type Choice,
+} from '../../data/landing';
+
+interface Group {
+  name: 'kondisi' | 'masalah' | 'budget';
+  legend: string;
+  options: Choice[];
+  columns: 1 | 2;
+}
+
+const groups: Group[] = [
+  { name: 'kondisi', legend: 'Kondisi website sekarang', options: WEBSITE_STATUS_OPTIONS, columns: 1 },
+  { name: 'masalah', legend: 'Masalah utama', options: PROBLEM_OPTIONS, columns: 1 },
+  { name: 'budget', legend: 'Range budget', options: BUDGET_OPTIONS, columns: 2 },
+];
+
+const texts = [
+  { name: 'nama', label: 'Nama kamu', autocomplete: 'name', placeholder: 'Contoh: Budi', max: 60 },
+  { name: 'usaha', label: 'Nama travel / usaha', autocomplete: 'organization', placeholder: 'Contoh: Nusa Trip Lombok', max: 80 },
+  { name: 'kota', label: 'Kota operasional', autocomplete: 'address-level2', placeholder: 'Contoh: Labuan Bajo', max: 60 },
+];
+---
+
+<section class="lp-section form-section" id="form" aria-labelledby="form-title">
+  <div class="lp-wrap form-grid">
+    <div class="form-intro">
+      <span class="lp-eyebrow">Konsultasi gratis</span>
+      <h2 class="lp-h2" id="form-title">Ceritakan Bisnis Travel Kamu — 30 Detik</h2>
+      <p class="lp-lead">
+        Jawaban kamu membantu kami kasih saran yang pas sejak chat pertama, bukan tanya ulang dari awal.
+      </p>
+      <ol class="steps" role="list">
+        <li><span>1</span>Isi 6 pertanyaan singkat di form ini.</li>
+        <li><span>2</span>WhatsApp terbuka dengan jawabanmu sudah terisi. Tinggal tekan kirim.</li>
+        <li><span>3</span>Kami balas dengan rekomendasi paket dan estimasi yang sesuai bisnis kamu.</li>
+      </ol>
+    </div>
+
+    <form
+      id="lead-form"
+      class="form-card"
+      novalidate
+      data-wa={LANDING_WHATSAPP_NUMBER}
+      data-webhook={LEAD_WEBHOOK_URL}
+      data-other={PROBLEM_OTHER}
+    >
+      {texts.map((t) => (
+        <div class="field" data-field={t.name}>
+          <label class="field-label" for={`f-${t.name}`}>
+            {t.label} <span class="req" aria-hidden="true">*</span>
+          </label>
+          <input
+            class="input"
+            id={`f-${t.name}`}
+            name={t.name}
+            type="text"
+            autocomplete={t.autocomplete}
+            placeholder={t.placeholder}
+            maxlength={t.max}
+            required
+            aria-describedby={`err-${t.name}`}
+          />
+          <p class="field-error" id={`err-${t.name}`}></p>
+        </div>
+      ))}
+
+      {groups.map((g) => (
+        <fieldset class="field" data-field={g.name} aria-describedby={`err-${g.name}`}>
+          <legend class="field-label">
+            {g.legend} <span class="req" aria-hidden="true">*</span>
+          </legend>
+          <div class:list={['choices', { 'choices--2': g.columns === 2 }]}>
+            {g.options.map((o) => (
+              <label class="choice">
+                <input type="radio" name={g.name} value={o.value} required />
+                <span class="choice-box">
+                  <span class="choice-dot" aria-hidden="true"></span>
+                  <span class="choice-text">
+                    {o.value}
+                    {o.hint && <small>{o.hint}</small>}
+                  </span>
+                </span>
+              </label>
+            ))}
+          </div>
+
+          {g.name === 'masalah' && (
+            <div class="other" id="masalah-lain-wrap" hidden>
+              <label class="lp-sr-only" for="f-masalah_lain">Tulis masalah kamu</label>
+              <input
+                class="input"
+                id="f-masalah_lain"
+                name="masalah_lain"
+                type="text"
+                maxlength="200"
+                placeholder="Tulis singkat masalah kamu"
+                aria-describedby="err-masalah_lain"
+              />
+              <p class="field-error" id="err-masalah_lain"></p>
+            </div>
+          )}
+
+          <p class="field-error" id={`err-${g.name}`}></p>
+        </fieldset>
+      ))}
+
+      <button type="submit" class="submit" id="lead-submit">
+        <span class="submit-idle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z" />
+          </svg>
+          Kirim &amp; Lanjut ke WhatsApp
+        </span>
+        <span class="submit-busy" aria-hidden="true">
+          <span class="spinner"></span>
+          Membuka WhatsApp…
+        </span>
+      </button>
+
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+
+      <p class="form-fallback" id="form-fallback" hidden>
+        WhatsApp belum terbuka? <a id="form-fallback-link" href="#form">Ketuk di sini untuk membuka chat</a>
+      </p>
+
+      <p class="form-privacy">Jawabanmu hanya dipakai untuk konsultasi ini. Tanpa spam.</p>
+    </form>
+  </div>
+</section>
+
+<script>
+  type Fbq = (...args: unknown[]) => void;
+
+  interface Utm {
+    utm_source: string;
+    utm_campaign: string;
+    utm_content: string;
+  }
+
+  const UTM_KEYS = ['utm_source', 'utm_campaign', 'utm_content'] as const;
+  const UTM_STORAGE = 'rs-lp-utm';
+  const PIXEL_WAIT_MS = 500;
+  const WEBHOOK_TIMEOUT_MS = 1500;
+  /** If the page is still here this long after redirecting, offer a manual link. */
+  const FALLBACK_AFTER_MS = 4000;
+
+  const MESSAGES: Record<string, string> = {
+    nama: 'Isi nama kamu dulu ya.',
+    usaha: 'Isi nama travel atau usaha kamu.',
+    kota: 'Isi kota tempat bisnis kamu beroperasi.',
+    kondisi: 'Pilih kondisi website kamu sekarang.',
+    masalah: 'Pilih masalah yang paling terasa saat ini.',
+    masalah_lain: 'Tulis singkat masalah kamu.',
+    budget: 'Pilih range budget kamu.',
+  };
+
+  const form = document.querySelector<HTMLFormElement>('#lead-form');
+
+  if (form) {
+    const waNumber = form.dataset.wa ?? '';
+    const webhookUrl = form.dataset.webhook ?? '';
+    const otherValue = form.dataset.other ?? 'Lainnya';
+    const submitBtn = form.querySelector<HTMLButtonElement>('#lead-submit')!;
+    const status = form.querySelector<HTMLElement>('#form-status')!;
+    const fallback = form.querySelector<HTMLElement>('#form-fallback')!;
+    const fallbackLink = form.querySelector<HTMLAnchorElement>('#form-fallback-link')!;
+    const otherWrap = form.querySelector<HTMLElement>('#masalah-lain-wrap')!;
+    const otherInput = form.querySelector<HTMLInputElement>('#f-masalah_lain')!;
+
+    let submitting = false;
+    // One Lead per page view, even if the visitor submits again from the fallback.
+    let leadTracked = false;
+    let fallbackTimer: number | undefined;
+
+    /* ---------- UTM: read on arrival, keep for the session ---------- */
+
+    const utm = readUtm();
+
+    function readUtm(): Utm {
+      const params = new URLSearchParams(window.location.search);
+      const fromUrl = Object.fromEntries(
+        UTM_KEYS.map((k) => [k, (params.get(k) ?? '').trim().slice(0, 120)])
+      ) as unknown as Utm;
+
+      if (UTM_KEYS.some((k) => fromUrl[k])) {
+        try {
+          sessionStorage.setItem(UTM_STORAGE, JSON.stringify(fromUrl));
+        } catch {
+          /* storage blocked: the URL values still apply to this visit */
+        }
+        return fromUrl;
+      }
+
+      try {
+        const stored = sessionStorage.getItem(UTM_STORAGE);
+        if (stored) return { ...fromUrl, ...(JSON.parse(stored) as Partial<Utm>) };
+      } catch {
+        /* ignore */
+      }
+      return fromUrl;
+    }
+
+    /* ---------- Reading and validating ---------- */
+
+    function text(name: string): string {
+      const el = form!.elements.namedItem(name);
+      return el instanceof HTMLInputElement ? el.value.trim().replace(/\s+/g, ' ') : '';
+    }
+
+    function radio(name: string): string {
+      const checked = form!.querySelector<HTMLInputElement>(`input[name="${name}"]:checked`);
+      return checked ? checked.value : '';
+    }
+
+    function readForm() {
+      return {
+        nama: text('nama'),
+        usaha: text('usaha'),
+        kota: text('kota'),
+        kondisi: radio('kondisi'),
+        masalah: radio('masalah'),
+        masalah_lain: text('masalah_lain'),
+        budget: radio('budget'),
+      };
+    }
+
+    type Answers = ReturnType<typeof readForm>;
+
+    function validate(d: Answers): string[] {
+      const invalid: string[] = [];
+      if (d.nama.length < 2) invalid.push('nama');
+      if (d.usaha.length < 2) invalid.push('usaha');
+      if (d.kota.length < 2) invalid.push('kota');
+      if (!d.kondisi) invalid.push('kondisi');
+      if (!d.masalah) invalid.push('masalah');
+      else if (d.masalah === otherValue && d.masalah_lain.length < 3) invalid.push('masalah_lain');
+      if (!d.budget) invalid.push('budget');
+      return invalid;
+    }
+
+    function controlsFor(name: string): HTMLInputElement[] {
+      return Array.from(form!.querySelectorAll<HTMLInputElement>(`input[name="${name}"]`));
+    }
+
+    function setError(name: string, message: string) {
+      const err = form!.querySelector<HTMLElement>(`#err-${name}`);
+      if (err) err.textContent = message;
+      for (const el of controlsFor(name)) {
+        if (message) el.setAttribute('aria-invalid', 'true');
+        else el.removeAttribute('aria-invalid');
+      }
+      const wrap = name === 'masalah_lain' ? otherWrap : form!.querySelector(`[data-field="${name}"]`);
+      wrap?.classList.toggle('has-error', Boolean(message));
+    }
+
+    function clearErrors() {
+      for (const name of Object.keys(MESSAGES)) setError(name, '');
+    }
+
+    /* ---------- Live behaviour ---------- */
+
+    // Clear a field's error as soon as it is fixed, and toggle the "Lainnya" box.
+    form.addEventListener('input', (e) => {
+      const target = e.target;
+      if (!(target instanceof HTMLInputElement)) return;
+
+      if (target.name === 'masalah') {
+        const isOther = target.value === otherValue;
+        otherWrap.hidden = !isOther;
+        if (isOther) otherInput.focus();
+        else setError('masalah_lain', '');
+      }
+      if (target.getAttribute('aria-invalid') === 'true') setError(target.name, '');
+    });
+
+    // Pricing buttons: pre-select the matching budget, then let the #form link scroll.
+    document.addEventListener('click', (e) => {
+      const trigger = (e.target as Element | null)?.closest<HTMLElement>('[data-budget]');
+      if (!trigger) return;
+      const value = trigger.dataset.budget;
+      const option = controlsFor('budget').find((el) => el.value === value);
+      if (option) {
+        option.checked = true;
+        setError('budget', '');
+      }
+    });
+
+    /* ---------- Submit ---------- */
+
+    function buildMessage(d: Answers): string {
+      const masalah = d.masalah === otherValue ? `${otherValue}: ${d.masalah_lain}` : d.masalah;
+      // utm_content first: it names the ad, which is what you look up when a chat arrives.
+      const ref = [utm.utm_content, utm.utm_campaign, utm.utm_source].filter(Boolean).join(' / ');
+      const lines = [
+        `Halo Ricksite Studio, saya ${d.nama} dari ${d.usaha} (${d.kota}).`,
+        `Website sekarang: ${d.kondisi}`,
+        `Masalah utama: ${masalah}`,
+        `Budget: ${d.budget}`,
+        'Saya mau konsultasi soal website travel.',
+      ];
+      if (ref) lines.push(`Ref: ${ref}`);
+      return lines.join('\n');
+    }
+
+    function trackLead(d: Answers) {
+      const fbq = (window as Window & { fbq?: Fbq }).fbq;
+      if (leadTracked || typeof fbq !== 'function') return;
+      leadTracked = true;
+      try {
+        fbq('track', 'Lead', {
+          budget_range: d.budget,
+          // The option label, not the free text, so the value stays groupable.
+          masalah_utama: d.masalah,
+          kota: d.kota,
+        });
+      } catch {
+        /* a pixel error must never block the redirect */
+      }
+    }
+
+    async function sendWebhook(d: Answers): Promise<void> {
+      if (!webhookUrl) return;
+      const controller = new AbortController();
+      const timer = window.setTimeout(() => controller.abort(), WEBHOOK_TIMEOUT_MS);
+      try {
+        await fetch(webhookUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          keepalive: true,
+          // text/plain keeps this a "simple" request, which no-cors requires.
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            ...d,
+            masalah: d.masalah === otherValue ? `${otherValue}: ${d.masalah_lain}` : d.masalah,
+            ...utm,
+            page: window.location.href,
+            submitted_at: new Date().toISOString(),
+          }),
+          signal: controller.signal,
+        });
+      } catch {
+        /* timeout or network error: WhatsApp still opens */
+      } finally {
+        window.clearTimeout(timer);
+      }
+    }
+
+    const wait = (ms: number) => new Promise<void>((resolve) => window.setTimeout(resolve, ms));
+
+    function setBusy(busy: boolean) {
+      submitBtn.disabled = busy;
+      submitBtn.classList.toggle('is-busy', busy);
+      submitBtn.setAttribute('aria-busy', String(busy));
+      status.textContent = busy ? 'Mengirim jawaban dan membuka WhatsApp…' : '';
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (submitting) return;
+
+      const data = readForm();
+      const invalid = validate(data);
+
+      clearErrors();
+      if (invalid.length) {
+        for (const name of invalid) setError(name, MESSAGES[name]);
+        const first = controlsFor(invalid[0])[0];
+        first?.focus({ preventScroll: true });
+        first?.closest('.field, .other')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      submitting = true;
+      setBusy(true);
+
+      const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(buildMessage(data))}`;
+      fallbackLink.href = waUrl;
+
+      trackLead(data);
+      await Promise.all([wait(PIXEL_WAIT_MS), sendWebhook(data)]);
+
+      window.location.href = waUrl;
+
+      // In-app browsers (Instagram, Facebook) sometimes hand wa.me to the app
+      // and leave this page open. Re-enable the form and offer a direct link.
+      fallbackTimer = window.setTimeout(() => {
+        submitting = false;
+        setBusy(false);
+        fallback.hidden = false;
+      }, FALLBACK_AFTER_MS);
+    });
+
+    // Coming back with the browser's back button restores the page from cache
+    // with the button still spinning. Reset it.
+    window.addEventListener('pageshow', (e) => {
+      if (!e.persisted) return;
+      window.clearTimeout(fallbackTimer);
+      submitting = false;
+      setBusy(false);
+    });
+  }
+</script>
+
+<style>
+  .form-section {
+    background: var(--paper);
+  }
+
+  .form-grid {
+    display: grid;
+    gap: 32px;
+  }
+
+  .steps {
+    list-style: none;
+    padding: 0;
+    margin-top: 24px;
+    display: grid;
+    gap: 12px;
+  }
+
+  .steps li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  .steps span {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--lime);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .form-card {
+    background: var(--sand);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 24px 18px;
+    display: grid;
+    gap: 24px;
+  }
+
+  .field {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .field-label {
+    display: block;
+    padding: 0;
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .req {
+    color: var(--danger);
+  }
+
+  .input {
+    display: block;
+    width: 100%;
+    min-height: 52px;
+    padding: 12px 16px;
+    border: 1.5px solid #c9c7be;
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+    /* 16px or more stops iOS Safari from zooming in on focus. */
+    font-size: 16px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .input::placeholder {
+    color: #8a8981;
+  }
+
+  .input:focus {
+    outline: none;
+    border-color: var(--ink);
+    box-shadow: 0 0 0 3px rgba(13, 13, 13, 0.12);
+  }
+
+  .input[aria-invalid='true'] {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.12);
+  }
+
+  /* Radio choice cards. */
+  .choices {
+    display: grid;
+    gap: 10px;
+  }
+
+  .choice {
+    position: relative;
+    display: block;
+    cursor: pointer;
+  }
+
+  .choice input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+  }
+
+  .choice-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 56px;
+    height: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid #c9c7be;
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+    font-size: 15px;
+    line-height: 1.35;
+    font-weight: 500;
+    color: var(--text);
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .choice:hover .choice-box {
+    border-color: var(--ink);
+  }
+
+  .choice-dot {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid #9b9a92;
+    background: var(--paper);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .choice-text small {
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .choice input:checked + .choice-box {
+    border-color: var(--ink);
+    background: #fbfdf5;
+    box-shadow: inset 0 0 0 1px var(--ink);
+  }
+
+  .choice input:checked + .choice-box .choice-dot {
+    border-color: var(--ink);
+    box-shadow: inset 0 0 0 5px var(--ink);
+    background: var(--lime);
+  }
+
+  .choice input:focus-visible + .choice-box {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+  }
+
+  .has-error .choice-box {
+    border-color: var(--danger);
+  }
+
+  .other {
+    margin-top: 10px;
+  }
+
+  .field-error {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--danger);
+  }
+
+  .field-error:not(:empty) {
+    margin-top: 8px;
+  }
+
+  /* The one WhatsApp-green element on the page. Ink text: white on #25d366
+     is only 1.98:1, ink on it is above 10:1. */
+  .submit {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 60px;
+    padding: 14px 16px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--wa);
+    color: var(--ink);
+    font-size: clamp(15px, 4.2vw, 17px);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .submit:hover {
+    background: var(--wa-hover);
+  }
+
+  .submit:active {
+    transform: translateY(1px);
+  }
+
+  .submit:disabled {
+    cursor: progress;
+  }
+
+  .submit-idle,
+  .submit-busy {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .submit-idle svg {
+    flex: none;
+  }
+
+  .submit-busy,
+  .submit.is-busy .submit-idle {
+    visibility: hidden;
+  }
+
+  .submit-busy {
+    position: absolute;
+  }
+
+  .submit.is-busy .submit-busy {
+    visibility: visible;
+  }
+
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid rgba(13, 13, 13, 0.25);
+    border-top-color: var(--ink);
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .form-status:empty {
+    display: none;
+  }
+
+  .form-status {
+    margin-top: -12px;
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .form-fallback {
+    margin-top: -8px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .form-fallback a {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .form-privacy {
+    margin-top: -8px;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  @media (min-width: 480px) {
+    .choices--2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .form-card {
+      padding: 32px 28px;
+    }
+  }
+
+  @media (min-width: 960px) {
+    .form-grid {
+      grid-template-columns: 1fr 1.25fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .form-intro {
+      position: sticky;
+      top: 32px;
+    }
+  }
+</style>

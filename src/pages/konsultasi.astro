@@ -1,0 +1,44 @@
+---
+/**
+ * /konsultasi: Meta Ads landing page for travel & tour operators.
+ *
+ * Campaign: objective Sales, optimised for the Lead event, which fires when
+ * the qualification form is submitted (see components/landing/LeadForm.astro).
+ * The page exists to filter: every route to WhatsApp goes through the form,
+ * so the chats that arrive already state budget, problem and city.
+ *
+ * Kept out of search: noindex in LandingLayout, and filtered out of the
+ * sitemap in astro.config.mjs.
+ *
+ * Settings to fill in before launch are collected in src/data/landing.ts
+ * (search for TODO): Pixel ID, WhatsApp number, webhook URL, socials, FAQ.
+ */
+import LandingLayout from '../layouts/LandingLayout.astro';
+import Hero from '../components/landing/Hero.astro';
+import Problems from '../components/landing/Problems.astro';
+import Solution from '../components/landing/Solution.astro';
+import CaseStudies from '../components/landing/CaseStudies.astro';
+import Pricing from '../components/landing/Pricing.astro';
+import LeadForm from '../components/landing/LeadForm.astro';
+import FAQ from '../components/landing/FAQ.astro';
+import LandingFooter from '../components/landing/LandingFooter.astro';
+import StickyCTA from '../components/landing/StickyCTA.astro';
+
+const title = 'Website Travel yang Bikin Tamu Booking & Bayar DP | Ricksite Studio';
+const description =
+  'Website travel dengan katalog paket, itinerary, dan booking online untuk travel agent & tour operator. Paket mulai Rp 1,5 juta. Cek kebutuhan website kamu dalam 30 detik.';
+---
+
+<LandingLayout title={title} description={description}>
+  <main>
+    <Hero />
+    <Problems />
+    <Solution />
+    <CaseStudies />
+    <Pricing />
+    <LeadForm />
+    <FAQ />
+  </main>
+  <LandingFooter />
+  <StickyCTA />
+</LandingLayout>

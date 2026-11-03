@@ -1,0 +1,101 @@
+---
+/**
+ * FAQ as native <details>/<summary>: keyboard and screen-reader accessible
+ * with no script. Answers live in src/data/landing.ts (TODO: jawaban FAQ).
+ */
+import { LANDING_FAQS } from '../../data/landing';
+---
+
+<section class="lp-section lp-section--sand" aria-labelledby="faq-title">
+  <div class="lp-wrap faq-wrap">
+    <div class="lp-head">
+      <span class="lp-eyebrow">FAQ</span>
+      <h2 class="lp-h2" id="faq-title">Yang sering ditanyakan</h2>
+    </div>
+
+    <div class="faqs">
+      {LANDING_FAQS.map((f) => (
+        <details class="faq">
+          <summary>
+            <span>{f.q}</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </summary>
+          <p class="faq-answer">{f.a}</p>
+        </details>
+      ))}
+    </div>
+
+    <div class="faq-cta">
+      <p>Masih ada pertanyaan lain? Tulis di form, kami jawab lewat WhatsApp.</p>
+      <a href="#form" class="lp-btn" data-cta="faq">Isi Form Konsultasi</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-wrap {
+    max-width: 800px;
+  }
+
+  .faqs {
+    display: grid;
+    gap: 12px;
+  }
+
+  .faq {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+
+  .faq summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 64px;
+    padding: 16px 20px;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq summary:focus-visible {
+    border-radius: var(--radius);
+  }
+
+  .faq-chevron {
+    flex: none;
+    transition: transform 0.2s ease;
+  }
+
+  .faq[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 20px 20px;
+    font-size: 15px;
+    color: var(--muted);
+  }
+
+  .faq-cta {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .faq-cta p {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+</style>

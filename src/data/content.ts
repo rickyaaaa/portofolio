@@ -5,14 +5,6 @@
  * the markup block.
  */
 
-/** "Website Bagus Itu Baru Langkah Awal" check-list. */
-export const ecosystemPoints = [
-  'Website - Bikin Bisnismu Kelihatan Meyakinkan',
-  'Iklan - Bawa Orang Yang Emang Lagi Nyari',
-  'Traffic - Pengunjung Relevan, Bukan Asal Ramai',
-  'Leads - Chat Masuk Dari Calon Customer Serius',
-  'Growth - Pertumbuhan Yang Kelihatan Angkanya',
-];
 
 export interface ValueProp {
   icon: string;

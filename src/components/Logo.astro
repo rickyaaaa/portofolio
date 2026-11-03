@@ -1,0 +1,51 @@
+---
+/**
+ * Ricksite Studio horizontal lockup.
+ *
+ * Inlined rather than loaded through <img> on purpose: the wordmark is set in
+ * Poppins, and an SVG referenced by <img> is an isolated document that cannot
+ * use the page's webfonts — it would silently fall back to a system sans and
+ * render the brand in the wrong typeface. Inline, the page's Poppins applies.
+ *
+ * Geometry is unchanged from assets/ricksite-lockup-horizontal.svg, but the
+ * viewBox is tightened: the supplied file declares 420x90 while the artwork
+ * only reaches x=215, so 49% of the canvas was empty and the lockup rendered
+ * at roughly half the size its box implied. Cropping the dead space (nothing
+ * is scaled or moved) lets the wordmark read properly at a sane CSS width.
+ *
+ * Ink colour differs from the source because the supplied lockup is near-black
+ * and the site runs on a dark background. The accent dot keeps the brand green.
+ */
+interface Props {
+  /** "light" for dark backgrounds (default), "dark" for light ones. */
+  variant?: 'light' | 'dark';
+  class?: string;
+}
+
+const { variant = 'light', class: className } = Astro.props;
+
+const ink = variant === 'light' ? '#f4f4f1' : '#0d0d0d';
+const accent = '#b6f24b';
+---
+
+<svg
+    class:list={['rs-logo', className]}
+    viewBox="2 10 218 74"
+    role="img"
+    aria-label="Ricksite Studio"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <g transform="translate(0 12)">
+        <path
+            d="M18 80 A 32 32 0 0 1 50 48 A 32 32 0 0 0 82 16"
+            fill="none"
+            stroke={ink}
+            stroke-width="17"
+            stroke-linecap="round"
+            transform="scale(0.66)"
+        ></path>
+        <circle cx="54.1" cy="10.6" r="5.9" fill={accent}></circle>
+    </g>
+    <text x="82" y="42" font-family="Poppins, sans-serif" font-weight="300" font-size="27" letter-spacing="3.24" fill={ink}>RICKSITE</text>
+    <text x="82" y="70" font-family="Poppins, sans-serif" font-weight="700" font-size="27" letter-spacing="1.49" fill={ink}>STUDIO</text>
+</svg>

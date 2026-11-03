@@ -1,0 +1,75 @@
+---
+/**
+ * One portfolio card — used by the homepage teaser, /projects and the related
+ * work strip on the service pages.
+ *
+ * The link rule lives here and nowhere else. Three pages render these cards,
+ * and the rule that a client's internal system must never carry a public link
+ * is a commitment to that client rather than a styling choice, so it belongs
+ * in one file where it cannot be broken by editing one copy and forgetting
+ * the other two.
+ *
+ * Public marketing sites open in a new tab. The three internal systems
+ * (YokPrinting ERP, SIPNONA, SAB Swadaya) have no liveUrl, so they render with
+ * no link at all: no thumbnail button, no linked title. When the detail pages
+ * ship, PROJECT_PAGES_LIVE points every card inward instead and the internal
+ * ones gain a page that routes to the contact flow.
+ *
+ * Tags are labels, not links. They never led anywhere, and pointing a category
+ * chip at a client's homepage would be stranger than leaving it inert.
+ */
+import type { Project } from '../data/projects';
+import { projectPath, PROJECT_PAGES_LIVE } from '../data/projects';
+import { asset } from '../lib/asset';
+
+interface Props {
+  project: Project;
+  /** Grid classes for the wrapper column, which differ per page. */
+  columns: string;
+  /**
+   * False inside a tab pane: pf_fadeup sets its target to autoAlpha 0 at once
+   * and only reveals it when a ScrollTrigger fires, which cannot happen while
+   * the pane is hidden, so an animated card would stay invisible once opened.
+   */
+  animate?: boolean;
+}
+
+const { project, columns, animate = true } = Astro.props;
+
+const href = PROJECT_PAGES_LIVE ? projectPath(project) : project.liveUrl;
+const opensExternally = Boolean(href) && !PROJECT_PAGES_LIVE;
+const label = opensExternally
+  ? `Buka website ${project.title} di tab baru`
+  : `Lihat detail project ${project.title}`;
+---
+
+<div class={columns}>
+    <!--=== Project Item ===-->
+    <div class:list={['agenko-project-item', 'style-one', 'mb-45', animate && 'pf_fadeup']}>
+        <div class="thumbnail">
+            <img src={asset(`/assets/images/ricksite/projects/${project.image}`)} alt={project.title}>
+            {href && (
+                <div class="project-button">
+                    <a
+                        href={href}
+                        target={opensExternally ? '_blank' : undefined}
+                        rel={opensExternally ? 'noopener' : undefined}
+                        aria-label={label}
+                    ><i class="far fa-plus"></i></a>
+                </div>
+            )}
+        </div>
+        <div class="content">
+            <div class="project-categories">
+                {project.tags.map((tag) => (
+                    <Fragment>
+                    <span>{tag}</span>
+                    {" "}</Fragment>
+                ))}
+            </div>
+            <h4 class="title">{href
+                ? <a href={href} target={opensExternally ? '_blank' : undefined} rel={opensExternally ? 'noopener' : undefined}>{project.title}</a>
+                : project.title}</h4>
+        </div>
+    </div>
+</div>

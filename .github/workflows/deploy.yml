@@ -1,0 +1,75 @@
+# Builds the site and ships dist/ to Hostinger.
+#
+# The build has to happen here because the hosting account has no Node runtime -
+# Hostinger's own Git integration can only copy files, so pointing it at this
+# repository would publish the Astro source instead of the built site.
+#
+# Secrets to set under Settings -> Secrets and variables -> Actions:
+#   SSH_HOST, SSH_PORT, SSH_USER, SSH_PRIVATE_KEY
+# DEPLOY_PATH is deliberately not a secret: this account also hosts client
+# sites, and rsync --delete on the wrong path would erase one. Keeping the
+# target in the workflow means a change to it shows up in a diff.
+
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Never let two deploys write to public_html at the same time.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+env:
+  DEPLOY_PATH: domains/ricksitestudio.com/public_html
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # A type error should stop the deploy, not reach the live site.
+      - run: npm run check
+
+      - run: npm run build
+
+      - name: Authorise against the host
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "${{ secrets.SSH_PORT }}" -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      # rsync --delete removes anything on the server that is not in dist/, so
+      # confirm first that the path really holds the Ricksite site. If the
+      # target is ever wrong this fails here instead of wiping a client site.
+      - name: Confirm the target is the Ricksite site
+        run: |
+          ssh -p "${{ secrets.SSH_PORT }}" -i ~/.ssh/id_ed25519 \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "test -f '$DEPLOY_PATH/index.html' && grep -q 'Ricksite Studio' '$DEPLOY_PATH/index.html'"
+
+      - name: Publish
+        run: |
+          rsync -az --delete --checksum \
+            -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519" \
+            dist/ "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$DEPLOY_PATH/"
+
+      # A deploy that silently published nothing is worse than a failed one.
+      - name: Check the live site answers
+        run: |
+          for path in "" jasa-pembuatan-website jasa-seo projects; do
+            code=$(curl -sS -o /dev/null -w '%{http_code}' --retry 3 "https://ricksitestudio.com/$path")
+            echo "/$path -> $code"
+            [ "$code" = "200" ] || exit 1
+          done

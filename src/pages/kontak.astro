@@ -1,0 +1,134 @@
+---
+/**
+ * Contact page.
+ *
+ * Every other CTA on the site opens WhatsApp directly; this page exists for
+ * the visitor who wants to see the details before committing to a chat, and
+ * for the ones who would rather email. The inquiry form is the same component
+ * used on the homepage, so a lead from here arrives in the same format.
+ *
+ * Built from stock Agenko parts: agenko-page-banner and agenko-iconic-box
+ * style-three, the same box the footer uses for its contact block.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InquiryForm from '../components/sections/InquiryForm.astro';
+import FinalCta from '../components/sections/FinalCta.astro';
+import {
+  whatsapp,
+  WHATSAPP_DISPLAY,
+  PHONE_DISPLAY,
+  PHONE_HREF,
+  EMAIL,
+  EMAIL_HREF,
+} from '../data/site';
+
+const title = 'Kontak - Ricksite Studio';
+const description =
+  'Hubungi Ricksite Studio lewat WhatsApp, email, atau telepon. Konsultasi awal gratis, balasan di jam kerja.';
+
+const channels = [
+  {
+    icon: 'fab fa-whatsapp',
+    label: 'WhatsApp',
+    value: WHATSAPP_DISPLAY,
+    href: whatsapp('Halo Ricksite Studio, saya mau tanya soal pembuatan website.'),
+    note: 'Paling cepat dibalas. Chat langsung, nggak perlu janjian dulu.',
+    external: true,
+  },
+  {
+    icon: 'far fa-envelope',
+    label: 'Email',
+    value: EMAIL,
+    href: EMAIL_HREF,
+    note: 'Cocok kalau kebutuhanmu panjang atau mau kirim brief dan dokumen.',
+    external: false,
+  },
+  {
+    icon: 'far fa-phone-alt',
+    label: 'Telepon',
+    value: PHONE_DISPLAY,
+    href: PHONE_HREF,
+    note: 'Lebih suka ngobrol langsung? Telepon di jam kerja, Senin-Sabtu.',
+    external: false,
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+    <!--====== Start Page Banner ======-->
+    <section class="agenko-page-banner">
+        <div class="shape shape-circle1"><span></span></div>
+        <div class="shape shape-circle2"><span></span></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <!--=== Page Content ===-->
+                    <div class="page-content">
+                        <h1 class="page-title">Kontak</h1>
+                        <div class="row">
+                            <div class="col-xl-9">
+                                <div class="text-box">
+                                    <p>Mau tanya harga, minta saran, atau sekadar cerita rencana bisnismu? Pilih cara yang paling gampang buat kamu. Konsultasi awal gratis.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="breadcrumb-link mt-30">
+                            <li><a href="/">Beranda</a></li>
+                            <li class="active">Kontak</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Page Banner ======-->
+
+    <!--====== Start Contact Channels ======-->
+    <section class="agk-contact-channels pt-130 pb-100">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <!--=== Section Title ===-->
+                    <div class="section-title mb-50 pf_fadeup">
+                        <span class="sub-title">Hubungi Kami</span>
+                        <h2>Pilih Cara yang Paling Enak Buat Kamu.</h2>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="text-box mb-50 pf_fadeup">
+                        <p>Kami balas di jam kerja, Senin sampai Sabtu. Kalau di luar jam itu, chat tetap masuk dan dibalas paling lambat besok pagi.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {channels.map((channel) => (
+                    <Fragment>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="agenko-iconic-box style-three rs-contact-channel mb-30 pf_fadeup">
+                            <div class="icon">
+                                <i class={channel.icon}></i>
+                            </div>
+                            <div class="content">
+                                <h6>{channel.label}</h6>
+                                <p><a
+                                    href={channel.href}
+                                    target={channel.external ? '_blank' : undefined}
+                                    rel={channel.external ? 'noopener' : undefined}
+                                >{channel.value}</a></p>
+                                <span class="rs-contact-note">{channel.note}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {" "}</Fragment>
+                ))}
+            </div>
+        </div>
+    </section><!--====== End Contact Channels ======-->
+
+    <InquiryForm
+        eyebrow="Kirim Detail"
+        heading="Ceritain Kebutuhanmu."
+        intro="Isi kolom di bawah, nanti kami balas lewat WhatsApp dengan rekomendasi paket dan estimasi yang paling masuk akal buat bisnismu."
+    />
+
+    <FinalCta />
+</BaseLayout>

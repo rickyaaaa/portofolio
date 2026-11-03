@@ -1,4 +1,4 @@
 <!-- Same geometry and 40x80 size as the original Agenko hero shape, recoloured to a soft tint of the Ricksite accent. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 80" width="40" height="80" aria-hidden="true">
-  <path d="M40 0a40 40 0 0 0 0 80V0Z" fill="#B7F34A" fill-opacity=".16"/>
+  <path d="M40 0a40 40 0 0 0 0 80V0Z" fill="#B6F24B" fill-opacity=".16"/>
 </svg>

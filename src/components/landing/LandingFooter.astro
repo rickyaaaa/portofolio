@@ -1,0 +1,105 @@
+---
+/**
+ * Minimal footer: logo, main site (new tab, so the ad page stays open behind
+ * it), and socials. No WhatsApp link: every route to chat goes through the form.
+ */
+import Logo from '../Logo.astro';
+import { LANDING_SOCIALS } from '../../data/landing';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="lp-footer">
+  <div class="lp-wrap footer-inner">
+    <Logo variant="light" class="footer-logo" />
+
+    <ul class="footer-links" role="list">
+      <li>
+        <a href="https://ricksitestudio.com" target="_blank" rel="noopener">ricksitestudio.com</a>
+      </li>
+      <li>
+        <a href={LANDING_SOCIALS.instagram.href} target="_blank" rel="noopener" aria-label={`Instagram ${LANDING_SOCIALS.instagram.handle}`}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2" />
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" />
+            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+          </svg>
+          {LANDING_SOCIALS.instagram.handle}
+        </a>
+      </li>
+      <li>
+        <a href={LANDING_SOCIALS.tiktok.href} target="_blank" rel="noopener" aria-label={`TikTok ${LANDING_SOCIALS.tiktok.handle}`}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.6 2.6 0 0 1-2.6-2.6 2.6 2.6 0 0 1 3.37-2.48V9.66a5.73 5.73 0 0 0-6.5 5.68 5.73 5.73 0 0 0 5.73 5.66 5.73 5.73 0 0 0 5.73-5.73V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.29-1.48Z" />
+          </svg>
+          {LANDING_SOCIALS.tiktok.handle}
+        </a>
+      </li>
+    </ul>
+
+    <p class="footer-copy">© {year} Ricksite Studio. Jasa pembuatan website travel &amp; tour.</p>
+  </div>
+</footer>
+
+<style>
+  .lp-footer {
+    background: var(--ink);
+    color: var(--on-dark-muted);
+    padding-block: 48px;
+  }
+
+  .footer-inner {
+    display: grid;
+    gap: 24px;
+    justify-items: start;
+  }
+
+  .lp-footer :global(.footer-logo) {
+    width: 148px;
+    height: 50px;
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 24px;
+  }
+
+  .footer-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 48px;
+    color: var(--on-dark);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: var(--lime);
+  }
+
+  .footer-copy {
+    font-size: 13px;
+  }
+
+  @media (min-width: 768px) {
+    .footer-inner {
+      grid-template-columns: auto 1fr;
+      align-items: center;
+    }
+
+    .footer-links {
+      justify-content: flex-end;
+    }
+
+    .footer-copy {
+      grid-column: 1 / -1;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+  }
+</style>
