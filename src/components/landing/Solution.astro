@@ -1,0 +1,165 @@
+---
+/**
+ * What the client actually gets. Each item answers one of the problems above,
+ * and the online booking + payment item is marked as the top package only, so
+ * nobody reads it as included in Starter.
+ */
+const features = [
+  {
+    title: 'Katalog paket wisata',
+    body: 'Semua paket tampil rapi dengan foto, durasi, dan kategori. Tamu bisa pilih sendiri tanpa harus tanya dulu.',
+  },
+  {
+    title: 'Harga & itinerary lengkap',
+    body: 'Rincian per hari, include/exclude, dan harga per orang. Pertanyaan yang sama tidak perlu dijawab berulang di chat.',
+  },
+  {
+    title: 'Galeri foto',
+    body: 'Foto trip asli dari tamu sebelumnya. Bukti bahwa trip kamu benar-benar jalan dan layak dipercaya.',
+  },
+  {
+    title: 'Jadwal keberangkatan',
+    body: 'Tanggal open trip terlihat jelas di tiap paket, jadi tamu langsung tahu kapan bisa ikut.',
+  },
+  {
+    title: 'Tombol booking WhatsApp',
+    body: 'Di setiap paket. Chat yang masuk sudah berisi nama paket dan tanggal, jadi kamu tinggal konfirmasi.',
+  },
+  {
+    title: 'Siap SEO Google',
+    body: 'Struktur halaman, kecepatan, dan judul halaman disiapkan supaya paket kamu bisa ditemukan di Google.',
+  },
+  {
+    title: 'Booking + pembayaran online',
+    body: 'Tamu pilih tanggal, isi data, lalu bayar DP lewat transfer, VA, e-wallet, atau QRIS. Kamu dan tamu langsung dapat notifikasi otomatis.',
+    badge: 'Paket Ultimate',
+  },
+];
+---
+
+<section class="lp-section lp-section--sand" aria-labelledby="solution-title">
+  <div class="lp-wrap">
+    <div class="lp-head">
+      <span class="lp-eyebrow">Yang kamu dapat</span>
+      <h2 class="lp-h2" id="solution-title">Website yang kerja jualan, bukan cuma pajangan</h2>
+      <p class="lp-lead">
+        Calon tamu bisa lihat paket, cek jadwal, dan booking sendiri, bahkan saat kamu sedang memandu trip.
+      </p>
+    </div>
+
+    <ul class="features" role="list">
+      {features.map((f) => (
+        <li class:list={['feature', { 'feature--featured': f.badge }]}>
+          <span class="feature-check" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <div>
+            <h3 class="feature-title">
+              {f.title}
+              {f.badge && <span class="feature-badge">{f.badge}</span>}
+            </h3>
+            <p class="feature-body">{f.body}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .features {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+  }
+
+  .feature {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--paper);
+    border-radius: var(--radius);
+    padding: 20px;
+    border: 1px solid var(--line);
+  }
+
+  .feature--featured {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--on-dark);
+  }
+
+  .feature-check {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--lime);
+  }
+
+  .feature--featured .feature-check {
+    background: var(--lime);
+    color: var(--ink);
+  }
+
+  .feature-title {
+    font-size: 17px;
+    line-height: 1.35;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .feature--featured .feature-title {
+    color: #fff;
+  }
+
+  .feature-badge {
+    display: inline-block;
+    vertical-align: 2px;
+    margin-left: 6px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: var(--lime);
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .feature-body {
+    margin-top: 6px;
+    font-size: 15px;
+    color: var(--muted);
+  }
+
+  .feature--featured .feature-body {
+    color: var(--on-dark-muted);
+  }
+
+  @media (min-width: 768px) {
+    .features {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .feature {
+      padding: 24px;
+    }
+
+    .feature--featured {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .features {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

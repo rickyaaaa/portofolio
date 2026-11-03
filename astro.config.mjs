@@ -41,7 +41,9 @@ export default defineConfig({
     // every route on the site to fix nothing.
     sitemap({
       // The 404 is a server response, not a page worth crawling.
-      filter: (page) => !page.endsWith('/404'),
+      // /konsultasi is an ad landing page, noindexed on purpose: listing a
+      // noindex URL in the sitemap is a contradiction Search Console reports.
+      filter: (page) => !/\/(404|konsultasi)\/?$/.test(page),
     }),
   ],
 });
