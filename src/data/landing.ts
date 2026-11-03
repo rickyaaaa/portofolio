@@ -12,7 +12,7 @@ import { WHATSAPP_NUMBER } from './site';
  * While this still reads 'PIXEL_ID' the pixel is not loaded at all, so a
  * preview build never sends junk events to a real dataset.
  */
-export const PIXEL_ID = 'PIXEL_ID';
+export const PIXEL_ID = '1560519885286328';
 
 /** True once a real (numeric) pixel ID has been filled in above. */
 export const PIXEL_ENABLED = /^\d{10,20}$/.test(PIXEL_ID);
