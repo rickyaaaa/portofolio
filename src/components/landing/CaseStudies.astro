@@ -17,9 +17,12 @@
  * The Abunawas card leads because its numbers are named and checkable.
  */
 import { Image } from 'astro:assets';
-// TODO: gambar - [gambar_1] is a generated placeholder. Replace this file with
-// a screenshot of the client travel site (620x560 or larger, same aspect).
-import gambar1 from '../../assets/landing/gambar-1-client-travel.webp';
+// [gambar_1] The client's own WhatsApp reply about the Google Ads results,
+// cropped from the chat (bubbles re-stacked to a phone width, wording and
+// order untouched; the opening question is left out because the reply
+// quotes it in full). The card's numbers follow this chat.
+// TODO: confirm the client agreed to having this chat shown in ads.
+import gambar1 from '../../assets/landing/gambar-1-testimoni-google-ads.webp';
 // TODO: gambar - [gambar_2] Abunawas Travel. Swap for a newer capture if needed.
 import gambar2 from '../../assets/landing/gambar-2-abunawas-travel.webp';
 // TODO: gambar - [gambar_3] other portfolio: Bernard Bali Tours + Bali Rejeng Jeep Tour.
@@ -64,23 +67,28 @@ const pairSizes = '(min-width: 1024px) 176px, (min-width: 640px) 25vw, 50vw';
       </article>
 
       <article class="case">
-        <div class="case-media">
-          <Image src={gambar1} alt="Tampilan website client travel" widths={[360, 620]} sizes={sizes} class="case-img" loading="lazy" decoding="async" />
+        <div class="case-media case-media--chat">
+          <Image
+            src={gambar1}
+            alt="Chat WhatsApp dari client: ditanya apakah ada perkembangan dibanding iklan sebelum redesign, client menjawab perkembangannya makin besar. Ditanya sudah ada yang closing, client menjawab sudah, 5 WA closing."
+            widths={[480, 955]}
+            sizes={sizes}
+            class="case-img"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div class="case-body">
           <p class="case-tag">Website + Google Ads</p>
           <h3 class="case-title">Client Travel</h3>
-          <dl class="stats">
+          <dl class="stats stats--1">
             <div>
-              <dt>Calon tamu masuk</dt>
-              <dd>7</dd>
-            </div>
-            <div>
-              <dt>Berhasil closing</dt>
-              <dd>3</dd>
+              <dt>Closing lewat WhatsApp</dt>
+              <dd>5</dd>
             </div>
           </dl>
-          <p class="case-text">Website baru dipasangkan iklan Google Ads. Dari 7 calon tamu yang masuk, 3 deal dan booking.</p>
+          <p class="case-text">Website di-redesign lalu dipasangkan Google Ads. Dibanding iklan sebelum redesign, perkembangannya makin besar, kata client langsung.</p>
+          <p class="case-note">Screenshot di atas: chat asli dari client.</p>
         </div>
       </article>
 
@@ -143,6 +151,21 @@ const pairSizes = '(min-width: 1024px) 176px, (min-width: 640px) 25vw, 50vw';
     object-position: top center;
   }
 
+  /* A chat is read, not glanced at: show all of it, on the chat's own dark
+     background, instead of cropping it to fill the frame. */
+  .case-media--chat {
+    background: #161817;
+    display: grid;
+    place-items: center;
+    padding: 0 4px;
+  }
+
+  .case-media--chat :global(.case-img) {
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
   .case-media--pair :global(.case-img + .case-img) {
     border-left: 1px solid var(--line);
   }
@@ -193,6 +216,10 @@ const pairSizes = '(min-width: 1024px) 176px, (min-width: 640px) 25vw, 50vw';
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .stats--1 {
+    grid-template-columns: 1fr;
+  }
+
   .stats div {
     min-width: 0;
     background: var(--sand);
@@ -229,6 +256,12 @@ const pairSizes = '(min-width: 1024px) 176px, (min-width: 640px) 25vw, 50vw';
   .case-text {
     margin-top: 16px;
     font-size: 15px;
+    color: var(--muted);
+  }
+
+  .case-note {
+    margin-top: 10px;
+    font-size: 13px;
     color: var(--muted);
   }
 
