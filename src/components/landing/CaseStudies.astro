@@ -1,7 +1,12 @@
 ---
 /**
- * Proof. Results first, screenshot second: an owner skimming on a phone
- * should see the numbers before scrolling past the picture.
+ * Proof, placed straight after the problems so a visitor sees it before the
+ * long feature list rather than ~4000px down the page on a phone.
+ *
+ * Each card is screenshot on top, results below. Every screenshot sits in
+ * the same fixed-ratio frame, so across the desktop row the pictures line up
+ * and the text starts at the same height in every card, however long it is.
+ * (With the picture at the bottom, cards with less text left a gap above it.)
  *
  * Images go through astro:assets, so the build emits resized WebP with width
  * and height attributes (no layout shift) and they load lazily below the fold.
@@ -22,9 +27,10 @@ import gambar3a from '../../assets/landing/gambar-3-bernard-bali-tours.webp';
 import gambar3b from '../../assets/landing/gambar-4-bali-rejeng-jeep-tour.webp';
 
 const sizes = '(min-width: 1024px) 352px, (min-width: 640px) 50vw, 100vw';
+const pairSizes = '(min-width: 1024px) 176px, (min-width: 640px) 25vw, 50vw';
 ---
 
-<section class="lp-section" aria-labelledby="cases-title">
+<section class="lp-section lp-section--sand" aria-labelledby="cases-title">
   <div class="lp-wrap">
     <div class="lp-head">
       <span class="lp-eyebrow">Hasil client</span>
@@ -33,6 +39,9 @@ const sizes = '(min-width: 1024px) 352px, (min-width: 640px) 50vw, 100vw';
 
     <div class="cases">
       <article class="case case--featured">
+        <div class="case-media">
+          <Image src={gambar2} alt="Tampilan website Abunawas Travel" widths={[360, 620]} sizes={sizes} class="case-img" loading="lazy" decoding="async" />
+        </div>
         <div class="case-body">
           <p class="case-tag">Sistem booking + SEO</p>
           <h3 class="case-title">Abunawas Travel <span class="case-domain">abunawastravel.id</span></h3>
@@ -52,10 +61,12 @@ const sizes = '(min-width: 1024px) 352px, (min-width: 640px) 50vw, 100vw';
           </dl>
           <p class="case-text">Paket tour luar negeri dengan sistem booking online. Posisi rata-rata di Google, data dari Google Search Console.</p>
         </div>
-        <Image src={gambar2} alt="Tampilan website Abunawas Travel" widths={[360, 620]} sizes={sizes} class="case-img" loading="lazy" decoding="async" />
       </article>
 
       <article class="case">
+        <div class="case-media">
+          <Image src={gambar1} alt="Tampilan website client travel" widths={[360, 620]} sizes={sizes} class="case-img" loading="lazy" decoding="async" />
+        </div>
         <div class="case-body">
           <p class="case-tag">Website + Google Ads</p>
           <h3 class="case-title">Client Travel</h3>
@@ -71,10 +82,13 @@ const sizes = '(min-width: 1024px) 352px, (min-width: 640px) 50vw, 100vw';
           </dl>
           <p class="case-text">Website baru dipasangkan iklan Google Ads. Dari 7 calon tamu yang masuk, 3 deal dan booking.</p>
         </div>
-        <Image src={gambar1} alt="Tampilan website client travel" widths={[360, 620]} sizes={sizes} class="case-img" loading="lazy" decoding="async" />
       </article>
 
       <article class="case">
+        <div class="case-media case-media--pair">
+          <Image src={gambar3a} alt="Tampilan website Bernard Bali Tours" widths={[300, 620]} sizes={pairSizes} class="case-img" loading="lazy" decoding="async" />
+          <Image src={gambar3b} alt="Tampilan website Bali Rejeng Jeep Tour" widths={[300, 620]} sizes={pairSizes} class="case-img" loading="lazy" decoding="async" />
+        </div>
         <div class="case-body">
           <p class="case-tag">Portofolio lain</p>
           <h3 class="case-title">Tour operator Bali</h3>
@@ -83,10 +97,6 @@ const sizes = '(min-width: 1024px) 352px, (min-width: 640px) 50vw, 100vw';
             <li>Bali Rejeng Jeep Tour</li>
           </ul>
           <p class="case-text">Website paket tour dan aktivitas dengan tombol booking di setiap paket.</p>
-        </div>
-        <div class="case-pair">
-          <Image src={gambar3a} alt="Tampilan website Bernard Bali Tours" widths={[300, 620]} sizes="(min-width: 1024px) 176px, 50vw" class="case-img" loading="lazy" decoding="async" />
-          <Image src={gambar3b} alt="Tampilan website Bali Rejeng Jeep Tour" widths={[300, 620]} sizes="(min-width: 1024px) 176px, 50vw" class="case-img" loading="lazy" decoding="async" />
         </div>
       </article>
     </div>
@@ -112,9 +122,33 @@ const sizes = '(min-width: 1024px) 352px, (min-width: 640px) 50vw, 100vw';
     border: 2px solid var(--ink);
   }
 
+  /* One frame for every screenshot: same height in every card, with the top
+     of the site shown (its hero and menu). */
+  .case-media {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--sand);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .case-media--pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .case-media :global(.case-img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .case-media--pair :global(.case-img + .case-img) {
+    border-left: 1px solid var(--line);
+  }
+
   .case-body {
-    padding: 24px;
-    flex: 1;
+    padding: 22px 24px 24px;
   }
 
   .case-tag {
@@ -198,31 +232,27 @@ const sizes = '(min-width: 1024px) 352px, (min-width: 640px) 50vw, 100vw';
     color: var(--muted);
   }
 
-  .case :global(.case-img) {
-    width: 100%;
-    aspect-ratio: 620 / 560;
-    object-fit: cover;
-    object-position: top;
-    background: var(--sand);
-    border-top: 1px solid var(--line);
-  }
-
-  .case-pair {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .case-pair :global(.case-img + .case-img) {
-    border-left: 1px solid var(--line);
-  }
-
   @media (min-width: 640px) {
     .cases {
       grid-template-columns: repeat(2, 1fr);
     }
 
+    /* Full-width card on tablets: picture beside the text, not a tall
+       full-width screenshot above it. */
     .case--featured {
       grid-column: 1 / -1;
+      flex-direction: row;
+    }
+
+    .case--featured .case-media {
+      flex: 0 0 46%;
+      aspect-ratio: auto;
+      border-bottom: 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .case--featured .case-body {
+      align-self: center;
     }
   }
 
@@ -233,6 +263,18 @@ const sizes = '(min-width: 1024px) 352px, (min-width: 640px) 50vw, 100vw';
 
     .case--featured {
       grid-column: auto;
+      flex-direction: column;
+    }
+
+    .case--featured .case-media {
+      flex: none;
+      aspect-ratio: 16 / 10;
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .case--featured .case-body {
+      align-self: auto;
     }
   }
 </style>
