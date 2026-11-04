@@ -11,12 +11,15 @@
  * Images go through astro:assets, so the build emits resized WebP with width
  * and height attributes (no layout shift) and they load lazily below the fold.
  *
- * The cards carry no outbound links on purpose: a click from an ad landing
- * page to someone else's site is a lead that leaves.
+ * Only the "portofolio lain" sites are linked, so a visitor can see a live
+ * travel site for themselves. The links open in a new tab, which leaves this
+ * page (and its form) open behind them. URLs come from projects.ts, the same
+ * source as the main site's portfolio.
  *
  * The Abunawas card leads because its numbers are named and checkable.
  */
 import { Image } from 'astro:assets';
+import { projects } from '../../data/projects';
 // [gambar_1] The client's own WhatsApp reply about the Google Ads results,
 // cropped from the chat (bubbles re-stacked to a phone width, wording and
 // order untouched; the opening question is left out because the reply
@@ -28,6 +31,18 @@ import gambar2 from '../../assets/landing/gambar-2-abunawas-travel.webp';
 // TODO: gambar - [gambar_3] other portfolio: Bernard Bali Tours + Bali Rejeng Jeep Tour.
 import gambar3a from '../../assets/landing/gambar-3-bernard-bali-tours.webp';
 import gambar3b from '../../assets/landing/gambar-4-bali-rejeng-jeep-tour.webp';
+
+/** Live URL of a portfolio project, by slug. Fails the build if it is missing. */
+function liveUrl(slug: string): string {
+  const url = projects.find((p) => p.slug === slug)?.liveUrl;
+  if (!url) throw new Error(`projects.ts: "${slug}" has no liveUrl`);
+  return url;
+}
+
+const otherSites = [
+  { name: 'Bernard Bali Tours', href: liveUrl('bernard-bali-tours') },
+  { name: 'Bali Rejeng Jeep Tour', href: liveUrl('bali-rejeng-jeep-tour') },
+];
 
 const sizes = '(min-width: 1024px) 352px, (min-width: 640px) 50vw, 100vw';
 const pairSizes = '(min-width: 1024px) 176px, (min-width: 640px) 25vw, 50vw';
@@ -101,8 +116,17 @@ const pairSizes = '(min-width: 1024px) 176px, (min-width: 640px) 25vw, 50vw';
           <p class="case-tag">Portofolio lain</p>
           <h3 class="case-title">Tour operator Bali</h3>
           <ul class="case-list" role="list">
-            <li>Bernard Bali Tours</li>
-            <li>Bali Rejeng Jeep Tour</li>
+            {otherSites.map((site) => (
+              <li>
+                <a href={site.href} target="_blank" rel="noopener" class="case-link">
+                  {site.name}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M14 4h6v6m0-6L10 14M18 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <span class="lp-sr-only">(buka di tab baru)</span>
+                </a>
+              </li>
+            ))}
           </ul>
           <p class="case-text">Website paket tour dan aktivitas dengan tombol booking di setiap paket.</p>
         </div>
@@ -247,10 +271,38 @@ const pairSizes = '(min-width: 1024px) 176px, (min-width: 640px) 25vw, 50vw';
   }
 
   .case-list {
+    list-style: none;
     margin-top: 16px;
-    padding-left: 20px;
-    font-weight: 600;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+
+  /* Full-width rows, at least 48px tall: easy to hit with a thumb. */
+  .case-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 48px;
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--sand);
     color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .case-link:hover {
+    border-color: var(--ink);
+    background: var(--paper);
+  }
+
+  .case-link svg {
+    flex: none;
+    color: var(--muted);
   }
 
   .case-text {
