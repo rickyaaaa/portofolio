@@ -4,7 +4,8 @@
  *
  * Flow on a valid submit:
  *   1. build the WhatsApp message from the answers (+ UTM "Ref:" line)
- *   2. fbq('track', 'Lead', { budget_range, masalah_utama, kota })
+ *   2. fbq('track', 'Lead', { budget_range, masalah_utama, kota }), then
+ *      fbq('track', 'AddToCart', { ..., value, currency: 'IDR' }), once per page
  *   3. wait 500 ms for the pixel, and in parallel POST to the Sheets webhook
  *      (no-cors, aborted after 1.5 s, failure ignored)
  *   4. location.href = https://wa.me/<number>?text=<message>
@@ -165,6 +166,13 @@ const texts = [
   const WEBHOOK_TIMEOUT_MS = 1500;
   /** If the page is still here this long after redirecting, offer a manual link. */
   const FALLBACK_AFTER_MS = 4000;
+  /** AddToCart value per budget range: the lower bound in rupiah, keyed by the BUDGET_OPTIONS labels. */
+  const BUDGET_VALUE: Record<string, number> = {
+    '< Rp 1,5 jt': 1000000,
+    'Rp 1,5 – 3 jt': 1500000,
+    'Rp 3 – 6 jt': 3000000,
+    'Rp 6 jt ke atas': 6000000,
+  };
 
   const MESSAGES: Record<string, string> = {
     nama: 'Isi nama kamu dulu ya.',
@@ -322,6 +330,14 @@ const texts = [
           // The option label, not the free text, so the value stays groupable.
           masalah_utama: d.masalah,
           kota: d.kota,
+        });
+        fbq('track', 'AddToCart', {
+          content_name: 'Konsultasi Website Travel',
+          content_category: d.masalah,
+          budget_range: d.budget,
+          kota: d.kota,
+          value: BUDGET_VALUE[d.budget] ?? 0,
+          currency: 'IDR',
         });
       } catch {
         /* a pixel error must never block the redirect */
