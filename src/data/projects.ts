@@ -152,6 +152,14 @@ export const projects: Project[] = [
     liveUrl: 'https://lefaucheuxesports.com/',
     image: 'lefaucheux-esports.webp',
   },
+  {
+    title: 'Ady Geotek',
+    slug: 'ady-geotek',
+    category: 'company-profile',
+    tags: ['Company Profile', 'WordPress'],
+    liveUrl: 'https://adygeotek.com/',
+    image: 'ady-geotek.webp',
+  },
 ];
 
 /**
