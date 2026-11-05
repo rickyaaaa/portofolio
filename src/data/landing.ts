@@ -87,7 +87,7 @@ export const PROBLEM_OPTIONS: Choice[] = [
 ];
 
 export const BUDGET_OPTIONS: Choice[] = [
-  { value: 'Rp 1,5 – 3 jt' },
+  { value: 'Rp 2 – 3 jt' },
   { value: 'Rp 3 – 6 jt' },
   { value: 'Rp 6 jt ke atas' },
 ];
