@@ -34,7 +34,7 @@ interface Group {
 const groups: Group[] = [
   { name: 'kondisi', legend: 'Kondisi website sekarang', options: WEBSITE_STATUS_OPTIONS, columns: 1 },
   { name: 'masalah', legend: 'Masalah utama', options: PROBLEM_OPTIONS, columns: 1 },
-  { name: 'budget', legend: 'Range budget', options: BUDGET_OPTIONS, columns: 2 },
+  { name: 'budget', legend: 'Range budget', options: BUDGET_OPTIONS, columns: 1 },
 ];
 
 const texts = [
@@ -168,7 +168,6 @@ const texts = [
   const FALLBACK_AFTER_MS = 4000;
   /** AddToCart value per budget range: the lower bound in rupiah, keyed by the BUDGET_OPTIONS labels. */
   const BUDGET_VALUE: Record<string, number> = {
-    '< Rp 1,5 jt': 1000000,
     'Rp 1,5 – 3 jt': 1500000,
     'Rp 3 – 6 jt': 3000000,
     'Rp 6 jt ke atas': 6000000,
