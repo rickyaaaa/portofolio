@@ -2,7 +2,7 @@
  * Ricksite Studio portfolio — the single source of truth for project data.
  *
  * Order is deliberate: websites and custom web applications alternate so the
- * three travel sites do not sit together. A visitor should see at a glance that
+ * travel sites do not sit together. A visitor should see at a glance that
  * Ricksite builds both marketing websites and internal business systems.
  *
  * Homepage cards stay minimal — screenshot, at most two tags, project name and
@@ -100,6 +100,15 @@ export const projects: Project[] = [
     // Internal application — no public link to the login page or dashboard.
     image: 'sab-swadaya.webp',
     featured: true,
+  },
+  {
+    title: 'Shalom Bali Tour',
+    slug: 'shalom-bali-tour',
+    category: 'travel',
+    // Next.js front end; WordPress underneath only as the content source.
+    tags: ['Website Travel', 'Next.js'],
+    liveUrl: 'https://shalombalitour.com/',
+    image: 'shalom-bali-tour.webp',
   },
   {
     title: 'Villa Desa Krui',
