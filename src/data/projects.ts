@@ -144,6 +144,14 @@ export const projects: Project[] = [
     liveUrl: 'https://jastipkutual.com/',
     image: 'jastipku-tual.webp',
   },
+  {
+    title: 'Lefaucheux Esports',
+    slug: 'lefaucheux-esports',
+    category: 'company-profile',
+    tags: ['Company Profile', 'Astro'],
+    liveUrl: 'https://lefaucheuxesports.com/',
+    image: 'lefaucheux-esports.webp',
+  },
 ];
 
 /**
