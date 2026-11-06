@@ -4,20 +4,26 @@
  *
  * Flow on a valid submit:
  *   1. build the WhatsApp message from the answers (+ UTM "Ref:" line)
- *   2. fbq('track', 'Lead', { budget_range, masalah_utama, kota }), then
- *      fbq('track', 'AddToCart', { ..., value, currency: 'IDR' }), once per page
- *   3. wait 500 ms for the pixel, and in parallel POST to the Sheets webhook
- *      (no-cors, aborted after 1.5 s, failure ignored)
- *   4. location.href = https://wa.me/<number>?text=<message>
+ *   2. generate one event ID for Lead and one for AddToCart (once per page)
+ *   3. fbq('track', 'Lead', { budget_range, masalah_utama, kota }, { eventID }),
+ *      then fbq('track', 'AddToCart', { ..., value, currency: 'IDR' }, { eventID })
+ *   4. wait 500 ms for the pixel, and in parallel POST the answers + phone +
+ *      UTM + page URL + _fbp/_fbc + both event IDs to the ricksite-leads
+ *      endpoint (keepalive, aborted after 1.5 s, any failure ignored). The
+ *      tool sends the same events through the Conversions API with the same
+ *      IDs, so Meta deduplicates browser and server copies.
+ *   5. location.href = https://wa.me/<number>?text=<message>
  *
- * Settings (WA number, webhook URL, option lists) come from
+ * Settings (WA number, endpoint URL, option lists) come from
  * src/data/landing.ts and reach the script through data attributes, so the
  * bundled script holds no configuration of its own.
  */
 import {
   BUDGET_OPTIONS,
   LANDING_WHATSAPP_NUMBER,
-  LEAD_WEBHOOK_URL,
+  LEAD_ENDPOINT_ENABLED,
+  LEAD_ENDPOINT_URL,
+  PRIVACY_URL,
   PROBLEM_OPTIONS,
   PROBLEM_OTHER,
   WEBSITE_STATUS_OPTIONS,
@@ -37,8 +43,27 @@ const groups: Group[] = [
   { name: 'budget', legend: 'Range budget', options: BUDGET_OPTIONS, columns: 1 },
 ];
 
-const texts = [
+interface TextField {
+  name: string;
+  label: string;
+  autocomplete: string;
+  placeholder: string;
+  max: number;
+  type?: 'text' | 'tel';
+  inputmode?: 'numeric';
+}
+
+const texts: TextField[] = [
   { name: 'nama', label: 'Nama kamu', autocomplete: 'name', placeholder: 'Contoh: Budi', max: 60 },
+  {
+    name: 'phone',
+    label: 'Nomor WhatsApp',
+    autocomplete: 'tel',
+    placeholder: '08xxxxxxxxxx',
+    max: 20,
+    type: 'tel',
+    inputmode: 'numeric',
+  },
   { name: 'usaha', label: 'Nama travel / usaha', autocomplete: 'organization', placeholder: 'Contoh: Nusa Trip Lombok', max: 80 },
   { name: 'kota', label: 'Kota operasional', autocomplete: 'address-level2', placeholder: 'Contoh: Labuan Bajo', max: 60 },
 ];
@@ -53,7 +78,7 @@ const texts = [
         Jawaban kamu membantu kami kasih saran yang pas sejak chat pertama, bukan tanya ulang dari awal.
       </p>
       <ol class="steps" role="list">
-        <li><span>1</span>Isi 6 pertanyaan singkat di form ini.</li>
+        <li><span>1</span>Isi 7 pertanyaan singkat di form ini.</li>
         <li><span>2</span>WhatsApp terbuka dengan jawabanmu sudah terisi. Tinggal tekan kirim.</li>
         <li><span>3</span>Kami balas dengan rekomendasi paket dan estimasi yang sesuai bisnis kamu.</li>
       </ol>
@@ -64,7 +89,7 @@ const texts = [
       class="form-card"
       novalidate
       data-wa={LANDING_WHATSAPP_NUMBER}
-      data-webhook={LEAD_WEBHOOK_URL}
+      data-endpoint={LEAD_ENDPOINT_ENABLED ? LEAD_ENDPOINT_URL : ''}
       data-other={PROBLEM_OTHER}
     >
       {texts.map((t) => (
@@ -76,7 +101,8 @@ const texts = [
             class="input"
             id={`f-${t.name}`}
             name={t.name}
-            type="text"
+            type={t.type ?? 'text'}
+            inputmode={t.inputmode}
             autocomplete={t.autocomplete}
             placeholder={t.placeholder}
             maxlength={t.max}
@@ -127,6 +153,13 @@ const texts = [
         </fieldset>
       ))}
 
+      <!-- Honeypot: invisible to people and skipped by the keyboard. Bots that
+           fill every field give themselves away; the endpoint drops those. -->
+      <div class="hp" aria-hidden="true">
+        <label for="f-website_url">Website</label>
+        <input id="f-website_url" name="website_url" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+
       <button type="submit" class="submit" id="lead-submit">
         <span class="submit-idle">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -146,7 +179,10 @@ const texts = [
         WhatsApp belum terbuka? <a id="form-fallback-link" href="#form">Ketuk di sini untuk membuka chat</a>
       </p>
 
-      <p class="form-privacy">Jawabanmu hanya dipakai untuk konsultasi ini. Tanpa spam.</p>
+      <p class="form-privacy">
+        Data kamu dipakai untuk menghubungi kamu dan mengukur iklan kami.
+        <a href={PRIVACY_URL} target="_blank" rel="noopener">Kebijakan privasi</a>
+      </p>
     </form>
   </div>
 </section>
@@ -163,7 +199,7 @@ const texts = [
   const UTM_KEYS = ['utm_source', 'utm_campaign', 'utm_content'] as const;
   const UTM_STORAGE = 'rs-lp-utm';
   const PIXEL_WAIT_MS = 500;
-  const WEBHOOK_TIMEOUT_MS = 1500;
+  const LEAD_POST_TIMEOUT_MS = 1500;
   /** If the page is still here this long after redirecting, offer a manual link. */
   const FALLBACK_AFTER_MS = 4000;
   /** AddToCart value per budget range: the lower bound in rupiah, keyed by the BUDGET_OPTIONS labels. */
@@ -175,6 +211,7 @@ const texts = [
 
   const MESSAGES: Record<string, string> = {
     nama: 'Isi nama kamu dulu ya.',
+    phone: 'Isi nomor WhatsApp yang aktif, 10–15 digit. Contoh: 081234567890.',
     usaha: 'Isi nama travel atau usaha kamu.',
     kota: 'Isi kota tempat bisnis kamu beroperasi.',
     kondisi: 'Pilih kondisi website kamu sekarang.',
@@ -187,7 +224,7 @@ const texts = [
 
   if (form) {
     const waNumber = form.dataset.wa ?? '';
-    const webhookUrl = form.dataset.webhook ?? '';
+    const endpointUrl = form.dataset.endpoint ?? '';
     const otherValue = form.dataset.other ?? 'Lainnya';
     const submitBtn = form.querySelector<HTMLButtonElement>('#lead-submit')!;
     const status = form.querySelector<HTMLElement>('#form-status')!;
@@ -199,6 +236,10 @@ const texts = [
     let submitting = false;
     // One Lead per page view, even if the visitor submits again from the fallback.
     let leadTracked = false;
+    // Likewise one POST to the lead endpoint, so a second submit is no duplicate lead.
+    let leadPosted = false;
+    // Shared by the pixel and the endpoint: same ID on both sides = Meta dedups.
+    let eventIds: { lead: string; atc: string } | undefined;
     let fallbackTimer: number | undefined;
 
     /* ---------- UTM: read on arrival, keep for the session ---------- */
@@ -244,6 +285,7 @@ const texts = [
     function readForm() {
       return {
         nama: text('nama'),
+        phone: text('phone'),
         usaha: text('usaha'),
         kota: text('kota'),
         kondisi: radio('kondisi'),
@@ -255,9 +297,22 @@ const texts = [
 
     type Answers = ReturnType<typeof readForm>;
 
+    /**
+     * Same rule as the endpoint (ricksite-leads PhoneNumber::normalize): drop
+     * spaces, dashes, dots, brackets and "+", accept a leading 0, 62 or +62,
+     * turn 0 into 62, then require 10–15 digits. Null when invalid.
+     */
+    function normalizePhone(raw: string): string | null {
+      const compact = raw.replace(/[\s\-.()]/g, '');
+      if (!/^(\+62|62|0)\d+$/.test(compact)) return null;
+      const digits = compact.replace(/^\+/, '').replace(/^0/, '62');
+      return digits.length >= 10 && digits.length <= 15 ? digits : null;
+    }
+
     function validate(d: Answers): string[] {
       const invalid: string[] = [];
       if (d.nama.length < 2) invalid.push('nama');
+      if (!normalizePhone(d.phone)) invalid.push('phone');
       if (d.usaha.length < 2) invalid.push('usaha');
       if (d.kota.length < 2) invalid.push('kota');
       if (!d.kondisi) invalid.push('kondisi');
@@ -319,52 +374,111 @@ const texts = [
       return lines.join('\n');
     }
 
+    /* ---------- Event IDs and Meta cookies ---------- */
+
+    function newEventId(): string {
+      try {
+        if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+          return crypto.randomUUID();
+        }
+      } catch {
+        /* randomUUID needs a secure context; fall through */
+      }
+      return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
+    }
+
+    function getEventIds(): { lead: string; atc: string } {
+      eventIds ??= { lead: newEventId(), atc: newEventId() };
+      return eventIds;
+    }
+
+    function cookie(name: string): string {
+      const match = document.cookie.match(new RegExp(`(?:^|;\\s*)${name}=([^;]*)`));
+      if (!match) return '';
+      try {
+        return decodeURIComponent(match[1]);
+      } catch {
+        return match[1];
+      }
+    }
+
+    /** _fbc cookie, or one built from ?fbclid= when the pixel has not set it (yet). */
+    function readFbc(): string {
+      const fromCookie = cookie('_fbc');
+      if (fromCookie) return fromCookie;
+      const fbclid = new URLSearchParams(window.location.search).get('fbclid');
+      return fbclid ? `fb.1.${Date.now()}.${fbclid}` : '';
+    }
+
+    /* ---------- Pixel + lead endpoint ---------- */
+
     function trackLead(d: Answers) {
       const fbq = (window as Window & { fbq?: Fbq }).fbq;
       if (leadTracked || typeof fbq !== 'function') return;
       leadTracked = true;
+      const ids = getEventIds();
       try {
-        fbq('track', 'Lead', {
-          budget_range: d.budget,
-          // The option label, not the free text, so the value stays groupable.
-          masalah_utama: d.masalah,
-          kota: d.kota,
-        });
-        fbq('track', 'AddToCart', {
-          content_name: 'Konsultasi Website Travel',
-          content_category: d.masalah,
-          budget_range: d.budget,
-          kota: d.kota,
-          value: BUDGET_VALUE[d.budget] ?? 0,
-          currency: 'IDR',
-        });
+        fbq(
+          'track',
+          'Lead',
+          {
+            budget_range: d.budget,
+            // The option label, not the free text, so the value stays groupable.
+            masalah_utama: d.masalah,
+            kota: d.kota,
+          },
+          { eventID: ids.lead }
+        );
+        fbq(
+          'track',
+          'AddToCart',
+          {
+            content_name: 'Konsultasi Website Travel',
+            content_category: d.masalah,
+            budget_range: d.budget,
+            kota: d.kota,
+            value: BUDGET_VALUE[d.budget] ?? 0,
+            currency: 'IDR',
+          },
+          { eventID: ids.atc }
+        );
       } catch {
         /* a pixel error must never block the redirect */
       }
     }
 
-    async function sendWebhook(d: Answers): Promise<void> {
-      if (!webhookUrl) return;
+    async function sendLead(d: Answers): Promise<void> {
+      if (!endpointUrl || leadPosted) return;
+      leadPosted = true;
+      const ids = getEventIds();
       const controller = new AbortController();
-      const timer = window.setTimeout(() => controller.abort(), WEBHOOK_TIMEOUT_MS);
+      const timer = window.setTimeout(() => controller.abort(), LEAD_POST_TIMEOUT_MS);
       try {
-        await fetch(webhookUrl, {
+        // Field names follow the ricksite-leads endpoint.
+        await fetch(endpointUrl, {
           method: 'POST',
-          mode: 'no-cors',
           keepalive: true,
-          // text/plain keeps this a "simple" request, which no-cors requires.
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify({
-            ...d,
+            nama: d.nama,
+            phone: d.phone,
+            usaha: d.usaha,
+            kota: d.kota,
+            kondisi_website: d.kondisi,
             masalah: d.masalah === otherValue ? `${otherValue}: ${d.masalah_lain}` : d.masalah,
+            budget_range: d.budget,
             ...utm,
-            page: window.location.href,
-            submitted_at: new Date().toISOString(),
+            page_url: window.location.href,
+            fbp: cookie('_fbp'),
+            fbc: readFbc(),
+            lead_event_id: ids.lead,
+            atc_event_id: ids.atc,
+            website_url: text('website_url'),
           }),
           signal: controller.signal,
         });
       } catch {
-        /* timeout or network error: WhatsApp still opens */
+        /* timeout, CORS or network error: WhatsApp still opens */
       } finally {
         window.clearTimeout(timer);
       }
@@ -402,7 +516,7 @@ const texts = [
       fallbackLink.href = waUrl;
 
       trackLead(data);
-      await Promise.all([wait(PIXEL_WAIT_MS), sendWebhook(data)]);
+      await Promise.all([wait(PIXEL_WAIT_MS), sendLead(data)]);
 
       window.location.href = waUrl;
 
@@ -714,6 +828,22 @@ const texts = [
     font-size: 13px;
     color: var(--muted);
     text-align: center;
+  }
+
+  .form-privacy a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Honeypot: off-screen rather than display:none, which some bots skip. */
+  .hp {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 
   @media (min-width: 480px) {

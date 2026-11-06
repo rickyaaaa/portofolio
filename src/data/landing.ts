@@ -25,24 +25,27 @@ export const PIXEL_ENABLED = /^\d{10,20}$/.test(PIXEL_ID);
 export const LANDING_WHATSAPP_NUMBER: string = WHATSAPP_NUMBER;
 
 /**
- * TODO: URL webhook - Google Apps Script web app URL (ends in /exec).
- * Leave it empty to skip the webhook. The page then goes straight to WhatsApp.
+ * Lead endpoint of the ricksite-leads tool (one URL per workspace, shown in
+ * /admin → Workspaces → the workspace → "POST URL untuk form landing page").
  *
- * The body is sent as text/plain JSON, because no-cors only allows "simple"
- * content types. Minimal Apps Script for the receiving Sheet:
+ * Every valid form submit is POSTed here with the same event IDs the pixel
+ * uses, so the tool can send Lead + AddToCart through the Conversions API and
+ * Meta deduplicates them against the browser events.
  *
- *   function doPost(e) {
- *     var d = JSON.parse(e.postData.contents);
- *     SpreadsheetApp.getActive().getSheets()[0].appendRow([
- *       new Date(), d.nama, d.usaha, d.kota, d.kondisi, d.masalah, d.budget,
- *       d.utm_source, d.utm_campaign, d.utm_content, d.page,
- *     ]);
- *     return ContentService.createTextOutput('ok');
- *   }
- *
- * Deploy it as a web app with access set to "Anyone".
+ * TODO: WORKSPACE_UUID - while the URL still holds the placeholder (or is
+ * empty) the POST is skipped and the form works exactly as before.
  */
-export const LEAD_WEBHOOK_URL = '';
+export const LEAD_ENDPOINT_URL =
+  'https://capi.ricksitestudio.com/api/leads/d6589724-4e2f-4f84-9881-5d2160a373de';
+
+/** True once LEAD_ENDPOINT_URL ends in a real workspace UUID. */
+export const LEAD_ENDPOINT_ENABLED =
+  /^https:\/\/[^/]+\/api\/leads\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+    LEAD_ENDPOINT_URL
+  );
+
+/** Privacy notice linked under the form (served by the ricksite-leads tool). */
+export const PRIVACY_URL = 'https://capi.ricksitestudio.com/privacy';
 
 /** Footer links. */
 export const LANDING_SOCIALS = {
