@@ -645,3 +645,70 @@
 .agenko-project-item.style-one .content .project-categories span:not(:last-child) {
   margin-right: 5px;
 }
+
+/*-------------------------------------
+    ## Heading semantics
+
+    The template picks heading levels for their size, which left pages with
+    H2 -> H4 jumps, prices as H2, FAQ questions as H6 and footer labels as
+    headings. Tags now follow the document outline; these classes keep each
+    element looking exactly like the tag it replaced, and restate the Agenko
+    rules that were tied to the old tag name.
+--------------------------------------*/
+.rs-h2, .rs-h4, .rs-h5, .rs-h6 {
+  font-weight: 700;
+  margin: 0;
+  color: var(--white-color);
+  font-family: var(--heading-font);
+}
+.rs-h2 { font-size: 52px; line-height: 58px; }
+.rs-h4 { font-size: 24px; line-height: 34px; }
+.rs-h5 { font-size: 20px; line-height: 1; }
+.rs-h6 { font-size: 18px; line-height: 1; }
+
+.agenko-iconic-box.style-one .content .rs-h4.title {
+  font-size: 20px;
+  color: var(--white-color);
+  line-height: 1.4;
+}
+.agenko-iconic-box.style-one:hover .content .rs-h4.title {
+  color: var(--heading-color);
+}
+.agenko-iconic-box.style-two .content .rs-h4 {
+  margin-bottom: 15px;
+}
+.agenko-iconic-box.style-three .content .rs-h6 {
+  margin-bottom: 10px;
+}
+.agenko-iconic-box.style-four .content .rs-h4.title {
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .agenko-iconic-box.style-four .content .rs-h4.title {
+    font-size: 20px;
+  }
+}
+.agenko-iconic-box.style-four.rs-deliverable .content .rs-h4.title {
+  margin-bottom: 0;
+  font-size: 20px;
+  line-height: 30px;
+}
+.agenko-project-item.style-one .content .rs-h4.title:hover {
+  color: var(--primary-color);
+}
+.footer-widget.footer-contact-widget .footer-content .rs-h4.widget-title {
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 991px) {
+  .header-navigation .pf-menu-bottom .rs-h5 {
+    margin-bottom: 25px;
+  }
+}
+/* The footer labels are now <p>, so undo Agenko's paragraph styling inside this box. */
+.agenko-iconic-box.style-three .content p.rs-h6 {
+  letter-spacing: normal;
+  line-height: 1;
+}
+.agenko-pricing-item.style-three .pricing-head .rs-h2.price {
+  margin-bottom: 15px;
+}
