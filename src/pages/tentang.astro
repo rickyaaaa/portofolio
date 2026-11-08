@@ -1,0 +1,205 @@
+---
+/**
+ * About page.
+ *
+ * Written as the studio ("kami"), not as a team: Ricksite is run by one person,
+ * so the copy never says "tim kami" or implies staff that does not exist.
+ *
+ * Trust comes from things a visitor can check, not adjectives: every number is
+ * counted from data/projects.ts and data/services.ts, and every principle is
+ * one the service pages already commit to in their FAQs (prices up front, ad
+ * accounts in the client's name, no page-one or lead-count guarantees).
+ *
+ * Built from stock Agenko parts: agenko-page-banner, section-title,
+ * agenko-iconic-box style-four, check-list style-one.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeaturedProjects from '../components/sections/FeaturedProjects.astro';
+import FinalCta from '../components/sections/FinalCta.astro';
+import { projects } from '../data/projects';
+import { services } from '../data/services';
+
+const title = 'Tentang Ricksite Studio - Jasa Website & Digital Marketing';
+const description =
+  'Ricksite Studio: studio website, aplikasi web, dan digital marketing dari Tangerang Selatan. Harga di depan, laporan transparan, melayani seluruh Indonesia.';
+
+const count = (category: string) => projects.filter((p) => p.category === category).length;
+
+const stats = [
+  { value: projects.length, label: 'Project client yang sudah live' },
+  { value: count('web-app'), label: 'Sistem web untuk operasional bisnis' },
+  { value: count('travel') + count('website-villa'), label: 'Website travel, tour & villa' },
+  { value: services.length, label: 'Layanan, dari website sampai iklan' },
+];
+
+const mission = [
+  'Bangun website dan sistem yang beneran dipakai buat jualan dan operasional, bukan sekadar pajangan.',
+  'Kasih harga di depan, tanpa biaya kaget di tengah jalan.',
+  'Bikin laporan yang transparan: angka iklan dan perkembangan SEO bisa kamu cek sendiri.',
+  'Nggak menjanjikan yang nggak bisa dijamin siapa pun, kayak halaman 1 Google atau jumlah leads pasti.',
+];
+
+const principles = [
+  {
+    icon: 'flaticon-analytics',
+    title: 'Diukur dari Hasil',
+    text: 'Website yang bagus buat kami diukur dari berapa calon customer yang akhirnya chat dan order, bukan dari seberapa ramai fiturnya.',
+  },
+  {
+    icon: 'flaticon-search',
+    title: 'Transparan Soal Harga',
+    text: 'Harga paket ditulis terbuka di tiap halaman layanan. Kalau kebutuhanmu di luar paket, kami buatkan penawaran tertulis sebelum mulai.',
+  },
+  {
+    icon: 'flaticon-cloud-computing',
+    title: 'Data Tetap Milikmu',
+    text: 'Akun Google Ads, akun Meta, domain, dan server sebaiknya atas namamu. Kalau suatu saat ganti pengelola, semua history tetap kamu yang pegang.',
+  },
+  {
+    icon: 'flaticon-web-development',
+    title: 'Ngobrol Langsung',
+    text: 'Kamu ngobrol langsung sama orang yang ngerjain project-mu, bukan lewat perantara. Pertanyaan teknis dijawab dengan bahasa yang gampang dipahami.',
+  },
+  {
+    icon: 'flaticon-social-media-marketing',
+    title: 'Progres Kelihatan',
+    text: 'Project dikerjakan bertahap dan kamu bisa lihat hasilnya di tiap tahap, bukan hilang berbulan-bulan terus tiba-tiba jadi.',
+  },
+  {
+    icon: 'flaticon-check',
+    title: 'Dikerjakan Online',
+    text: 'Semua proses jalan online, dari diskusi sampai serah terima. Jadi bisnis di kota mana pun di Indonesia bisa kerja bareng kami.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+    <!--====== Start Page Banner ======-->
+    <section class="agenko-page-banner">
+        <div class="shape shape-circle1"><span></span></div>
+        <div class="shape shape-circle2"><span></span></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <!--=== Page Content ===-->
+                    <div class="page-content">
+                        <h1 class="page-title">Tentang Ricksite Studio</h1>
+                        <div class="row">
+                            <div class="col-xl-9">
+                                <div class="text-box">
+                                    <p>Studio website, aplikasi web, dan digital marketing dari Tangerang Selatan yang bantu bisnis di seluruh Indonesia dapat customer dari internet.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="breadcrumb-link mt-30">
+                            <li><a href="/">Beranda</a></li>
+                            <li class="active">Tentang</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Page Banner ======-->
+
+    <!--====== Start Who We Are ======-->
+    <section class="agk-about pt-130 pb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <!--=== Section Title ===-->
+                    <div class="section-title mb-50 pf_fadeup">
+                        <span class="sub-title">Siapa Kami</span>
+                        <h2>Website dan Sistem yang Kerja Buat Bisnismu.</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="agk-content-box style-one mb-50 pf_fadeup">
+                        <p>Ricksite Studio adalah studio digital yang berbasis di Tangerang Selatan. Kami bikin website company profile, toko online, dan website travel, membangun aplikasi web seperti ERP dan aplikasi kasir, serta mengelola SEO, Google Ads, dan iklan Facebook &amp; Instagram.</p>
+                        <p>Klien kami kebanyakan bisnis kecil dan menengah: travel dan tour operator, villa, percetakan, sampai usaha yang masih rekap data manual di Excel dan WhatsApp. Semua dikerjakan online, jadi kami melayani bisnis di seluruh Indonesia.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {stats.map((stat) => (
+                    <Fragment>
+                    <div class="col-xl-3 col-6">
+                        <div class="agenko-iconic-box style-four rs-deliverable rs-stat mb-30 pf_fadeup">
+                            <div class="content">
+                                <p class="rs-h2 rs-stat-value">{stat.value}</p>
+                                <p>{stat.label}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {" "}</Fragment>
+                ))}
+            </div>
+        </div>
+    </section><!--====== End Who We Are ======-->
+
+    <!--====== Start Vision & Mission ======-->
+    <section class="agk-service-deliverables gray-dark pt-130 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <!--=== Section Title ===-->
+                    <div class="section-title mb-50 pf_fadeup">
+                        <span class="sub-title">Visi &amp; Misi</span>
+                        <h2>Yang Kami Kejar.</h2>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="rs-about-block mb-40 pf_fadeup">
+                        <h3 class="rs-h4 mb-15">Visi</h3>
+                        <p>Jadi partner digital yang bikin bisnis kecil dan menengah di Indonesia bisa bersaing di internet, dengan cara yang jujur dan hasilnya bisa diukur.</p>
+                    </div>
+                    <div class="rs-about-block mb-30 pf_fadeup">
+                        <h3 class="rs-h4 mb-15">Misi</h3>
+                        <ul class="check-list style-one">
+                            {mission.map((item) => (
+                                <Fragment>
+                                <li><i class="flaticon-check"></i>{item}</li>
+                                {" "}</Fragment>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Vision & Mission ======-->
+
+    <!--====== Start Principles ======-->
+    <section class="agk-why pt-130 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <!--=== Section Title ===-->
+                    <div class="section-title mb-50 pf_fadeup">
+                        <span class="sub-title">Cara Kami Kerja</span>
+                        <h2>Prinsip yang Kami Pegang di Tiap Project.</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {principles.map((principle) => (
+                    <Fragment>
+                    <div class="col-xl-4 col-md-6 col-sm-12">
+                        <div class="agenko-iconic-box style-four rs-deliverable mb-30 pf_fadeup">
+                            <div class="icon">
+                                <i class={principle.icon}></i>
+                            </div>
+                            <div class="content">
+                                <h3 class="title rs-h4 mb-15">{principle.title}</h3>
+                                <p>{principle.text}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {" "}</Fragment>
+                ))}
+            </div>
+        </div>
+    </section><!--====== End Principles ======-->
+
+    <FeaturedProjects />
+
+    <FinalCta />
+</BaseLayout>

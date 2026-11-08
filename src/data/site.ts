@@ -56,7 +56,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Beranda', href: '/' },
   { label: 'Layanan', href: '/#services', children: [] },
   { label: 'Project', href: '/projects' },
-  { label: 'Tentang', href: '/#about' },
+  { label: 'Tentang', href: '/tentang' },
   { label: 'Kontak', href: '/kontak' },
 ];
 

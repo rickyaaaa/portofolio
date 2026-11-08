@@ -1,7 +1,8 @@
 ---
 /** Agenko footer. Markup unchanged from index.html. */
 import { NAV_LINKS, SOCIAL_LINKS, whatsapp, WHATSAPP_DISPLAY, EMAIL, EMAIL_HREF } from '../data/site';
-import { services } from '../data/services';
+import { services, servicePath } from '../data/services';
+import { PRIVACY_URL } from '../data/landing';
 import Logo from './Logo.astro';
 import { asset } from '../lib/asset';
 
@@ -46,7 +47,7 @@ const talkLink = whatsapp();
                                 {services.map((service) => (
                                     <Fragment>
                                     <li>
-                                        <a href="/#services">{service.title}</a>
+                                        <a href={servicePath(service)}>{service.title}</a>
                                     </li>
                                     {" "}</Fragment>
                                 ))}
@@ -137,7 +138,9 @@ const talkLink = whatsapp();
                         <ul>
                             <li><a href="/projects">Project</a></li>
                             <li><a href="/#services">Layanan</a></li>
-                            <li><a href="/#contact">Kontak</a></li>
+                            <li><a href="/tentang">Tentang</a></li>
+                            <li><a href="/kontak">Kontak</a></li>
+                            <li><a href={PRIVACY_URL} target="_blank" rel="noopener">Kebijakan Privasi</a></li>
                         </ul>
                     </div>
                 </div>

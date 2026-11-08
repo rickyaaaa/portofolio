@@ -712,3 +712,30 @@
 .agenko-pricing-item.style-three .pricing-head .rs-h2.price {
   margin-bottom: 15px;
 }
+
+/* /tentang: stat boxes and principle cards reuse the deliverable box. */
+.agenko-iconic-box.style-four.rs-stat .rs-stat-value {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+.agenko-iconic-box.style-four.rs-deliverable .content .rs-h4.title + p {
+  margin-top: 12px;
+}
+
+/*
+ * Deliverable boxes are height: 100% of their column so cards in a row line
+ * up, but they also carry mb-30, so each box overflowed its column by 30px
+ * and rows ran into each other with no gap. Below 992px Agenko also adds a
+ * 40px top margin, which pushed every stacked box into the next one.
+ */
+.agenko-iconic-box.style-four.rs-deliverable {
+  height: calc(100% - 30px);
+}
+@media screen and (max-width: 991px) {
+  .agenko-iconic-box.style-four.rs-deliverable {
+    margin-top: 0;
+  }
+}
+.agenko-iconic-box.style-four.rs-stat .content p:last-child {
+  margin-bottom: 0;
+}
