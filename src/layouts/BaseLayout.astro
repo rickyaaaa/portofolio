@@ -59,6 +59,14 @@ const organization = {
     'Jasa pembuatan website, web app, dan digital marketing untuk bisnis di Indonesia.',
   email: EMAIL,
   telephone: `+${WHATSAPP_NUMBER}`,
+  // City and region only — true, and enough for local relevance without a
+  // street address (see the note above on LocalBusiness).
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Tangerang Selatan',
+    addressRegion: 'Banten',
+    addressCountry: 'ID',
+  },
   areaServed: { '@type': 'Country', name: 'Indonesia' },
   sameAs: SOCIAL_LINKS.map((social) => social.href),
 };

@@ -11,6 +11,18 @@
  */
 
 export interface ServicePageContent {
+  /**
+   * <title>, kept under 60 characters so Google shows it whole. Leads with the
+   * phrase this page targets — picked from Ubersuggest data (Indonesia, Nov
+   * 2026) for phrases a new site can realistically rank for.
+   */
+  seoTitle: string;
+  /** Page H1. May differ from service.title, which stays short for nav and cards. */
+  h1: string;
+  /** Meta description, under ~155 characters. */
+  metaDescription: string;
+  /** Opening paragraph in the deliverables section, carrying the target phrases. */
+  intro: string;
   /** One line under the H1 in the page banner. */
   tagline: string;
   /** Symptoms a visitor recognises in their own business. */
@@ -22,6 +34,12 @@ export interface ServicePageContent {
 
 export const servicePages: Record<string, ServicePageContent> = {
   'jasa-pembuatan-website': {
+    seoTitle: 'Jasa Pembuatan Website Profesional Tangerang | Ricksite',
+    h1: 'Jasa Pembuatan Website Profesional',
+    metaDescription:
+      'Jasa pembuatan website profesional dari Tangerang Selatan: company profile, toko online, website UMKM, dan travel. Cepat, rapi, enak dibuka dari HP.',
+    intro:
+      'Ricksite Studio adalah jasa pembuatan website profesional yang berbasis di Tangerang Selatan dan melayani bisnis di seluruh Indonesia. Kami bikin website company profile untuk perusahaan, toko online, website UMKM, sampai website travel dan booking — cepat, rapi, dan enak dibuka dari HP.',
     tagline:
       'Website yang rapi, cepat, dan siap nerima calon customer — dibuka dari HP maupun laptop.',
     problems: [
@@ -52,6 +70,14 @@ export const servicePages: Record<string, ServicePageContent> = {
   },
 
   'jasa-pembuatan-aplikasi': {
+    // Web apps for business only, no mobile. "kasir" is searched more than
+    // "POS" (~50 vs ~20/month), so the copy says "kasir (POS)".
+    seoTitle: 'Jasa Pembuatan Aplikasi Web, ERP & Kasir | Ricksite Studio',
+    h1: 'Jasa Pembuatan Aplikasi Web untuk Bisnis',
+    metaDescription:
+      'Jasa pembuatan aplikasi web untuk bisnis: ERP, aplikasi kasir (POS), dashboard, booking, sampai sistem internal sesuai alur kerjamu. Konsultasi gratis.',
+    intro:
+      'Ricksite Studio menyediakan jasa pembuatan aplikasi berbasis web untuk bisnis di seluruh Indonesia, dikerjakan dari Tangerang Selatan. Kerjaan manual yang bikin repot kami pindahkan ke sistem: ERP, aplikasi kasir (POS), dashboard, booking, sampai alur kerja khusus bisnismu.',
     tagline:
       'Sistem yang dibangun ngikutin alur kerja bisnismu, bukan maksa bisnismu ikut template.',
     problems: [
@@ -82,6 +108,12 @@ export const servicePages: Record<string, ServicePageContent> = {
   },
 
   'jasa-seo': {
+    seoTitle: 'Jasa SEO Profesional di Tangerang | Ricksite Studio',
+    h1: 'Jasa SEO Profesional',
+    metaDescription:
+      'Jasa SEO profesional dari Tangerang Selatan untuk bisnis di seluruh Indonesia: riset keyword, on-page, technical SEO, dan laporan bulanan yang transparan.',
+    intro:
+      'Ricksite Studio adalah jasa SEO profesional yang berbasis di Tangerang Selatan dan menangani website bisnis di seluruh Indonesia. Kami bantu website kamu muncul pas calon customer nyari di Google — termasuk SEO lokal untuk bisnis yang melayani satu kota dan SEO untuk toko online — tanpa harus bayar per klik.',
     tagline:
       'Biar website kamu ketemu pas orang lagi nyari, tanpa harus bayar per klik.',
     problems: [
@@ -112,6 +144,12 @@ export const servicePages: Record<string, ServicePageContent> = {
   },
 
   'jasa-google-ads': {
+    seoTitle: 'Jasa Google Ads Profesional | Ricksite Studio',
+    h1: 'Jasa Google Ads Profesional',
+    metaDescription:
+      'Jasa Google Ads profesional: riset keyword iklan, struktur campaign, conversion tracking, dan laporan jelas. Muncul paling atas pas calon customer nyari.',
+    intro:
+      'Ricksite Studio menyediakan jasa Google Ads profesional untuk bisnis di seluruh Indonesia, dikelola dari Tangerang Selatan. Iklan kamu muncul paling atas pas orang lagi nyari produk atau jasa yang kamu jual, dengan budget yang dioptimasi dan laporan yang bisa kamu cek sendiri.',
     tagline:
       'Muncul paling atas pas orang lagi nyari produk atau jasa yang kamu jual.',
     problems: [
@@ -142,6 +180,14 @@ export const servicePages: Record<string, ServicePageContent> = {
   },
 
   'jasa-meta-ads': {
+    // "jasa iklan facebook ads" is searched ~2,900x/month vs ~170x for
+    // "jasa meta ads", so the page leads with the words buyers actually use.
+    seoTitle: 'Jasa Iklan Facebook Ads & Instagram | Ricksite Studio',
+    h1: 'Jasa Iklan Facebook Ads & Instagram',
+    metaDescription:
+      'Jasa iklan Facebook Ads dan Instagram (Meta Ads) yang tertarget ke orang paling mungkin beli. Riset audience, creative testing, retargeting, laporan jelas.',
+    intro:
+      'Ricksite Studio adalah jasa iklan Facebook Ads dan Instagram Ads (Meta Ads) untuk bisnis di seluruh Indonesia, dikelola dari Tangerang Selatan. Iklannya diarahkan tertarget ke orang yang paling mungkin beli, bukan sekadar nambah view dan like.',
     tagline:
       'Facebook dan Instagram Ads yang diarahkan ke orang paling mungkin beli.',
     problems: [

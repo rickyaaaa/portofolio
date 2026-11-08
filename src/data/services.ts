@@ -62,6 +62,7 @@ export const services: Service[] = [
     pricingCategories: ['web-app'],
     solutions: [
       'Custom Dashboard',
+      'Aplikasi Kasir (POS)',
       'ERP System',
       'Booking System',
       'Membership System',
