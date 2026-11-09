@@ -488,4 +488,180 @@ export const servicePages: Record<string, ServicePageContent> = {
     ],
     relatedProjects: [],
   },
+
+  // ---- Sub-pages of Jasa Pembuatan Website (see websiteSubServices) ----
+
+  'jasa-pembuatan-website-company-profile': {
+    keyword: 'Jasa Pembuatan Website Company Profile',
+    problemsHeading: 'Tanda Perusahaanmu Butuh Website Company Profile.',
+    faqHeading: 'Pertanyaan Seputar Website Company Profile.',
+    ctaHeading: 'Siap Punya Website Company Profile yang Meyakinkan?',
+    processHeading: 'Cara Kerja Pembuatan Website Company Profile.',
+    process: [
+      {
+        icon: 'flaticon-search',
+        title: 'Diskusi & Materi',
+        description: 'Kami kumpulkan info perusahaan, layanan, logo, dan foto, lalu sepakati halaman apa saja yang dibutuhkan.',
+        step: 'Tahap-01',
+      },
+      {
+        icon: 'flaticon-ux-design',
+        title: 'Desain Halaman',
+        description: 'Tampilan disusun sesuai identitas brand, lalu direvisi bareng sesuai jatah revisi paketmu.',
+        step: 'Tahap-02',
+      },
+      {
+        icon: 'flaticon-web-development',
+        title: 'Pengembangan',
+        description: 'Website dibangun responsive dan cepat, lengkap dengan email bisnis dan tombol WhatsApp.',
+        step: 'Tahap-03',
+      },
+      {
+        icon: 'flaticon-quality-test',
+        title: 'Launching & Maintenance',
+        description: 'Website online di domainmu, lalu tetap kami dampingi selama masa maintenance paket.',
+        step: 'Tahap-04',
+      },
+    ],
+    seoTitle: 'Jasa Pembuatan Website Company Profile | Ricksite Studio',
+    h1: 'Jasa Pembuatan Website Company Profile',
+    metaDescription:
+      'Jasa pembuatan website company profile untuk perusahaan dan UMKM: desain rapi, enak dibuka dari HP, domain & hosting tahun pertama. Mulai Rp2,5 juta.',
+    intro:
+      'Website company profile adalah wajah resmi bisnismu di internet: tempat calon klien mengecek siapa kamu, apa yang kamu tawarkan, dan cara menghubungimu. Ricksite Studio membuat website company profile untuk perusahaan dan UMKM di seluruh Indonesia, dikerjakan dari Tangerang Selatan — rapi, cepat, dan langsung mengarahkan pengunjung ke WhatsApp.',
+    tagline:
+      'Website resmi yang bikin calon klien percaya sebelum mereka menghubungimu.',
+    problems: [
+      'Calon klien minta link website, tapi yang bisa dikasih cuma Instagram',
+      'Kelihatan kurang profesional waktu menawarkan kerja sama atau ikut tender',
+      'Info layanan dan kontak tersebar, nggak ada satu tempat resmi',
+      'Website lama sudah ketinggalan zaman dan nggak enak dibuka dari HP',
+    ],
+    faqs: [
+      {
+        q: 'Berapa harga website company profile?',
+        a: 'Mulai Rp2.500.000 untuk paket Starter (4 halaman), Rp5.000.000 untuk Growth (7 halaman), dan Rp8.500.000 untuk Ultimate (8–10 halaman dengan fitur custom). Semua sudah termasuk domain .com dan hosting tahun pertama.',
+      },
+      {
+        q: 'Berapa lama pembuatan website company profile?',
+        a: 'Website 5–7 halaman biasanya sekitar 2–3 minggu. Timeline pastinya kami kasih setelah kebutuhan dan materinya jelas.',
+      },
+      {
+        q: 'Halaman apa saja yang ada di website company profile?',
+        a: 'Umumnya Beranda, Tentang Perusahaan, Layanan atau Produk, Portofolio, dan Kontak. Jumlah dan isinya kami sesuaikan dengan paket dan kebutuhan bisnismu.',
+      },
+      {
+        q: 'Materi apa yang perlu saya siapkan?',
+        a: 'Cukup logo, info perusahaan, daftar layanan, dan foto kalau ada. Kalau belum lengkap, kami bantu arahkan apa saja yang perlu disiapkan.',
+      },
+    ],
+    relatedProjects: ['ady-geotek', 'lefaucheux-esports', 'larisse-tailor'],
+  },
+
+  'jasa-pembuatan-landing-page': {
+    keyword: 'Jasa Pembuatan Landing Page',
+    problemsHeading: 'Tanda Iklanmu Butuh Landing Page Sendiri.',
+    faqHeading: 'Pertanyaan Seputar Jasa Pembuatan Landing Page.',
+    ctaHeading: 'Siap Punya Landing Page yang Bikin Iklan Lebih Efektif?',
+    processHeading: 'Cara Kerja Pembuatan Landing Page.',
+    process: [
+      {
+        icon: 'flaticon-search',
+        title: 'Brief Penawaran',
+        description: 'Kami pahami dulu apa yang dijual, untuk siapa, dan aksi apa yang kamu mau dari pengunjung.',
+        step: 'Tahap-01',
+      },
+      {
+        icon: 'flaticon-text',
+        title: 'Susun Isi & Desain',
+        description: 'Urutan isi halaman disusun bareng: masalah, penawaran, bukti, lalu tombol aksi yang jelas.',
+        step: 'Tahap-02',
+      },
+      {
+        icon: 'flaticon-web-development',
+        title: 'Pengembangan',
+        description: 'Halaman dibangun ringan supaya cepat dibuka dari HP, dengan tombol dan form WhatsApp.',
+        step: 'Tahap-03',
+      },
+      {
+        icon: 'flaticon-analytics',
+        title: 'Online & Siap Iklan',
+        description: 'Landing page online di domainmu dan siap jadi tujuan iklan Google Ads atau Meta Ads.',
+        step: 'Tahap-04',
+      },
+    ],
+    seoTitle: 'Jasa Pembuatan Landing Page untuk Iklan | Ricksite Studio',
+    h1: 'Jasa Pembuatan Landing Page',
+    metaDescription:
+      'Jasa pembuatan landing page untuk iklan Google & Meta: satu halaman fokus ke satu penawaran, cepat dibuka, langsung ke WhatsApp. Mulai Rp1,5 juta.',
+    intro:
+      'Landing page adalah satu halaman yang fokus ke satu penawaran, biasanya jadi tujuan iklan Google Ads atau Meta Ads. Ricksite Studio membuat landing page yang cepat dibuka, jelas pesannya, dan langsung mengarahkan pengunjung ke WhatsApp atau form — dikerjakan dari Tangerang Selatan untuk bisnis di seluruh Indonesia.',
+    tagline:
+      'Satu halaman, satu penawaran, satu tujuan: bikin pengunjung iklan langsung chat.',
+    problems: [
+      'Iklan diarahkan ke Instagram atau beranda, pengunjung bingung harus ngapain',
+      'Budget iklan habis, tapi yang chat sedikit',
+      'Mau promo satu produk atau event, tapi nggak ada halaman khususnya',
+      'Halaman yang ada lambat dibuka dari HP, pengunjung keburu pergi',
+    ],
+    faqs: [
+      {
+        q: 'Berapa harga jasa pembuatan landing page?',
+        a: 'Mulai Rp1.500.000 untuk satu halaman, sudah termasuk domain .com tahun pertama, desain responsive, 1 email bisnis, tombol WhatsApp, dan maintenance 15 hari.',
+      },
+      {
+        q: 'Berapa lama pembuatan landing page?',
+        a: 'Biasanya 3–7 hari kerja setelah materi dan isi penawarannya jelas.',
+      },
+      {
+        q: 'Apa bedanya landing page dengan website biasa?',
+        a: 'Website biasa punya banyak halaman untuk menjelaskan bisnismu secara lengkap. Landing page cuma satu halaman yang fokus ke satu penawaran dan satu tombol aksi, jadi lebih cocok sebagai tujuan iklan.',
+      },
+      {
+        q: 'Bisa sekalian dipasang pixel Meta dan tracking Google Ads?',
+        a: 'Bisa. Kalau iklannya juga kami kelola, pixel dan conversion tracking kami pasang supaya ketahuan berapa chat yang datang dari iklan.',
+      },
+    ],
+    relatedProjects: [],
+  },
+
+  'jasa-pembuatan-website-toko-online': {
+    keyword: 'Jasa Pembuatan Website Toko Online',
+    problemsHeading: 'Tanda Bisnismu Butuh Website Toko Online Sendiri.',
+    faqHeading: 'Pertanyaan Seputar Website Toko Online.',
+    ctaHeading: 'Siap Punya Toko Online Sendiri?',
+    seoTitle: 'Jasa Pembuatan Website Toko Online | Ricksite Studio',
+    h1: 'Jasa Pembuatan Website Toko Online',
+    metaDescription:
+      'Jasa pembuatan website toko online: katalog produk dengan order ke WhatsApp, sampai checkout, payment gateway, QRIS, dan ongkir otomatis. Mulai Rp3 juta.',
+    intro:
+      'Website toko online membuat produkmu bisa dilihat dan dipesan kapan saja, tanpa tergantung marketplace. Ricksite Studio membuat website toko online untuk UMKM dan brand di seluruh Indonesia — mulai dari katalog yang order-nya langsung ke WhatsApp, sampai toko dengan keranjang belanja, payment gateway, dan ongkir otomatis.',
+    tagline:
+      'Toko sendiri di internet: produk rapi, order masuk, tanpa tergantung marketplace.',
+    problems: [
+      'Jualan cuma di marketplace, kena potongan dan harus perang harga',
+      'Order lewat chat berantakan dan sering salah catat',
+      'Customer tanya stok dan harga satu-satu lewat DM',
+      'Mau pasang iklan, tapi nggak punya halaman toko sendiri sebagai tujuannya',
+    ],
+    faqs: [
+      {
+        q: 'Berapa harga website toko online?',
+        a: 'Paket Starter Rp3.000.000 (katalog sampai 30 produk, order langsung ke WhatsApp), Growth Rp7.000.000 (keranjang belanja, checkout, payment gateway, ongkir otomatis), dan Enterprise Rp12.000.000 (produk tanpa batas dengan varian, multi-admin, dan laporan).',
+      },
+      {
+        q: 'Bisa terima pembayaran langsung di website?',
+        a: 'Bisa, mulai paket Growth: transfer, virtual account, e-wallet, dan QRIS lewat payment gateway, plus ongkir yang dihitung otomatis sesuai kurir dan alamat.',
+      },
+      {
+        q: 'Apa bedanya website toko online dengan jualan di marketplace?',
+        a: 'Di marketplace kamu ikut aturan dan biaya mereka, dan bersaing harga dengan toko lain di halaman yang sama. Website toko online milikmu sendiri: tampilannya sesuai brand, data customer kamu yang pegang, dan cocok jadi tujuan iklan. Banyak bisnis tetap jualan di marketplace sambil punya website sendiri.',
+      },
+      {
+        q: 'Bisa kelola produk dan stok sendiri?',
+        a: 'Bisa. Mulai paket Growth ada dashboard admin untuk kelola produk, stok, dan pesanan.',
+      },
+    ],
+    relatedProjects: [],
+  },
 };

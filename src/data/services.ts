@@ -31,6 +31,15 @@ export interface Service {
   solutions: string[];
   /** Agenko flaticon class, for the service landing pages. */
   icon: string;
+  /**
+   * Slug of the main service this page narrows down (sub-pages only). Used
+   * for the breadcrumb and to keep sub-pages out of nav, cards and footer.
+   */
+  parent?: string;
+  /** Deliverable boxes that link to their own sub-page, keyed by solution label. */
+  solutionLinks?: Record<string, string>;
+  /** Short label for the breadcrumb, where the full title would wrap on a phone. */
+  shortTitle?: string;
 }
 
 export const services: Service[] = [
@@ -51,6 +60,11 @@ export const services: Service[] = [
       'Booking Website',
     ],
     icon: 'flaticon-web-development',
+    solutionLinks: {
+      'Company Profile': '/jasa-pembuatan-website-company-profile',
+      'Toko Online / E-Commerce': '/jasa-pembuatan-website-toko-online',
+      'Landing Page': '/jasa-pembuatan-landing-page',
+    },
   },
   {
     number: '02',
@@ -143,6 +157,80 @@ export const services: Service[] = [
       'Optimasi Kecepatan',
     ],
     icon: 'flaticon-quality-test',
+  },
+];
+
+/**
+ * Narrower pages under "Jasa Pembuatan Website", each aimed at a phrase the
+ * main page cannot also lead with (Ubersuggest, Indonesia, Nov 2026):
+ * "website company profile" ~1,000/mo SD 15, "jasa pembuatan landing page"
+ * ~390/mo SD 26, "jasa pembuatan website toko online" ~320/mo SD 27.
+ *
+ * Kept out of `services` so they do not appear in the nav, the homepage
+ * cards, the footer or the inquiry form's service list. Slugs are flat
+ * because a /jasa-pembuatan-website/ directory would stop .htaccess from
+ * serving jasa-pembuatan-website.html at /jasa-pembuatan-website.
+ */
+export const websiteSubServices: Service[] = [
+  {
+    number: '01',
+    title: 'Jasa Pembuatan Website Company Profile',
+    slug: 'jasa-pembuatan-website-company-profile',
+    shortTitle: 'Company Profile',
+    shortDescription:
+      'Website resmi perusahaan yang rapi, cepat, dan enak dibuka dari HP, supaya calon klien percaya sebelum menghubungimu.',
+    category: 'development',
+    pricingCategories: ['company-profile'],
+    solutions: [
+      'Desain Sesuai Identitas Brand',
+      'Responsive di HP & Laptop',
+      'Domain & Hosting Tahun Pertama',
+      'Email Bisnis',
+      'Tombol WhatsApp',
+      'SEO On-Page Dasar (Paket Growth ke Atas)',
+    ],
+    icon: 'flaticon-web-development',
+    parent: 'jasa-pembuatan-website',
+  },
+  {
+    number: '01',
+    title: 'Jasa Pembuatan Landing Page',
+    slug: 'jasa-pembuatan-landing-page',
+    shortTitle: 'Landing Page',
+    shortDescription:
+      'Satu halaman yang fokus ke satu penawaran dan langsung mengarahkan pengunjung iklan ke WhatsApp.',
+    category: 'development',
+    pricingCategories: ['landing-page'],
+    solutions: [
+      'Satu Halaman Fokus Penawaran',
+      'Desain Responsive',
+      'Tombol & Form WhatsApp',
+      'Loading Cepat di HP',
+      'Siap Dipasang Pixel & Tracking',
+      'Domain Tahun Pertama',
+    ],
+    icon: 'flaticon-ux-design',
+    parent: 'jasa-pembuatan-website',
+  },
+  {
+    number: '01',
+    title: 'Jasa Pembuatan Website Toko Online',
+    slug: 'jasa-pembuatan-website-toko-online',
+    shortTitle: 'Toko Online',
+    shortDescription:
+      'Toko online milik sendiri, dari katalog yang order-nya langsung ke WhatsApp sampai checkout dan pembayaran otomatis.',
+    category: 'development',
+    pricingCategories: ['toko-online'],
+    solutions: [
+      'Katalog Produk & Kategori',
+      'Order Langsung ke WhatsApp',
+      'Keranjang & Checkout',
+      'Payment Gateway & QRIS',
+      'Ongkir Otomatis',
+      'Dashboard Admin',
+    ],
+    icon: 'flaticon-portfolio',
+    parent: 'jasa-pembuatan-website',
   },
 ];
 

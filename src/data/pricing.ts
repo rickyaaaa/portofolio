@@ -90,6 +90,29 @@ export const pricing: PricingCategory[] = [
     ],
   },
   {
+    // Set by Claude (Nov 2026) at the same Rp1.500.000 the tour & travel
+    // Starter already charges for a one-page landing page; adjust freely.
+    id: 'landing-page',
+    title: 'Landing Page',
+    note: 'Butuh lebih dari satu halaman atau fitur khusus? Tinggal cerita, nanti kami buatkan penawaran.',
+    packages: [
+      {
+        plan: 'Landing Page',
+        price: 'Rp1.500.000',
+        amount: 1500000,
+        summary: 'Satu halaman untuk satu penawaran, siap jadi tujuan iklan.',
+        features: [
+          'Domain .com gratis 1 tahun',
+          '1 halaman landing page',
+          'Desain responsive di HP, tablet, dan laptop',
+          '1 email bisnis',
+          'Tombol dan form WhatsApp',
+          'Maintenance 15 hari',
+        ],
+      },
+    ],
+  },
+  {
     id: 'tour-travel',
     title: 'Website Tour & Travel',
     packages: [

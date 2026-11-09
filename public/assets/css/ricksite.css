@@ -811,3 +811,15 @@
     line-height: 46px;
   }
 }
+
+/* Deliverable boxes on the website page that open their own sub-page. */
+.rs-deliverable-link {
+  color: inherit;
+}
+.rs-deliverable-link:hover {
+  color: var(--primary-color);
+}
+.rs-deliverable-link i {
+  margin-left: 6px;
+  font-size: 14px;
+}
