@@ -20,6 +20,12 @@
     # new token rather than just today's file.
     RewriteRule ^google[0-9a-f]{16}\.html$ - [L]
 
+    # The blog's first article went live at /artikel/<slug> before the blog
+    # moved under /blog/. One permanent hop to the new home, so links and
+    # Search Console requests made in between still land on the article.
+    RewriteRule ^artikel/?$ /blog/ [R=301,L]
+    RewriteRule ^artikel/(.+)$ /blog/$1 [R=301,L,NE]
+
     # /sitemap.xml is what people and tools reach for by habit; the generated
     # index is sitemap-index.xml. Pointing one at the other means submitting
     # the wrong one in Search Console still finds it.
@@ -38,6 +44,12 @@
     # can turn it into /index.
     RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
     RewriteRule ^ / [R=301,L]
+
+    # Same for a folder index (/blog/index.html or /blog/index -> /blog/).
+    # Matched on THE_REQUEST so it only catches what a visitor typed, never the
+    # server's own internal lookup of blog/index.html when serving /blog/.
+    RewriteCond %{THE_REQUEST} \s/+([^\s?]+/)index(\.html)?[\s?] [NC]
+    RewriteRule ^ /%1 [R=301,L,NE]
 
     # A visitor should never see the .html extension, so requests that spell it
     # out are redirected to the extensionless form the site actually links to.

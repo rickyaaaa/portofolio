@@ -457,9 +457,9 @@ export const servicePages: Record<string, ServicePageContent> = {
     seoTitle: 'Jasa Maintenance & Perbaikan Website | Ricksite Studio',
     h1: 'Jasa Maintenance & Perbaikan Website',
     metaDescription:
-      'Jasa maintenance website bulanan: update, backup, cek keamanan, dan perbaikan error. Terima juga website buatan pihak lain. Harga jelas di depan.',
+      'Jasa maintenance website mulai Rp350 ribu/bulan: update, backup, cek keamanan, dan perbaikan error. Terima juga website buatan pihak lain.',
     intro:
-      'Ricksite Studio menyediakan jasa maintenance website bulanan untuk bisnis di seluruh Indonesia, dikerjakan dari Tangerang Selatan. Kami jaga website kamu tetap update, ter-backup, dan jalan normal. Website yang error atau berantakan juga bisa kami perbaiki, termasuk website buatan pihak lain.',
+      'Ricksite Studio menyediakan jasa maintenance website bulanan untuk bisnis di seluruh Indonesia, dikerjakan dari Tangerang Selatan. Kami jaga website kamu tetap update, ter-backup, dan jalan normal, dengan biaya maintenance website mulai Rp350.000/bulan. Website yang error atau berantakan juga bisa kami perbaiki, termasuk website buatan pihak lain.',
     tagline:
       'Website tetap aman, update, dan jalan normal — kamu tinggal fokus ngurus bisnis.',
     problems: [

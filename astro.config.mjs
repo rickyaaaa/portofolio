@@ -10,10 +10,13 @@ export default defineConfig({
   site: 'https://ricksitestudio.com',
 
   build: {
-    // Emit /index.html rather than /index/index.html so the output mirrors the
-    // original single-page structure. Links stay extensionless; the rewrite in
-    // public/.htaccess maps /jasa-seo onto jasa-seo.html on the server.
-    format: 'file',
+    // 'preserve' mirrors src/pages: a flat page (jasa-seo.astro, [slug].astro)
+    // becomes jasa-seo.html, exactly as 'file' did, while a folder index
+    // (blog/index.astro) becomes blog/index.html. That is what lets the blog
+    // index and its articles share /blog/: the server 301s /blog to /blog/ and
+    // serves the folder's index.html, and /blog/<slug> is rewritten onto
+    // blog/<slug>.html by public/.htaccess like every other page.
+    format: 'preserve',
   },
 
   // Keep the authored whitespace. The Agenko markup relies on the newlines
@@ -44,6 +47,12 @@ export default defineConfig({
       // /konsultasi is an ad landing page, noindexed on purpose: listing a
       // noindex URL in the sitemap is a contradiction Search Console reports.
       filter: (page) => !/\/(404|konsultasi)\/?$/.test(page),
+      // Unlike the homepage, /blog and /blog/ are different URLs: /blog/ is a
+      // real folder and the server 301s /blog to it. List the URL that answers.
+      serialize: (item) => {
+        if (/\/blog$/.test(item.url)) item.url += '/';
+        return item;
+      },
     }),
   ],
 });

@@ -1,6 +1,6 @@
 ---
 /**
- * One blog article. Markdown body from src/content/artikel/<slug>.md, wrapped
+ * One blog article at /blog/<slug>. Markdown body from src/content/artikel/<slug>.md, wrapped
  * in the same page banner as the service pages so the blog reads as part of
  * the site rather than a bolted-on template.
  *
@@ -10,7 +10,7 @@
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FinalCta from '../../components/sections/FinalCta.astro';
-import { articles, formatDate, type Article } from '../../lib/articles';
+import { articles, formatDate, BLOG_PATH, type Article } from '../../lib/articles';
 
 export function getStaticPaths() {
   return articles.map((article) => ({
@@ -64,7 +64,7 @@ const schema = {
                         </div>
                         <ul class="breadcrumb-link mt-30">
                             <li><a href="/">Beranda</a></li>
-                            <li><a href="/blog">Blog</a></li>
+                            <li><a href={BLOG_PATH}>Blog</a></li>
                             <li class="active">Artikel</li>
                         </ul>
                     </div>
