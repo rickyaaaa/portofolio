@@ -3,6 +3,7 @@ title: 'Biaya Iklan Google Ads, Facebook & Instagram 2026: Cara Hitung dan Conto
 seoTitle: 'Biaya Iklan Google Ads, Facebook & Instagram 2026'
 description: 'Berapa biaya iklan Google Ads dan Instagram? Cara Google dan Meta menghitung biaya, beda saldo iklan dan jasa kelola, plus contoh budget per bulan.'
 topic: 'iklan'
+coverAlt: 'Ilustrasi iklan di hasil pencarian dan iklan di feed media sosial dengan pengukur budget'
 date: '2026-11-10'
 ---
 
@@ -80,6 +81,8 @@ Jawabannya tergantung di tahap mana calon pembelimu berada.
 Per klik, Google Ads sering terlihat lebih mahal. Tapi orang yang mengklik sedang mencari, jadi peluang mereka menghubungi biasanya lebih besar. Instagram Ads sering terlihat lebih murah per tayangan, tapi kamu perlu materi iklan yang cukup kuat untuk mengubah orang yang lagi scroll menjadi calon pembeli. Banyak bisnis memakai keduanya: Google Ads untuk menangkap yang sudah mencari, Instagram Ads untuk memperkenalkan produk ke calon pembeli baru.
 
 ## Cara menentukan budget iklan pertama
+
+![Ilustrasi alur budget iklan menjadi klik, pengunjung, lalu chat calon customer](../../assets/blog/biaya-iklan-google-ads-dan-instagram-funnel.webp)
 
 Daripada menebak, hitung mundur dari target:
 

@@ -3,6 +3,7 @@ title: 'Biaya Pembuatan Aplikasi 2026: Rincian Harga Aplikasi Web, ERP & Kasir'
 seoTitle: 'Biaya Pembuatan Aplikasi 2026: Harga Aplikasi Web & ERP'
 description: 'Berapa biaya pembuatan aplikasi? Rincian harga aplikasi web, kasir, dan ERP, faktor penentu biaya, lama pengerjaan, dan biaya setelah aplikasi jadi.'
 topic: 'aplikasi'
+coverAlt: 'Ilustrasi aplikasi web bisnis: dashboard di laptop, aplikasi kasir di tablet, printer struk, dan scanner barcode'
 date: '2026-11-10'
 ---
 
@@ -13,6 +14,8 @@ date: '2026-11-10'
 Kata "aplikasi" bisa berarti dua hal: aplikasi web yang dibuka lewat browser, atau aplikasi HP yang di-install dari Play Store dan App Store. Biaya keduanya cukup berbeda, jadi artikel ini mulai dari situ, lalu membahas apa saja yang membuat harga aplikasi naik atau turun.
 
 ## Aplikasi web atau aplikasi HP, mana yang kamu butuhkan?
+
+![Ilustrasi perbandingan aplikasi web yang dibuka di laptop, tablet, dan HP dengan aplikasi HP yang di-install](../../assets/blog/biaya-pembuatan-aplikasi-web-vs-hp.webp)
 
 | | Aplikasi web | Aplikasi HP (Android/iOS) |
 | --- | --- | --- |

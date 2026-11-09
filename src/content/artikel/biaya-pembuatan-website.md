@@ -3,6 +3,7 @@ title: 'Biaya Pembuatan Website 2026: Rincian Harga per Jenis Website'
 seoTitle: 'Biaya Pembuatan Website 2026: Rincian Harga per Jenis'
 description: 'Berapa biaya pembuatan website? Rincian harga website company profile, toko online, landing page, dan travel, plus biaya tahunan dan maintenance.'
 topic: 'website'
+coverAlt: 'Ilustrasi laptop berisi tata letak website dengan label harga, tumpukan koin, kalkulator, dan nota'
 date: '2026-11-09'
 ---
 
@@ -55,6 +56,8 @@ Untuk travel dan tour operator, harganya tergantung apakah tamu cukup diarahkan 
 Paket travel termasuk dalam halaman [jasa pembuatan website](/jasa-pembuatan-website), lengkap dengan contoh website travel yang sudah kami kerjakan.
 
 ## Apa saja yang menentukan biaya pembuatan website?
+
+![Ilustrasi faktor biaya website: jumlah halaman, fitur toko online, desain, integrasi, dan materi konten](../../assets/blog/biaya-pembuatan-website-faktor.webp)
 
 Dua website yang kelihatannya mirip bisa beda harga cukup jauh. Ini faktor yang paling berpengaruh:
 

@@ -3,6 +3,7 @@ title: 'Tips Memilih Jasa Pembuatan Website yang Terpercaya (Checklist 2026)'
 seoTitle: 'Tips Memilih Jasa Pembuatan Website yang Terpercaya'
 description: 'Tips memilih jasa pembuatan website terpercaya: cek portofolio, rincian harga, kepemilikan domain, revisi, maintenance. Plus 12 pertanyaan sebelum deal.'
 topic: 'website'
+coverAlt: 'Ilustrasi membandingkan tiga penawaran jasa pembuatan website dengan kaca pembesar'
 date: '2026-11-09'
 ---
 
@@ -79,6 +80,8 @@ Beberapa janji patut dicurigai:
 - Sulit dihubungi bahkan sebelum kamu membayar.
 
 ## 12 pertanyaan sebelum deal dengan jasa pembuatan website
+
+![Ilustrasi checklist pertanyaan sebelum memilih jasa pembuatan website](../../assets/blog/tips-memilih-jasa-pembuatan-website-checklist.webp)
 
 1. Boleh lihat website klien yang sudah online?
 2. Berapa halaman yang termasuk dalam paket ini?

@@ -5,6 +5,7 @@
  * the service page its articles support. Cards reuse the deliverable box so
  * the list matches the rest of the site.
  */
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FinalCta from '../../components/sections/FinalCta.astro';
 import { articles, articlePath, formatDate } from '../../lib/articles';
@@ -86,6 +87,11 @@ const description =
                             <Fragment>
                             <div class="col-lg-6 col-md-12">
                                 <div class="agenko-iconic-box style-four rs-deliverable rs-article-card mb-30 pf_fadeup">
+                                    {article.cover && (
+                                        <a href={articlePath(article)} class="rs-article-card-thumb" tabindex="-1" aria-hidden="true">
+                                            <Image src={article.cover} alt="" widths={[400, 700]} sizes="(max-width: 991px) 100vw, 560px" />
+                                        </a>
+                                    )}
                                     <div class="content">
                                         <time class="rs-article-card-date" datetime={article.date}>{formatDate(article.date)}</time>
                                         <h3 class="title rs-h4"><a href={articlePath(article)}>{article.title}</a></h3>

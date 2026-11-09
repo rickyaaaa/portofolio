@@ -17,9 +17,13 @@ interface Props {
   description: string;
   /** Keep this page out of the index. Only the 404 sets it. */
   noindex?: boolean;
+  /** Site path of a 1200x630 link-preview image; defaults to the site-wide one. */
+  image?: string;
+  /** og:type. Blog articles pass "article". */
+  ogType?: 'website' | 'article';
 }
 
-const { title, description, noindex = false } = Astro.props;
+const { title, description, noindex = false, image, ogType = 'website' } = Astro.props;
 
 /**
  * The canonical URL for this page.
@@ -41,7 +45,9 @@ const canonical = new URL(
 ).href;
 
 // Absolute, because link previews are fetched by other servers.
-const ogImage = new URL('/assets/images/ricksite/pages/ricksite-og.jpg', Astro.site).href;
+const ogImage = new URL(image ?? '/assets/images/ricksite/pages/ricksite-og.jpg', Astro.site).href;
+// The Organization schema below always shows the brand image, not an article cover.
+const brandImage = new URL('/assets/images/ricksite/pages/ricksite-og.jpg', Astro.site).href;
 
 /**
  * Organization rather than LocalBusiness: LocalBusiness expects a street
@@ -54,7 +60,7 @@ const organization = {
   name: 'Ricksite Studio',
   url: 'https://ricksitestudio.com',
   logo: new URL('/assets/images/ricksite/logo/ricksite-appicon.svg', Astro.site).href,
-  image: ogImage,
+  image: brandImage,
   description:
     'Jasa pembuatan website, web app, dan digital marketing untuk bisnis di Indonesia.',
   email: EMAIL,
@@ -85,7 +91,7 @@ const organization = {
         <link rel="canonical" href={canonical}>
         {noindex && <meta name="robots" content="noindex, follow">}
         <!--====== Link previews (WhatsApp, Facebook, Instagram, X) ======-->
-        <meta property="og:type" content="website">
+        <meta property="og:type" content={ogType}>
         <meta property="og:site_name" content="Ricksite Studio">
         <meta property="og:locale" content="id_ID">
         <meta property="og:url" content={canonical}>

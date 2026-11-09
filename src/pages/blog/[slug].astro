@@ -8,6 +8,7 @@
  * hand them on to the service page that sells the answer - the links live in
  * the Markdown itself, next to the sentence they belong to.
  */
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FinalCta from '../../components/sections/FinalCta.astro';
 import { articles, formatDate, BLOG_PATH, type Article } from '../../lib/articles';
@@ -43,10 +44,11 @@ const schema = {
     worksFor: { '@type': 'Organization', name: 'Ricksite Studio', url: 'https://ricksitestudio.com' },
   },
   publisher: { '@type': 'Organization', name: 'Ricksite Studio', url: 'https://ricksitestudio.com' },
+  ...(article.ogImage && { image: new URL(article.ogImage, Astro.site).href }),
 };
 ---
 
-<BaseLayout title={article.seoTitle} description={article.description}>
+<BaseLayout title={article.seoTitle} description={article.description} image={article.ogImage} ogType="article">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 
     <!--====== Start Page Banner ======-->
@@ -84,6 +86,17 @@ const schema = {
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <article class="rs-article">
+                        {article.cover && (
+                            <Image
+                                src={article.cover}
+                                alt={article.coverAlt ?? article.title}
+                                widths={[400, 800, 1200]}
+                                sizes="(max-width: 991px) 100vw, 760px"
+                                class="rs-article-cover"
+                                loading="eager"
+                                fetchpriority="high"
+                            />
+                        )}
                         <Content />
                     </article>
 

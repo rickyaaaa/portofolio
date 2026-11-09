@@ -1021,3 +1021,28 @@
 .rs-blog-list .agk-content-box a { color: var(--primary-color); text-decoration: underline; text-underline-offset: 3px; }
 .rs-blog-topic-links a:hover,
 .rs-blog-list .agk-content-box a:hover { color: var(--white-color); }
+
+/* Article images: the cover above the body, inline images inside it, and the
+   thumbnail on blog index cards. */
+.rs-article-cover,
+.rs-article img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+.rs-article-cover { margin-bottom: 40px; }
+.rs-article p:has(> img) { margin: 8px 0 28px; }
+.rs-article-card-thumb {
+  display: block;
+  margin-bottom: 24px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.rs-article-card-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.4s ease;
+}
+.rs-article-card:hover .rs-article-card-thumb img { transform: scale(1.03); }
