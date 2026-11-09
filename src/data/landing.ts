@@ -112,7 +112,7 @@ export interface Faq {
 export const LANDING_FAQS: Faq[] = [
   {
     q: 'Berapa lama pengerjaannya?',
-    a: 'Landing page 1 halaman biasanya 3–7 hari kerja. Website 5–7 halaman dengan katalog paket sekitar 2–3 minggu. Kalau pakai sistem booking dan pembayaran online, sekitar 3–5 minggu karena ada proses verifikasi payment gateway. Timeline pastinya kami kasih setelah materi (foto, paket, harga) lengkap.',
+    a: 'Landing page 1 halaman biasanya 3-7 hari kerja. Website 5-7 halaman dengan katalog paket sekitar 2-3 minggu. Kalau pakai sistem booking dan pembayaran online, sekitar 3-5 minggu karena ada proses verifikasi payment gateway. Timeline pastinya kami kasih setelah materi (foto, paket, harga) lengkap.',
   },
   {
     q: 'Nanti saya bisa edit paket & harga sendiri?',

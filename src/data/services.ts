@@ -127,7 +127,7 @@ export const services: Service[] = [
     title: 'Jasa Meta Ads',
     slug: 'jasa-meta-ads',
     shortDescription:
-      'Facebook dan Instagram Ads yang diarahkan ke orang paling mungkin beli, bukan sekadar nambah view dan like.',
+      'Facebook dan Instagram Ads yang diarahkan ke orang yang paling mungkin beli, dengan hasil yang diukur dari chat dan order.',
     category: 'marketing',
     pricingCategories: ['meta-ads'],
     solutions: [

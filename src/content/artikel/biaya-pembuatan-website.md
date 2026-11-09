@@ -7,9 +7,9 @@ date: '2026-11-09'
 
 ## Berapa biaya pembuatan website di 2026?
 
-**Biaya pembuatan website untuk bisnis umumnya mulai sekitar Rp1,5 juta untuk landing page satu halaman, Rp2,5–8,5 juta untuk website company profile, dan Rp3–12 juta untuk website toko online.** Harga akhirnya ditentukan jumlah halaman, fitur, dan seberapa custom desainnya.
+**Biaya pembuatan website untuk bisnis umumnya mulai sekitar Rp1,5 juta untuk landing page satu halaman, Rp2,5-8,5 juta untuk website company profile, dan Rp3-12 juta untuk website toko online.** Harga akhirnya ditentukan jumlah halaman, fitur, dan seberapa custom desainnya.
 
-Kalau kamu sedang membandingkan harga bikin website dari beberapa penyedia, angka di artikel ini bisa jadi patokan. Ini bukan perkiraan dari luar, tapi harga paket yang kami pakai sendiri di Ricksite Studio, jadi kamu bisa lihat persis apa yang kamu dapat di tiap rentang harga — dan apa yang biasanya *tidak* termasuk.
+Kalau kamu sedang membandingkan harga bikin website dari beberapa penyedia, angka di artikel ini bisa jadi patokan. Ini bukan perkiraan dari luar, tapi harga paket yang kami pakai sendiri di Ricksite Studio, jadi kamu bisa lihat persis apa yang kamu dapat di tiap rentang harga, juga apa yang biasanya *tidak* termasuk.
 
 ## Rincian harga website per jenis
 
@@ -23,7 +23,7 @@ Website company profile adalah website resmi perusahaan: siapa kamu, layanan apa
 | --- | --- | --- |
 | Starter | Rp2.500.000 | 4 halaman, domain .com & hosting 1 tahun, desain responsive, 1 email bisnis, 2x revisi, maintenance 15 hari |
 | Growth | Rp5.000.000 | 7 halaman, 2 email bisnis, desain premium + galeri, SEO on-page dasar, 4x revisi, maintenance 1 bulan |
-| Ultimate | Rp8.500.000 | 8–10 halaman, fitur custom, integrasi Instagram & YouTube, optimasi kecepatan, desain interaktif, 5x revisi, maintenance 1,5 bulan |
+| Ultimate | Rp8.500.000 | 8-10 halaman, fitur custom, integrasi Instagram & YouTube, optimasi kecepatan, desain interaktif, 5x revisi, maintenance 1,5 bulan |
 
 Detail lengkapnya ada di halaman [jasa pembuatan website company profile](/jasa-pembuatan-website-company-profile).
 
@@ -47,9 +47,9 @@ Landing page adalah satu halaman yang fokus ke satu penawaran, biasanya dipakai 
 
 Untuk travel dan tour operator, harganya tergantung apakah tamu cukup diarahkan ke WhatsApp atau bisa langsung booking dan bayar di website:
 
-- **Rp1.500.000** — landing page satu halaman dengan form WhatsApp.
-- **Rp3.000.000** — 5–7 halaman, filter paket tour, tombol WhatsApp di tiap paket, dan section testimoni.
-- **Rp6.000.000** — ditambah form booking otomatis dan payment gateway (Midtrans, Tripay, Xendit, atau Stripe).
+- **Rp1.500.000:** landing page satu halaman dengan form WhatsApp.
+- **Rp3.000.000:** 5-7 halaman, filter paket tour, tombol WhatsApp di tiap paket, dan section testimoni.
+- **Rp6.000.000:** ditambah form booking otomatis dan payment gateway (Midtrans, Tripay, Xendit, atau Stripe).
 
 Paket travel termasuk dalam halaman [jasa pembuatan website](/jasa-pembuatan-website), lengkap dengan contoh website travel yang sudah kami kerjakan.
 
@@ -68,9 +68,9 @@ Dua website yang kelihatannya mirip bisa beda harga cukup jauh. Ini faktor yang 
 
 Harga pembuatan bukan satu-satunya biaya. Ini yang sering baru ketahuan belakangan:
 
-- **Perpanjangan domain dan hosting.** Paket kami sudah termasuk domain dan hosting untuk tahun pertama. Mulai tahun kedua, perpanjangan dibayar terpisah ke penyedianya — besarnya tergantung jenis domain dan kapasitas hosting. Kami kasih tahu jauh-jauh hari sebelum jatuh tempo, supaya website tidak tiba-tiba mati.
-- **Email bisnis tambahan.** Paket company profile sudah termasuk 1–2 email bisnis. Kalau tim kamu butuh lebih banyak, sampaikan di awal supaya ikut masuk hitungan.
-- **Maintenance setelah masa garansi.** Setiap paket punya masa maintenance gratis 15 hari sampai 3 bulan. Setelah itu, perawatan rutin seperti update sistem, backup, dan perbaikan error bisa diambil bulanan — kami menyediakan [jasa maintenance website](/jasa-maintenance-website) mulai **Rp350.000/bulan**.
+- **Perpanjangan domain dan hosting.** Paket kami sudah termasuk domain dan hosting untuk tahun pertama. Mulai tahun kedua, perpanjangan dibayar terpisah ke penyedianya. Besarnya tergantung jenis domain dan kapasitas hosting. Kami kasih tahu jauh-jauh hari sebelum jatuh tempo, supaya website tidak tiba-tiba mati.
+- **Email bisnis tambahan.** Paket company profile sudah termasuk 1-2 email bisnis. Kalau tim kamu butuh lebih banyak, sampaikan di awal supaya ikut masuk hitungan.
+- **Maintenance setelah masa garansi.** Setiap paket punya masa maintenance gratis 15 hari sampai 3 bulan. Setelah itu, perawatan rutin seperti update sistem, backup, dan perbaikan error bisa diambil bulanan. Kami menyediakan [jasa maintenance website](/jasa-maintenance-website) mulai **Rp350.000/bulan**.
 - **Saldo iklan.** Kalau website akan dipromosikan lewat Google Ads atau Meta Ads, saldo iklan dibayar langsung ke Google atau Meta dan terpisah dari biaya pembuatan website.
 
 ## Bikin sendiri, freelancer, studio, atau agensi?
@@ -81,7 +81,7 @@ Tidak ada pilihan yang paling benar untuk semua bisnis. Yang penting, kamu tahu 
 | --- | --- | --- |
 | Website builder (bikin sendiri) | Kamu punya waktu dan mau belajar | Biaya berlangganan terus berjalan, fitur dan desain terbatas pada yang disediakan platform |
 | Freelancer | Kebutuhan sederhana dengan budget ketat | Kualitas dan dukungan setelah website jadi sangat tergantung orangnya |
-| Studio | Bisnis kecil–menengah yang butuh website rapi plus dukungan setelah launching | Pastikan harga dan isi paket tertulis jelas sebelum mulai |
+| Studio | Bisnis kecil dan menengah yang butuh website rapi plus dukungan setelah launching | Pastikan harga dan isi paket tertulis jelas sebelum mulai |
 | Agensi besar | Perusahaan dengan kebutuhan kompleks dan tim marketing sendiri | Biaya biasanya jauh lebih tinggi, dan kamu mungkin berkomunikasi lewat beberapa perantara |
 
 Apa pun pilihannya, minta rincian tertulis: apa saja yang termasuk, berapa kali revisi, berapa lama maintenance, dan atas nama siapa domain, hosting, serta akun-akunnya didaftarkan. Domain dan akun sebaiknya atas nama kamu, supaya tetap jadi milikmu kalau suatu saat ganti pengelola.
@@ -105,7 +105,7 @@ Dengan rincian seperti ini, kamu bisa menghitung biaya tahun pertama dan tahun-t
 - **Mulai dari yang perlu, tambah belakangan.** Toko online bisa mulai dari katalog dengan order ke WhatsApp, lalu naik ke checkout otomatis saat order sudah ramai.
 - **Siapkan materi sebelum mulai.** Logo, foto produk, daftar layanan, dan info kontak yang siap mempercepat pengerjaan.
 - **Minta penawaran tertulis.** Harga, isi paket, jatah revisi, dan masa maintenance harus jelas di depan, supaya tidak ada biaya kaget di tengah jalan.
-- **Tanyakan biaya tahun kedua.** Domain, hosting, dan maintenance adalah biaya rutin — masukkan ke perhitungan sejak awal.
+- **Tanyakan biaya tahun kedua.** Domain, hosting, dan maintenance adalah biaya rutin, jadi masukkan ke perhitungan sejak awal.
 
 ## Pertanyaan yang sering ditanyakan
 
@@ -119,7 +119,7 @@ Di awal biasanya lebih murah, karena kamu membayar langganan bulanan dan mengerj
 
 ### Berapa biaya website per tahun?
 
-Tahun pertama, paket kami sudah termasuk domain dan hosting. Mulai tahun kedua, biaya rutinnya adalah perpanjangan domain dan hosting (dibayar ke penyedia), ditambah maintenance bulanan kalau kamu mengambilnya — mulai Rp350.000/bulan.
+Tahun pertama, paket kami sudah termasuk domain dan hosting. Mulai tahun kedua, biaya rutinnya adalah perpanjangan domain dan hosting (dibayar ke penyedia), ditambah maintenance bulanan kalau kamu mengambilnya, mulai Rp350.000/bulan.
 
 ### Berapa biaya maintenance website?
 
@@ -127,12 +127,12 @@ Maintenance bulanan kami mulai **Rp350.000/bulan** untuk paket Basic dan **Rp750
 
 ### Berapa harga website company profile?
 
-Mulai Rp2.500.000 untuk 4 halaman, Rp5.000.000 untuk 7 halaman, dan Rp8.500.000 untuk 8–10 halaman dengan fitur custom.
+Mulai Rp2.500.000 untuk 4 halaman, Rp5.000.000 untuk 7 halaman, dan Rp8.500.000 untuk 8-10 halaman dengan fitur custom.
 
 ### Berapa lama pembuatan website?
 
-Landing page satu halaman biasanya 3–7 hari kerja. Website 5–7 halaman sekitar 2–3 minggu. Timeline pastinya bisa dihitung setelah kebutuhan dan materinya jelas.
+Landing page satu halaman biasanya 3-7 hari kerja. Website 5-7 halaman sekitar 2-3 minggu. Timeline pastinya bisa dihitung setelah kebutuhan dan materinya jelas.
 
 ---
 
-Mau tahu biaya pasti untuk bisnismu? Ceritakan kebutuhanmu lewat halaman [kontak](/kontak) — konsultasi awal gratis, dan kami bantu pilih paket yang paling masuk akal.
+Mau tahu biaya pasti untuk bisnismu? Ceritakan kebutuhanmu lewat halaman [kontak](/kontak). Konsultasi awal gratis, dan kami bantu pilih paket yang paling masuk akal.

@@ -81,9 +81,9 @@ export const servicePages: Record<string, ServicePageContent> = {
     metaDescription:
       'Jasa pembuatan website profesional dari Tangerang Selatan: company profile, toko online, website UMKM, dan travel. Cepat, rapi, enak dibuka dari HP.',
     intro:
-      'Ricksite Studio adalah jasa pembuatan website profesional yang berbasis di Tangerang Selatan dan melayani bisnis di seluruh Indonesia. Kami bikin website company profile untuk perusahaan, toko online, website UMKM, sampai website travel dan booking — cepat, rapi, dan enak dibuka dari HP.',
+      'Ricksite Studio adalah jasa pembuatan website profesional yang berbasis di Tangerang Selatan dan melayani bisnis di seluruh Indonesia. Kami bikin website company profile untuk perusahaan, toko online, website UMKM, sampai website travel dan booking. Semuanya cepat, rapi, dan enak dibuka dari HP.',
     tagline:
-      'Website yang rapi, cepat, dan siap nerima calon customer — dibuka dari HP maupun laptop.',
+      'Website yang rapi, cepat, dan siap nerima calon customer, enak dibuka dari HP maupun laptop.',
     problems: [
       'Masih jualan modal Instagram doang, calon customer susah percaya',
       'Punya website tapi lemot dan berantakan pas dibuka dari HP',
@@ -166,7 +166,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     faqs: [
       {
         q: 'Biayanya berapa?',
-        a: 'Tergantung kompleksitas sistem — jumlah fitur, role pengguna, dan integrasinya. Kami buatkan estimasi setelah alur kerjanya jelas. Konsultasi awal nggak dipungut biaya.',
+        a: 'Tergantung kompleksitas sistem: jumlah fitur, role pengguna, dan integrasinya. Kami buatkan estimasi setelah alur kerjanya jelas. Konsultasi awal nggak dipungut biaya.',
       },
       {
         q: 'Berapa lama pengerjaannya?',
@@ -186,7 +186,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       },
       {
         q: 'Bisa bikin aplikasi kasir (POS) atau ERP sesuai bisnis saya?',
-        a: 'Bisa. Aplikasi kasir berbasis web maupun ERP kami bangun mengikuti alur bisnismu — produk, stok, transaksi, sampai laporan — bukan memaksa bisnismu ikut template software jadi.',
+        a: 'Bisa. Aplikasi kasir berbasis web maupun ERP kami bangun mengikuti alur bisnismu, dari produk, stok, transaksi, sampai laporan. Bisnismu nggak perlu dipaksa ikut template software jadi.',
       },
     ],
     relatedProjects: ['yokprinting-erp', 'sipnona', 'sab-swadaya'],
@@ -243,7 +243,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     metaDescription:
       'Jasa SEO profesional dari Tangerang Selatan untuk bisnis di seluruh Indonesia: riset keyword, on-page, technical SEO, dan laporan bulanan yang transparan.',
     intro:
-      'Ricksite Studio adalah jasa SEO profesional yang berbasis di Tangerang Selatan dan menangani website bisnis di seluruh Indonesia. Kami bantu website kamu muncul pas calon customer nyari di Google — termasuk SEO lokal untuk bisnis yang melayani satu kota dan SEO untuk toko online — tanpa harus bayar per klik.',
+      'Ricksite Studio adalah jasa SEO profesional yang berbasis di Tangerang Selatan dan menangani website bisnis di seluruh Indonesia. Kami bantu website kamu muncul pas calon customer nyari di Google, tanpa harus bayar per klik. Termasuk SEO lokal untuk bisnis yang melayani satu kota dan SEO untuk toko online.',
     tagline:
       'Biar website kamu ketemu pas orang lagi nyari, tanpa harus bayar per klik.',
     problems: [
@@ -259,7 +259,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       },
       {
         q: 'Dijamin halaman 1 Google?',
-        a: 'Nggak ada yang bisa menjamin itu, termasuk kami — peringkat ditentukan algoritma Google, bukan penyedia jasa. Yang kami pastikan: prosesnya benar dan laporannya transparan tiap bulan.',
+        a: 'Nggak ada yang bisa menjamin itu, termasuk kami. Peringkat ditentukan algoritma Google, bukan penyedia jasa. Yang kami pastikan: prosesnya benar dan laporannya transparan tiap bulan.',
       },
       {
         q: 'Bedanya sama Google Ads apa?',
@@ -279,7 +279,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       },
       {
         q: 'Apa saja yang ada di laporan bulanan?',
-        a: 'Posisi keyword yang ditargetkan, traffic dari Google, dan rekomendasi untuk bulan berikutnya — dengan data dari Google Search Console dan Analytics milikmu sendiri.',
+        a: 'Posisi keyword yang ditargetkan, traffic dari Google, dan rekomendasi untuk bulan berikutnya. Datanya diambil dari Google Search Console dan Analytics milikmu sendiri.',
       },
     ],
     relatedProjects: [],
@@ -344,7 +344,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     faqs: [
       {
         q: 'Saldo iklan sudah termasuk?',
-        a: 'Belum. Rp2.000.000/bulan itu biaya pengelolaan. Saldo iklan dibayar langsung ke Google lewat akun kamu, jadi kamu bisa lihat sendiri berapa yang terpakai — nggak lewat kami.',
+        a: 'Belum. Rp2.000.000/bulan itu biaya pengelolaan. Saldo iklan dibayar langsung ke Google lewat akun kamu, jadi kamu bisa lihat sendiri berapa yang terpakai. Saldonya nggak lewat kami.',
       },
       {
         q: 'Saldo iklan sebaiknya berapa?',
@@ -356,7 +356,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       },
       {
         q: 'Dijamin dapat berapa leads?',
-        a: 'Nggak ada yang bisa menjamin angka pasti — itu dipengaruhi harga, penawaran, dan kompetisi. Yang kami kerjakan: menyusun campaign yang rapi dan mengoptimasi berdasarkan data yang masuk.',
+        a: 'Nggak ada yang bisa menjamin angka pasti, karena hasilnya dipengaruhi harga, penawaran, dan kompetisi. Yang kami kerjakan: menyusun campaign yang rapi dan mengoptimasi berdasarkan data yang masuk.',
       },
       {
         q: 'Google Ads atau Meta Ads, mana yang lebih cocok?',
@@ -364,7 +364,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       },
       {
         q: 'Apa itu conversion tracking?',
-        a: 'Pencatatan aksi penting dari iklan, misalnya klik WhatsApp, isi form, atau pembelian. Dengan ini kelihatan keyword dan iklan mana yang benar-benar menghasilkan, bukan cuma ramai klik.',
+        a: 'Pencatatan aksi penting dari iklan, misalnya klik WhatsApp, isi form, atau pembelian. Dengan ini kelihatan keyword dan iklan mana yang menghasilkan chat atau order.',
       },
     ],
     relatedProjects: [],
@@ -409,7 +409,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     metaDescription:
       'Jasa iklan Facebook Ads dan Instagram (Meta Ads) yang tertarget ke orang paling mungkin beli. Riset audience, creative testing, retargeting, laporan jelas.',
     intro:
-      'Ricksite Studio adalah jasa iklan Facebook Ads dan Instagram Ads (Meta Ads) untuk bisnis di seluruh Indonesia, dikelola dari Tangerang Selatan. Iklannya diarahkan tertarget ke orang yang paling mungkin beli, bukan sekadar nambah view dan like.',
+      'Ricksite Studio adalah jasa iklan Facebook Ads dan Instagram Ads (Meta Ads) untuk bisnis di seluruh Indonesia, dikelola dari Tangerang Selatan. Iklannya diarahkan ke orang yang paling mungkin beli, dan hasilnya diukur dari chat atau order yang masuk.',
     tagline:
       'Facebook dan Instagram Ads yang diarahkan ke orang paling mungkin beli.',
     problems: [
@@ -425,7 +425,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       },
       {
         q: 'Bedanya sama boost post?',
-        a: 'Boost post cuma naikin jangkauan satu postingan. Campaign lewat Ads Manager bisa diatur tujuannya, audience-nya dipilih detail, dan hasilnya keukur per iklan — jadi ketahuan mana yang jalan.',
+        a: 'Boost post cuma naikin jangkauan satu postingan. Campaign lewat Ads Manager bisa diatur tujuannya, audience-nya dipilih detail, dan hasilnya keukur per iklan, jadi ketahuan mana yang jalan.',
       },
       {
         q: 'Materi iklannya siapa yang bikin?',
@@ -461,7 +461,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     intro:
       'Ricksite Studio menyediakan jasa maintenance website bulanan untuk bisnis di seluruh Indonesia, dikerjakan dari Tangerang Selatan. Kami jaga website kamu tetap update, ter-backup, dan jalan normal, dengan biaya maintenance website mulai Rp350.000/bulan. Website yang error atau berantakan juga bisa kami perbaiki, termasuk website buatan pihak lain.',
     tagline:
-      'Website tetap aman, update, dan jalan normal — kamu tinggal fokus ngurus bisnis.',
+      'Website tetap aman, update, dan jalan normal, jadi kamu bisa fokus ngurus bisnis.',
     problems: [
       'Website tiba-tiba error atau nggak bisa dibuka, dan nggak tahu harus hubungi siapa',
       'Developer lama sudah nggak bisa dihubungi',
@@ -471,7 +471,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     faqs: [
       {
         q: 'Berapa biaya maintenance website?',
-        a: 'Maintenance bulanan mulai Rp350.000/bulan. Perbaikan sekali jalan mulai Rp500.000, tergantung masalahnya — kami cek dulu, lalu kasih harga pasti sebelum mulai kerja.',
+        a: 'Maintenance bulanan mulai Rp350.000/bulan. Perbaikan sekali jalan mulai Rp500.000, tergantung masalahnya. Kami cek dulu, lalu kasih harga pasti sebelum mulai kerja.',
       },
       {
         q: 'Website saya bukan buatan Ricksite, bisa?',
@@ -528,7 +528,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     metaDescription:
       'Jasa pembuatan website company profile untuk perusahaan dan UMKM: desain rapi, enak dibuka dari HP, domain & hosting tahun pertama. Mulai Rp2,5 juta.',
     intro:
-      'Website company profile adalah wajah resmi bisnismu di internet: tempat calon klien mengecek siapa kamu, apa yang kamu tawarkan, dan cara menghubungimu. Ricksite Studio membuat website company profile untuk perusahaan dan UMKM di seluruh Indonesia, dikerjakan dari Tangerang Selatan — rapi, cepat, dan langsung mengarahkan pengunjung ke WhatsApp.',
+      'Website company profile adalah wajah resmi bisnismu di internet: tempat calon klien mengecek siapa kamu, apa yang kamu tawarkan, dan cara menghubungimu. Ricksite Studio membuat website company profile untuk perusahaan dan UMKM di seluruh Indonesia, dikerjakan dari Tangerang Selatan. Websitenya rapi, cepat, dan langsung mengarahkan pengunjung ke WhatsApp.',
     tagline:
       'Website resmi yang bikin calon klien percaya sebelum mereka menghubungimu.',
     problems: [
@@ -540,11 +540,11 @@ export const servicePages: Record<string, ServicePageContent> = {
     faqs: [
       {
         q: 'Berapa harga website company profile?',
-        a: 'Mulai Rp2.500.000 untuk paket Starter (4 halaman), Rp5.000.000 untuk Growth (7 halaman), dan Rp8.500.000 untuk Ultimate (8–10 halaman dengan fitur custom). Semua sudah termasuk domain .com dan hosting tahun pertama.',
+        a: 'Mulai Rp2.500.000 untuk paket Starter (4 halaman), Rp5.000.000 untuk Growth (7 halaman), dan Rp8.500.000 untuk Ultimate (8-10 halaman dengan fitur custom). Semua sudah termasuk domain .com dan hosting tahun pertama.',
       },
       {
         q: 'Berapa lama pembuatan website company profile?',
-        a: 'Website 5–7 halaman biasanya sekitar 2–3 minggu. Timeline pastinya kami kasih setelah kebutuhan dan materinya jelas.',
+        a: 'Website 5-7 halaman biasanya sekitar 2-3 minggu. Timeline pastinya kami kasih setelah kebutuhan dan materinya jelas.',
       },
       {
         q: 'Halaman apa saja yang ada di website company profile?',
@@ -595,9 +595,9 @@ export const servicePages: Record<string, ServicePageContent> = {
     metaDescription:
       'Jasa pembuatan landing page untuk iklan Google & Meta: satu halaman fokus ke satu penawaran, cepat dibuka, langsung ke WhatsApp. Mulai Rp1,5 juta.',
     intro:
-      'Landing page adalah satu halaman yang fokus ke satu penawaran, biasanya jadi tujuan iklan Google Ads atau Meta Ads. Ricksite Studio membuat landing page yang cepat dibuka, jelas pesannya, dan langsung mengarahkan pengunjung ke WhatsApp atau form — dikerjakan dari Tangerang Selatan untuk bisnis di seluruh Indonesia.',
+      'Landing page adalah satu halaman yang fokus ke satu penawaran, biasanya jadi tujuan iklan Google Ads atau Meta Ads. Ricksite Studio membuat landing page yang cepat dibuka, jelas pesannya, dan langsung mengarahkan pengunjung ke WhatsApp atau form. Kami mengerjakannya dari Tangerang Selatan untuk bisnis di seluruh Indonesia.',
     tagline:
-      'Satu halaman, satu penawaran, satu tujuan: bikin pengunjung iklan langsung chat.',
+      'Landing page yang fokus ke satu penawaran dan bikin pengunjung iklan langsung chat.',
     problems: [
       'Iklan diarahkan ke Instagram atau beranda, pengunjung bingung harus ngapain',
       'Budget iklan habis, tapi yang chat sedikit',
@@ -611,7 +611,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       },
       {
         q: 'Berapa lama pembuatan landing page?',
-        a: 'Biasanya 3–7 hari kerja setelah materi dan isi penawarannya jelas.',
+        a: 'Biasanya 3-7 hari kerja setelah materi dan isi penawarannya jelas.',
       },
       {
         q: 'Apa bedanya landing page dengan website biasa?',
@@ -635,9 +635,9 @@ export const servicePages: Record<string, ServicePageContent> = {
     metaDescription:
       'Jasa pembuatan website toko online: katalog produk dengan order ke WhatsApp, sampai checkout, payment gateway, QRIS, dan ongkir otomatis. Mulai Rp3 juta.',
     intro:
-      'Website toko online membuat produkmu bisa dilihat dan dipesan kapan saja, tanpa tergantung marketplace. Ricksite Studio membuat website toko online untuk UMKM dan brand di seluruh Indonesia — mulai dari katalog yang order-nya langsung ke WhatsApp, sampai toko dengan keranjang belanja, payment gateway, dan ongkir otomatis.',
+      'Website toko online membuat produkmu bisa dilihat dan dipesan kapan saja, tanpa tergantung marketplace. Ricksite Studio membuat website toko online untuk UMKM dan brand di seluruh Indonesia, mulai dari katalog yang order-nya langsung ke WhatsApp, sampai toko dengan keranjang belanja, payment gateway, dan ongkir otomatis.',
     tagline:
-      'Toko sendiri di internet: produk rapi, order masuk, tanpa tergantung marketplace.',
+      'Toko online milik sendiri, jadi jualanmu nggak tergantung marketplace.',
     problems: [
       'Jualan cuma di marketplace, kena potongan dan harus perang harga',
       'Order lewat chat berantakan dan sering salah catat',

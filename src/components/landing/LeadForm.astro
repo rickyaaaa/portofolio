@@ -73,7 +73,7 @@ const texts: TextField[] = [
   <div class="lp-wrap form-grid">
     <div class="form-intro">
       <span class="lp-eyebrow">Konsultasi gratis</span>
-      <h2 class="lp-h2" id="form-title">Ceritakan Bisnis Travel Kamu — 30 Detik</h2>
+      <h2 class="lp-h2" id="form-title">Ceritakan Bisnis Travel Kamu dalam 30 Detik</h2>
       <p class="lp-lead">
         Jawaban kamu membantu kami kasih saran yang pas sejak chat pertama, bukan tanya ulang dari awal.
       </p>
@@ -211,7 +211,7 @@ const texts: TextField[] = [
 
   const MESSAGES: Record<string, string> = {
     nama: 'Isi nama kamu dulu ya.',
-    phone: 'Isi nomor WhatsApp yang aktif, 10–15 digit. Contoh: 081234567890.',
+    phone: 'Isi nomor WhatsApp yang aktif, 10-15 digit. Contoh: 081234567890.',
     usaha: 'Isi nama travel atau usaha kamu.',
     kota: 'Isi kota tempat bisnis kamu beroperasi.',
     kondisi: 'Pilih kondisi website kamu sekarang.',
@@ -300,7 +300,7 @@ const texts: TextField[] = [
     /**
      * Same rule as the endpoint (ricksite-leads PhoneNumber::normalize): drop
      * spaces, dashes, dots, brackets and "+", accept a leading 0, 62 or +62,
-     * turn 0 into 62, then require 10–15 digits. Null when invalid.
+     * turn 0 into 62, then require 10-15 digits. Null when invalid.
      */
     function normalizePhone(raw: string): string | null {
       const compact = raw.replace(/[\s\-.()]/g, '');
