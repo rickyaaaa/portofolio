@@ -3,6 +3,7 @@ title: 'Harga Jasa SEO 2026: Rincian Biaya per Bulan dan Apa yang Kamu Dapat'
 seoTitle: 'Harga Jasa SEO 2026: Rincian Biaya per Bulan'
 description: 'Berapa harga jasa SEO? Rincian biaya SEO bulanan per paket, apa saja yang dikerjakan, biaya di luar paket, dan cara menilai jasa SEO murah.'
 topic: 'seo'
+coverAlt: 'Ilustrasi hasil pencarian dengan satu hasil naik ke posisi teratas, kaca pembesar, dan tumpukan koin biaya SEO'
 date: '2026-11-10'
 ---
 
@@ -22,6 +23,8 @@ Di pasaran, rentang harga jasa SEO sangat lebar. Di marketplace freelance ada ya
 6. **Siapa yang mengerjakan.** Praktisi yang memegang langsung akunmu, tim agensi, atau pekerjaan yang dilempar ke pihak ketiga.
 
 ## Rincian paket jasa SEO Ricksite Studio
+
+![Ilustrasi tiga tingkatan paket jasa SEO: Basic, Pro, dan Premium](../../assets/blog/harga-jasa-seo-paket.webp)
 
 | | Basic | Pro | Premium |
 | --- | --- | --- | --- |
