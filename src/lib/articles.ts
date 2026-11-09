@@ -12,6 +12,7 @@
  */
 import type { MarkdownInstance } from 'astro';
 import { authors, DEFAULT_AUTHOR, type Author, type AuthorId } from '../data/authors';
+import type { TopicId } from '../data/blog-topics';
 
 export interface ArticleFrontmatter {
   /** H1 and card title. */
@@ -20,6 +21,8 @@ export interface ArticleFrontmatter {
   seoTitle: string;
   /** Meta description, under ~155 characters; also the card excerpt. */
   description: string;
+  /** Group on the blog index; see data/blog-topics.ts. */
+  topic: TopicId;
   /** ISO date, YYYY-MM-DD. */
   date: string;
   /** ISO date of the last real content change, when there has been one. */

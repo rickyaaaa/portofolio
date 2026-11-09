@@ -2,6 +2,7 @@
 title: 'Biaya Pembuatan Website 2026: Rincian Harga per Jenis Website'
 seoTitle: 'Biaya Pembuatan Website 2026: Rincian Harga per Jenis'
 description: 'Berapa biaya pembuatan website? Rincian harga website company profile, toko online, landing page, dan travel, plus biaya tahunan dan maintenance.'
+topic: 'website'
 date: '2026-11-09'
 ---
 

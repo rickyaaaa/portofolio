@@ -26,6 +26,10 @@
     RewriteRule ^artikel/?$ /blog/ [R=301,L]
     RewriteRule ^artikel/(.+)$ /blog/$1 [R=301,L,NE]
 
+    # The portfolio moved from /projects to /portofolio (Nov 2026) so the URL
+    # matches the page title and the Indonesian copy.
+    RewriteRule ^projects/?$ /portofolio [R=301,L]
+
     # /sitemap.xml is what people and tools reach for by habit; the generated
     # index is sitemap-index.xml. Pointing one at the other means submitting
     # the wrong one in Search Console still finds it.

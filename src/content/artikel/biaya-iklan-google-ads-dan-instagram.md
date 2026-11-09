@@ -2,6 +2,7 @@
 title: 'Biaya Iklan Google Ads, Facebook & Instagram 2026: Cara Hitung dan Contohnya'
 seoTitle: 'Biaya Iklan Google Ads, Facebook & Instagram 2026'
 description: 'Berapa biaya iklan Google Ads dan Instagram? Cara Google dan Meta menghitung biaya, beda saldo iklan dan jasa kelola, plus contoh budget per bulan.'
+topic: 'iklan'
 date: '2026-11-10'
 ---
 

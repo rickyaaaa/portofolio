@@ -2,6 +2,7 @@
 title: 'Biaya Pembuatan Aplikasi 2026: Rincian Harga Aplikasi Web, ERP & Kasir'
 seoTitle: 'Biaya Pembuatan Aplikasi 2026: Harga Aplikasi Web & ERP'
 description: 'Berapa biaya pembuatan aplikasi? Rincian harga aplikasi web, kasir, dan ERP, faktor penentu biaya, lama pengerjaan, dan biaya setelah aplikasi jadi.'
+topic: 'aplikasi'
 date: '2026-11-10'
 ---
 
@@ -44,7 +45,7 @@ Untuk kebutuhan operasional bisnis, misalnya mencatat stok, transaksi, data pega
 
 Sistem sederhana masuk di harga awal Rp3.000.000. Semakin ke bawah tabel, semakin banyak modul dan role yang terlibat, sehingga harga dihitung dari hasil analisis kebutuhan.
 
-Beberapa sistem yang sudah kami kerjakan: **YokPrinting ERP** untuk usaha percetakan, **SIPNONA** untuk manajemen pegawai, dan **SAB Swadaya** untuk keuangan dan tagihan. Tampilannya bisa dilihat di halaman [portofolio](/projects).
+Beberapa sistem yang sudah kami kerjakan: **YokPrinting ERP** untuk usaha percetakan, **SIPNONA** untuk manajemen pegawai, dan **SAB Swadaya** untuk keuangan dan tagihan. Tampilannya bisa dilihat di halaman [portofolio](/portofolio).
 
 ## Aplikasi jadi berlangganan atau aplikasi custom?
 

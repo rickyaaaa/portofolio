@@ -1012,3 +1012,12 @@
 }
 .accordion-content .rs-faq-link i { margin-left: 6px; }
 .accordion-content .rs-faq-link:hover { color: var(--white-color); }
+
+/* Blog index: one block per topic, each with its own intro and service links. */
+.rs-blog-topic { padding-top: 50px; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 30px; }
+.rs-blog-topic-title { color: var(--white-color); }
+.rs-blog-topic-links { font-size: 15px; }
+.rs-blog-topic-links a,
+.rs-blog-list .agk-content-box a { color: var(--primary-color); text-decoration: underline; text-underline-offset: 3px; }
+.rs-blog-topic-links a:hover,
+.rs-blog-list .agk-content-box a:hover { color: var(--white-color); }

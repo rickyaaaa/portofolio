@@ -2,6 +2,7 @@
 title: 'Tips Memilih Jasa Pembuatan Website yang Terpercaya (Checklist 2026)'
 seoTitle: 'Tips Memilih Jasa Pembuatan Website yang Terpercaya'
 description: 'Tips memilih jasa pembuatan website terpercaya: cek portofolio, rincian harga, kepemilikan domain, revisi, maintenance. Plus 12 pertanyaan sebelum deal.'
+topic: 'website'
 date: '2026-11-09'
 ---
 
@@ -21,7 +22,7 @@ Saat melihat portofolio, perhatikan:
 - Apakah ada proyek yang mirip dengan bisnismu, misalnya toko online, website travel, atau company profile?
 - Apakah tampilannya beragam, atau semuanya terlihat seperti template yang sama?
 
-Kalau vendor hanya bisa menunjukkan mockup tanpa satu pun website yang live, itu tanda untuk bertanya lebih jauh. Sebagai contoh, semua project di halaman [portofolio kami](/projects) adalah website dan sistem milik klien sungguhan, bukan demo template.
+Kalau vendor hanya bisa menunjukkan mockup tanpa satu pun website yang live, itu tanda untuk bertanya lebih jauh. Sebagai contoh, semua project di halaman [portofolio kami](/portofolio) adalah website dan sistem milik klien sungguhan, bukan demo template.
 
 ## 2. Minta rincian harga dan isi paket secara tertulis
 
@@ -98,7 +99,7 @@ Simpan daftar ini dan bandingkan jawaban dari beberapa vendor. Vendor yang menja
 
 Karena kami menulis checklist ini, wajar kalau kamu ingin tahu jawaban kami sendiri:
 
-- **Portofolio:** semua project di [halaman portofolio](/projects) adalah milik klien sungguhan.
+- **Portofolio:** semua project di [halaman portofolio](/portofolio) adalah milik klien sungguhan.
 - **Harga:** paket dan isinya kami tulis terbuka di setiap halaman layanan, misalnya [jasa pembuatan website](/jasa-pembuatan-website).
 - **Kepemilikan:** domain, hosting, dan akun iklan sebaiknya atas namamu, supaya semua history tetap kamu yang pegang.
 - **Revisi:** 2-5 kali, tergantung paket.

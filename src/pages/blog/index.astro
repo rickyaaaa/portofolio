@@ -1,11 +1,18 @@
 ---
 /**
- * Blog index: every article, newest first. Cards reuse the deliverable box so
+ * Blog index: a short "about this blog" intro, then articles grouped by topic
+ * (data/blog-topics.ts), newest first inside each group. Each group links to
+ * the service page its articles support. Cards reuse the deliverable box so
  * the list matches the rest of the site.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FinalCta from '../../components/sections/FinalCta.astro';
 import { articles, articlePath, formatDate } from '../../lib/articles';
+import { blogTopics } from '../../data/blog-topics';
+
+const topics = blogTopics
+  .map((topic) => ({ ...topic, articles: articles.filter((a) => a.topic === topic.id) }))
+  .filter((topic) => topic.articles.length > 0);
 
 const title = 'Blog Ricksite Studio | Tips Website, SEO & Iklan Digital';
 const description =
@@ -39,32 +46,59 @@ const description =
         </div>
     </section><!--====== End Page Banner ======-->
 
-    <section class="rs-blog-list pt-130 pb-100">
+    <section class="rs-blog-list pt-130 pb-70">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-6">
                     <div class="section-title mb-50 pf_fadeup">
-                        <span class="sub-title">Artikel Terbaru</span>
-                        <h2>Panduan Website, SEO &amp; Iklan untuk Bisnis.</h2>
+                        <span class="sub-title">Tentang Blog Ini</span>
+                        <h2>Panduan Website, Aplikasi &amp; Iklan untuk Bisnis.</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="agk-content-box style-one mb-50 pf_fadeup">
+                        <p>Blog ini menjawab pertanyaan yang paling sering kami terima dari pemilik usaha sebelum mulai project: berapa biayanya, apa saja yang termasuk, berapa lama pengerjaannya, dan apa yang perlu dicek sebelum memilih vendor.</p>
+                        <p>Semua artikel ditulis oleh <a href="/tentang">Ricky Adryan Achmad</a>, pendiri Ricksite Studio, dari project website, aplikasi web, SEO, dan iklan yang ia kerjakan langsung. Harga yang disebut di artikel adalah harga paket kami sendiri, jadi bisa kamu pakai sebagai patokan saat membandingkan penawaran.</p>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                {articles.map((article) => (
-                    <Fragment>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="agenko-iconic-box style-four rs-deliverable rs-article-card mb-30 pf_fadeup">
-                            <div class="content">
-                                <time class="rs-article-card-date" datetime={article.date}>{formatDate(article.date)}</time>
-                                <h3 class="title rs-h4"><a href={articlePath(article)}>{article.title}</a></h3>
-                                <p>{article.description}</p>
-                                <a href={articlePath(article)} class="read-more style-one">Baca artikel</a>
+
+            {topics.map((topic) => (
+                <div class="rs-blog-topic">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <h2 class="rs-h4 rs-blog-topic-title mb-20 pf_fadeup">{topic.title}</h2>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="mb-30 pf_fadeup">
+                                <p>{topic.intro}</p>
+                                <p class="rs-blog-topic-links">
+                                    Layanan terkait:{' '}
+                                    {topic.services.map((service, index) => (
+                                        <Fragment>{index > 0 && ' · '}<a href={service.href}>{service.label}</a></Fragment>
+                                    ))}
+                                </p>
                             </div>
                         </div>
                     </div>
-                    {" "}</Fragment>
-                ))}
-            </div>
+                    <div class="row">
+                        {topic.articles.map((article) => (
+                            <Fragment>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="agenko-iconic-box style-four rs-deliverable rs-article-card mb-30 pf_fadeup">
+                                    <div class="content">
+                                        <time class="rs-article-card-date" datetime={article.date}>{formatDate(article.date)}</time>
+                                        <h3 class="title rs-h4"><a href={articlePath(article)}>{article.title}</a></h3>
+                                        <p>{article.description}</p>
+                                        <a href={articlePath(article)} class="read-more style-one">Baca artikel</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {" "}</Fragment>
+                        ))}
+                    </div>
+                </div>
+            ))}
         </div>
     </section>
 
