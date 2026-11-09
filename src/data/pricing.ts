@@ -4,9 +4,9 @@
  * Website package prices and feature lists follow the existing ricksite.web.id
  * listing. Toko Online, SEO, Meta Ads and Google Ads use the newer figures.
  *
- * Custom web apps are deliberately quote-only: an ERP or billing system has no
- * fixed scope, and listing a number next to the website packages would anchor
- * that work at company-profile money.
+ * Custom web apps show only a starting price (Rp3.000.000 for a simple system,
+ * owner-confirmed Nov 2026). An ERP or multi-role system has no fixed scope, so
+ * it is still quoted after analysis; the package summary says so.
  *
  * No package promises rankings, ROAS, leads or sales — only the work delivered.
  */
@@ -341,12 +341,13 @@ export const pricing: PricingCategory[] = [
   {
     id: 'web-app',
     title: 'Custom Web App & Sistem Internal',
-    note: 'Harga menyesuaikan kompleksitas sistem. Cerita dulu kebutuhannya, nanti kami buatkan estimasi.',
+    note: 'Mulai Rp3.000.000 untuk sistem sederhana, pengerjaan sekitar 14-30 hari. Harga akhir menyesuaikan fitur, role, dan integrasi.',
     packages: [
       {
         plan: 'Custom Project',
-        price: 'Custom',
-        summary: 'Dashboard, ERP, booking system, sampai sistem internal bisnis.',
+        price: 'Rp3.000.000',
+        amount: 3000000,
+        summary: 'Harga awal untuk sistem sederhana. ERP dan sistem multi-role dihitung sesuai kebutuhan.',
         features: [
           'Konsultasi & analisis alur kerja bisnis',
           'Rancangan fitur, struktur data, dan hak akses per role',

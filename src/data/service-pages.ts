@@ -154,11 +154,11 @@ export const servicePages: Record<string, ServicePageContent> = {
     seoTitle: 'Jasa Pembuatan Aplikasi Web, ERP & Kasir | Ricksite Studio',
     h1: 'Jasa Pembuatan Aplikasi Web untuk Bisnis',
     metaDescription:
-      'Jasa pembuatan aplikasi web untuk bisnis: ERP, aplikasi kasir (POS), dashboard, booking, sampai sistem internal sesuai alur kerjamu. Konsultasi gratis.',
+      'Jasa pembuatan aplikasi web untuk bisnis mulai Rp3 juta: ERP, aplikasi kasir (POS), dashboard, booking, dan sistem internal sesuai alur kerjamu.',
     intro:
       'Ricksite Studio menyediakan jasa pembuatan aplikasi berbasis web untuk bisnis di seluruh Indonesia, dikerjakan dari Tangerang Selatan. Kerjaan manual yang bikin repot kami pindahkan ke sistem: ERP, aplikasi kasir (POS), dashboard, booking, sampai alur kerja khusus bisnismu.',
     tagline:
-      'Sistem yang dibangun ngikutin alur kerja bisnismu, bukan maksa bisnismu ikut template.',
+      'Sistem yang dibangun ngikutin alur kerja bisnismu sendiri.',
     problems: [
       'Data masih tersebar di Excel dan chat WhatsApp',
       'Laporan harus direkap manual tiap akhir bulan',
@@ -168,11 +168,12 @@ export const servicePages: Record<string, ServicePageContent> = {
     faqs: [
       {
         q: 'Biayanya berapa?',
-        a: 'Tergantung kompleksitas sistem: jumlah fitur, role pengguna, dan integrasinya. Kami buatkan estimasi setelah alur kerjanya jelas. Konsultasi awal nggak dipungut biaya.',
+        a: 'Mulai Rp3.000.000 untuk sistem sederhana. Harga akhirnya tergantung jumlah fitur, role pengguna, dan integrasinya, dan kami tuliskan di penawaran setelah alur kerjanya jelas. Konsultasi awal nggak dipungut biaya.',
+        link: { href: '/blog/biaya-pembuatan-aplikasi', text: 'Rincian biaya pembuatan aplikasi' },
       },
       {
         q: 'Berapa lama pengerjaannya?',
-        a: 'Sistem sederhana sekitar 1-2 bulan. ERP atau aplikasi multi-role bisa 3 bulan ke atas. Dikerjakan bertahap biar progresnya kelihatan, bukan hilang berbulan-bulan terus tiba-tiba jadi.',
+        a: 'Umumnya 14-30 hari, tergantung jumlah fitur. Sistem dengan banyak modul seperti ERP dikerjakan per tahap, jadi bagian yang paling dibutuhkan bisa dipakai lebih dulu dan progresnya bisa kamu coba langsung.',
       },
       {
         q: 'Datanya aman?',
