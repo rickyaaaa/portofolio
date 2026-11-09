@@ -126,6 +126,24 @@ export const services: Service[] = [
     ],
     icon: 'flaticon-social-media-marketing',
   },
+  {
+    number: '06',
+    title: 'Jasa Maintenance Website',
+    slug: 'jasa-maintenance-website',
+    shortDescription:
+      'Website tetap aman, update, dan jalan normal. Website lama yang error juga kami perbaiki, termasuk buatan orang lain.',
+    category: 'development',
+    pricingCategories: ['maintenance'],
+    solutions: [
+      'Update Sistem & Plugin',
+      'Backup Rutin',
+      'Cek Keamanan & Malware',
+      'Perbaikan Error & Bug',
+      'Update Konten',
+      'Optimasi Kecepatan',
+    ],
+    icon: 'flaticon-quality-test',
+  },
 ];
 
 /** Path to a service's landing page. */

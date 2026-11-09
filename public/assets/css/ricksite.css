@@ -739,3 +739,9 @@
 .agenko-iconic-box.style-four.rs-stat .content p:last-child {
   margin-bottom: 0;
 }
+
+/* Service cards are flex rows; a long service name ("Jasa Maintenance
+   Website") squeezed the button onto two lines. Keep it at its natural width. */
+.agenko-card-item.style-one .card-button {
+  flex-shrink: 0;
+}

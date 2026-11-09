@@ -216,4 +216,42 @@ export const servicePages: Record<string, ServicePageContent> = {
     ],
     relatedProjects: [],
   },
+
+  'jasa-maintenance-website': {
+    // Gap found in Resolusiweb's traffic: "jasa maintenance website" (~390/mo,
+    // SD 12) earns their page ~250 visits/month on only 9 referring domains.
+    seoTitle: 'Jasa Maintenance & Perbaikan Website | Ricksite Studio',
+    h1: 'Jasa Maintenance & Perbaikan Website',
+    metaDescription:
+      'Jasa maintenance website bulanan: update, backup, cek keamanan, dan perbaikan error. Terima juga website buatan pihak lain. Harga jelas di depan.',
+    intro:
+      'Ricksite Studio menyediakan jasa maintenance website bulanan untuk bisnis di seluruh Indonesia, dikerjakan dari Tangerang Selatan. Kami jaga website kamu tetap update, ter-backup, dan jalan normal. Website yang error atau berantakan juga bisa kami perbaiki, termasuk website buatan pihak lain.',
+    tagline:
+      'Website tetap aman, update, dan jalan normal — kamu tinggal fokus ngurus bisnis.',
+    problems: [
+      'Website tiba-tiba error atau nggak bisa dibuka, dan nggak tahu harus hubungi siapa',
+      'Developer lama sudah nggak bisa dihubungi',
+      'Sistem dan plugin nggak pernah di-update, takut kena hack',
+      'Mau ganti teks, harga, atau foto tapi nggak sempat atau nggak ngerti caranya',
+    ],
+    faqs: [
+      {
+        q: 'Berapa biaya maintenance website?',
+        a: 'Maintenance bulanan mulai Rp350.000/bulan. Perbaikan sekali jalan mulai Rp500.000, tergantung masalahnya — kami cek dulu, lalu kasih harga pasti sebelum mulai kerja.',
+      },
+      {
+        q: 'Website saya bukan buatan Ricksite, bisa?',
+        a: 'Bisa. Kami cek dulu kondisinya: sistem yang dipakai, akses hosting dan admin, serta masalah yang ada. Setelah itu kami kasih tahu jujur mana yang cukup diperbaiki dan berapa biayanya.',
+      },
+      {
+        q: 'Bedanya maintenance bulanan dan perbaikan sekali jalan?',
+        a: 'Maintenance bulanan itu perawatan rutin biar website tetap aman dan update. Perbaikan sekali jalan untuk masalah yang sudah terjadi, misalnya error, tampilan rusak, atau website yang lambat. Banyak yang mulai dari perbaikan, lalu lanjut maintenance.',
+      },
+      {
+        q: 'Bisa berhenti kapan saja?',
+        a: 'Bisa. Maintenance dibayar per bulan tanpa kontrak panjang. Kalau berhenti, semua akses dan backup tetap milik kamu.',
+      },
+    ],
+    relatedProjects: [],
+  },
 };

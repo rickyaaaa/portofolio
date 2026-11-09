@@ -261,6 +261,61 @@ export const pricing: PricingCategory[] = [
     ],
   },
   {
+    // Prices set by Claude on the owner's go-ahead (Nov 2026) as a starting
+    // point under the SEO/ads retainers; adjust freely. Resolusiweb lists
+    // maintenance from Rp275.000/bulan for comparison.
+    id: 'maintenance',
+    title: 'Maintenance & Perbaikan Website',
+    note: 'Berlaku juga untuk website buatan pihak lain. Website yang belum pernah kami pegang kami cek dulu kondisinya sebelum mulai.',
+    packages: [
+      {
+        plan: 'Maintenance Basic',
+        price: 'Rp350.000',
+        amount: 350000,
+        period: '/bulan',
+        summary: 'Perawatan rutin biar website tetap aman dan update.',
+        features: [
+          'Update sistem, tema, dan plugin',
+          'Backup mingguan',
+          'Cek rutin website tetap online dan bebas malware',
+          'Perbaikan error ringan',
+          'Update konten (teks, gambar, harga) sampai 5x per bulan',
+          'Laporan bulanan',
+        ],
+      },
+      {
+        plan: 'Maintenance Pro',
+        price: 'Rp750.000',
+        amount: 750000,
+        period: '/bulan',
+        featured: true,
+        summary: 'Buat website yang dipakai jualan tiap hari dan nggak boleh lama bermasalah.',
+        features: [
+          'Semua fitur Basic',
+          'Backup harian',
+          'Cek dan optimasi kecepatan tiap bulan',
+          'Perbaikan bug dan error',
+          'Update konten sampai 15x per bulan',
+          'Pengingat perpanjangan domain, hosting, dan SSL',
+          'Permintaan didahulukan',
+        ],
+      },
+      {
+        plan: 'Perbaikan Sekali Jalan',
+        price: 'Rp500.000',
+        amount: 500000,
+        summary: 'Harga mulai dari angka ini. Angka pastinya kami kasih setelah cek kondisi website.',
+        features: [
+          'Cek kondisi website dan sumber masalahnya',
+          'Perbaikan error, tampilan rusak, atau website yang lambat',
+          'Bisa untuk website buatan pihak lain',
+          'Harga pasti disepakati sebelum mulai kerja',
+          'Bisa lanjut ke maintenance bulanan setelahnya',
+        ],
+      },
+    ],
+  },
+  {
     id: 'web-app',
     title: 'Custom Web App & Sistem Internal',
     note: 'Harga menyesuaikan kompleksitas sistem. Cerita dulu kebutuhannya, nanti kami buatkan estimasi.',

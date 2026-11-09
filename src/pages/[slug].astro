@@ -232,7 +232,7 @@ const consultLink = whatsapp(
     {/* Form only on the build services. Marketing pages close on the CTA banner. */}
     {service.category === 'development' && (
         <InquiryForm
-            preselect={service.slug === 'jasa-pembuatan-aplikasi' ? service.title : undefined}
+            preselect={service.slug === 'jasa-pembuatan-website' ? undefined : service.title}
             serviceField={service.slug === 'jasa-pembuatan-website' ? 'text' : 'select'}
             serviceLabel={service.slug === 'jasa-pembuatan-website' ? 'Jenis Website' : 'Layanan yang Diinginkan'}
             servicePlaceholder="Contoh: toko online sepatu, company profile klinik, website travel"
