@@ -223,21 +223,58 @@ export const pricing: PricingCategory[] = [
   {
     id: 'seo',
     title: 'Optimasi SEO',
-    note: 'Hasil SEO dipengaruhi kompetisi keyword dan butuh waktu. Kami fokus ke proses yang benar dan laporan yang transparan, bukan janji peringkat instan.',
+    // Three tiers modelled on how jasaahliseo.com splits its packages (main
+    // keywords targeted, articles per month, competition level), Nov 2026.
+    // Basic Rp3.500.000 is the owner's figure; Pro and Premium prices were
+    // proposed by Claude for the owner to confirm. No traffic or ranking
+    // guarantee, unlike the reference.
+    note: 'Hasil SEO dipengaruhi kompetisi keyword dan butuh waktu, jadi kami tidak menjanjikan peringkat instan. Biaya backlink berbayar, kalau dipakai, dihitung terpisah.',
     packages: [
       {
-        plan: 'SEO Bulanan',
-        price: 'Rp1.500.000',
-        amount: 1500000,
+        plan: 'Basic',
+        price: 'Rp3.500.000',
+        amount: 3500000,
         period: '/bulan',
-        summary: 'Biar website kamu ketemu pas calon customer nyari di Google.',
+        summary: 'Untuk bisnis lokal atau niche dengan persaingan rendah.',
         features: [
+          'Target 5 keyword utama',
           'Audit SEO awal & riset keyword sesuai target pasar',
           'Optimasi on-page: meta title, deskripsi, heading, dan alt image',
-          'Technical check: kecepatan, mobile-friendly, dan indexing Google',
+          'Perbaikan technical SEO: kecepatan, mobile-friendly, dan indexing',
           'Setup & monitoring Google Search Console dan Analytics',
           '4 artikel SEO per bulan',
-          'Laporan bulanan: posisi keyword, traffic, dan rekomendasi lanjutan',
+          'Laporan bulanan: posisi keyword, traffic, dan rekomendasi',
+        ],
+      },
+      {
+        plan: 'Pro',
+        price: 'Rp6.000.000',
+        amount: 6000000,
+        period: '/bulan',
+        summary: 'Untuk persaingan menengah dan bisnis yang ingin tumbuh lebih cepat.',
+        featured: true,
+        features: [
+          'Semua fitur Basic',
+          'Target 10 keyword utama',
+          '8 artikel SEO per bulan',
+          'Optimasi agar mudah dikutip jawaban AI (Google AI Overview & ChatGPT)',
+          'Pemantauan posisi keyword mingguan',
+          'Rekomendasi & pengelolaan backlink',
+        ],
+      },
+      {
+        plan: 'Premium',
+        price: 'Rp10.000.000',
+        amount: 10000000,
+        period: '/bulan',
+        summary: 'Untuk persaingan menengah-tinggi atau website dengan banyak layanan.',
+        features: [
+          'Semua fitur Pro',
+          'Target 15 keyword utama',
+          '12 artikel SEO per bulan',
+          'Optimasi halaman layanan dan halaman per area',
+          'Optimasi Google Business Profile untuk bisnis lokal',
+          'Laporan mingguan + sesi evaluasi bulanan',
         ],
       },
     ],

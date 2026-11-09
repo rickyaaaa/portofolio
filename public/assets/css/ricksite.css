@@ -137,6 +137,15 @@
   font-weight: 400;
   color: var(--text-color);
   margin-left: 4px;
+  line-height: 1.2;
+}
+/* A long price (Rp10.000.000) pushes "/bulan" onto its own line; as a flex
+   row it wraps tight under the figure instead of a full price-height line. */
+.agk-pricing .agenko-pricing-item .price:has(.rs-period) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  row-gap: 2px;
 }
 .agk-pricing .agenko-pricing-item.rs-featured {
   border-color: var(--primary-color);

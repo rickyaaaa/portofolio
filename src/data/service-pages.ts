@@ -236,7 +236,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       {
         icon: 'flaticon-text',
         title: 'Konten SEO',
-        description: '4 artikel per bulan yang menjawab pertanyaan calon customer dan mengarahkan mereka ke halaman layananmu.',
+        description: 'Artikel rutin tiap bulan (4 sampai 12, sesuai paket) yang menjawab pertanyaan calon customer dan mengarahkan mereka ke halaman layananmu.',
         step: 'Tahap-03',
       },
       {
@@ -284,7 +284,8 @@ export const servicePages: Record<string, ServicePageContent> = {
       },
       {
         q: 'Berapa harga jasa SEO?',
-        a: 'Rp1.500.000/bulan, sudah termasuk audit awal, riset keyword, optimasi on-page dan teknis, 4 artikel SEO per bulan, serta laporan bulanan.',
+        a: 'Mulai Rp3.500.000/bulan untuk paket Basic (5 keyword utama, 4 artikel per bulan), Rp6.000.000 untuk Pro, dan Rp10.000.000 untuk Premium. Semua paket sudah termasuk audit awal, riset keyword, optimasi on-page dan teknis, serta laporan rutin.',
+        link: { href: '/blog/harga-jasa-seo', text: 'Rincian harga jasa SEO per paket' },
       },
       {
         q: 'Apa itu SEO lokal, dan apakah bisnis saya butuh?',
@@ -891,7 +892,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       {
         icon: 'flaticon-text',
         title: 'Konten SEO',
-        description: '4 artikel per bulan yang menjawab pertanyaan calon customer dan mengarahkan mereka ke halaman layananmu.',
+        description: 'Artikel rutin tiap bulan (4 sampai 12, sesuai paket) yang menjawab pertanyaan calon customer dan mengarahkan mereka ke halaman layananmu.',
         step: 'Tahap-03',
       },
       {
@@ -904,7 +905,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     seoTitle: 'Jasa SEO Tangerang & Tangerang Selatan | Ricksite Studio',
     h1: 'Jasa SEO Tangerang & Tangerang Selatan',
     metaDescription:
-      'Jasa SEO Tangerang dan Tangerang Selatan untuk bisnis lokal: riset keyword lokal, on-page, artikel, dan laporan bulanan. Mulai Rp1,5 juta/bulan.',
+      'Jasa SEO Tangerang dan Tangerang Selatan untuk bisnis lokal: riset keyword lokal, on-page, artikel, dan laporan bulanan. Mulai Rp3,5 juta/bulan.',
     intro:
       'Ricksite Studio adalah jasa SEO yang berbasis di Tangerang Selatan. Kami membantu bisnis di Tangerang dan Tangerang Selatan muncul di Google saat orang di sekitarnya mencari jasa atau produk yang mereka jual. Fokusnya pencarian lokal, misalnya "jasa kamu + Tangerang" atau nama daerah seperti BSD dan Bintaro, dan kita bisa ketemu langsung untuk membahas strategi maupun laporan bulanannya.',
     tagline:
@@ -926,7 +927,8 @@ export const servicePages: Record<string, ServicePageContent> = {
       },
       {
         q: 'Berapa biaya jasa SEO di Tangerang?',
-        a: 'Paket SEO bulanan kami Rp1.500.000/bulan, sudah termasuk audit awal, riset keyword lokal, optimasi on-page dan teknis, 4 artikel per bulan, dan laporan bulanan.',
+        a: 'Paket SEO bulanan kami mulai Rp3.500.000/bulan untuk paket Basic, sudah termasuk audit awal, riset keyword lokal, optimasi on-page dan teknis, 4 artikel per bulan, dan laporan bulanan. Paket Premium sudah termasuk optimasi Google Business Profile untuk bisnis lokal.',
+        link: { href: '/blog/harga-jasa-seo', text: 'Rincian harga jasa SEO per paket' },
       },
       {
         q: 'Berapa lama hasilnya kelihatan?',
