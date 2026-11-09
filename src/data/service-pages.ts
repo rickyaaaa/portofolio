@@ -50,7 +50,8 @@ export interface ServicePageContent {
   tagline: string;
   /** Symptoms a visitor recognises in their own business. */
   problems: string[];
-  faqs: { q: string; a: string }[];
+  /** `link` points a FAQ at the blog article that answers it in depth. */
+  faqs: { q: string; a: string; link?: { href: string; text: string } }[];
   /** Project slugs from data/projects.ts. */
   relatedProjects: string[];
 }
@@ -110,6 +111,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       {
         q: 'Bisa bikin website company profile, toko online, atau website UMKM?',
         a: 'Bisa. Website company profile mulai Rp2.500.000, website toko online mulai Rp3.000.000, dan website travel mulai Rp1.500.000. Isi lengkap tiap paket ada di bagian harga di atas, jadi kamu bisa pilih yang pas dengan kebutuhan dan budget bisnismu.',
+        link: { href: '/blog/biaya-pembuatan-website', text: 'Rincian biaya pembuatan website per jenis' },
       },
     ],
     relatedProjects: ['abunawas-travel', 'bernard-bali-tours', 'bali-rejeng-jeep-tour'],
@@ -349,6 +351,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       {
         q: 'Saldo iklan sebaiknya berapa?',
         a: 'Tergantung industri, tingkat persaingan keyword, dan luas area target. Kami bantu hitung angka yang masuk akal setelah tahu produk dan lokasi targetnya.',
+        link: { href: '/blog/biaya-iklan-google-ads-dan-instagram', text: 'Cara menghitung biaya dan budget iklan' },
       },
       {
         q: 'Akun Google Ads pakai punya siapa?',
@@ -422,6 +425,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       {
         q: 'Saldo iklan sudah termasuk?',
         a: 'Belum. Rp1.500.000/bulan itu biaya pengelolaan. Saldo iklan dibayar langsung ke Meta lewat akun kamu sendiri.',
+        link: { href: '/blog/biaya-iklan-google-ads-dan-instagram', text: 'Rincian biaya iklan Facebook & Instagram' },
       },
       {
         q: 'Bedanya sama boost post?',
@@ -541,6 +545,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       {
         q: 'Berapa harga website company profile?',
         a: 'Mulai Rp2.500.000 untuk paket Starter (4 halaman), Rp5.000.000 untuk Growth (7 halaman), dan Rp8.500.000 untuk Ultimate (8-10 halaman dengan fitur custom). Semua sudah termasuk domain .com dan hosting tahun pertama.',
+        link: { href: '/blog/biaya-pembuatan-website', text: 'Rincian biaya pembuatan website per jenis' },
       },
       {
         q: 'Berapa lama pembuatan website company profile?',
@@ -620,6 +625,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       {
         q: 'Bisa sekalian dipasang pixel Meta dan tracking Google Ads?',
         a: 'Bisa. Kalau iklannya juga kami kelola, pixel dan conversion tracking kami pasang supaya ketahuan berapa chat yang datang dari iklan.',
+        link: { href: '/blog/biaya-iklan-google-ads-dan-instagram', text: 'Cara menghitung biaya dan budget iklan' },
       },
     ],
     relatedProjects: [],
@@ -648,6 +654,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       {
         q: 'Berapa harga website toko online?',
         a: 'Paket Starter Rp3.000.000 (katalog sampai 30 produk, order langsung ke WhatsApp), Growth Rp7.000.000 (keranjang belanja, checkout, payment gateway, ongkir otomatis), dan Enterprise Rp12.000.000 (produk tanpa batas dengan varian, multi-admin, dan laporan).',
+        link: { href: '/blog/biaya-pembuatan-website', text: 'Rincian biaya pembuatan website per jenis' },
       },
       {
         q: 'Bisa terima pembayaran langsung di website?',

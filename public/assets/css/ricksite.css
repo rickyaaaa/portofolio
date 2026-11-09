@@ -1000,3 +1000,15 @@
   .rs-author { gap: 14px; }
   .rs-author-avatar { flex-basis: 56px; width: 56px; height: 56px; font-size: 19px; }
 }
+
+/* "Read the full article" link under a service-page FAQ answer. */
+.accordion-content p:has(+ .rs-faq-link) { margin-bottom: 10px; }
+.accordion-content .rs-faq-link {
+  display: inline-block;
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.accordion-content .rs-faq-link i { margin-left: 6px; }
+.accordion-content .rs-faq-link:hover { color: var(--white-color); }

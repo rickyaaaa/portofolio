@@ -324,6 +324,9 @@ const consultLink = whatsapp(
                                 >
                                     <div class="accordion-content">
                                         <p>{faq.a}</p>
+                                        {faq.link && (
+                                            <a class="rs-faq-link" href={faq.link.href}>{faq.link.text} <i class="far fa-arrow-right"></i></a>
+                                        )}
                                     </div>
                                 </div>
                             </div>
