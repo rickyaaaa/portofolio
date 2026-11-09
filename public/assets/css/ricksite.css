@@ -745,3 +745,69 @@
 .agenko-card-item.style-one .card-button {
   flex-shrink: 0;
 }
+
+/*-------------------------------------
+    ## Case study (service pages)
+
+    Same results as the /konsultasi landing, in the main site's dark style.
+--------------------------------------*/
+.rs-case-media {
+  max-width: 440px;
+}
+.rs-case-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+}
+.rs-case-tag {
+  display: inline-block;
+  padding: 6px 16px;
+  margin-bottom: 16px;
+  border: 1px solid var(--primary-color);
+  border-radius: 30px;
+  color: var(--primary-color);
+  font-size: 14px;
+  line-height: 20px;
+}
+.rs-case-title {
+  margin-bottom: 28px;
+}
+.rs-case-link {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--body-font);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color);
+  text-decoration: underline;
+}
+.rs-case-link:hover {
+  color: var(--primary-color);
+}
+.rs-case-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 48px;
+  margin: 0 0 24px;
+}
+.rs-case-stats dd {
+  margin: 0 0 6px;
+  color: var(--primary-color);
+}
+.rs-case-stats dt {
+  font-weight: 400;
+  color: var(--text-color);
+}
+.rs-case-note {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+@media (max-width: 767px) {
+  .rs-case-stats dd.rs-h2 {
+    font-size: 40px;
+    line-height: 46px;
+  }
+}

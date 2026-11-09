@@ -40,6 +40,12 @@ export interface ServicePageContent {
   /** Optional "how we work" section, built from what the packages already promise. */
   processHeading?: string;
   process?: ProcessStep[];
+  /**
+   * Real client result, the same evidence the /konsultasi landing shows.
+   * Only for work that was actually done; the owner confirmed both clients
+   * agreed to be shown (Nov 2026).
+   */
+  caseStudy?: CaseStudy;
   /** One line under the H1 in the page banner. */
   tagline: string;
   /** Symptoms a visitor recognises in their own business. */
@@ -47,6 +53,21 @@ export interface ServicePageContent {
   faqs: { q: string; a: string }[];
   /** Project slugs from data/projects.ts. */
   relatedProjects: string[];
+}
+
+export interface CaseStudy {
+  heading: string;
+  /** What was delivered, e.g. "Sistem booking + SEO". */
+  tag: string;
+  title: string;
+  /** Live site, shown as a link so a visitor can check it themselves. */
+  url?: string;
+  /** Key into the image map in [slug].astro. */
+  image: 'abunawas' | 'travel-chat';
+  imageAlt: string;
+  stats: { label: string; value: string }[];
+  text: string;
+  note?: string;
 }
 
 export const servicePages: Record<string, ServicePageContent> = {
@@ -173,6 +194,20 @@ export const servicePages: Record<string, ServicePageContent> = {
 
   'jasa-seo': {
     keyword: 'Jasa SEO',
+    caseStudy: {
+      heading: 'Hasil Nyata dari Jasa SEO Kami.',
+      tag: 'Sistem booking + SEO',
+      title: 'Abunawas Travel',
+      url: 'https://abunawastravel.id/',
+      image: 'abunawas',
+      imageAlt: 'Tampilan website Abunawas Travel',
+      stats: [
+        { label: 'Posisi rata-rata di Google', value: '9' },
+        { label: 'CTR', value: '12,7%' },
+        { label: 'Klik dalam 3 bulan', value: '531' },
+      ],
+      text: 'Website paket tour luar negeri dengan sistem booking online. Posisi rata-rata, CTR, dan jumlah klik diambil dari Google Search Console milik client.',
+    },
     problemsHeading: 'Tanda Website Kamu Butuh Jasa SEO.',
     faqHeading: 'Pertanyaan Seputar Jasa SEO.',
     ctaHeading: 'Siap Ditemukan Calon Customer di Google?',
@@ -252,6 +287,16 @@ export const servicePages: Record<string, ServicePageContent> = {
 
   'jasa-google-ads': {
     keyword: 'Jasa Google Ads',
+    caseStudy: {
+      heading: 'Hasil Nyata dari Jasa Google Ads Kami.',
+      tag: 'Website + Google Ads',
+      title: 'Client Travel',
+      image: 'travel-chat',
+      imageAlt: 'Chat WhatsApp dari client: ditanya apakah ada perkembangan dibanding iklan sebelum redesign, client menjawab perkembangannya makin besar. Ditanya sudah ada yang closing, client menjawab sudah, 5 WA closing.',
+      stats: [{ label: 'Closing lewat WhatsApp', value: '5' }],
+      text: 'Website di-redesign lalu dipasangkan Google Ads. Dibanding iklan sebelum redesign, perkembangannya makin besar, kata client langsung.',
+      note: 'Screenshot: chat asli dari client.',
+    },
     problemsHeading: 'Tanda Iklan Google Kamu Perlu Dikelola Ulang.',
     faqHeading: 'Pertanyaan Seputar Jasa Google Ads.',
     ctaHeading: 'Siap Muncul Paling Atas di Google?',

@@ -20,6 +20,12 @@ import { servicePages } from '../data/service-pages';
 import { projects } from '../data/projects';
 import ProjectCard from '../components/ProjectCard.astro';
 import { whatsapp } from '../data/site';
+import { Image } from 'astro:assets';
+// Same captures the /konsultasi landing uses for these two results.
+import abunawasImage from '../assets/landing/gambar-2-abunawas-travel.webp';
+import travelChatImage from '../assets/landing/gambar-1-testimoni-google-ads.webp';
+
+const caseImages = { abunawas: abunawasImage, 'travel-chat': travelChatImage };
 
 export function getStaticPaths() {
   return services.map((service) => ({
@@ -182,7 +188,60 @@ const consultLink = whatsapp(
         intro="Harga di depan, tanpa biaya kaget. Kalau kebutuhanmu di luar paket, tinggal cerita — nanti kami buatkan penawaran khusus."
     />
 
-    {/* Related work is skipped for SEO and ads: no case studies for those yet. */}
+    {/* A real result for this service, when there is one. Dark, so it sits
+        between the gray pricing and FAQ sections instead of merging into them. */}
+    {page.caseStudy && (
+        <section class="agk-case-study pt-130 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!--=== Section Title ===-->
+                        <div class="section-title mb-50 pf_fadeup">
+                            <span class="sub-title">Hasil Client</span>
+                            <h2>{page.caseStudy.heading}</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center rs-case pf_fadeup">
+                    <div class="col-lg-5 mb-40">
+                        <div class="rs-case-media">
+                            <Image
+                                src={caseImages[page.caseStudy.image]}
+                                alt={page.caseStudy.imageAlt}
+                                widths={[420, 840]}
+                                sizes="(min-width: 992px) 440px, 100vw"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                        </div>
+                    </div>
+                    <div class="col-lg-7 mb-40">
+                        <div class="rs-case-body">
+                            <span class="rs-case-tag">{page.caseStudy.tag}</span>
+                            <h3 class="rs-h4 rs-case-title">
+                                {page.caseStudy.title}
+                                {page.caseStudy.url && (
+                                    <a href={page.caseStudy.url} target="_blank" rel="noopener" class="rs-case-link">{new URL(page.caseStudy.url).hostname}</a>
+                                )}
+                            </h3>
+                            <dl class="rs-case-stats">
+                                {page.caseStudy.stats.map((stat) => (
+                                    <div>
+                                        <dd class="rs-h2">{stat.value}</dd>
+                                        <dt>{stat.label}</dt>
+                                    </div>
+                                ))}
+                            </dl>
+                            <p>{page.caseStudy.text}</p>
+                            {page.caseStudy.note && <p class="rs-case-note">{page.caseStudy.note}</p>}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )}
+
+    {/* Related work (portfolio cards) is skipped for SEO and ads; their proof is the case study above. */}
     {related.length > 0 && (
         <section class="agk-project pt-130 pb-80">
             <div class="container">
