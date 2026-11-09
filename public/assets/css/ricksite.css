@@ -949,3 +949,54 @@
 .rs-article-card .read-more {
   margin-top: 8px;
 }
+
+/* Article author box */
+.rs-author-box {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-color);
+}
+.rs-author-label {
+  margin-bottom: 20px;
+}
+.rs-author {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.rs-author-avatar {
+  flex: 0 0 72px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: var(--primary-black-color);
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 24px;
+}
+.rs-author-name {
+  margin: 0;
+  color: var(--white-color);
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+}
+.rs-author-role {
+  margin: 2px 0 10px;
+  font-size: 14px;
+  color: var(--primary-color);
+}
+.rs-author-bio {
+  margin: 0;
+  font-size: 15px;
+  line-height: 26px;
+}
+@media (max-width: 575px) {
+  .rs-author { gap: 14px; }
+  .rs-author-avatar { flex-basis: 56px; width: 56px; height: 56px; font-size: 19px; }
+}

@@ -11,6 +11,7 @@
  * to /blog/ before anything else can answer.
  */
 import type { MarkdownInstance } from 'astro';
+import { authors, DEFAULT_AUTHOR, type Author, type AuthorId } from '../data/authors';
 
 export interface ArticleFrontmatter {
   /** H1 and card title. */
@@ -23,10 +24,13 @@ export interface ArticleFrontmatter {
   date: string;
   /** ISO date of the last real content change, when there has been one. */
   updated?: string;
+  /** Key into data/authors.ts; defaults to the founder. */
+  author?: AuthorId;
 }
 
-export interface Article extends ArticleFrontmatter {
+export interface Article extends Omit<ArticleFrontmatter, 'author'> {
   slug: string;
+  author: Author;
   Content: MarkdownInstance<ArticleFrontmatter>['Content'];
 }
 
@@ -39,6 +43,7 @@ export const articles: Article[] = Object.entries(modules)
   .map(([path, mod]) => ({
     ...mod.frontmatter,
     slug: path.split('/').pop()!.replace(/\.md$/, ''),
+    author: authors[mod.frontmatter.author ?? DEFAULT_AUTHOR],
     Content: mod.Content,
   }))
   .sort((a, b) => b.date.localeCompare(a.date));

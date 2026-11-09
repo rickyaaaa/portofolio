@@ -24,8 +24,8 @@ const { Content } = article;
 
 const url = new URL(Astro.url.pathname, Astro.site).href;
 
-// BlogPosting with the studio as author and publisher: the copy is written as
-// "kami", and naming a person would be a claim the page does not make.
+// The founder is the named author (the strongest experience signal an article
+// can carry); the studio is the publisher the copy speaks for as "kami".
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -35,7 +35,13 @@ const schema = {
   dateModified: article.updated ?? article.date,
   inLanguage: 'id-ID',
   mainEntityOfPage: url,
-  author: { '@type': 'Organization', name: 'Ricksite Studio', url: 'https://ricksitestudio.com' },
+  author: {
+    '@type': 'Person',
+    name: article.author.name,
+    jobTitle: article.author.role,
+    url: 'https://ricksitestudio.com/tentang',
+    worksFor: { '@type': 'Organization', name: 'Ricksite Studio', url: 'https://ricksitestudio.com' },
+  },
   publisher: { '@type': 'Organization', name: 'Ricksite Studio', url: 'https://ricksitestudio.com' },
 };
 ---
@@ -56,7 +62,7 @@ const schema = {
                             <div class="col-xl-9">
                                 <div class="text-box">
                                     <p>
-                                        Ricksite Studio &middot; <time datetime={article.date}>{formatDate(article.date)}</time>
+                                        Oleh <strong>{article.author.name}</strong> &middot; <time datetime={article.date}>{formatDate(article.date)}</time>
                                         {article.updated && <Fragment> &middot; diperbarui <time datetime={article.updated}>{formatDate(article.updated)}</time></Fragment>}
                                     </p>
                                 </div>
@@ -80,6 +86,18 @@ const schema = {
                     <article class="rs-article">
                         <Content />
                     </article>
+
+                    <aside class="rs-author-box" aria-label="Penulis">
+                        <p class="rs-author-label rs-h5">Penulis</p>
+                        <div class="rs-author">
+                            <div class="rs-author-avatar" aria-hidden="true">{article.author.initials}</div>
+                            <div class="rs-author-info">
+                                <p class="rs-author-name">{article.author.name}</p>
+                                <p class="rs-author-role">{article.author.role}</p>
+                                <p class="rs-author-bio">{article.author.bio}</p>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
             </div>
         </div>
