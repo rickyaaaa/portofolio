@@ -68,7 +68,7 @@ jobs:
       # A deploy that silently published nothing is worse than a failed one.
       - name: Check the live site answers
         run: |
-          for path in "" jasa-pembuatan-website jasa-seo projects; do
+          for path in "" jasa-pembuatan-website jasa-seo portofolio blog/; do
             code=$(curl -sS -o /dev/null -w '%{http_code}' --retry 3 "https://ricksitestudio.com/$path")
             echo "/$path -> $code"
             [ "$code" = "200" ] || exit 1
