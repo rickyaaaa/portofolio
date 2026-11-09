@@ -823,3 +823,12 @@
   margin-left: 6px;
   font-size: 14px;
 }
+
+/* Eyebrow pills: Agenko uses line-height 10px + 10px padding, which only
+   works on one line. A wrapped pill (the hero's service list on a phone)
+   stacked its lines on top of each other. Same ~30px single-line height,
+   readable when it wraps. */
+.sub-title {
+  padding: 4px 12px;
+  line-height: 22px;
+}
