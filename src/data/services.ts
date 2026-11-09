@@ -64,6 +64,7 @@ export const services: Service[] = [
       'Company Profile': '/jasa-pembuatan-website-company-profile',
       'Toko Online / E-Commerce': '/jasa-pembuatan-website-toko-online',
       'Landing Page': '/jasa-pembuatan-landing-page',
+      'Tour & Travel Website': '/jasa-pembuatan-website-travel',
     },
   },
   {
@@ -232,6 +233,27 @@ export const subServices: Service[] = [
     icon: 'flaticon-portfolio',
     parent: 'jasa-pembuatan-website',
   },
+  {
+    number: '01',
+    title: 'Jasa Pembuatan Website Travel',
+    slug: 'jasa-pembuatan-website-travel',
+    shortTitle: 'Website Travel',
+    shortDescription:
+      'Website untuk travel dan tour operator, dari katalog paket dengan tombol WhatsApp sampai booking dan pembayaran online.',
+    category: 'development',
+    pricingCategories: ['tour-travel'],
+    solutions: [
+      'Halaman Paket Tour',
+      'Filter Paket Tour',
+      'Tombol WhatsApp per Paket',
+      'Form Booking Otomatis',
+      'Payment Gateway',
+      'Section Testimoni',
+    ],
+    icon: 'flaticon-web-development',
+    parent: 'jasa-pembuatan-website',
+  },
+
   // ---- Local pages (Tangerang) ----
   // The studio is in Tangerang Selatan and meets Tangerang clients in person
   // (owner-confirmed Nov 2026). "jasa pembuatan website tangerang" ~390/mo

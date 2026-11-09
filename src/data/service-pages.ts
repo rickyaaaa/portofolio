@@ -683,6 +683,99 @@ export const servicePages: Record<string, ServicePageContent> = {
     relatedProjects: [],
   },
 
+  'jasa-pembuatan-website-travel': {
+    // ChatGPT named no studio at all for "jasa pembuatan website travel dan
+    // tour dengan fitur booking" in the first AI visibility report (Nov 2026),
+    // and this is where the portfolio is strongest. Keyword ~70/mo, SD 8.
+    keyword: 'Jasa Pembuatan Website Travel',
+    caseStudy: {
+      heading: 'Contoh Website Travel yang Kami Bangun.',
+      tag: 'Sistem booking + SEO',
+      title: 'Abunawas Travel',
+      url: 'https://abunawastravel.id/',
+      image: 'abunawas',
+      imageAlt: 'Tampilan website Abunawas Travel',
+      stats: [
+        { label: 'Posisi rata-rata di Google', value: '9' },
+        { label: 'CTR', value: '12,7%' },
+        { label: 'Klik dalam 3 bulan', value: '531' },
+      ],
+      text: 'Website paket tour luar negeri dengan sistem booking online, lalu dilanjutkan dengan SEO. Posisi rata-rata, CTR, dan jumlah klik diambil dari Google Search Console milik client.',
+    },
+    problemsHeading: 'Tanda Bisnis Travel Kamu Butuh Website Sendiri.',
+    faqHeading: 'Pertanyaan Seputar Jasa Pembuatan Website Travel.',
+    ctaHeading: 'Siap Terima Booking dari Website Sendiri?',
+    processHeading: 'Cara Kami Membangun Website Travel.',
+    process: [
+      {
+        icon: 'flaticon-search',
+        title: 'Susun Paket & Alur Booking',
+        description: 'Kami bahas paket tour yang mau ditampilkan, informasi yang wajib ada di tiap paket, dan apakah tamu cukup diarahkan ke WhatsApp atau langsung booking dan bayar.',
+        step: 'Tahap-01',
+      },
+      {
+        icon: 'flaticon-ux-design',
+        title: 'Desain & Halaman Paket',
+        description: 'Halaman paket dibuat jelas: itinerary, harga, apa yang termasuk, foto, dan tombol pesan di tiap paket.',
+        step: 'Tahap-02',
+      },
+      {
+        icon: 'flaticon-web-development',
+        title: 'Booking & Pembayaran',
+        description: 'Untuk paket Ultimate, form booking dan payment gateway dipasang, lalu notifikasi email dikirim tiap ada pesanan masuk.',
+        step: 'Tahap-03',
+      },
+      {
+        icon: 'flaticon-quality-test',
+        title: 'Uji & Serah Terima',
+        description: 'Alur pesan dari HP dites sampai tuntas, lalu akses admin diserahkan beserta panduan menambah dan mengubah paket.',
+        step: 'Tahap-04',
+      },
+    ],
+    seoTitle: 'Jasa Pembuatan Website Travel & Tour | Ricksite Studio',
+    h1: 'Jasa Pembuatan Website Travel & Tour',
+    metaDescription:
+      'Jasa pembuatan website travel dan tour: katalog paket, tombol WhatsApp di tiap paket, sampai booking dan payment gateway. Mulai Rp1,5 juta.',
+    intro:
+      'Ricksite Studio membuat website untuk travel agent dan tour operator, dikerjakan dari Tangerang Selatan untuk bisnis di seluruh Indonesia. Paket tour ditampilkan lengkap dengan itinerary dan harga, dan tamu bisa langsung pesan lewat WhatsApp atau booking dan bayar di website. Kami sudah membangun website untuk travel paket tour luar negeri dan beberapa tour operator di Bali yang melayani tamu mancanegara.',
+    tagline:
+      'Paket tour tampil rapi, tamu bisa langsung pesan atau bayar dari HP.',
+    problems: [
+      'Calon tamu tanya harga dan itinerary satu per satu lewat WhatsApp',
+      'Paket tour cuma ada di feed Instagram, susah dicari dan dibandingkan',
+      'Sebagian besar booking datang lewat OTA, dan komisinya terus terpotong',
+      'Belum bisa terima booking atau DP secara online',
+    ],
+    faqs: [
+      {
+        q: 'Berapa harga pembuatan website travel?',
+        a: 'Ada tiga paket: Starter Rp1.500.000 untuk satu halaman dengan form WhatsApp, Growth Rp3.000.000 untuk 5-7 halaman dengan filter paket tour, dan Ultimate Rp6.000.000 yang sudah termasuk form booking otomatis dan payment gateway.',
+        link: { href: '/blog/biaya-pembuatan-website', text: 'Rincian biaya pembuatan website per jenis' },
+      },
+      {
+        q: 'Bisa terima booking dan pembayaran langsung di website?',
+        a: 'Bisa, di paket Ultimate. Tamu mengisi form booking, membayar lewat payment gateway, dan kamu menerima notifikasi email untuk tiap pesanan. Pilihan payment gateway-nya Midtrans, Tripay, Xendit, atau Stripe.',
+      },
+      {
+        q: 'Website-nya bisa untuk tamu luar negeri?',
+        a: 'Bisa. Beberapa website travel yang kami kerjakan, seperti untuk tour operator di Bali, berbahasa Inggris dan ditujukan untuk tamu mancanegara. Bahasa dan mata uang yang ditampilkan kita sesuaikan dengan target tamumu.',
+      },
+      {
+        q: 'Paket tour bisa saya tambah dan ubah sendiri?',
+        a: 'Bisa. Kami serahkan akses admin plus panduan singkat cara menambah paket, mengganti harga, dan memperbarui foto. Kalau masih bingung, tinggal chat.',
+      },
+      {
+        q: 'Kenapa perlu website kalau sudah ada di OTA?',
+        a: 'OTA bagus untuk menjangkau tamu baru, tapi umumnya memotong komisi per booking dan data tamunya ada di platform mereka. Dengan website sendiri, tamu yang sudah kenal brand-mu bisa pesan langsung, dan kamu bisa mengarahkan iklan serta SEO ke halaman milikmu.',
+      },
+      {
+        q: 'Berapa lama pengerjaannya?',
+        a: 'Paket Starter biasanya 3-7 hari kerja. Website 5-7 halaman sekitar 2-3 minggu setelah materi paket tour siap. Integrasi booking dan payment gateway butuh waktu tambahan untuk pengujian, dan timeline pastinya kami tuliskan di penawaran.',
+      },
+    ],
+    relatedProjects: ['bernard-bali-tours', 'bali-rejeng-jeep-tour', 'shalom-bali-tour'],
+  },
+
   // ---- Local pages (see subServices in data/services.ts) ----
 
   'jasa-pembuatan-website-tangerang': {
