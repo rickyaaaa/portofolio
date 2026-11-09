@@ -1,0 +1,72 @@
+---
+/**
+ * Blog index: every article, newest first. Cards reuse the deliverable box so
+ * the list matches the rest of the site.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FinalCta from '../components/sections/FinalCta.astro';
+import { articles, articlePath, formatDate } from '../lib/articles';
+
+const title = 'Blog Ricksite Studio - Tips Website, SEO & Iklan Digital';
+const description =
+  'Artikel seputar biaya dan cara membuat website, aplikasi web, SEO, Google Ads, dan Meta Ads untuk UMKM dan bisnis di Indonesia.';
+---
+
+<BaseLayout title={title} description={description}>
+    <!--====== Start Page Banner ======-->
+    <section class="agenko-page-banner">
+        <div class="shape shape-circle1"><span></span></div>
+        <div class="shape shape-circle2"><span></span></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="page-content">
+                        <h1 class="page-title">Blog</h1>
+                        <div class="row">
+                            <div class="col-xl-9">
+                                <div class="text-box">
+                                    <p>Jawaban jujur untuk pertanyaan yang biasa muncul sebelum bikin website, aplikasi, atau pasang iklan — dari studio yang mengerjakannya langsung.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="breadcrumb-link mt-30">
+                            <li><a href="/">Beranda</a></li>
+                            <li class="active">Blog</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Page Banner ======-->
+
+    <section class="rs-blog-list pt-130 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="section-title mb-50 pf_fadeup">
+                        <span class="sub-title">Artikel Terbaru</span>
+                        <h2>Panduan Website, SEO &amp; Iklan untuk Bisnis.</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {articles.map((article) => (
+                    <Fragment>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="agenko-iconic-box style-four rs-deliverable rs-article-card mb-30 pf_fadeup">
+                            <div class="content">
+                                <time class="rs-article-card-date" datetime={article.date}>{formatDate(article.date)}</time>
+                                <h3 class="title rs-h4"><a href={articlePath(article)}>{article.title}</a></h3>
+                                <p>{article.description}</p>
+                                <a href={articlePath(article)} class="read-more style-one">Baca artikel</a>
+                            </div>
+                        </div>
+                    </div>
+                    {" "}</Fragment>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <FinalCta />
+</BaseLayout>

@@ -832,3 +832,120 @@
   padding: 4px 12px;
   line-height: 22px;
 }
+
+/*-------------------------------------
+    ## Blog article body
+
+    Markdown output is bare h2/h3/p/ul/table. Agenko resets lists and gives
+    headings display sizes, so the article restates readable defaults here,
+    scoped to .rs-article so nothing else on the site changes.
+--------------------------------------*/
+.rs-article-title {
+  font-size: 56px;
+  line-height: 66px;
+}
+@media (max-width: 991px) {
+  .rs-article-title { font-size: 40px; line-height: 50px; }
+}
+@media (max-width: 575px) {
+  .rs-article-title { font-size: 30px; line-height: 40px; }
+}
+.rs-article {
+  font-size: 17px;
+  line-height: 30px;
+}
+.rs-article h2 {
+  font-size: 32px;
+  line-height: 42px;
+  margin: 48px 0 16px;
+}
+.rs-article h3 {
+  font-size: 23px;
+  line-height: 32px;
+  margin: 32px 0 12px;
+}
+.rs-article > :first-child {
+  margin-top: 0;
+}
+.rs-article p,
+.rs-article ul,
+.rs-article ol,
+.rs-article table,
+.rs-article blockquote {
+  margin: 0 0 20px;
+}
+.rs-article ul,
+.rs-article ol {
+  padding-left: 22px;
+}
+.rs-article ul { list-style: disc; }
+.rs-article ol { list-style: decimal; }
+.rs-article li {
+  margin-bottom: 8px;
+}
+.rs-article li::marker {
+  color: var(--primary-color);
+}
+.rs-article strong {
+  color: var(--white-color);
+}
+.rs-article a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.rs-article a:hover {
+  color: var(--white-color);
+}
+.rs-article blockquote {
+  padding: 16px 20px;
+  border-left: 3px solid var(--primary-color);
+  background-color: var(--gray-dark);
+  border-radius: 0 12px 12px 0;
+}
+.rs-article blockquote p:last-child {
+  margin-bottom: 0;
+}
+/* Tables scroll sideways on a phone instead of stretching the page. */
+.rs-article table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 24px;
+}
+.rs-article th,
+.rs-article td {
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
+  text-align: left;
+  vertical-align: top;
+}
+.rs-article th {
+  color: var(--white-color);
+  background-color: var(--gray-dark);
+  white-space: nowrap;
+}
+@media (max-width: 575px) {
+  .rs-article { font-size: 16px; }
+  .rs-article h2 { font-size: 26px; line-height: 34px; }
+  .rs-article h3 { font-size: 20px; line-height: 28px; }
+}
+
+/* Blog index cards */
+.rs-article-card .rs-article-card-date {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--primary-color);
+}
+.rs-article-card .title a {
+  color: inherit;
+}
+.rs-article-card .title a:hover {
+  color: var(--primary-color);
+}
+.rs-article-card .read-more {
+  margin-top: 8px;
+}

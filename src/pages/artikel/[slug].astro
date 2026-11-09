@@ -1,0 +1,89 @@
+---
+/**
+ * One blog article. Markdown body from src/content/artikel/<slug>.md, wrapped
+ * in the same page banner as the service pages so the blog reads as part of
+ * the site rather than a bolted-on template.
+ *
+ * Articles exist to answer what buyers ask before they hire a studio, and to
+ * hand them on to the service page that sells the answer - the links live in
+ * the Markdown itself, next to the sentence they belong to.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FinalCta from '../../components/sections/FinalCta.astro';
+import { articles, formatDate, type Article } from '../../lib/articles';
+
+export function getStaticPaths() {
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props as { article: Article };
+const { Content } = article;
+
+const url = new URL(Astro.url.pathname, Astro.site).href;
+
+// BlogPosting with the studio as author and publisher: the copy is written as
+// "kami", and naming a person would be a claim the page does not make.
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: article.title,
+  description: article.description,
+  datePublished: article.date,
+  dateModified: article.updated ?? article.date,
+  inLanguage: 'id-ID',
+  mainEntityOfPage: url,
+  author: { '@type': 'Organization', name: 'Ricksite Studio', url: 'https://ricksitestudio.com' },
+  publisher: { '@type': 'Organization', name: 'Ricksite Studio', url: 'https://ricksitestudio.com' },
+};
+---
+
+<BaseLayout title={article.seoTitle} description={article.description}>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+    <!--====== Start Page Banner ======-->
+    <section class="agenko-page-banner">
+        <div class="shape shape-circle1"><span></span></div>
+        <div class="shape shape-circle2"><span></span></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="page-content">
+                        <h1 class="page-title rs-article-title">{article.title}</h1>
+                        <div class="row">
+                            <div class="col-xl-9">
+                                <div class="text-box">
+                                    <p>
+                                        Ricksite Studio &middot; <time datetime={article.date}>{formatDate(article.date)}</time>
+                                        {article.updated && <Fragment> &middot; diperbarui <time datetime={article.updated}>{formatDate(article.updated)}</time></Fragment>}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="breadcrumb-link mt-30">
+                            <li><a href="/">Beranda</a></li>
+                            <li><a href="/blog">Blog</a></li>
+                            <li class="active">Artikel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Page Banner ======-->
+
+    <section class="rs-article-section pt-100 pb-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <article class="rs-article">
+                        <Content />
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <FinalCta heading="Mau Tahu Biaya Pasti untuk Bisnismu?" />
+</BaseLayout>
