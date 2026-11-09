@@ -161,8 +161,8 @@ export const services: Service[] = [
 ];
 
 /**
- * Narrower pages under "Jasa Pembuatan Website", each aimed at a phrase the
- * main page cannot also lead with (Ubersuggest, Indonesia, Nov 2026):
+ * Narrower pages under a main service, each aimed at a phrase the main page
+ * cannot also lead with. Website sub-pages (Ubersuggest, Indonesia, Nov 2026):
  * "website company profile" ~1,000/mo SD 15, "jasa pembuatan landing page"
  * ~390/mo SD 26, "jasa pembuatan website toko online" ~320/mo SD 27.
  *
@@ -171,7 +171,7 @@ export const services: Service[] = [
  * because a /jasa-pembuatan-website/ directory would stop .htaccess from
  * serving jasa-pembuatan-website.html at /jasa-pembuatan-website.
  */
-export const websiteSubServices: Service[] = [
+export const subServices: Service[] = [
   {
     number: '01',
     title: 'Jasa Pembuatan Website Company Profile',
@@ -231,6 +231,57 @@ export const websiteSubServices: Service[] = [
     ],
     icon: 'flaticon-portfolio',
     parent: 'jasa-pembuatan-website',
+  },
+  // ---- Local pages (Tangerang) ----
+  // The studio is in Tangerang Selatan and meets Tangerang clients in person
+  // (owner-confirmed Nov 2026). "jasa pembuatan website tangerang" ~390/mo
+  // SD 8, "jasa seo tangerang" ~210/mo SD 10, "jasa seo tangerang selatan"
+  // ~30/mo SD 7 (Ubersuggest, Indonesia). The national pages no longer put
+  // "Tangerang" in their titles, so the two do not compete.
+  {
+    number: '01',
+    title: 'Jasa Pembuatan Website Tangerang',
+    slug: 'jasa-pembuatan-website-tangerang',
+    shortTitle: 'Tangerang',
+    shortDescription:
+      'Website untuk bisnis di Tangerang, dikerjakan dari Tangerang Selatan, dengan opsi ketemu langsung untuk diskusi dan serah terima.',
+    category: 'development',
+    pricingCategories: ['company-profile', 'landing-page', 'toko-online'],
+    solutions: [
+      'Company Profile',
+      'Toko Online',
+      'Landing Page untuk Iklan',
+      'Website UMKM',
+      'Ketemu Langsung di Tangerang',
+      'Training Kelola Website',
+    ],
+    icon: 'flaticon-web-development',
+    parent: 'jasa-pembuatan-website',
+    solutionLinks: {
+      'Company Profile': '/jasa-pembuatan-website-company-profile',
+      'Toko Online': '/jasa-pembuatan-website-toko-online',
+      'Landing Page untuk Iklan': '/jasa-pembuatan-landing-page',
+    },
+  },
+  {
+    number: '03',
+    title: 'Jasa SEO Tangerang',
+    slug: 'jasa-seo-tangerang',
+    shortTitle: 'Tangerang',
+    shortDescription:
+      'SEO untuk bisnis di Tangerang dan Tangerang Selatan yang ingin muncul saat orang di sekitarnya mencari di Google.',
+    category: 'marketing',
+    pricingCategories: ['seo'],
+    solutions: [
+      'Riset Keyword Lokal',
+      'Optimasi Halaman Layanan',
+      'On-Page SEO',
+      'Technical SEO',
+      'Artikel SEO',
+      'Laporan Bulanan',
+    ],
+    icon: 'flaticon-search',
+    parent: 'jasa-seo',
   },
 ];
 

@@ -77,7 +77,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     problemsHeading: 'Tanda Bisnismu Butuh Website Profesional.',
     faqHeading: 'Pertanyaan Seputar Jasa Pembuatan Website.',
     ctaHeading: 'Siap Punya Website yang Dapat Orderan?',
-    seoTitle: 'Jasa Pembuatan Website Profesional Tangerang | Ricksite',
+    seoTitle: 'Jasa Pembuatan Website Profesional | Ricksite Studio',
     h1: 'Jasa Pembuatan Website Profesional',
     metaDescription:
       'Jasa pembuatan website profesional dari Tangerang Selatan: company profile, toko online, website UMKM, dan travel. Cepat, rapi, enak dibuka dari HP.',
@@ -112,6 +112,11 @@ export const servicePages: Record<string, ServicePageContent> = {
         q: 'Bisa bikin website company profile, toko online, atau website UMKM?',
         a: 'Bisa. Website company profile mulai Rp2.500.000, website toko online mulai Rp3.000.000, dan website travel mulai Rp1.500.000. Isi lengkap tiap paket ada di bagian harga di atas, jadi kamu bisa pilih yang pas dengan kebutuhan dan budget bisnismu.',
         link: { href: '/blog/biaya-pembuatan-website', text: 'Rincian biaya pembuatan website per jenis' },
+      },
+      {
+        q: 'Bisa ketemu langsung?',
+        a: 'Untuk bisnis di Tangerang dan Tangerang Selatan, bisa: diskusi, presentasi desain, sampai serah terima dan training. Di luar itu, semua proses jalan online dari diskusi sampai website live.',
+        link: { href: '/jasa-pembuatan-website-tangerang', text: 'Jasa Pembuatan Website Tangerang' },
       },
     ],
     relatedProjects: ['abunawas-travel', 'bernard-bali-tours', 'bali-rejeng-jeep-tour'],
@@ -241,7 +246,7 @@ export const servicePages: Record<string, ServicePageContent> = {
         step: 'Tahap-04',
       },
     ],
-    seoTitle: 'Jasa SEO Profesional di Tangerang | Ricksite Studio',
+    seoTitle: 'Jasa SEO Profesional Indonesia | Ricksite Studio',
     h1: 'Jasa SEO Profesional',
     metaDescription:
       'Jasa SEO profesional dari Tangerang Selatan untuk bisnis di seluruh Indonesia: riset keyword, on-page, technical SEO, dan laporan bulanan yang transparan.',
@@ -271,6 +276,11 @@ export const servicePages: Record<string, ServicePageContent> = {
       {
         q: 'Website saya bukan buatan Ricksite, bisa?',
         a: 'Bisa, selama kami dikasih akses untuk melakukan perubahan di website dan Search Console-nya.',
+      },
+      {
+        q: 'Bisa ketemu langsung?',
+        a: 'Untuk bisnis di Tangerang dan Tangerang Selatan, bisa. Di luar itu, semua proses jalan online dan laporan bulanan dikirim lewat WhatsApp atau email.',
+        link: { href: '/jasa-seo-tangerang', text: 'Jasa SEO Tangerang' },
       },
       {
         q: 'Berapa harga jasa SEO?',
@@ -494,7 +504,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     relatedProjects: [],
   },
 
-  // ---- Sub-pages of Jasa Pembuatan Website (see websiteSubServices) ----
+  // ---- Sub-pages of Jasa Pembuatan Website (see subServices) ----
 
   'jasa-pembuatan-website-company-profile': {
     keyword: 'Jasa Pembuatan Website Company Profile',
@@ -671,5 +681,174 @@ export const servicePages: Record<string, ServicePageContent> = {
       },
     ],
     relatedProjects: [],
+  },
+
+  // ---- Local pages (see subServices in data/services.ts) ----
+
+  'jasa-pembuatan-website-tangerang': {
+    keyword: 'Jasa Pembuatan Website Tangerang',
+    problemsHeading: 'Tanda Bisnismu di Tangerang Butuh Website.',
+    faqHeading: 'Pertanyaan Seputar Jasa Pembuatan Website di Tangerang.',
+    ctaHeading: 'Siap Bikin Website untuk Bisnismu di Tangerang?',
+    processHeading: 'Cara Kerja Bareng Klien di Tangerang.',
+    process: [
+      {
+        icon: 'flaticon-search',
+        title: 'Konsultasi Awal',
+        description: 'Ceritakan bisnis dan kebutuhanmu lewat WhatsApp. Kalau lebih enak ngobrol tatap muka, kita atur jadwal ketemu di sekitar Tangerang.',
+        step: 'Tahap-01',
+      },
+      {
+        icon: 'flaticon-ux-design',
+        title: 'Bahas Isi & Desain',
+        description: 'Halaman, isi, dan gaya desain kita sepakati di awal, termasuk materi apa saja yang perlu kamu siapkan.',
+        step: 'Tahap-02',
+      },
+      {
+        icon: 'flaticon-web-development',
+        title: 'Pengerjaan & Revisi',
+        description: 'Website dikerjakan sesuai paket, dan kamu bisa cek progresnya langsung dari HP sebelum launching.',
+        step: 'Tahap-03',
+      },
+      {
+        icon: 'flaticon-quality-test',
+        title: 'Serah Terima & Training',
+        description: 'Website diserahkan beserta akses domain dan hosting atas namamu. Cara update konten bisa kami ajarkan langsung saat ketemu.',
+        step: 'Tahap-04',
+      },
+    ],
+    seoTitle: 'Jasa Pembuatan Website Tangerang | Ricksite Studio',
+    h1: 'Jasa Pembuatan Website Tangerang',
+    metaDescription:
+      'Jasa pembuatan website di Tangerang dari Tangerang Selatan. Bisa ketemu langsung. Company profile, toko online, dan landing page mulai Rp1,5 juta.',
+    intro:
+      'Ricksite Studio adalah jasa pembuatan website yang berbasis di Tangerang Selatan. Untuk bisnis di Tangerang, kami bisa ketemu langsung buat diskusi kebutuhan, presentasi desain, atau serah terima dan training, misalnya di BSD, Serpong, Gading Serpong, Alam Sutera, Bintaro, Pamulang, Ciputat, Ciledug, dan Karawaci. Kami membuat website company profile, toko online, landing page untuk iklan, dan website UMKM yang cepat dibuka dari HP.',
+    tagline:
+      'Website untuk bisnis di Tangerang, dari studio di Tangerang Selatan. Bisa ketemu langsung.',
+    problems: [
+      'Calon customer di Tangerang nyari jasamu di Google, tapi yang muncul kompetitor',
+      'Bisnis cuma ada di Instagram atau marketplace, belum punya website sendiri',
+      'Website lama lambat, tampilannya berantakan di HP, atau nggak pernah di-update',
+      'Lebih nyaman diskusi tatap muka daripada cuma lewat chat',
+    ],
+    faqs: [
+      {
+        q: 'Bisa ketemu langsung di Tangerang?',
+        a: 'Bisa. Kami berbasis di Tangerang Selatan dan bisa ketemu untuk diskusi, presentasi desain, atau serah terima di area Tangerang Selatan, Kota Tangerang, dan Kabupaten Tangerang. Jadwal dan tempatnya kita atur lewat WhatsApp.',
+      },
+      {
+        q: 'Daerah mana saja yang bisa ketemu langsung?',
+        a: 'Area Tangerang Raya, misalnya BSD, Serpong, Gading Serpong, Alam Sutera, Bintaro, Pamulang, Ciputat, Ciledug, dan Karawaci. Kalau lokasimu di luar area itu, semua proses tetap bisa jalan online.',
+      },
+      {
+        q: 'Berapa harga pembuatan website di Tangerang?',
+        a: 'Sama dengan paket kami untuk semua kota: landing page Rp1.500.000, website company profile mulai Rp2.500.000, dan website toko online mulai Rp3.000.000. Isi lengkap tiap paket ada di bagian harga di atas.',
+        link: { href: '/blog/biaya-pembuatan-website', text: 'Rincian biaya pembuatan website per jenis' },
+      },
+      {
+        q: 'Berapa lama pengerjaannya?',
+        a: 'Landing page biasanya 3-7 hari kerja. Website 5-7 halaman sekitar 2-3 minggu, setelah materi dan kebutuhannya jelas.',
+      },
+      {
+        q: 'Websitenya bisa muncul di Google untuk pencarian di Tangerang?',
+        a: 'Paket Growth ke atas sudah termasuk SEO on-page dasar. Untuk mengejar pencarian seperti "jasa kamu + Tangerang" secara serius, website bisa dilanjutkan dengan jasa SEO bulanan.',
+        link: { href: '/jasa-seo-tangerang', text: 'Jasa SEO Tangerang' },
+      },
+      {
+        q: 'Domain dan hosting atas nama siapa?',
+        a: 'Atas namamu. Domain, hosting, dan akun-akunnya sebaiknya milikmu, supaya website tetap kamu yang pegang kalau suatu saat ganti pengelola.',
+      },
+    ],
+    relatedProjects: ['larisse-tailor', 'ady-geotek', 'villa-desa-krui'],
+  },
+
+  'jasa-seo-tangerang': {
+    keyword: 'Jasa SEO Tangerang',
+    caseStudy: {
+      heading: 'Hasil Nyata dari Jasa SEO Kami.',
+      tag: 'Sistem booking + SEO',
+      title: 'Abunawas Travel',
+      url: 'https://abunawastravel.id/',
+      image: 'abunawas',
+      imageAlt: 'Tampilan website Abunawas Travel',
+      stats: [
+        { label: 'Posisi rata-rata di Google', value: '9' },
+        { label: 'CTR', value: '12,7%' },
+        { label: 'Klik dalam 3 bulan', value: '531' },
+      ],
+      text: 'Website paket tour luar negeri dengan sistem booking online. Posisi rata-rata, CTR, dan jumlah klik diambil dari Google Search Console milik client.',
+    },
+    problemsHeading: 'Tanda Bisnismu di Tangerang Butuh SEO.',
+    faqHeading: 'Pertanyaan Seputar Jasa SEO di Tangerang.',
+    ctaHeading: 'Siap Ditemukan Calon Customer di Tangerang?',
+    processHeading: 'Cara Kerja Jasa SEO untuk Bisnis di Tangerang.',
+    process: [
+      {
+        icon: 'flaticon-search',
+        title: 'Riset Keyword Lokal',
+        description: 'Kami cari pencarian yang dipakai calon customer di sekitarmu, misalnya nama jasamu ditambah Tangerang, BSD, atau Bintaro.',
+        step: 'Tahap-01',
+      },
+      {
+        icon: 'flaticon-web-development',
+        title: 'Rapikan Website',
+        description: 'Judul, deskripsi, heading, kecepatan, dan tampilan di HP kami perbaiki, lalu halaman layananmu dioptimasi untuk pencarian di daerah yang kamu layani.',
+        step: 'Tahap-02',
+      },
+      {
+        icon: 'flaticon-text',
+        title: 'Konten SEO',
+        description: '4 artikel per bulan yang menjawab pertanyaan calon customer dan mengarahkan mereka ke halaman layananmu.',
+        step: 'Tahap-03',
+      },
+      {
+        icon: 'flaticon-analytics',
+        title: 'Laporan & Evaluasi',
+        description: 'Tiap bulan kamu dapat laporan posisi keyword, traffic, dan rekomendasi. Kalau perlu, laporannya bisa dibahas langsung saat ketemu.',
+        step: 'Tahap-04',
+      },
+    ],
+    seoTitle: 'Jasa SEO Tangerang & Tangerang Selatan | Ricksite Studio',
+    h1: 'Jasa SEO Tangerang & Tangerang Selatan',
+    metaDescription:
+      'Jasa SEO Tangerang dan Tangerang Selatan untuk bisnis lokal: riset keyword lokal, on-page, artikel, dan laporan bulanan. Mulai Rp1,5 juta/bulan.',
+    intro:
+      'Ricksite Studio adalah jasa SEO yang berbasis di Tangerang Selatan. Kami membantu bisnis di Tangerang dan Tangerang Selatan muncul di Google saat orang di sekitarnya mencari jasa atau produk yang mereka jual. Fokusnya pencarian lokal, misalnya "jasa kamu + Tangerang" atau nama daerah seperti BSD dan Bintaro, dan kita bisa ketemu langsung untuk membahas strategi maupun laporan bulanannya.',
+    tagline:
+      'Biar bisnismu muncul saat orang di Tangerang mencari di Google.',
+    problems: [
+      'Orang di Tangerang nyari jasamu, tapi yang muncul kompetitor dari daerah lain',
+      'Website sudah ada tapi belum pernah muncul untuk pencarian dengan nama daerah',
+      'Pelanggan datang cuma dari kenalan dan iklan, belum ada yang dari Google',
+      'Pengin dibantu orang yang bisa diajak diskusi langsung soal strategi dan hasilnya',
+    ],
+    faqs: [
+      {
+        q: 'Apa bedanya SEO lokal dengan SEO biasa?',
+        a: 'SEO lokal mengejar pencarian dari orang di daerah tertentu, misalnya "jasa servis AC Tangerang" atau "klinik gigi BSD". Persaingannya biasanya lebih kecil dari keyword nasional, dan yang mencari umumnya siap membeli karena lokasinya dekat.',
+      },
+      {
+        q: 'Bisa ketemu langsung di Tangerang?',
+        a: 'Bisa. Kami berbasis di Tangerang Selatan dan bisa ketemu di area Tangerang Raya, misalnya BSD, Serpong, Gading Serpong, Alam Sutera, Bintaro, Pamulang, Ciputat, Ciledug, dan Karawaci, untuk membahas strategi atau laporan bulanan.',
+      },
+      {
+        q: 'Berapa biaya jasa SEO di Tangerang?',
+        a: 'Paket SEO bulanan kami Rp1.500.000/bulan, sudah termasuk audit awal, riset keyword lokal, optimasi on-page dan teknis, 4 artikel per bulan, dan laporan bulanan.',
+      },
+      {
+        q: 'Berapa lama hasilnya kelihatan?',
+        a: 'Biasanya pergerakan mulai terlihat sekitar 2-3 bulan, tergantung kondisi awal website dan persaingan keyword di daerahmu. Keyword lokal umumnya lebih cepat bergerak dibanding keyword nasional.',
+      },
+      {
+        q: 'Dijamin halaman 1 Google?',
+        a: 'Nggak ada yang bisa menjamin itu, termasuk kami. Peringkat ditentukan algoritma Google. Yang kami pastikan: prosesnya benar dan laporannya transparan tiap bulan.',
+      },
+      {
+        q: 'Belum punya website, bisa langsung SEO?',
+        a: 'SEO butuh website sebagai tempat yang dioptimasi. Kalau belum punya, website bisa dibuat dulu lalu SEO-nya jalan setelah itu.',
+        link: { href: '/jasa-pembuatan-website-tangerang', text: 'Jasa Pembuatan Website Tangerang' },
+      },
+    ],
+    relatedProjects: ['abunawas-travel'],
   },
 };

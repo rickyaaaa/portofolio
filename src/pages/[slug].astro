@@ -15,7 +15,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Pricing from '../components/sections/Pricing.astro';
 import InquiryForm from '../components/sections/InquiryForm.astro';
 import FinalCta from '../components/sections/FinalCta.astro';
-import { services, websiteSubServices, servicePath } from '../data/services';
+import { services, subServices, servicePath } from '../data/services';
 import { servicePages } from '../data/service-pages';
 import { projects } from '../data/projects';
 import ProjectCard from '../components/ProjectCard.astro';
@@ -28,7 +28,7 @@ import travelChatImage from '../assets/landing/gambar-1-testimoni-google-ads.web
 const caseImages = { abunawas: abunawasImage, 'travel-chat': travelChatImage };
 
 export function getStaticPaths() {
-  return [...services, ...websiteSubServices].map((service) => ({
+  return [...services, ...subServices].map((service) => ({
     params: { slug: service.slug },
     props: { service },
   }));

@@ -55,7 +55,7 @@ export interface NavLink {
 export const NAV_LINKS: NavLink[] = [
   { label: 'Beranda', href: '/' },
   { label: 'Layanan', href: '/#services', children: [] },
-  { label: 'Project', href: '/portofolio' },
+  { label: 'Portofolio', href: '/portofolio' },
   { label: 'Blog', href: '/blog/' },
   { label: 'Tentang', href: '/tentang' },
   { label: 'Kontak', href: '/kontak' },
