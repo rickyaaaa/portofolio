@@ -2,6 +2,13 @@
 /** Agenko agenko-cta-wrappper (component originally from index-3.html). */
 import { whatsapp } from '../../data/site';
 
+interface Props {
+  /** Defaults to the website pitch; service pages pass their own. */
+  heading?: string;
+}
+
+const { heading = 'Siap Bikin Website yang Dapat Orderan?' } = Astro.props;
+
 const discussLink = whatsapp('Halo Ricksite Studio, mau diskusi soal project.');
 const plainLink = whatsapp();
 ---
@@ -16,8 +23,7 @@ const plainLink = whatsapp();
                 <div class="col-lg-6">
                     <!--=== Section Title ===-->
                     <div class="section-title mb-30 pf_fadeup">
-                        <h2>Siap Bikin Website
-                            yang Dapat Orderan?</h2>
+                        <h2>{heading}</h2>
                         <p class="mt-20">Cerita aja dulu bisnismu jualan apa dan kendalanya di mana. Kami bantu carikan solusi yang paling masuk akal buat kamu.</p>
                     </div>
                 </div>
