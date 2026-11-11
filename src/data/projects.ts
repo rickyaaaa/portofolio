@@ -153,6 +153,18 @@ export const projects: Project[] = [
     image: 'lefaucheux-esports.webp',
   },
   {
+    // Portfolio site for a merch/apparel graphic designer. Hand-coded
+    // HTML/CSS/JS, no CMS. Grouped with company profiles: there is no
+    // separate portfolio tab for one project.
+    title: 'Gehalimate',
+    slug: 'gehalimate',
+    category: 'company-profile',
+    tags: ['Website Portfolio', 'HTML & CSS'],
+    liveUrl: 'https://gehalimate.pro/',
+    classification: 'Portfolio Graphic Designer',
+    image: 'gehalimate.webp',
+  },
+  {
     title: 'Ady Geotek',
     slug: 'ady-geotek',
     category: 'company-profile',
